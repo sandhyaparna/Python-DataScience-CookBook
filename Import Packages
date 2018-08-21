@@ -2,6 +2,15 @@
 import subprocess
 subprocess.check_call(["python", '-m', 'pip', 'install', 'scipy']) # install pkg - pkg name should all be small letter NO CAPITALS
 subprocess.check_call(["python", '-m', 'pip', 'install',"--upgrade", 'scipy']) # upgrade pkg - pkg name should all be small letter NO CAPITALS
+from scipy import *
+import scipy as sy
+
+### List of installed packages
+import subprocess
+import sys
+reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze'])
+installed_packages = [r.decode().split('==')[0] for r in reqs.split()]
+print(installed_packages)
 
 
 ################## OLD VERSION pip ####################
