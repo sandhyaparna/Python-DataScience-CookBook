@@ -7,8 +7,12 @@
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf
 
 
+### Preview of a file-csv/text before importing as a Df
+list(open('path/file.csv'))
+list(open('path/file.txt'))
+
 ################# DATA LOADING / IMPORTING #################
-### SQL Server - import files/tables directly ###
+### SQL Server - import files/tables directly 
 import pip
 pip.main(['install','--upgrade','pyodbc']) # old versio pip
 import subprocess
@@ -21,7 +25,7 @@ Connection = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
 SQLCommand = ('select * from [DataWarehouse].[dbo].[DimDate]') # SQLQuery
 Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
 
-### CSV files ###
+### CSV files 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html
 Df = pd.read_csv("path/file.csv",
                  dtype = {'Var1': str}, # Change data type of a variable
@@ -31,33 +35,35 @@ Df = pd.read_csv("path/file.csv",
                             'Var5',
                             'Var8']) 
 
-### TEXT files - Tab Delimited ###
+### TEXT files - Tab Delimited is default 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_table.html
 Df = pd.read_table("path/file.txt", 
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
                     sep='\t' # Tab Delimited )
 
-### TEXT files - Pipe Delimited ###
+### TEXT files - Pipe Delimited 
 Df = pd.read_table("path/file.txt", 
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
                     sep='|' # Pipe Delimited )
 
+# read_clipboard - Version of read_table that reads data from the clipboard. Useful for converting tables from web pages
+# read_fwf - Read data in fixed-width column format (that is, no delimiters)
 
 
 ################# SAVE DATA / EXPORTING #################
-### Export dataframes/tables to SQL Servere ###
+### Export dataframes/tables to SQL Servere 
 ???
 
-### Export CSV files ###
+### Export CSV files 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html
 Df.to_csv('path/NewFile.csv',index=False) # Index=False for no rownames in the exported file
 
-### Export TEXT files - Tab Delimited ###
+### Export TEXT files - Tab Delimited 
 Df.to_csv('path/NewFile.txt', sep='\t', index=False)
 
-### Export TEXT files - Pipe Delimited ###
+### Export TEXT files - Pipe Delimited
 Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 
