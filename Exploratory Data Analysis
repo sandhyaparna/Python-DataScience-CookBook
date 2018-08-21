@@ -50,8 +50,11 @@ Df = pd.read_table("path/file.txt",
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html
 Df.to_csv('path/NewFile.csv',index=False) # Index=False for no rownames in the exported file
 
+### Export TEXT files - Tab Delimited ###
+Df.to_csv('path/NewFile.txt', sep='\t', index=False)
 
-
+### Export TEXT files - Pipe Delimited ###
+Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 
 
