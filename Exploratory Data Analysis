@@ -31,14 +31,18 @@ Df = pd.read_csv("path/file.csv",
                             'Var5',
                             'Var8']) 
 
-### TEXT files - Pipe Delimited ###
+### TEXT files - Tab Delimited ###
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_table.html
 Df = pd.read_table("path/file.txt", 
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
-                    sep='\t')
+                    sep='\t' # Tab Delimited )
 
-
+### TEXT files - Pipe Delimited ###
+Df = pd.read_table("path/file.txt", 
+                    dtype = {'Var1': str}, # Change data type of a variable
+                    parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
+                    sep='|' # Pipe Delimited )
 
 
 
