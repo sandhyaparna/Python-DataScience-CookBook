@@ -1,0 +1,22 @@
+### New Version of pip
+import subprocess
+subprocess.check_call(["python", '-m', 'pip', 'install', 'SciPy']) # install pkg
+subprocess.check_call(["python", '-m', 'pip', 'install',"--upgrade", 'SciPy']) # upgrade pkg
+
+
+################## OLD VERSION pip ####################
+### Upgrade pip
+pip.main(['install', '--upgrade', 'pip'])
+
+### Install and Upgrade Packages in Rodeo
+import pip
+pip.main(['install','SciPy']) # install pkg
+pip.main(['install', '--upgrade', 'statsmodels']) # upgrade pkg
+from scipy import *
+import scipy as sy
+
+import pip
+pip.main(['install','scikit-learn'])
+pip.main(['install', '--upgrade', 'statsmodels'])
+from sklearn import *
+import sklearn as sklearn
