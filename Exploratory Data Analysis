@@ -7,6 +7,40 @@
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf
 
 
+################# DATA LOADING / IMPORTING ####################
+### SQL Server - import files/tables directly ###
+import pip
+pip.main(['install','--upgrade','pyodbc']) # old versio pip
+import subprocess
+subprocess.check_call(["python", '-m', 'pip', 'install', 'pyodbc'])
+import pyodbc 
+Connection = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
+                      "Server=vigi-dw01;" #Change
+                      "Database=Datawarehouse;" #Change
+                      "Trusted_Connection=yes;")
+SQLCommand = ('select * from [DataWarehouse].[dbo].[DimDate]') # SQLQuery
+Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
+
+### CSV files ###
+Df = pd.read_csv("path/file.csv",
+                 dtype = {'Var1': str}, # Change data type of a variable
+                 parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
+                 usecols = ['Var1', # Import specific columns
+                            'Var2',
+                            'Var5',
+                            'Var8']) 
+
+
+
+
+
+
+
+
+
+### Export dataframes/tables to SQL Servere ###
+???
+
 
 
 
