@@ -22,6 +22,7 @@ SQLCommand = ('select * from [DataWarehouse].[dbo].[DimDate]') # SQLQuery
 Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
 
 ### CSV files ###
+# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html
 Df = pd.read_csv("path/file.csv",
                  dtype = {'Var1': str}, # Change data type of a variable
                  parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
@@ -37,11 +38,13 @@ Df = pd.read_csv("path/file.csv",
 
 
 
-
+################# SAVE DATA / EXPORTING ####################
 ### Export dataframes/tables to SQL Servere ###
 ???
 
-
+### Export CSV files ###
+# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html
+Df.to_csv('path/NewFile.csv',index=False) # Index=False for no rownames in the exported file
 
 
 
