@@ -41,6 +41,12 @@ Df = pd.read_table("path/file.txt",
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
                     sep='\t' # Tab Delimited )
+header=None -  When header is not present and also assigns default column names
+names=['Var1', 'Var2', 'Var3'] - When header is not present and u want to assign names
+index_col='Var2' - Var2 to be assigned as index column of the dataframe (Var2 will not be part of Variables within the dataframe anymore)
+index_col=['key1', 'key2'] - Hierarchical index from multiple columns (Similar to groupby)
+sep='\s+' - When there is whitespace or some other pattern to separate fields
+skiprows=[0, 2, 3] - skip specified rows
 
 ### TEXT files - Pipe Delimited 
 Df = pd.read_table("path/file.txt", 
