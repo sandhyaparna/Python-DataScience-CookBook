@@ -112,11 +112,16 @@ Df.mean(axis=1)
 
 # Number of missing values in each column
 Df.isnull().sum()
+Df['Var1'].isnull().sum()
 
 
+# First few rows sample
+Df.head()
+Df['Var1'].head()
 
-
-
+# Last few rows
+Df.tail()
+Df['Var1'].tail()
 
 
 
