@@ -129,14 +129,22 @@ pd.value_counts(Df['Var1'].values)
 # Unique values
 pd.unique(Df['Var1'])
 
-# Cross tabs
+# Cross tab
 pd.crosstab(Df['Var1'],Df['Var2'])
 
+# Cross tab - 3vars
+Var3 unique value counts within group of (Var1,Var2)
+pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
+
+# Summary stats of Var3 as a group by Var1,Var2 - Different from cross tabs - crosstabs gives counts by each unique value with Var3
+# where as this gives summary stats of the entire Var3 within that grouping
+Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 
 
 
-
-
+################# Data Manipulation #################
+# Drop columns
+Df.drop(['Var1', 'Var2'],axis=1)
 
 
 
