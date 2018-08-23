@@ -104,5 +104,35 @@ Df.describe(include = 'all')
 # For Specific percentiles
 Df.describe(percentiles=[.1, .15, .3, .7])
 
+# Mean of all vars in df
+Df.mean(axis=0)
+
+# Mean of all rows in df
+Df.mean(axis=1)
+
+# Number of missing values in each column
+Df.isnull().sum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
