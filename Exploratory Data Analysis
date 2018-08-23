@@ -88,13 +88,15 @@ Df.info()
 # Summary of only Numeric variables/columns - Number of records in a column, quantiles, mean, std
 Df.describe()
 
-# Summary of Numeric and Character variables
-Df.describe(include = 'all')
-For object/char vars -
+# Summary of only Character variables
+Df.describe(include=[np.object])
   Unique - Number of uniques values
   top - Highest frequent value within a var - If highest freq is same for 2 or more values, only only value of them is displayed in top
   freq - Highest frequent value's freq
+np.bool for boolean vars
 
+# Summary of all variables - object,char,bool,int,float
+Df.describe(include = 'all')
 
 
 
