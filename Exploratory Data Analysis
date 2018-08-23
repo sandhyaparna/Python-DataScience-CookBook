@@ -84,6 +84,9 @@ Df['Var1'].dtype
 
 # Non-missing values in each column, data type of vars
 Df.info()
+# If number of columns exceeds default max cols - output is truncated - specify max_cols for each column analysis
+Df.info(max_cols=500)
+
 
 # Summary of only Numeric variables/columns - Number of records in a column, quantiles, mean, std
 Df.describe()
@@ -98,7 +101,8 @@ np.bool for boolean vars
 # Summary of all variables - object,char,bool,int,float
 Df.describe(include = 'all')
 
-
+# For Specific percentiles
+Df.describe(percentiles=[.1, .15, .3, .7])
 
 
 
