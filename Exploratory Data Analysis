@@ -92,7 +92,7 @@ Df.describe()
 Df.describe(include = 'all')
 For object/char vars -
   Unique - Number of uniques values
-  top - Highest frequent value within a var
+  top - Highest frequent value within a var - If highest freq is same for 2 or more values, only only value of them is displayed in top
   freq - Highest frequent value's freq
 
 
