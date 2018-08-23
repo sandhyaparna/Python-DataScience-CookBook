@@ -123,10 +123,14 @@ Df['Var1'].head()
 Df.tail()
 Df['Var1'].tail()
 
+# Freq Dist
+pd.value_counts(Df['Var1'].values)
 
+# Unique values
+pd.unique(Df['Var1'])
 
-
-
+# Cross tabs
+pd.crosstab(Df['Var1'],Df['Var2'])
 
 
 
