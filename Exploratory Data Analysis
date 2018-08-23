@@ -74,8 +74,26 @@ Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 
 ################# Descriptive Stats #################
+# Column names
+list(Df)
 
+# Data Types
+Df.dtypes
+# Data type of a single var
+Df['Var1'].dtype
 
+# Non-missing values in each column, data type of vars
+Df.info()
+
+# Summary of only Numeric variables/columns - Number of records in a column, quantiles, mean, std
+Df.describe()
+
+# Summary of Numeric and Character variables
+Df.describe(include = 'all')
+For object/char vars -
+  Unique - Number of uniques values
+  top - Highest frequent value within a var
+  freq - Highest frequent value's freq
 
 
 
