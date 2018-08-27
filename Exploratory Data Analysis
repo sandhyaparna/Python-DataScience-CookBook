@@ -91,17 +91,14 @@ Df.info()
 # If number of columns exceeds default max cols - output is truncated - specify max_cols for each column analysis
 Df.info(max_cols=500)
 
-
 # Summary of only Numeric variables/columns - Number of records in a column, quantiles, mean, std
 Df.describe()
-
 # Summary of only Character variables
 Df.describe(include=[np.object])
   Unique - Number of uniques values
   top - Highest frequent value within a var - If highest freq is same for 2 or more values, only only value of them is displayed in top
   freq - Highest frequent value's freq
 np.bool for boolean vars
-
 # Summary of all variables - object,char,bool,int,float
 Df.describe(include = 'all')
 
@@ -117,7 +114,6 @@ Df.mean(axis=1)
 # Number of missing values in each column
 Df.isnull().sum()
 Df['Var1'].isnull().sum()
-
 
 # First few rows sample
 Df.head()
@@ -143,6 +139,8 @@ pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
 # Summary stats of Var3 as a group by Var1,Var2 - Different from cross tabs - crosstabs gives counts by each unique value with Var3
 # where as this gives summary stats of the entire Var3 within that grouping
 Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
+
+
 
 
 
