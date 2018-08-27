@@ -15,8 +15,21 @@ print(installed_packages)
 # Version of pip installed
 pip.__version__
 
+### Packages for Data Science
+# General
+import numpy as np
+import pandas as pd
+import os
 
-################## OLD VERSION pip ####################
+# Visualization
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+
+
+
+################## OLD VERSION pip ##################
 ### Upgrade pip
 pip.main(['install', '--upgrade', 'pip'])
 
