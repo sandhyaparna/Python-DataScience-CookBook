@@ -146,7 +146,11 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 # Univariate Analysis of Numeric variables
 # Kde - https://seaborn.pydata.org/generated/seaborn.kdeplot.html
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
+# countplot - https://seaborn.pydata.org/generated/seaborn.countplot.html
+# Barplot - https://seaborn.pydata.org/generated/seaborn.barplot.html
 
+
+# Histogram & Kde(Kernel density estimate)
 import seaborn as sns
 # This is produces bars and density line
 sns.distplot(Df.NumVar.dropna())
@@ -160,6 +164,11 @@ sns.distplot(Df.NumVar.dropna(), bins = 100,hist=False)
 # limit kde to data range
 sns.kdeplot(Df.NumVar.dropna().dropna(),cut=0)
 
+# Countplot of a single variable
+sns.countplot(x="Var1", data=Df, color="c")
+# Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in var1
+sns.countplot(x="Var", hue="Var1", data=Df)
+# Barplot
 
 
 ################# Data Manipulation #################
