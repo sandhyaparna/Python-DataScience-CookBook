@@ -78,6 +78,9 @@ Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 
 ################# Descriptive Stats #################
+# Size of a dataframe
+print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) + ' columns')
+
 # Column names
 list(Df)
 
@@ -115,11 +118,11 @@ Df.mean(axis=1)
 Df.isnull().sum()
 Df['Var1'].isnull().sum()
 
-# First few rows sample
+# First few rows sample - Glimpse of data
 Df.head()
 Df['Var1'].head()
 
-# Last few rows
+# Last few rows - Glimpse of data
 Df.tail()
 Df['Var1'].tail()
 
@@ -140,6 +143,8 @@ pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
 # where as this gives summary stats of the entire Var3 within that grouping
 Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 
+# Univariate Analysis of Numeric variables
+# Histogram
 
 
 
