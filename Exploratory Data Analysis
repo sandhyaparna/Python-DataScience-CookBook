@@ -144,8 +144,21 @@ pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
 Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 
 # Univariate Analysis of Numeric variables
-# Histogram
+# Kde - https://seaborn.pydata.org/generated/seaborn.kdeplot.html
+# Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
 
+import seaborn as sns
+# This is produces bars and density line
+sns.distplot(Df.NumVar.dropna())
+# Specify Bins
+sns.distplot(Df.NumVar.dropna(), bins = 100)
+# Only Bins and no density line
+sns.distplot(Df.NumVar.dropna(), bins = 100,kde=False)
+# Only density line - Kernel Density estimation
+sns.kdeplot(Df.NumVar.dropna().dropna())
+sns.distplot(Df.NumVar.dropna(), bins = 100,hist=False)
+# limit kde to data range
+sns.kdeplot(Df.NumVar.dropna().dropna(),cut=0)
 
 
 
