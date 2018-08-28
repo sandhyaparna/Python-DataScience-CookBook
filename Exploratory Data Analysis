@@ -149,8 +149,10 @@ Df.groupby('Var').Var1.sum().plot.bar()
 # where as this gives summary stats of the entire Var3 within that grouping
 Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 
+################# Visualization #################
+### https://python-graph-gallery.com/
 
-# Univariate Analysis of Numeric variables
+### Univariate Analysis of Numeric variables
 # seaborn - https://seaborn.pydata.org/examples/index.html
 # Kde - https://seaborn.pydata.org/generated/seaborn.kdeplot.html
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
