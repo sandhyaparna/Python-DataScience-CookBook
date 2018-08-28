@@ -132,6 +132,28 @@ pd.value_counts(Df['Var1'].values)
 # Unique values
 pd.unique(Df['Var1'])
 
+# Detect and remove outliers - http://colingorrie.github.io/outlier-detection.html
+# If you have multiple columns in your dataframe and would like to remove all rows that have outliers in at least one column (remove rows with numerical data above 3 std
+# keep only the ones that are within +3 to -3 standard deviations
+New_Df = Df[(np.abs(stats.zscore(Df[['Num_Var1','Num_Var2','Num_Var3']])) < 3).all(axis=1)]
+# Filter based on z-score of a single numeric variable
+df[np.abs(df.Num_Var1-df.Num_Var1.mean()) <= (3*df.Num_Var1.std())]
+df[np.abs((df.Num_Var1-df.Num_Var1.mean())/(df.Num_Var1.std())) <= (3)]
+# Based on quantiles - Identify the 99% quantile of a NumVar & then filter the data based on that value
+df[df["col"] < (df["col"].quantile(0.99))]
+# Based on modified z-score
+df[np.abs((0.6745 * (df.Num_Var1-df.Num_Var1.median()))/(df.Num_Var1.std())) <= (3)]
+
+median_y = np.median(ys)
+    median_absolute_deviation_y = df.Num_Var1.median([df.Num_Var1.abs(df.Num_Var1-df.Num_Var1.median()) for y in ys])
+    modified_z_scores = [0.6745 * (y - median_y) / median_absolute_deviation_y
+                         for y in ys]
+
+mean_y = np.mean(ys)
+    stdev_y = np.std(ys)
+    z_scores = [(y - mean_y) / stdev_y for y in ys]
+
+
 # Cross tab
 pd.crosstab(Df['Var1'],Df['Var2'])
 
@@ -143,7 +165,6 @@ pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
 Df.groupby(['Var']).Var1.sum()
 # Plotting of a bar graph of the same
 Df.groupby('Var').Var1.sum().plot.bar()
-
 
 # Summary stats of Var3 as a group by Var1,Var2 - Different from cross tabs - crosstabs gives counts by each unique value with Var3
 # where as this gives summary stats of the entire Var3 within that grouping
