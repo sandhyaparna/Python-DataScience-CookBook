@@ -150,7 +150,7 @@ Df.groupby(['Var']).Var1.sum()
 # Kde - https://seaborn.pydata.org/generated/seaborn.kdeplot.html
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
 # countplot (Categoric or Numeric)- https://seaborn.pydata.org/generated/seaborn.countplot.html
-# Barplot (Categorical & Numeric) - https://seaborn.pydata.org/generated/seaborn.barplot.html
+# Barplot (Categorical & Numeric - estimate of central tendency for a numeric variable) - https://seaborn.pydata.org/generated/seaborn.barplot.html
 
 
 # Histogram & Kde(Kernel density estimate)
@@ -171,7 +171,7 @@ sns.kdeplot(Df.NumVar.dropna().dropna(),cut=0)
 sns.countplot(x="Var1", data=Df, color="c")
 # Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in Var1
 sns.countplot(x="Var", hue="Var1", data=Df)
-# Barplot
+# Barplot - estimate of central tendency for a numeric variable
 sns.barplot(x="Var", y="Var1", data=tips)
 
 # Line Graph - Var(Cat), Var1(Num) - For each unique value of Var, values of Var1 are plotted as a line graph
