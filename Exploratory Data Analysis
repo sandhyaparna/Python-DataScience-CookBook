@@ -139,7 +139,7 @@ Df['Var1'].mad()
 from statsmodels.robust.scale import mad
 mad(Df['Var1'], c=1)
 
-# Detect and remove outliers - http://colingorrie.github.io/outlier-detection.html
+# Outliers - Detect and remove - http://colingorrie.github.io/outlier-detection.html
 # If you have multiple columns in your dataframe and would like to remove all rows that have outliers in at least one column (remove rows with numerical data above 3 std
 # keep only the ones that are within +3 to -3 standard deviations
 New_Df = Df[(np.abs(stats.zscore(Df[['Num_Var1','Num_Var2','Num_Var3']])) < 3).all(axis=1)]
@@ -151,7 +151,6 @@ df[df["col"] < (df["col"].quantile(0.99))]
 # Based on modified z-score
 from statsmodels.robust.scale import mad
 df[np.abs( (0.6745 * (df.Num_Var1-df.Num_Var1.median()))/(mad(df['Num_Var1'], c=1)) ) <= (3)]
-
 
 # Cross tab
 pd.crosstab(Df['Var1'],Df['Var2'])
