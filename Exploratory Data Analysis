@@ -142,12 +142,15 @@ pd.crosstab(Df.Var3, [Df.Var1, Df.Var2])
 # Summary stats of Var3 as a group by Var1,Var2 - Different from cross tabs - crosstabs gives counts by each unique value with Var3
 # where as this gives summary stats of the entire Var3 within that grouping
 Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
+# Within unique values of Var(Cat) - give sum of values in Var1(Numeric)
+Df.groupby(['Var']).Var1.sum()
+
 
 # Univariate Analysis of Numeric variables
 # Kde - https://seaborn.pydata.org/generated/seaborn.kdeplot.html
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
-# countplot - https://seaborn.pydata.org/generated/seaborn.countplot.html
-# Barplot - https://seaborn.pydata.org/generated/seaborn.barplot.html
+# countplot (Categoric or Numeric)- https://seaborn.pydata.org/generated/seaborn.countplot.html
+# Barplot (Categorical & Numeric) - https://seaborn.pydata.org/generated/seaborn.barplot.html
 
 
 # Histogram & Kde(Kernel density estimate)
@@ -166,9 +169,13 @@ sns.kdeplot(Df.NumVar.dropna().dropna(),cut=0)
 
 # Countplot of a single variable
 sns.countplot(x="Var1", data=Df, color="c")
-# Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in var1
+# Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in Var1
 sns.countplot(x="Var", hue="Var1", data=Df)
 # Barplot
+sns.barplot(x="Var", y="Var1", data=tips)
+
+# Line Graph - Var(Cat), Var1(Num) - For each unique value of Var, values of Var1 are plotted as a line graph
+Df.groupby(['Var'])['Var1'].plot(legend=True)
 
 
 ################# Data Manipulation #################
