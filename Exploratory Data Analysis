@@ -132,6 +132,13 @@ pd.value_counts(Df['Var1'].values)
 # Unique values
 pd.unique(Df['Var1'])
 
+# Mean absolute deviation
+Df['Var1'].mad()
+
+# Median absolute deviation
+from statsmodels.robust.scale import mad
+mad(Df['Var1'], c=1)
+
 # Detect and remove outliers - http://colingorrie.github.io/outlier-detection.html
 # If you have multiple columns in your dataframe and would like to remove all rows that have outliers in at least one column (remove rows with numerical data above 3 std
 # keep only the ones that are within +3 to -3 standard deviations
@@ -142,16 +149,8 @@ df[np.abs((df.Num_Var1-df.Num_Var1.mean())/(df.Num_Var1.std())) <= (3)]
 # Based on quantiles - Identify the 99% quantile of a NumVar & then filter the data based on that value
 df[df["col"] < (df["col"].quantile(0.99))]
 # Based on modified z-score
-df[np.abs((0.6745 * (df.Num_Var1-df.Num_Var1.median()))/(df.Num_Var1.std())) <= (3)]
-
-median_y = np.median(ys)
-    median_absolute_deviation_y = df.Num_Var1.median([df.Num_Var1.abs(df.Num_Var1-df.Num_Var1.median()) for y in ys])
-    modified_z_scores = [0.6745 * (y - median_y) / median_absolute_deviation_y
-                         for y in ys]
-
-mean_y = np.mean(ys)
-    stdev_y = np.std(ys)
-    z_scores = [(y - mean_y) / stdev_y for y in ys]
+from statsmodels.robust.scale import mad
+df[np.abs( (0.6745 * (df.Num_Var1-df.Num_Var1.median()))/(mad(df['Num_Var1'], c=1)) ) <= (3)]
 
 
 # Cross tab
