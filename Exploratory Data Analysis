@@ -44,7 +44,7 @@ Df = pd.read_csv("path/file.csv",
 Df = pd.read_table("path/file.txt", 
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
-                    sep='\t' # Tab Delimited )
+                    sep='\t') # Tab Delimited 
 header=None -  When header is not present and also assigns default column names
 names=['Var1', 'Var2', 'Var3'] - When header is not present and u want to assign names
 index_col='Var2' - Var2 to be assigned as index column of the dataframe (Var2 will not be part of Variables within the dataframe anymore)
@@ -56,7 +56,7 @@ skiprows=[0, 2, 3] - skip specified rows
 Df = pd.read_table("path/file.txt", 
                     dtype = {'Var1': str}, # Change data type of a variable
                     parse_dates = ['Var2'], # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
-                    sep='|' # Pipe Delimited )
+                    sep='|') # Pipe Delimited 
 
 # read_clipboard - Version of read_table that reads data from the clipboard. Useful for converting tables from web pages
 # read_fwf - Read data in fixed-width column format (that is, no delimiters)
