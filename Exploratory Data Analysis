@@ -223,7 +223,7 @@ Df.groupby(['Var1','Var2']).Var.sum().plot.bar()
 
 ################# Data Manipulation #################
 # Drop columns
-Df.drop(['Var1', 'Var2'],axis=1)
+Df = Df.drop(['Var1', 'Var2'],axis=1)
 
 ### Convert data type of a var
 # String/Character/object
