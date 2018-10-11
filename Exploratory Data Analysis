@@ -225,13 +225,24 @@ Df.groupby(['Var1','Var2']).Var.sum().plot.bar()
 # Drop columns
 Df.drop(['Var1', 'Var2'],axis=1)
 
-# Convert data type of a var
+### Convert data type of a var
 # String/Character/object
 Df['Var1'] = Df['Var1'].astype('str')
 # Numeric
 Df['Var1'] = Df['Var1'].astype('int')
 # DateTime
 Df['Var1'] =  pd.to_datetime(Df['Var1'], format='%Y-%m-%d %H:%M:%S')
+
+### Assign values to a column or change values of a particular variable
+# Assign a value
+Df = DF.assign(Var="New_value")
+# Create a new Var or modify existing var to assign a value (or) a formula
+Df = DF.assign(Var=formula)
+# Assign a Series as a new column of data frame
+Df = DF.assign(NewVar=newSeries)
+# Assign IDs to each row - n rows
+Df = DF.assign(ID=pd.Series(range(1,n)))
+
 
 ### Missing data representation - np.NAN, pd.NaT
 https://pandas.pydata.org/pandas-docs/stable/missing_data.html
