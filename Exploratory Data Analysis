@@ -192,7 +192,7 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
-# This is produces bars and density line
+# This produces bars and density line
 sns.distplot(Df.NumVar.dropna())
 # Specify Bins
 sns.distplot(Df.NumVar.dropna(), bins = 100)
