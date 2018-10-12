@@ -277,7 +277,9 @@ df['cum_sum'] = df.val1.cumsum()
 # Cumulative % of a column in df
 df['cum_perc'] = 100*df.cum_sum/df.val1.sum()
 
-
+# Replace Values of a variable
+Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
+              "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 
 
 
