@@ -282,11 +282,11 @@ Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 Df.replace(Char_Codes, inplace=True)
 
-# 
+# Label encoding
+obj_df["body_style_cat"] = obj_df["body_style"].cat.codes
 
-
-
-
+# One-hot encoding - Replace existing variable values with new encoding
+pd.get_dummies(obj_df,drop_first=True)
 
 
 
