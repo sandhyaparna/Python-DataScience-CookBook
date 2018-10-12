@@ -128,6 +128,7 @@ Df['Var1'].tail()
 
 # Freq Dist
 pd.value_counts(Df['Var1'].values)
+Df['Var1'].value_counts()
 
 # Unique values
 pd.unique(Df['Var1'])
@@ -249,12 +250,16 @@ https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 Missing data of objects - None or NaN (NaN and None are used interchangebly)
 Missing data of Numeric data - Alwayz NaN
 Missing data of DateTime data - Alwayz NaT
+# All observations within a dataframe where any of the column values within the dataframe is missing
+Df[Df.isnull().any(axis=1)]
 # Number of missing values in each column of a dataframe
 Df.info()
 # Number of missing values of a single column
 Df['Var'].isnull().sum()
-# fill all NaN values with 0 - SIngle variable in a data frame
+# fill all NaN values with 0 - Single variable in a data frame
 df['Var'] = df['Var'].fillna(0)
+# Fill NaNs of a particular column with a value
+Df = Df.fillna({"Var": "NewValue"})
 # fill entire dataset of missing values with 0
 df = df.fillna(0)
 # fill gaps formward and backward - Carry forward
