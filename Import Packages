@@ -1,5 +1,7 @@
 # Pip update in Anaconda prompt
 https://datatofish.com/upgrade-pip-anaconda/
+https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
+https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution
 
 ### New Version of pip
 import pip
