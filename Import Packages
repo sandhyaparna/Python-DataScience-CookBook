@@ -1,3 +1,6 @@
+# Pip update in Anaconda prompt
+https://datatofish.com/upgrade-pip-anaconda/
+
 ### New Version of pip
 import pip
 import subprocess
