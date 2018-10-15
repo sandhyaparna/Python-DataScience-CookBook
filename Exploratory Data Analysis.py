@@ -313,9 +313,9 @@ f = {'Field1':'sum',
          }
 grouped = df.groupby('mykey').agg(f)
 
-# Fill in missing values based on 2 columns where 1st column is date and other is char
+# Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
 New_Df = Df.set_index(['DateVar','var1']).unstack(fill_value=0).asfreq('D', fill_value=0).stack().sort_index(level=1).reset_index()
-# Fill in missing values based on 3 columns where 1st column is date and other 2 columns are char
+# Fill in missing values/Dates based on 3 columns where 1st column is date and other 2 columns are char
 New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fill_value=0).asfreq('D', fill_value=0).stack().stack().sort_index(level=2).reset_index()
 
 
