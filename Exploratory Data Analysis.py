@@ -323,7 +323,7 @@ New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fi
 # Start Date of the week
 df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]')
 # end date of the week
-df['End'] =  df['Start'] +  pd.Timedelta(days=7)                       
+df['End'] =  df['Start'] +  pd.Timedelta(days=6)                       
 
 # weekday start on Sunday - https://stackoverflow.com/questions/45458525/get-week-start-date-sunday-from-a-date-column-in-python
 df = pd.DataFrame({'Date':pd.date_range('2018-08-01', periods=20)})
