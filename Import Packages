@@ -4,6 +4,9 @@ https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1
 https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution
 https://medium.com/@GalarnykMichael/setting-up-pycharm-with-anaconda-plus-installing-packages-windows-mac-db2b158bd8c
 
+# Python on Anaconda prompt
+http://docs.anaconda.com/anaconda/user-guide/getting-started/
+
 
 ### New Version of pip
 import pip
