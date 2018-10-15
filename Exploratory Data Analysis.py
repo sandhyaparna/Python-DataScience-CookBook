@@ -27,6 +27,10 @@ Connection = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
                       "Database=Datawarehouse;" #Change
                       "Trusted_Connection=yes;")
 SQLCommand = ('select * from [DataWarehouse].[dbo].[DimDate]') # SQLQuery
+# For a multi-line sql query - \ is used at end of each line
+SQLCommand = ('select * \
+              from [DataWarehouse].[dbo].[DimDate] \
+              where y=a')
 Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
 
 ### CSV files 
