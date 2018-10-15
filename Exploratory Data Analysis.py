@@ -318,9 +318,24 @@ New_Df = Df.set_index(['DateVar','var1']).unstack(fill_value=0).asfreq('D', fill
 # Fill in missing values/Dates based on 3 columns where 1st column is date and other 2 columns are char
 New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fill_value=0).asfreq('D', fill_value=0).stack().stack().sort_index(level=2).reset_index()
 
+# Get Start and end date of a week based on a date variable
+# Week starts on Monday - https://stackoverflow.com/questions/27989120/get-week-start-date-monday-from-a-date-column-in-python-pandas
+# Start Date of the week
+df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]')
+# end date of the week
+df['End'] =  df['Start'] +  pd.Timedelta(days=7)                       
 
+# weekday start on Sunday - https://stackoverflow.com/questions/45458525/get-week-start-date-sunday-from-a-date-column-in-python
+df = pd.DataFrame({'Date':pd.date_range('2018-08-01', periods=20)})
 
+a =  df['Date'] - pd.offsets.Week(weekday=6)
+b =  df['Date'] + pd.offsets.Week(weekday=5)
 
+m1 = df['Date'] != (a + pd.offsets.Week())
+m2 = df['Date'] != (b - pd.offsets.Week())
+
+df['Start'] = df['Date'].mask(m1, a)
+df['End'] = df['Date'].mask(m2, b)             
 
 
 
