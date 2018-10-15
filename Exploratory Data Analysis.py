@@ -9,7 +9,10 @@
 ################# Miscellaneous #################
 # Display more data in Terminal/Console
 pd.options.display.max_rows = 1500
-
+# Display max rows and columns or entire data in Terminal/console
+pd.set_option('display.max_columns', None)  # or 1000
+pd.set_option('display.max_rows', None)  # or 1000
+pd.set_option('display.max_colwidth', -1)  # or 199
 
 ################# DATA LOADING / IMPORTING #################
 ### Preview of a file-csv/text before importing as a Df
