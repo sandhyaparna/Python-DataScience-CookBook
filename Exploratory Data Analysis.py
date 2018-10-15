@@ -305,7 +305,13 @@ pd.get_dummies(obj_df,drop_first=True)
 Df.select_dtypes(include=['object'])
 Df.select_dtypes(exclude=['object'])
 
-
+# Aggregating data on multiple columns similar to sql
+f = {'Field1':'sum',
+         'Field2':['max','mean'],
+         'Field3':['min','mean','count'],
+         'Field4':'count'
+         }
+grouped = df.groupby('mykey').agg(f)
 
 
 
