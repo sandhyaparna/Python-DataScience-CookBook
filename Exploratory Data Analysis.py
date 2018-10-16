@@ -342,6 +342,12 @@ df['Start'] = df['Date'].mask(m1, a)
 # end date of the week
 df['End'] = df['Date'].mask(m2, b)             
 
-                       
+## BiWeek Start Date
+# week starts on monday
+# Calendar date starts from 1-1-1900
+Calendar = Calendar.assign(n=1)
+Calendar['cum_n'] = Calendar.n.cumsum()  
+df['Mod'] = (df['cum_n']-1) % 14
+df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]')                       
                        
 
