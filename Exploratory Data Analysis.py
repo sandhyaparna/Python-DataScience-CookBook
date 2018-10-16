@@ -326,6 +326,12 @@ df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]')
 df['End'] =  df['Start'] +  pd.Timedelta(days=6)                       
 
 # weekday start on Sunday - https://stackoverflow.com/questions/45458525/get-week-start-date-sunday-from-a-date-column-in-python
+# 1st solution
+# Start Date of the week                       
+df['Start'] =  df['Date'] - ((df['Date'])+(pd.Timedelta(days=1))).dt.weekday.astype('timedelta64[D]')                     
+# end date of the week
+df['End'] =  df['Start'] +  pd.Timedelta(days=6)
+# 2nd solution                       
 df = pd.DataFrame({'Date':pd.date_range('2018-08-01', periods=20)})
 a =  df['Date'] - pd.offsets.Week(weekday=6)
 b =  df['Date'] + pd.offsets.Week(weekday=5)
