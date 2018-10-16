@@ -345,6 +345,7 @@ df['End'] = df['Date'].mask(m2, b)
 ## BiWeek Start Date
 # week starts on monday
 # Calendar date starts from 1-1-1900
+                       # % symbol is division remainder/modulo
 Calendar = Calendar.assign(n=1)
 Calendar['cum_n'] = Calendar.n.cumsum()  
 df['Mod'] = (df['cum_n']-1) % 14
