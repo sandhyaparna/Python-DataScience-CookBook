@@ -349,5 +349,14 @@ Calendar = Calendar.assign(n=1)
 Calendar['cum_n'] = Calendar.n.cumsum()  
 df['Mod'] = (df['cum_n']-1) % 14
 df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]')                       
+# End is start + pd.Timedelta(days=13)
                        
-
+# Week starts on Sunday
+df['Mod'] = df['cum_n'] % 14
+df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]')                       
+# End is start + pd.Timedelta(days=13)
+                       
+                       
+                       
+                       
+                       
