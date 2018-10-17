@@ -357,6 +357,7 @@ df['Mod'] = df['cum_n'] % 14
 df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]')                       
 # End is start + pd.Timedelta(days=13)
                        
+## Split a dataframe into multiple dataframes based on column values
                        
                        
                        
