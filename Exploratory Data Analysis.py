@@ -358,6 +358,23 @@ df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]'
 # End is start + pd.Timedelta(days=13)
                        
 ## Split a dataframe into multiple dataframes based on column values
+# Using a single column values
+New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'])))  
+# using 2 columns - where Var1 is numeric and Var2 is string column (string column can have spaces in the string values but we can first
+                       # replace spaces within strings with _)
+df['String_Var'] = df['String_Var'].replace(' ', '_', regex=True) 
+New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'].astype(str) + '_' + df['Var2']))) 
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+
                        
                        
                        
