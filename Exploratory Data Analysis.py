@@ -285,7 +285,9 @@ df['cum_sum'] = df.val1.cumsum()
 df['cum_perc'] = 100*df.cum_sum/df.val1.sum()
 
 ### Character variables encoding
+Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
+# http://contrib.scikit-learn.org/categorical-encoding/
 # 1. Replace Values of a variable
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
@@ -294,11 +296,11 @@ Df.replace(Char_Codes, inplace=True)
 # 2. Label encoding - Using Categories
 # a) Single variable encoding
 # i) Label encoding - Datatype of variable should be converted to character
-Df['Var'] = Df['Var'].astype('category')
-Df['Var'] = Df['Var'].cat.codes
+Df_X['Var'] = Df_X['Var'].astype('category')
+Df_X['Var'] = Df_X['Var'].cat.codes
 # ii) Label encoding - Initialize label encoder
 label_encoder = preprocessing.LabelEncoder()
-Df_Var_array = label_encoder.fit_transform(Df['Var'])
+Df_Var_array = label_encoder.fit_transform(Df_X['Var'])
 
 # b) MultiColumnLabelEncoder - should be used only on categorical vars
 # It encodes integer variables also - so only char variables should be mentioned
@@ -330,18 +332,23 @@ class MultiColumnLabelEncoder:
     def fit_transform(self,X,y=None):
         return self.fit(X,y).transform(X)
 -
-CharFeatures = list(Df.select_dtypes(include=['object']))
-Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df)        
+CharFeatures = list(Df_X.select_dtypes(include=['object']))
+Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df_X)        
     
 # 3. One-hot encoding - Replace existing variable values with new encoding
 # a)
-Df_OneHotEncoded = pd.get_dummies(Df,drop_first=True)
+Df_OneHotEncoded = pd.get_dummies(Df_X,drop_first=True)
 # b) LabelBinarizer is also one-hot encoding - But only single variable
 Label_Binarizer = LabelBinarizer()
-Df_Var = Label_Binarizer.fit_transform(Df['Var'])
+Df_Var = Label_Binarizer.fit_transform(Df_X['Var'])
 Df_Var = pd.DataFrame(Df_Var, columns=Label_Binarizer.classes_)
 
-
+# 4. BinaryEncoders using category_encoders
+Df_y = Df['Target_Var']
+Df_X is data frame with features
+CharFeatures = list(Df_X.select_dtypes(include=['object']))
+Df_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Df_X, Df_y)
+Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 
 
