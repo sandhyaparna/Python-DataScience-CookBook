@@ -286,20 +286,59 @@ df['cum_perc'] = 100*df.cum_sum/df.val1.sum()
 
 ### Character variables encoding
 # http://pbpython.com/categorical-encoding.html
-# Replace Values of a variable
+# 1. Replace Values of a variable
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 Df.replace(Char_Codes, inplace=True)
-# Label encoding - Using Categories
-# Datatype of variable should be converted to character
+
+# 2. Label encoding - Using Categories
+# a) Single variable encoding
+# i) Label encoding - Datatype of variable should be converted to character
 Df['Var'] = Df['Var'].astype('category')
 Df['Var'] = Df['Var'].cat.codes
-# Label encoding - Initialize label encoder
+# ii) Label encoding - Initialize label encoder
 label_encoder = preprocessing.LabelEncoder()
 Df_Var_array = label_encoder.fit_transform(Df['Var'])
 
-# One-hot encoding - Replace existing variable values with new encoding
-pd.get_dummies(obj_df,drop_first=True)
+# b) MultiColumnLabelEncoder - should be used only on categorical vars
+# It encodes integer variables also - so only char variables should be mentioned
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.pipeline import Pipeline
+class MultiColumnLabelEncoder:
+    def _init_(self,columns = None):
+        self.columns = columns # array of column names to encode
+
+    def fit(self,X,y=None):
+        return self # not relevant here
+
+    def transform(self,X):
+        '''
+        Transforms columns of X specified in self.columns using
+        LabelEncoder(). If no columns specified, transforms all
+        columns in X.
+        '''
+        output = X.copy()
+        if self.columns is not None:
+            for col in self.columns:
+                output[col] = LabelEncoder().fit_transform(output[col])
+        else:
+            for colname,col in output.iteritems():
+                output[colname] = LabelEncoder().fit_transform(col)
+        return output
+
+    def fit_transform(self,X,y=None):
+        return self.fit(X,y).transform(X)
+-
+CharFeatures = list(Df.select_dtypes(include=['object']))
+Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df)        
+    
+# 3. One-hot encoding - Replace existing variable values with new encoding
+Df_OneHotEncoded = pd.get_dummies(Df,drop_first=True)
+
+
+
+
 
 # Subset variables/columns based on data type
 Df.select_dtypes(include=['object'])
