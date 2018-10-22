@@ -334,7 +334,12 @@ CharFeatures = list(Df.select_dtypes(include=['object']))
 Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df)        
     
 # 3. One-hot encoding - Replace existing variable values with new encoding
+# a)
 Df_OneHotEncoded = pd.get_dummies(Df,drop_first=True)
+# b) LabelBinarizer is also one-hot encoding - But only single variable
+Label_Binarizer = LabelBinarizer()
+Df_Var = Label_Binarizer.fit_transform(Df['Var'])
+Df_Var = pd.DataFrame(Df_Var, columns=Label_Binarizer.classes_)
 
 
 
