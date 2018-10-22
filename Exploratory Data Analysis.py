@@ -279,10 +279,10 @@ df.fillna(method='pad', limit=1)
 df.fillna(method='bfill')
 
 # Cumulative sum of a column in df
-df['cum_sum'] = df.val1.cumsum()
+df['Var_cum_sum'] = df.val1.cumsum()
 
 # Cumulative % of a column in df
-df['cum_perc'] = 100*df.cum_sum/df.val1.sum()
+df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 
 ### Character variables encoding
 Df_X is data frame with features
