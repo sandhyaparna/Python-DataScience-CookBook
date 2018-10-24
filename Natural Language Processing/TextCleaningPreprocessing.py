@@ -1,3 +1,8 @@
+# Jupyte Notebooks:
+# https://hub.coursera-notebooks.org/user/rwqjpjrvpymujvmedamubv/notebooks/Regex%20with%20Pandas%20and%20Named%20Groups.ipynb
+# https://hub.coursera-notebooks.org/user/rwqjpjrvpymujvmedamubv/notebooks/Module%202%20(Python%203).ipynb
+
+
 Text = "Applied Text Mining in Python"
 # Characters in a string excluding spaces
 len(Text) 
