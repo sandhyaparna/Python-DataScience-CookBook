@@ -28,6 +28,10 @@ Df["Text_Var5"] = Df["Text_Var"].str.findall(r'#.*?(?=\s|$)')
 
 # Remove numbers from Text data - Should not be Tokenized
 Df["Text_Var5"] = Df["Text_Var"].str.replace('\d+', '')
+
+# Remove Hashtag words from text
+Df["Text_Var"] = Df["Text_Var"].str.replace('#[\w]*', '')
+
 # Replace multiple texts at once
 from collections import OrderedDict
 # replacement Patterns
@@ -62,7 +66,7 @@ class RegexpReplacer(object):
   return s
 from replacers import RegexpReplacer
 replacer = RegexpReplacer()
-Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # Removing repaeted chars
 import re
@@ -78,7 +82,7 @@ class RepeatReplacer(object):
    return repl_word
 from replacers import RepeatReplacer
 replacer = RepeatReplacer()
-Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # Spelling Correction
 import enchant
@@ -98,13 +102,17 @@ class SpellingReplacer(object):
  return word
 from replacers import SpellingReplacer
 replacer =  SpellingReplacer()
-Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # CustomSpellingReplacer can also be used
 from replacers import CustomSpellingReplacer
 d = enchant.DictWithPWL('en_US', 'mywords.txt')
 replacer = CustomSpellingReplacer(d)
-Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+Df["Text_Var"] = replacer.replace(Df["Text_Var"])
+
+# Replace with Synonyms - Your CSV file should consist of two columns, where the first column is the word and the second column is the synonym meant to replace it
+from replacers import CsvWordReplacer
+replacer = CsvWordReplacer('synonyms.csv')
 
 # Remove punctuations from strings
 import string
