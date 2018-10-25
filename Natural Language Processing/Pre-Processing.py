@@ -9,6 +9,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('wordnet')
 
 stop_words = set(stopwords.words('english'))  # stop_words = nltk.corpus.stopwords.words('english')
 new_stop_words = ['stopWord1','stopWord2']
@@ -45,6 +46,9 @@ tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
 Df["Text_Var4"] = tokenizer.tokenize(Df["Text_Var"])
 
 # Tokenizing
+# Sentence Tokenization
+from nltk.tokenize import sent_tokenize
+Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.sent_tokenize)
 # Basic word tokenization
 from nltk.tokenize import word_tokenize 
 Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)
@@ -55,6 +59,10 @@ Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
 # WordPunctTokenizer - splits all punctuation into separate tokens
 from nltk.tokenize import WordPunctTokenizer
 tokenizer = WordPunctTokenizer()
+Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
+# TreebankWordTokenizer
+from nltk.tokenize import TreebankWordTokenizer
+tokenizer = TreebankWordTokenizer()
 Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
 
 # Remove stop words from the text with adding comas between words
@@ -76,7 +84,20 @@ Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [snowball_stemmer.stem
 ### Lemmatization
 from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
+### POS (Part of speech) tagging 
+# Single Sentence
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
+# Sentences
+Df["Text_Var"] = Df["Sent_Tokenized_Text_Var"].apply(nltk.sent_tokenize)
+# Build pos tagger using Treebank data
+from nltk.corpus import treebank
+from nltk.tag import tnt
+tnt_pos_tagger = tnt.TnT()
+tnt_pos_tagger.train(treebank.tagged_sents())
+# Save as pickle and then import it to use it (or) run above code and use the function
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(tnt_pos_tagger.tag)
 
 
 
