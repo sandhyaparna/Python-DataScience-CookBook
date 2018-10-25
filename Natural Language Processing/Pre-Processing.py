@@ -1,5 +1,7 @@
 # Python 3 Text Processing with NLTK Cookbook
 # https://ucilnica.fri.uni-lj.si/pluginfile.php/46018/mod_resource/content/1/Python%203%20Text%20Processing%20with%20NLTK%203%20Cookbook.pdf
+# https://www.analyticsvidhya.com/blog/2015/06/regular-expression-python/ - Regular Expressions
+# https://www.analyticsvidhya.com/blog/2014/11/text-data-cleaning-steps-python/ - Data Cleaning
 
 import nltk
 from nltk import *
