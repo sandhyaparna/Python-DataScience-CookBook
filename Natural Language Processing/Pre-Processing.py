@@ -1,3 +1,6 @@
+# Python 3 Text Processing with NLTK Cookbook
+# https://ucilnica.fri.uni-lj.si/pluginfile.php/46018/mod_resource/content/1/Python%203%20Text%20Processing%20with%20NLTK%203%20Cookbook.pdf
+
 import nltk
 from nltk import *
 
@@ -77,6 +80,31 @@ from replacers import RepeatReplacer
 replacer = RepeatReplacer()
 Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
 
+# Spelling Correction
+import enchant
+from nltk.metrics import edit_distance
+class SpellingReplacer(object):
+ def __init__(self, dict_name='en', max_dist=2):
+ self.spell_dict = enchant.Dict(dict_name)
+ self.max_dist = max_dist
+ def replace(self, word):
+ if self.spell_dict.check(word):
+ return word
+ suggestions = self.spell_dict.suggest(word)
+ if suggestions and edit_distance(word, suggestions[0]) <=
+ self.max_dist:
+ return suggestions[0]
+ else:
+ return word
+from replacers import SpellingReplacer
+replacer =  SpellingReplacer()
+Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+
+# CustomSpellingReplacer can also be used
+from replacers import CustomSpellingReplacer
+d = enchant.DictWithPWL('en_US', 'mywords.txt')
+replacer = CustomSpellingReplacer(d)
+Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
 
 # Remove punctuations from strings
 import string
