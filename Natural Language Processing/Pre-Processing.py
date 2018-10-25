@@ -36,6 +36,48 @@ def replace_all(text, dic=ReplacementSet):
     return text
 Df["Text_Var"] = Df["Text_Var"].apply(replace_all)
 
+# Replacement - Contracdictions
+import re
+replacement_patterns = [
+ (r'won\'t', 'will not'),
+ (r'can\'t', 'cannot'),
+ (r'i\'m', 'i am'),
+ (r'ain\'t', 'is not'),
+ (r'(\w+)\'ll', '\g<1> will'),
+ (r'(\w+)n\'t', '\g<1> not'),
+ (r'(\w+)\'ve', '\g<1> have'),
+ (r'(\w+)\'s', '\g<1> is'),
+ (r'(\w+)\'re', '\g<1> are'),
+ (r'(\w+)\'d', '\g<1> would')]
+class RegexpReplacer(object):
+ def __init__(self, patterns=replacement_patterns):
+ self.patterns = [(re.compile(regex), repl) for (regex, repl) in patterns]
+ def replace(self, text):
+  s = text
+  for (pattern, repl) in self.patterns:
+   s = re.sub(pattern, repl, s)
+  return s
+from replacers import RegexpReplacer
+replacer = RegexpReplacer()
+Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+
+# Removing repaeted chars
+import re
+class RepeatReplacer(object):
+ def __init__(self):
+  self.repeat_regexp = re.compile(r'(\w*)(\w)\2(\w*)')
+  self.repl = r'\1\2\3'
+ def replace(self, word):
+  repl_word = self.repeat_regexp.sub(self.repl, word)
+  if repl_word != word:
+   return self.replace(repl_word)
+  else:
+   return repl_word
+from replacers import RepeatReplacer
+replacer = RepeatReplacer()
+Df["Text_Var4"] = replacer.replace(Df["Text_Var"])
+
+
 # Remove punctuations from strings
 import string
 s = '... some string with punctuation ...'
@@ -96,6 +138,7 @@ from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
+
 ### POS (Part of speech) tagging 
 # Single Sentence
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
@@ -108,6 +151,8 @@ tnt_pos_tagger = tnt.TnT()
 tnt_pos_tagger.train(treebank.tagged_sents())
 # Save as pickle and then import it to use it (or) run above code and use the function
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(tnt_pos_tagger.tag)
+
+
 
 ### Expand Contractions
 cList = { 
