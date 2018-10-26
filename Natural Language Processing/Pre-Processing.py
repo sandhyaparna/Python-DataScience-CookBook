@@ -66,11 +66,28 @@ class RegexpReplacer(object):
   for (pattern, repl) in self.patterns:
    s = re.sub(pattern, repl, s)
   return s
-from replacers import RegexpReplacer
 replacer = RegexpReplacer()
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
-# Removing repaeted chars
+# Removing repeated chars
+# Improved version for repeated chars
+import re
+from nltk.corpus import wordnet
+class RepeatReplacer(object):
+ def __init__(self):
+  self.repeat_regexp = re.compile(r'(\w*)(\w)\2(\w*)')
+  self.repl = r'\1\2\3'
+ def replace(self, word):
+  if wordnet.synsets(word):
+    return word
+  repl_word = self.repeat_regexp.sub(self.repl, word)
+  if repl_word != word:
+    return self.replace(repl_word)
+  else:
+    return repl_word
+replacer = RepeatReplacer()
+Df["Text_Var"] = replacer.replace(Df["Text_Var"])
+# Old version for repeated chars
 import re
 class RepeatReplacer(object):
  def __init__(self):
@@ -82,9 +99,6 @@ class RepeatReplacer(object):
    return self.replace(repl_word)
   else:
    return repl_word
-from replacers import RepeatReplacer
-replacer = RepeatReplacer()
-Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # Spelling Correction
 import enchant
@@ -102,18 +116,15 @@ class SpellingReplacer(object):
  return suggestions[0]
  else:
  return word
-from replacers import SpellingReplacer
 replacer =  SpellingReplacer()
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # CustomSpellingReplacer can also be used
-from replacers import CustomSpellingReplacer
 d = enchant.DictWithPWL('en_US', 'mywords.txt')
 replacer = CustomSpellingReplacer(d)
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # Replace with Synonyms - Your CSV file should consist of two columns, where the first column is the word and the second column is the synonym meant to replace it
-from replacers import CsvWordReplacer
 replacer = CsvWordReplacer('synonyms.csv')
 
 # Remove punctuations from strings
@@ -170,6 +181,10 @@ Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [lancaster_stemmer.ste
 from nltk.stem import SnowballStemmer
 snowball_stemmer = SnowballStemmer(“english”)
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [snowball_stemmer.stem(y) for y in x])
+# Custom stemming using RegexpStemmer
+from nltk.stem import RegexpStemmer
+Regexp_stemmer = RegexpStemmer('ing')
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [Regexp_stemmer.stem(y) for y in x])
 
 ### Lemmatization
 from nltk.stem import WordNetLemmatizer
