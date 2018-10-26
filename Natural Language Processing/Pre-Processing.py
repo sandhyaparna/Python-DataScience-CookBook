@@ -45,6 +45,7 @@ def replace_all(text, dic=ReplacementSet):
     return text
 Df["Text_Var"] = Df["Text_Var"].apply(replace_all)
 
+import replacer
 # Replacement - Contracdictions
 import re
 replacement_patterns = [
@@ -105,17 +106,16 @@ import enchant
 from nltk.metrics import edit_distance
 class SpellingReplacer(object):
  def __init__(self, dict_name='en', max_dist=2):
- self.spell_dict = enchant.Dict(dict_name)
- self.max_dist = max_dist
+  self.spell_dict = enchant.Dict(dict_name)
+  self.max_dist = max_dist
  def replace(self, word):
- if self.spell_dict.check(word):
- return word
- suggestions = self.spell_dict.suggest(word)
- if suggestions and edit_distance(word, suggestions[0]) <=
- self.max_dist:
- return suggestions[0]
- else:
- return word
+  if self.spell_dict.check(word):
+   return word
+  suggestions = self.spell_dict.suggest(word)
+  if suggestions and edit_distance(word, suggestions[0]) <= self.max_dist:
+   return suggestions[0]
+  else:
+   return word
 replacer =  SpellingReplacer()
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
@@ -125,7 +125,20 @@ replacer = CustomSpellingReplacer(d)
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 
 # Replace with Synonyms - Your CSV file should consist of two columns, where the first column is the word and the second column is the synonym meant to replace it
-replacer = CsvWordReplacer('synonyms.csv')
+class WordReplacer(object):
+ def __init__(self, word_map):
+    self.word_map = word_map
+ def replace(self, word):
+    return self.word_map.get(word, word)
+class CsvWordReplacer(WordReplacer):
+ def __init__(self, fname):
+  word_map = {}
+  for line in csv.reader(open(fname)):
+   word, syn = line
+   word_map[word] = syn
+  super(CsvWordReplacer, self).__init__(word_map)    
+import csv
+replacer = CsvWordReplacer('synonyms.csv')  
 
 # Remove punctuations from strings
 import string
