@@ -159,97 +159,6 @@ Df["Text_Var3"] = Df["Text_Var2"].apply(lambda x: [item for item in x if item no
 tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
 Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
 
-# Tokenizing
-# Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
-tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
-Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
-# Sentence Tokenization
-from nltk.tokenize import sent_tokenize
-Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.sent_tokenize)
-# Basic word tokenization
-from nltk.tokenize import word_tokenize 
-Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)
-# PunktWordTokenizer - splits on punctuation, but keeps it with the word instead of creating separate tokens for punctuations
-from nltk.tokenize import PunktWordTokenizer
-tokenizer = PunktWordTokenizer()
-Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
-# WordPunctTokenizer - splits all punctuation into separate tokens
-from nltk.tokenize import WordPunctTokenizer
-tokenizer = WordPunctTokenizer()
-Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
-# TreebankWordTokenizer
-from nltk.tokenize import TreebankWordTokenizer
-tokenizer = TreebankWordTokenizer()
-Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
-
-# Remove stop words from the text with adding comas between words
-Df["Text_Var4"] = Df["Text_Var1"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
-
-### De-tokenize
-import re
-def untokenize(words):
-    """
-    Untokenizing a text undoes the tokenizing operation, restoring
-    punctuation and spaces to the places that people expect them to be.
-    Ideally, `untokenize(tokenize(text))` should be identical to `text`,
-    except for line breaks.
-    """
-    text = ' '.join(words)
-    step1 = text.replace("`` ", '"').replace(" ''", '"').replace('. . .',  '...')
-    step2 = step1.replace(" ( ", " (").replace(" ) ", ") ")
-    step3 = re.sub(r' ([.,:;?!%]+)([ \'"`])', r"\1\2", step2)
-    step4 = re.sub(r' ([.,:;?!%]+)$', r"\1", step3)
-    step5 = step4.replace(" '", "'").replace(" n't", "n't").replace(
-         "can not", "cannot")
-    step6 = step5.replace(" ` ", " '")
-    return step6.strip()
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(untokenize)
-   
-### Stemming
-# Stemming is a rudimentary rule-based process of stripping the suffixes (“ing”, “ly”, “es”, “s” etc) from a word
-# Different types of Stemming algorithms
-from nltk.stem.porter import PorterStemmer
-porter_stemmer = PorterStemmer()
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [porter_stemmer.stem(y) for y in x])
-
-# When POS(Part of Speech) tagging is done before Stemming - POs tagging helps in a more meaningful Stemming
-Df["POSTagged_Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
-Df["Text_Var"] = Df["POSTagged_Text_Var"].apply(lambda x: [porter_stemmer.stem(y[0]) for y in x])
-
-from nltk.stem.lancaster import LancasterStemmer
-lancaster_stemmer = LancasterStemmer()
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [lancaster_stemmer.stem(y) for y in x])
-
-from nltk.stem import SnowballStemmer
-snowball_stemmer = SnowballStemmer(“english”)
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [snowball_stemmer.stem(y) for y in x])
-
-# Custom stemming using RegexpStemmer
-from nltk.stem import RegexpStemmer
-Regexp_stemmer = RegexpStemmer('ing')
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [Regexp_stemmer.stem(y) for y in x])
-
-### Lemmatization
-from nltk.stem import WordNetLemmatizer
-wordnet_lemmatizer = WordNetLemmatizer()
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
-
-
-### POS (Part of speech) tagging 
-# Single Sentence
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
-# Sentences
-Df["Text_Var"] = Df["Sent_Tokenized_Text_Var"].apply(nltk.sent_tokenize)
-# Build pos tagger using Treebank data
-from nltk.corpus import treebank
-from nltk.tag import tnt
-tnt_pos_tagger = tnt.TnT()
-tnt_pos_tagger.train(treebank.tagged_sents())
-# Save as pickle and then import it to use it (or) run above code and use the function
-Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(tnt_pos_tagger.tag)
-
-
-
 ### Expand Contractions
 cList = { 
 "ain't": "am not / are not / is not / has not / have not",
@@ -377,6 +286,96 @@ def expandContractions(text, c_re=c_re):
         return cList[match.group(0)]
     return c_re.sub(replace, text)
 Df["Text_Var"] = Df["Text_Var"].apply(expandContractions)
+
+### Tokenizing
+# Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
+tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
+Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
+# Sentence Tokenization
+from nltk.tokenize import sent_tokenize
+Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.sent_tokenize)
+# Basic word tokenization
+from nltk.tokenize import word_tokenize 
+Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)
+# PunktWordTokenizer - splits on punctuation, but keeps it with the word instead of creating separate tokens for punctuations
+from nltk.tokenize import PunktWordTokenizer
+tokenizer = PunktWordTokenizer()
+Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
+# WordPunctTokenizer - splits all punctuation into separate tokens
+from nltk.tokenize import WordPunctTokenizer
+tokenizer = WordPunctTokenizer()
+Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
+# TreebankWordTokenizer
+from nltk.tokenize import TreebankWordTokenizer
+tokenizer = TreebankWordTokenizer()
+Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
+
+# Remove stop words from the text with adding comas between words
+Df["Text_Var4"] = Df["Text_Var1"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
+
+### De-tokenize
+import re
+def untokenize(words):
+    """
+    Untokenizing a text undoes the tokenizing operation, restoring
+    punctuation and spaces to the places that people expect them to be.
+    Ideally, `untokenize(tokenize(text))` should be identical to `text`,
+    except for line breaks.
+    """
+    text = ' '.join(words)
+    step1 = text.replace("`` ", '"').replace(" ''", '"').replace('. . .',  '...')
+    step2 = step1.replace(" ( ", " (").replace(" ) ", ") ")
+    step3 = re.sub(r' ([.,:;?!%]+)([ \'"`])', r"\1\2", step2)
+    step4 = re.sub(r' ([.,:;?!%]+)$', r"\1", step3)
+    step5 = step4.replace(" '", "'").replace(" n't", "n't").replace(
+         "can not", "cannot")
+    step6 = step5.replace(" ` ", " '")
+    return step6.strip()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(untokenize)
+   
+ ### POS (Part of speech) tagging 
+# Single Sentence
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
+# Sentences
+Df["Text_Var"] = Df["Sent_Tokenized_Text_Var"].apply(nltk.sent_tokenize)
+# Build pos tagger using Treebank data
+from nltk.corpus import treebank
+from nltk.tag import tnt
+tnt_pos_tagger = tnt.TnT()
+tnt_pos_tagger.train(treebank.tagged_sents())
+# Save as pickle and then import it to use it (or) run above code and use the function
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(tnt_pos_tagger.tag)
+
+# When POS(Part of Speech) tagging is done before Lemmetizing - POs tagging helps in a more meaningful Stemming
+Df["POSTagged_Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
+Df["Text_Var"] = Df["POSTagged_Text_Var"].apply(lambda x: [porter_stemmer.stem(y[0]) for y in x])
+
+
+ 
+### Stemming
+# Stemming is a rudimentary rule-based process of stripping the suffixes (“ing”, “ly”, “es”, “s” etc) from a word
+# Different types of Stemming algorithms
+from nltk.stem.porter import PorterStemmer
+porter_stemmer = PorterStemmer()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [porter_stemmer.stem(y) for y in x])
+
+from nltk.stem.lancaster import LancasterStemmer
+lancaster_stemmer = LancasterStemmer()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [lancaster_stemmer.stem(y) for y in x])
+
+from nltk.stem import SnowballStemmer
+snowball_stemmer = SnowballStemmer(“english”)
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [snowball_stemmer.stem(y) for y in x])
+
+# Custom stemming using RegexpStemmer
+from nltk.stem import RegexpStemmer
+Regexp_stemmer = RegexpStemmer('ing')
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [Regexp_stemmer.stem(y) for y in x])
+
+### Lemmatization
+from nltk.stem import WordNetLemmatizer
+wordnet_lemmatizer = WordNetLemmatizer()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
 # Synonyms of a word
 from nltk.corpus import wordnet 
