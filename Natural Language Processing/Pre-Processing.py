@@ -211,12 +211,19 @@ Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(untokenize)
 from nltk.stem.porter import PorterStemmer
 porter_stemmer = PorterStemmer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [porter_stemmer.stem(y) for y in x])
+
+# When POS(Part of Speech) tagging is done before Stemming - POs tagging helps in a more meaningful Stemming
+Df["POSTagged_Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
+Df["Text_Var"] = Df["POSTagged_Text_Var"].apply(lambda x: [porter_stemmer.stem(y[0]) for y in x])
+
 from nltk.stem.lancaster import LancasterStemmer
 lancaster_stemmer = LancasterStemmer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [lancaster_stemmer.stem(y) for y in x])
+
 from nltk.stem import SnowballStemmer
 snowball_stemmer = SnowballStemmer(“english”)
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [snowball_stemmer.stem(y) for y in x])
+
 # Custom stemming using RegexpStemmer
 from nltk.stem import RegexpStemmer
 Regexp_stemmer = RegexpStemmer('ing')
