@@ -157,9 +157,12 @@ Df["Text_Var3"] = Df["Text_Var2"].apply(lambda x: [item for item in x if item no
 
 # Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
 tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
-Df["Text_Var4"] = tokenizer.tokenize(Df["Text_Var"])
+Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
 
 # Tokenizing
+# Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
+tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
+Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
 # Sentence Tokenization
 from nltk.tokenize import sent_tokenize
 Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.sent_tokenize)
@@ -182,6 +185,26 @@ Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
 # Remove stop words from the text with adding comas between words
 Df["Text_Var4"] = Df["Text_Var1"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
 
+### De-tokenize
+import re
+def untokenize(words):
+    """
+    Untokenizing a text undoes the tokenizing operation, restoring
+    punctuation and spaces to the places that people expect them to be.
+    Ideally, `untokenize(tokenize(text))` should be identical to `text`,
+    except for line breaks.
+    """
+    text = ' '.join(words)
+    step1 = text.replace("`` ", '"').replace(" ''", '"').replace('. . .',  '...')
+    step2 = step1.replace(" ( ", " (").replace(" ) ", ") ")
+    step3 = re.sub(r' ([.,:;?!%]+)([ \'"`])', r"\1\2", step2)
+    step4 = re.sub(r' ([.,:;?!%]+)$', r"\1", step3)
+    step5 = step4.replace(" '", "'").replace(" n't", "n't").replace(
+         "can not", "cannot")
+    step6 = step5.replace(" ` ", " '")
+    return step6.strip()
+Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(untokenize)
+   
 ### Stemming
 # Stemming is a rudimentary rule-based process of stripping the suffixes (“ing”, “ly”, “es”, “s” etc) from a word
 # Different types of Stemming algorithms
