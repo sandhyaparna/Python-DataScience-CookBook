@@ -14,6 +14,9 @@ pd.set_option('display.max_columns', None)  # or 1000
 pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', -1)  # or 199
 
+### How to create a dataframe
+http://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.html
+
 ################# DATA LOADING / IMPORTING #################
 ### Preview of a file-csv/text before importing as a Df
 list(open('path/file.csv'))
