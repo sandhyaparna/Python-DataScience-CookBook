@@ -236,6 +236,9 @@ Df.groupby(['Var1','Var2']).Var.sum().plot.bar()
 # Drop columns
 Df = Df.drop(['Var1', 'Var2'],axis=1)
 
+# Cbind / Concatenate 2 dataframe
+Ne_Df = pd.concat([Df1, Df2], axis=1)
+
 ### Convert data type of a var
 # String/Character/object
 Df['Var1'] = Df['Var1'].astype('str')
