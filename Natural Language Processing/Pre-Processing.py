@@ -377,6 +377,12 @@ from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
+### Most frequent/common words (Top 50)
+Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[:50]
+
+### Least Frequent/ Rare words (Bottom 50)
+Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[-50:]
+
 # Synonyms of a word
 from nltk.corpus import wordnet 
 synonyms = []
