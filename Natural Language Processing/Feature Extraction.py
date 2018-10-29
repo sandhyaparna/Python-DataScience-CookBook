@@ -54,6 +54,12 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
+### Topic Models as features
+
+
+
+
+
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
 # Import textblob.download_corpora
 import textblob
