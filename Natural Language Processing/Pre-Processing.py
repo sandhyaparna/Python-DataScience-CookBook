@@ -353,6 +353,8 @@ Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(tnt_pos_tagger.tag)
 
 # When POS(Part of Speech) tagging is done before Lemmetizing - POs tagging helps in a more meaningful Stemming
 Df["POSTagged_Text_Var"] = Df["Tokenized_Text_Var"].apply(nltk.pos_tag)
+from nltk.stem.porter import PorterStemmer
+porter_stemmer = PorterStemmer()
 Df["Text_Var"] = Df["POSTagged_Text_Var"].apply(lambda x: [porter_stemmer.stem(y[0]) for y in x])
 
 
