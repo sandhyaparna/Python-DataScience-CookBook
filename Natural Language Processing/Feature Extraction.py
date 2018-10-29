@@ -54,7 +54,7 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
-### Topic Models as features
+### Topic Modeling (Latent Dirichlet Allocation) as features
 
 
 
