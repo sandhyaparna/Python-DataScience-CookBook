@@ -49,7 +49,10 @@ TextDf_CoOccurence = TextDf_CountVectors.astype(int) # TextDf_CountVectors is Da
 TextDf_CoOccurence = TextDf_CoOccurence.T.dot(TextDf_CoOccurence)
 np.fill_diagonal(TextDf_CoOccurence.values, 0) #Don't assign. Here automatically TextDf_CoOccurence DataFrame is modified. 
 
-
+### Sentiment of the Texts
+import textblob
+from textblob import TextBlob
+Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
 
 
