@@ -6,6 +6,11 @@
 import nltk
 from nltk import *
 
+### Spelling Correction
+import textblob
+from textblob import TextBlob
+Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))
+
 ### Noise Removal
 # Tokenization - splitting text into words (Removal of stop words, etc)
 # http://www.nltk.org/api/nltk.tokenize.html - Different types of tokenization 
@@ -383,6 +388,8 @@ Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[:50]
 ### Least Frequent/ Rare words (Bottom 50)
 Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[-50:]
 
+
+
 # Synonyms of a word
 from nltk.corpus import wordnet 
 synonyms = []
@@ -399,5 +406,6 @@ for syn in wordnet.synsets("small"):
         if l.antonyms():
             antonyms.append(l.antonyms()[0].name())
 print(antonyms)
+
 
 
