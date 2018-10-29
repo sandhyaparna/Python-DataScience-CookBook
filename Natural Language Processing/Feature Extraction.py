@@ -54,10 +54,59 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
-### Extract all nouns from Text_Var and append them to create a single var
+### Extract different part of speech word sets from Text_Var and append them to create a single var
 # Import textblob.download_corpora
+import textblob
+from textblob import TextBlob
 subprocess.check_call(["python", '-m', 'textblob.download_corpora'])
+pos_family = {'noun' : ['NN','NNS','NNP','NNPS'], 'pron' : ['PRP','PRP$','WP','WP$'], 'verb' : ['VB','VBD','VBG','VBN','VBP','VBZ'],
+    'adj' :  ['JJ','JJR','JJS'], 'adv' : ['RB','RBR','RBS','WRB'] }
+# function to check and get the part of speech tag count of a words in a given sentence
+def pos_family_count(x, flag):
+    cnt = 0
+    try:
+        wiki = textblob.TextBlob(x)
+        for tup in wiki.tags:
+            ppo = list(tup)[1]
+            if ppo in pos_family[flag]:
+               cnt += 1
+    except:
+        pass
+    return cnt
+# Function to extract pos_family words
+def pos_family_words(x, flag):
+    pos_words = list()
+    try:
+        wiki = textblob.TextBlob(x)
+        for tup in wiki.tags:
+            ppo = list(tup)[1]
+            if ppo in pos_family[flag]:
+                w = list(tup)[0]   
+                pos_words.append(w)
+    except:
+        pass
+    return pos_words
+#
+Df['noun_count'] = Df['Text_Var'].apply(lambda x: pos_family_count(x, 'noun'))
+Df['nouns'] = Df['Text_Var'].apply(lambda x: pos_family_words(x, 'noun'))
 
+### Total number of letters/chars
+Df['char_count'] = Df['Text_Var'].apply(len)
+
+### Total number of words
+Df['word_count'] = Df['Text_Var'].apply(lambda x: len(x.split()))
+
+### Average length of the words used
+Df['word_density'] = Df['char_count'] / (Df['word_count']+1)
+
+### Total number of punctuation marks
+Df['punctuation_count'] = Df['Text_Var'].apply(lambda x: len("".join(_ for _ in x if _ in string.punctuation))) 
+
+### Total number of upper count words
+Df['title_word_count'] = Df['Text_Var'].apply(lambda x: len([wrd for wrd in x.split() if wrd.istitle()]))
+
+### Total number of proper case (title) words 
+Df['upper_case_word_count'] = Df['Text_Var'].apply(lambda x: len([wrd for wrd in x.split() if wrd.isupper()]))
 
 
 
