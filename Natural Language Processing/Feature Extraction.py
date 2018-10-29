@@ -54,7 +54,9 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
-
+### Extract all nouns from Text_Var and append them to create a single var
+# Import textblob.download_corpora
+subprocess.check_call(["python", '-m', 'textblob.download_corpora'])
 
 
 
