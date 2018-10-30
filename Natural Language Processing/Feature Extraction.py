@@ -105,6 +105,11 @@ Df['word_count'] = Df['Text_Var'].apply(lambda x: len(x.split()))
 ### Average length of the words used
 Df['word_density'] = Df['char_count'] / (Df['word_count']+1)
 
+### Number of Stop Words
+from nltk.corpus import stopwords
+stop = stopwords.words('english')
+Df['stopwords'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x in stop]))
+
 ### Total number of punctuation marks
 Df['punctuation_count'] = Df['Text_Var'].apply(lambda x: len("".join(_ for _ in x if _ in string.punctuation))) 
 
@@ -114,8 +119,11 @@ Df['title_word_count'] = Df['Text_Var'].apply(lambda x: len([wrd for wrd in x.sp
 ### Total number of proper case (title) words 
 Df['upper_case_word_count'] = Df['Text_Var'].apply(lambda x: len([wrd for wrd in x.split() if wrd.isupper()]))
 
+### Number of special characters
+Df['hastags'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.startswith('#')]))
 
-
+### Number of numerics
+Df['numerics'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.isdigit()]))
 
 
 
