@@ -6,6 +6,21 @@
 import nltk
 from nltk import *
 
+### Import sample text
+https://gist.github.com/kunalj101/ad1d9c58d338e20d09ff26bcc06c4235
+# load the dataset
+data = open('data/corpus').read()
+labels, texts = [], []
+for i, line in enumerate(data.split("\n")):
+    content = line.split()
+    labels.append(content[0])
+    texts.append(content[1:])
+
+# create a dataframe using texts and lables
+trainDF = pandas.DataFrame()
+trainDF['text'] = texts
+trainDF['label'] = labels
+
 ### Spelling Correction
 import textblob
 from textblob import TextBlob
