@@ -36,6 +36,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
 
+# Stop words
 stop_words = set(stopwords.words('english'))  # stop_words = nltk.corpus.stopwords.words('english')
 new_stop_words = ['stopWord1','stopWord2']
 stop_words.extend(new_stop_words)
@@ -400,12 +401,13 @@ wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
 ### Most frequent/common words (Top 50)
-Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[:50]
+Freqs = pd.Series(' '.join(Df["Text_Var"]).split()).value_counts()[:50]
 
 ### Least Frequent/ Rare words (Bottom 50)
-Freqs = pd.Series(' '.join(tDf["Text_Var"]).split()).value_counts()[-50:]
+Freqs = pd.Series(' '.join(Df["Text_Var"]).split()).value_counts()[-50:]
 
-
+### Remove list of words
+Df["Text_Var"] = Df["Text_Var"].apply(lambda x: " ".join(x for x in x.split() if x not in Freqs))
 
 # Synonyms of a word
 from nltk.corpus import wordnet 
