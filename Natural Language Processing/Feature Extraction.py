@@ -55,6 +55,8 @@ from textblob import TextBlob
 Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
 
 ### Topic Modeling (Latent Dirichlet Allocation) as features
+https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21
+    
 from sklearn import decomposition
 from sklearn.decomposition import *
 # Train a LDA Model
