@@ -62,6 +62,7 @@ from sklearn.decomposition import *
 # Train a LDA Model
 lda_model = decomposition.LatentDirichletAllocation(n_components=25, learning_method='online', max_iter=20)
 
+add variable names to features, to determine which topic/feature has more value
 
 
 
