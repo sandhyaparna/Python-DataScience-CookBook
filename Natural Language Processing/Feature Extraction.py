@@ -68,8 +68,22 @@ from sklearn.decomposition import *
 # Train a LDA Model
 lda_model = decomposition.LatentDirichletAllocation(n_components=25, learning_method='online', max_iter=20)
 X_topics = lda_model.fit_transform(X)
-# add variable names to features, to determine which topic/feature has more value
-TextDf_LDA = pd.DataFrame(dt_matrix, columns=['T1', 'T2', 'T3'])
+# Add variable names to features, to determine which topic/feature has more value
+# Create a list of Variable names in list like Var1,Var2,Var3,Var4 etc
+Topic_names = []
+for i in range(1,n+1):
+    Topic_names += ["Topic"+str(i)]
+# Dataframe with number of Topics extracted as number of variables. Topic1 var gives each documents weightage for Topic1, etc.    
+TextDf_LDA = pd.DataFrame(X_topics, columns=Topic_names)\
+# view the topic models - top words in each topic as a summary
+topic_word = lda_model.components_ 
+vocab = vectorizer1.get_feature_names()
+n_top_words = 10
+topic_summaries = []
+for i, topic_dist in enumerate(topic_word):
+    topic_words = np.array(vocab)[np.argsort(topic_dist)][:-(n_top_words+1):-1]
+    topic_summaries.append(' '.join(topic_words))
+topic_summaries
 
 
 ### Document Clustering with Similarity Features
