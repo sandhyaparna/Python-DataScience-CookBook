@@ -143,7 +143,6 @@ def get_continuous_chunks(text):
     return continuous_chunk
 Df["TextVar_Chunked"] = Df["Text_Var"].apply(get_continuous_chunks)
 
-
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
 # Import textblob.download_corpora
 import textblob
@@ -208,6 +207,23 @@ Df['hastags'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.st
 
 ### Number of numerics
 Df['numerics'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.isdigit()]))
+
+### Continuous Bag-of-Words
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
