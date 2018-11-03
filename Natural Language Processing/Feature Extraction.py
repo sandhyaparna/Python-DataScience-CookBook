@@ -85,7 +85,6 @@ for i, topic_dist in enumerate(topic_word):
     topic_summaries.append(' '.join(topic_words))
 topic_summaries
 
-
 ### Document Clustering with Similarity Features
 https://towardsdatascience.com/understanding-feature-engineering-part-3-traditional-methods-for-text-data-f6f7d70acd41
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html
@@ -117,7 +116,32 @@ cluster_labels = pd.DataFrame(cluster_labels, columns=['ClusterLabel'])
 # Attact cluster_labels dataframe to out original DataFrame with Text column
 Df_Clustered = pd.concat([Df, cluster_labels], axis=1)
 
+### Named Entity Recognition
+from nltk import ne_chunk, pos_tag, word_tokenize
+from nltk.tree import Tree
+def get_continuous_chunks(text):
+    chunked = ne_chunk(pos_tag(word_tokenize(text)))
+    prev = None
+    continuous_chunk = []
+    current_chunk = []
 
+    for i in chunked:
+        if type(i) == Tree:
+            current_chunk.append(" ".join([token for token, pos in i.leaves()]))
+        elif current_chunk:
+            named_entity = " ".join(current_chunk)
+            if named_entity not in continuous_chunk:
+                continuous_chunk.append(named_entity)
+                current_chunk = []
+        else:
+            continue
+    if current_chunk:
+        named_entity = " ".join(current_chunk)
+        if named_entity not in continuous_chunk:
+            continuous_chunk.append(named_entity)
+            current_chunk = []
+    return continuous_chunk
+Df["TextVar_Chunked"] = Df["Text_Var"].apply(get_continuous_chunks)
 
 
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
