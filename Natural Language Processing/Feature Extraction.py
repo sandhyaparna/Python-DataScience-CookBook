@@ -65,6 +65,14 @@ lda_model = decomposition.LatentDirichletAllocation(n_components=25, learning_me
 
 add variable names to features, to determine which topic/feature has more value
 
+### Document Similarity
+# First apply count vectorization (or) Tf-idf
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(Df.Text_Var.values)
+
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 
 
