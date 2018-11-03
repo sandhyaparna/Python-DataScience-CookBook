@@ -70,7 +70,8 @@ add variable names to features, to determine which topic/feature has more value
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(Df.Text_Var.values)
-
+X = X.toarray()
+# 
 from sklearn.metrics.pairwise import cosine_similarity
 
 
