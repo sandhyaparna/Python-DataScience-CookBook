@@ -69,6 +69,7 @@ add variable names to features, to determine which topic/feature has more value
 ### Document Similarity
 https://towardsdatascience.com/understanding-feature-engineering-part-3-traditional-methods-for-text-data-f6f7d70acd41
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html
+    
 # First apply count vectorization (or) Tf-idf
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
@@ -78,7 +79,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 similarity_matrix = cosine_similarity(X.A)
 # Clustering on Similarity Matrix
 from scipy.cluster.hierarchy import dendrogram, linkage
-Z = linkage(similarity_matrix, 'ward') # Takes app 5-10mins for processing 10,000 records of text
+Z = linkage(similarity_matrix, 'ward') # Takes app. 5-10mins for processing 10,000 records of text
+# Z is matrix with 4 columns, first 2 columns are the final clusters(only 2 in hierarchical clustering), 3rd column is the distance 
+# between final 2 clusters - From Z we can create our own clusters using distance parameter
+plt.figure(figsize=(8, 3))
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Data point')
+plt.ylabel('Distance')
+dendrogram(Z)
+plt.axhline(y=50, c='k', ls='--', lw=0.5) # y value is changed based on the distance at which you want clusters to be split
+# Create clusters at the specified distance
+rom scipy.cluster.hierarchy import fcluster
+max_dist = 50
+# Extract cluster labels from Linkage matrix based on the max_dist
+cluster_labels = fcluster(Z, max_dist, criterion='distance')
+# Convert above array into Dataframe and assign column name as ClusterLabel
+cluster_labels = pd.DataFrame(cluster_labels, columns=['ClusterLabel'])
+# Attact cluster_labels dataframe to out original DataFrame with Text column
+Df_Clustered = pd.concat([Df, cluster_labels], axis=1)
+
+
 
 
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
