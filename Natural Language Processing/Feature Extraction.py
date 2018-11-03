@@ -58,14 +58,18 @@ Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).senti
 ### Topic Modeling (Latent Dirichlet Allocation) as features
 Data link - https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/
 Data from the above website - https://gist.github.com/kunalj101/ad1d9c58d338e20d09ff26bcc06c4235
-    
+# First apply count vectorization (or) Tf-idf
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(Df.Text_Var.values)
+#
 from sklearn import decomposition
 from sklearn.decomposition import *
 # Train a LDA Model
 lda_model = decomposition.LatentDirichletAllocation(n_components=25, learning_method='online', max_iter=20)
-
-add variable names to features, to determine which topic/feature has more value
-
+X_topics = lda_model.fit_transform(X)
+# add variable names to features, to determine which topic/feature has more value
+TextDf_LDA = pd.DataFrame(dt_matrix, columns=['T1', 'T2', 'T3'])
 
 
 ### Document Clustering with Similarity Features
@@ -86,7 +90,7 @@ Z = linkage(similarity_matrix, 'ward') # Takes app. 5-10mins for processing 10,0
 # between final 2 clusters - From Z we can create our own clusters using distance parameter
 plt.figure(figsize=(8, 3))
 plt.title('Hierarchical Clustering Dendrogram')
-plt.xlabel('Data point')
+plt.xlabel('Data point') 
 plt.ylabel('Distance')
 dendrogram(Z)
 plt.axhline(y=50, c='k', ls='--', lw=0.5) # y value is changed based on the distance at which you want clusters to be split
