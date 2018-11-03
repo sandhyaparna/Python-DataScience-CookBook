@@ -71,11 +71,12 @@ add variable names to features, to determine which topic/feature has more value
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(Df.Text_Var.values)
-X = X.toarray()
-# 
+# Similarity Matrix
 from sklearn.metrics.pairwise import cosine_similarity
-
-
+similarity_matrix = cosine_similarity(X.A)
+# Clustering on Similarity Matrix
+from scipy.cluster.hierarchy import dendrogram, linkage
+Z = linkage(similarity_matrix, 'ward') # Takes app 5-10mins for processing 10,000 records of text
 
 
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
