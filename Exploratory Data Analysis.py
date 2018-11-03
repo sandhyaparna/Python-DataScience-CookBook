@@ -357,7 +357,6 @@ Df_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Df_X, Df_y)
 Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 
-
 # Subset variables/columns based on data type
 Df.select_dtypes(include=['object'])
 Df.select_dtypes(exclude=['object'])
@@ -366,8 +365,7 @@ Df.select_dtypes(exclude=['object'])
 f = {'Field1':'sum',
          'Field2':['max','mean'],
          'Field3':['min','mean','count'],
-         'Field4':'count'
-         }
+         'Field4':'count'}
 grouped = df.groupby('mykey').agg(f)
 
 # Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
@@ -423,12 +421,13 @@ for key in df_Dict.keys():
     df_Dict[key] = df_Dict[:][df_Dict.Vigi_Org == key]
                        
 # using 2/two columns - where Var1 is numeric and Var2 is string column (string column can have spaces in the string values but we can 
-                       # first replace spaces within strings with _)
+# first replace spaces within strings with _)
 df['String_Var'] = df['String_Var'].replace(' ', '_', regex=True) 
 New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'].astype(str) + '_' + df['String_Var']))) 
 list(New_Dict_MultipleDfs) # will give names of multiple dataframes                       
                        
-                       
+# Convert dataframe variable to a list
+List_X = Df['Var'].tolist()                       
                        
                        
                        
