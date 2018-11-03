@@ -30,6 +30,7 @@ TextDf_CharVectors_Freq = pd.DataFrame({'Word':Char_vectorizer.get_feature_names
 TFIDF_vectorizer = TfidfVectorizer()
 X = TFIDF_vectorizer.fit_transform(Df.Text_Var.values)
 TextDf_TFIDFVectors = pd.DataFrame(X.A, columns=TFIDF_vectorizer.get_feature_names())
+TextDf_TFIDFVectors = pd.DataFrame(np.round(X.A,2), columns=TFIDF_vectorizer.get_feature_names()) #To get 2 decimal places only
 TextDf_TFIDFVectors_Freq = pd.DataFrame({'Word':TFIDF_vectorizer.get_feature_names(), 'frequency':sum(X).toarray()[0]}) 
 
 2. ngram level TF-IDF
