@@ -66,6 +66,8 @@ lda_model = decomposition.LatentDirichletAllocation(n_components=25, learning_me
 
 add variable names to features, to determine which topic/feature has more value
 
+
+
 ### Document Clustering with Similarity Features
 https://towardsdatascience.com/understanding-feature-engineering-part-3-traditional-methods-for-text-data-f6f7d70acd41
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html
