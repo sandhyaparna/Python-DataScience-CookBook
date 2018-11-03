@@ -89,7 +89,6 @@ topic_summaries
 ### Document Clustering with Similarity Features
 https://towardsdatascience.com/understanding-feature-engineering-part-3-traditional-methods-for-text-data-f6f7d70acd41
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html
-    
 # First apply count vectorization (or) Tf-idf
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
