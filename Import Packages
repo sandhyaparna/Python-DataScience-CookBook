@@ -64,7 +64,8 @@ import sklearn as sklearn
 pip install git+https://github.com/cbellei/word2veclite.git
 # Type the below in cmd
 pip install word2veclite
-
+# Packages are stored in this location - 
+C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
 
 
 
