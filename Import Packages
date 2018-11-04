@@ -57,3 +57,19 @@ pip.main(['install','scikit-learn'])
 pip.main(['install', '--upgrade', 'statsmodels'])
 from sklearn import *
 import sklearn as sklearn
+
+
+### Import from Git
+# Type the command GitBash
+pip install git+https://github.com/cbellei/word2veclite.git
+# Type the below in cmd
+pip install word2veclite
+
+
+
+
+
+
+
+
+
