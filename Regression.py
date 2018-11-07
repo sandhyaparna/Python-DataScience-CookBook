@@ -35,7 +35,16 @@ sm_OLS_1 = sm.OLS(Df_y,Df_X_1).fit()
 Df_y_Pred_1 = sm_OLS_1.predict(Df_X_1)
 sm_OLS_1.summary()  #Summary provides coeff, r-sq, adj r-sq etc
 
+### VIF
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+vif = pd.DataFrame()
+vif["features"] = Df_X.columns
+vif["VIF Factor"] = [variance_inflation_factor(Df_X.values, i) for i in range(Df_X.shape[1])]
+vif
+
 ### Variables to be created for plots
+https://medium.com/@emredjan/emulating-r-regression-plots-in-python-43741952c034
+  
 y_fitted = sm_OLS_1.fittedvalues  # fitted values (need a constant term for intercept)
 y_residuals = sm_OLS_1.resid  # model residuals
 y_norm_residuals = sm_OLS_1.get_influence().resid_studentized_internal  # normalized residuals
