@@ -310,6 +310,17 @@ confusion_matrix(Bank_y_test, Bank_y_test_Pred2_Prob)
 
 # A final model can be built on the entire data i.e Bank_X_OneHotEncoded
 
+# Different models and different scoring options
+models = [GaussianNB(), DecisionTreeClassifier(), SVC()]
+names = ["Naive Bayes", "Decision Tree", "SVM"]
+for model, name in zip(models, names):
+    print name
+    start = time.time()
+    for score in ["accuracy", "precision", "recall"]:
+        print score,
+        print " : ",
+        print cross_val_score(model, iris.data, iris.target,scoring=score, cv=10).mean()
+    print time.time() - start
 
 # 3. GridSearchCV
 DecisionTreeModel_GridSearch = DecisionTreeClassifier(random_state=0)
