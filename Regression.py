@@ -23,7 +23,17 @@ Adjusted_r_squared = 1 - (1-R_squared)*(len(Df_y)-1)/(len(Df_y)-Df_X.shape[1]-1)
 lm.coef_
 lm.intercept_
 
+### statsmodels - Without constant term
+import statsmodels.api as sm
+sm_OLS = sm.OLS(Df_y,Df_X).fit()
+Df_y_Pred = sm_OLS.predict(Df_X)
+sm_OLS.summary()  #Summary provides coeff, r-sq, adj r-sq etc
 
+### statsmodels - With Constant term (This is similar to what is produced by sklearn)
+Df_X_1 = sm.add_constant(Df_X)
+sm_OLS_1 = sm.OLS(Df_y,Df_X_1).fit()
+Df_y_Pred_1 = sm_OLS_1.predict(Df_X_1)
+sm_OLS_1.summary()  #Summary provides coeff, r-sq, adj r-sq etc
 
 
 
