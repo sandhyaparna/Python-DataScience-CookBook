@@ -29,11 +29,21 @@ sm_OLS = sm.OLS(Df_y,Df_X).fit()
 Df_y_Pred = sm_OLS.predict(Df_X)
 sm_OLS.summary()  #Summary provides coeff, r-sq, adj r-sq etc
 
-### statsmodels - With Constant term (This is similar to what is produced by sklearn)
+### statsmodels - With Constant term (This is similar to what is produced by sklearn) ****** Use This ******
 Df_X_1 = sm.add_constant(Df_X)
 sm_OLS_1 = sm.OLS(Df_y,Df_X_1).fit()
 Df_y_Pred_1 = sm_OLS_1.predict(Df_X_1)
 sm_OLS_1.summary()  #Summary provides coeff, r-sq, adj r-sq etc
+
+### Ridge Regression
+rr = linear_model.Ridge(alpha=0.01)
+rr = rr.fit(Df_X, Df_y)
+Df_y_Pred = rr.predict(Df_X)
+
+### Lasso Regression
+lasso = linear_model.Lasso(alpha=0.01)
+lasso = lasso.fit(Df_X, Df_y)
+Df_y_Pred = lasso.predict(Df_X)
 
 ### VIF
 from statsmodels.stats.outliers_influence import variance_inflation_factor
