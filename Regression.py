@@ -23,6 +23,11 @@ Adjusted_r_squared = 1 - (1-R_squared)*(len(Df_y)-1)/(len(Df_y)-Df_X.shape[1]-1)
 lm.coef_
 lm.intercept_
 
+from pandas import *
+predictors = x_train.columns
+coef = Series(lm.coef_,predictors).sort_values() # checking the magnitude of coefficients
+coef.plot(kind='bar', title='Modal Coefficients')
+
 ### statsmodels - Without constant term
 import statsmodels.api as sm
 sm_OLS = sm.OLS(Df_y,Df_X).fit()
