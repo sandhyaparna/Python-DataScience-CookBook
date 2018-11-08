@@ -50,6 +50,11 @@ lasso = linear_model.Lasso(alpha=0.01)
 lasso = lasso.fit(Df_X, Df_y)
 Df_y_Pred = lasso.predict(Df_X)
 
+### Elastic Net
+en = ElasticNet(alpha=1, l1_ratio=0.5, normalize=False)
+en = en.fit(Df_X, Df_y)
+Df_y_Pred = en.predict(Df_X)
+
 ### VIF
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 vif = pd.DataFrame()
