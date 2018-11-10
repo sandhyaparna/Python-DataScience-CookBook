@@ -226,9 +226,12 @@ sns.barplot(x="Var", y="Var1", data=tips)
 Df.groupby(['Var'])['Var1'].plot(legend=True)
 
 # Bar Graph - Within unique values of Var(Cat) - give sum of values in Var1(Numeric)
-Df.groupby('Var').Var1.sum().plot.bar()
+Df.groupby('Cat_Var').Var.sum().plot.bar()
 # 2 groupbys
-Df.groupby(['Var1','Var2']).Var.sum().plot.bar()
+Df.groupby(['Cat_Var1','Cat_Var2']).Var.sum().plot.bar()
+
+# Box Plot
+import seaborn as sns
 
 
 
