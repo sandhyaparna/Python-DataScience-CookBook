@@ -20,7 +20,7 @@ k2, p = stats.normaltest(Energy.x)
 from scipy import stats
 w,p = stats.shapiro(Df.x)
 
-##### D’Agostino’s K^2 Test
+##### D’Agostino’s K^2 Test - Kolmogorov-Smirnov test for goodness of fit
 stats.kstest(Df.x,'norm')
 
 ##### Anderson-Darling Test
