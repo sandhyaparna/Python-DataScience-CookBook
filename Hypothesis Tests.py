@@ -3,6 +3,8 @@ https://machinelearningmastery.com/statistical-hypothesis-tests-in-python-cheat-
 ### Normality Tests
 ##### Histogram
 ##### Q-Q Plot
+y_norm_residuals = sm_OLS_1.get_influence().resid_studentized_internal  # normalized residuals
+
 from statsmodels.graphics.gofplots import ProbPlot
 QQ = ProbPlot(y_norm_residuals)
 plot_QQ = QQ.qqplot(line='45', alpha=0.5, color='#4C72B0', lw=1)
