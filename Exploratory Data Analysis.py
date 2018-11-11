@@ -201,6 +201,8 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 # Barplot (Categorical & Numeric - estimate of central tendency for a numeric variable) - https://seaborn.pydata.org/generated/seaborn.barplot.html
 Data is aggregated and then bar plots are applied - https://python-graph-gallery.com/barplot/
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
+# Pie chart - 
+
 
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
