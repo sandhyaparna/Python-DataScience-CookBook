@@ -221,7 +221,7 @@ sns.countplot(x="Var1", data=Df, color="c")
 # Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in Var1
 sns.countplot(x="Var", hue="Var1", data=Df)
 # Barplot - estimate of central tendency for a numeric variable
-sns.barplot(x="Var", y="Var1", data=tips)
+sns.barplot(x="Var", y="Var1", data=Df)
 
 # Line Graph - Var(Cat), Var1(Num) - For each unique value of Var, values of Var1 are plotted as a line graph
 Df.groupby(['Var'])['Var1'].plot(legend=True)
@@ -233,6 +233,9 @@ Df.groupby(['Cat_Var1','Cat_Var2']).Var.sum().plot.bar()
 
 # Box Plot
 import seaborn as sns
+sns.boxplot(x=Df["Var"])
+sns.boxplot(x="Cat_Var", y="Var", data=Df)
+sns.boxplot(x="Cat_Var1", y="Var", hue="Cat_Var2", data=Df, palette="Set3")
 
 
 
