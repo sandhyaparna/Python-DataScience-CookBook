@@ -22,6 +22,8 @@ stats.kstest(Df.x,'norm')
 stats.anderson((Df.x,'norm')
 
 ### Correlation Tests
+H0: Two samples are independent
+H1: There is a dependency between the samples               
 ##### Pearson’s Correlation Coefficient
 
 ##### 
