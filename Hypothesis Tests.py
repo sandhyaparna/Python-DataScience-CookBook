@@ -1,5 +1,19 @@
 https://machinelearningmastery.com/statistical-hypothesis-tests-in-python-cheat-sheet/
 
+### Quantitative Data
+from scipy import stats
+##### One Sample T-Test
+stats.ttest_1samp(Df.Var,AssumedMean)
+##### T-Test on two independent samples
+Group1 = Df[Df.Cat_Var=='Cat1']['Var'] # Quantitative Var
+Group2 = Df[Df.Cat_Var=='Cat2']['Var'] # Quantitative Var
+stats.ttest_ind(Group1, Group2) 
+##### 
+
+##### 
+
+##### 
+
 ### Normality Tests
 ##### Histogram
 In repository - Python-DataScience-CookBook/Exploratory Data Analysis.py
@@ -15,16 +29,25 @@ pylab.show()
 k2, p = stats.normaltest(Energy.x)
 ##### Shapiro-Wilk Test - https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html
 from scipy import stats
-w,p = stats.shapiro(Df.x)
+w,p = stats.shapiro(Df.Var)
 ##### D’Agostino’s K^2 Test - Kolmogorov-Smirnov test for goodness of fit
-stats.kstest(Df.x,'norm')
+stats.kstest(Df.Var,'norm')
 ##### Anderson-Darling Test
-stats.anderson((Df.x,'norm')
+stats.anderson((Df.Var,'norm')
 
 ### Correlation Tests
-H0: Two samples are independent
-H1: There is a dependency between the samples               
+# H0: Two samples are independent
+# H1: There is a dependency between the samples              
 ##### Pearson’s Correlation Coefficient
-
-##### 
-##### 
+corr, p = pearsonr(Df.Var1, Df.Var2)       
+##### Spearman’s Rank Correlation
+corr, p = spearmanr(Df.Var1, Df.Var2)                    
+##### Kendall’s Rank Correlation
+corr, p = kendalltau(Df.Var1, Df.Var2)     
+               
+               
+               
+               
+               
+               
+               
