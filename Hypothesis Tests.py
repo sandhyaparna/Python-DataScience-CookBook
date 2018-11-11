@@ -13,7 +13,6 @@ stats.ttest_rel(Df['Var_Before'], Df['Var_After'])
 stats.ttest_1samp((Df['Var_Before'] - Df['Var_After'], 0) 
 ##### ANOVA
 stats.f_oneway(Group1, Group2, Group3, etc) 
-##### 
 
                   
 ### Normality Tests
