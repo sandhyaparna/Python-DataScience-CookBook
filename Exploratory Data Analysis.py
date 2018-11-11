@@ -199,6 +199,7 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
 # countplot (Categoric or Numeric)- https://seaborn.pydata.org/generated/seaborn.countplot.html
 # Barplot (Categorical & Numeric - estimate of central tendency for a numeric variable) - https://seaborn.pydata.org/generated/seaborn.barplot.html
+Data is aggregated and then bar plots are applied - https://python-graph-gallery.com/barplot/
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
 
 # Histogram & Kde(Kernel density estimate)
