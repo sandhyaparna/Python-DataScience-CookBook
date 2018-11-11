@@ -8,12 +8,14 @@ stats.ttest_1samp(Df.Var,AssumedMean)
 Group1 = Df[Df.Cat_Var=='Cat1']['Var'] # Quantitative Var
 Group2 = Df[Df.Cat_Var=='Cat2']['Var'] # Quantitative Var
 stats.ttest_ind(Group1, Group2) 
+##### T-test on two paired samples
+stats.ttest_rel(Df['Var_Before'], Df['Var_After']) 
+stats.ttest_1samp((Df['Var_Before'] - Df['Var_After'], 0) 
+##### ANOVA
+stats.f_oneway(Group1, Group2, Group3, etc) 
 ##### 
 
-##### 
-
-##### 
-
+                  
 ### Normality Tests
 ##### Histogram
 In repository - Python-DataScience-CookBook/Exploratory Data Analysis.py
