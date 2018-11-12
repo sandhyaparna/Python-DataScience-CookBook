@@ -438,7 +438,8 @@ list(New_Dict_MultipleDfs) # will give names of multiple dataframes
 # Convert dataframe variable to a list
 List_X = Df['Var'].tolist()                       
                        
-# Create lagged/Shift variable
+# Create lagged/Shift variable within a group
+Df['Lag_Var'] = Df.groupby(['Group_Var'])['Var'].shift(1) #Get previous value
                        
                        
                        
