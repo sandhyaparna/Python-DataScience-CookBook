@@ -440,7 +440,7 @@ List_X = Df['Var'].tolist()
                        
 # Create lagged/Shift variable within a group
 Df['Lag_Var'] = Df.groupby(['Group_Var'])['Var'].shift(1) #Get previous value
-                       
+Df['Lead_Var'] = Df.groupby(['Group_Var'])['Var'].shift(-1) #Get Next/Lead value                   
                        
                        
                        
