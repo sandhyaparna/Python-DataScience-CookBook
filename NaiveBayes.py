@@ -17,7 +17,7 @@ Df_y = Df['Target_Var'] #Multi-class
 
 # Alogorithm
 Gaussian = GaussianNB()
-Gaussian = Gaussian.fit(Df_X,Df_y)
+Gaussian = Gaussian.fit(Df_X,Df_y)  # partial_fit is used to fit on batch of samples, if data is very huge
 Df_y_Pred = Gaussian.predict(Df_X)
 Gaussian.score(Bank_X,Bank_y) # Returns mean accuracy
 
@@ -49,5 +49,12 @@ Df_y = Df['Target_Var'] #Multi-class
 
 # Alogorithm
 Bernoulli = BernoulliNB()
+
+### Complement Naive Bayes ###
+# https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.ComplementNB.html#sklearn.naive_bayes.ComplementNB
+
+# Designed to correct the “severe assumptions” made by the standard Multinomial Naive Bayes classifier - Used for imbalanced data sets 
+
+
 
 
