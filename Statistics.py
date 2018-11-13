@@ -1,6 +1,6 @@
 https://docs.scipy.org/doc/scipy/reference/stats.html
 
-### Data Transformation using Box-Cox 
+### Data Transformation using Box-Cox(Only on Positive data)-Normalization is the process of scaling individual samples to have unit norm
 # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html
 from scipy import stats
 Df['Var_trans'] = stats.boxcox(Df['Var'])[0]
@@ -23,7 +23,7 @@ scaler.transform(X_test) #Same Transformation is applied
 # Transforms features by scaling each feature to a given range (Min,Max) 
 # https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler
 from sklearn import preprocessing
-MinMaxScaler = preprocessing.MinMaxScaler(feature_range=(min, max))
+MinMaxScaler = preprocessing.MinMaxScaler(feature_range=(min, max)) #Used for scaling sparse data
 # apply transform similar to what is applied on StandardScaler
 
 ### Skewness 
