@@ -13,7 +13,7 @@ from sklearn.naive_bayes import *
 Df_X = Df[['Var1','Var2','Var3']]
 
 # Target Variable - Coding is not required for Target variable
-Df_y = Df['Target_Var']
+Df_y = Df['Target_Var'] #Multi-class
 
 # Alogorithm
 Gaussian = GaussianNB()
@@ -31,6 +31,9 @@ Gaussian.score(Bank_X,Bank_y) # Returns mean accuracy
 # Var1, var2 etc have word counts or similar/Vars are not numeric but discret
 Df_X = Df[['Var1','Var2','Var3']] 
 
+# Target Variable - Coding is not required for Target variable
+Df_y = Df['Target_Var'] #Multi-class
+
 # Alogorithm
 Multinomial = MultinomialNB()
 
@@ -40,6 +43,9 @@ Multinomial = MultinomialNB()
 # Var1, var2 etc have binary/boolean values - 0 or 1
 Df['Var1'] = Df['Var1'].map({'yes': 1, 'no': 0})
 Df_X = Df[['Var1','Var2','Var3']] 
+
+# Target Variable - Coding is not required for Target variable
+Df_y = Df['Target_Var'] #Multi-class
 
 # Alogorithm
 Bernoulli = BernoulliNB()
