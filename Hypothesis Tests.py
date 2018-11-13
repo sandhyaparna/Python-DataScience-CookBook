@@ -27,7 +27,7 @@ import scipy.stats as stats
 stats.probplot(Df.Var, dist="norm", plot=pylab)
 pylab.show()
 ##### Normal Test
-k2, p = stats.normaltest(Energy.x)
+k2, p = stats.normaltest(Energy.x) # k2 value corresponds to statistic value & p-value>0.05 implies data is normally distribution
 ##### Shapiro-Wilk Test - https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html
 from scipy import stats
 w,p = stats.shapiro(Df.Var)
