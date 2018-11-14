@@ -174,6 +174,11 @@ df[df["col"] < (df["col"].quantile(0.99))]
 # Based on modified z-score
 from statsmodels.robust.scale import mad
 df[np.abs( (0.6745 * (df.Num_Var1-df.Num_Var1.median()))/(mad(df['Num_Var1'], c=1)) ) <= (3)]
+# 1.5*IQR
+IQR = (Df['Col'].quantile(0.75))-(Df['Col'].quantile(0.25))
+LowerBound = (Df['Col'].quantile(0.25)) - 1.5*IQR
+UpperBound = (Df['Col'].quantile(0.75)) + 1.5*IQR
+
 
 # Cross tab
 pd.crosstab(Df['Var1'],Df['Var2'])
