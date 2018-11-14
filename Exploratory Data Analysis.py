@@ -303,10 +303,14 @@ df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
 # http://contrib.scikit-learn.org/categorical-encoding/
-# 1. Replace Values of a variable
+# 1. Replace/Rename/Map Values of a variable
+# a)
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 Df.replace(Char_Codes, inplace=True)
+# b)
+Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_Vaue3})
+
 
 # 2. Label encoding - Using Categories
 # a) Single variable encoding
