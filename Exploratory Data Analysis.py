@@ -162,9 +162,10 @@ np.nanpercentile(Df.Var, 50)
 
 ### Outliers - Detect and remove - http://colingorrie.github.io/outlier-detection.html
 # If you have multiple columns in your dataframe and would like to remove all rows that have outliers in at least one column (remove rows with numerical data above 3 std
-# keep only the ones that are within +3 to -3 standard deviations
+# Z score - keep only the ones that are within +3 to -3 standard deviations
 New_Df = Df[(np.abs(stats.zscore(Df[['Num_Var1','Num_Var2','Num_Var3']])) < 3).all(axis=1)]
 # Filter based on z-score of a single numeric variable
+df[(np.abs(stats.zscore(df.Num_Var1)))<3]
 df[np.abs(df.Num_Var1-df.Num_Var1.mean()) <= (3*df.Num_Var1.std())]
 # same as above code
 df[np.abs((df.Num_Var1-df.Num_Var1.mean())/(df.Num_Var1.std())) <= (3)]
