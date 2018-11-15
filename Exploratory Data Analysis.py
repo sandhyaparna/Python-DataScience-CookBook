@@ -209,7 +209,6 @@ Data is aggregated and then bar plots are applied - https://python-graph-gallery
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
 # Pie chart - 
 
-
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
 # This produces bars and density line
@@ -271,7 +270,6 @@ Df = DF.assign(Var=formula)
 Df = DF.assign(NewVar=newSeries)
 # Assign IDs to each row - n rows
 Df = DF.assign(ID=pd.Series(range(1,n)))
-
 
 ### Missing data representation - np.NAN, pd.NaT
 https://pandas.pydata.org/pandas-docs/stable/missing_data.html
