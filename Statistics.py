@@ -30,3 +30,8 @@ MinMaxScaler = preprocessing.MinMaxScaler(feature_range=(min, max)) #Used for sc
 from scipy.stats import skew
 skew(Df['Var'])
 
+### Outliers
+# Z Score - 3 or more standard deviation away from mean
+np.abs(stats.zscore(Df['Var']))
+
+
