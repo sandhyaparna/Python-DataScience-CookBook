@@ -334,17 +334,17 @@ parameter_grid = {"criterion": ["gini", "entropy"],
                   "class_weight":["balanced"]}
 gridSearch = GridSearchCV(DecisionTreeModel_GridSearch, param_grid=parameter_grid, cv=10, scoring="roc_auc")
 gridSearch = gridSearch.fit(Bank_X_OneHotEncoded, Bank_y)
+gridSearch.grid_scores_ #Gives scores of each of the parameter_grid parameters
 print('Best score: {}'.format(gridSearch.best_score_))
 print('Best parameters: {}'.format(gridSearch.best_params_))
 # best_estimator_ - Generates DecisionTreeClassifier function with the paremeters that gives the best result
 DecisionTreeModel_3 = gridSearch.best_estimator_
+# Test set results decide the best params
 # U dont need to fit this model on the train data set - It is already fit in gridsearch.fit
 # Export/Save Model
 pickle.dump(DecisionTreeModel_3,open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","wb"))
 # Import/Load Model
 DecisionTreeModel_3 = pickle.load(open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","r"))
-
-
 
 
 # Evaluation Metrics on Train set 
