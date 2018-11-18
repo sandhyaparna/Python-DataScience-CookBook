@@ -136,6 +136,7 @@ Bank['Target'] =  np.where(Bank['Subscription']=="yes",1,0)
 ##### Char features need to be encoded - cannot be used directly ####
 # Extract data set with only predictor features
 Bank_X = Bank.drop(['Subscription','ID','Target'],axis=1)
+Predictors = [x for x in Bank.columns if x not in [Subscription, ID, Target]]
 -------------------------------------------------------------------------------------------------
 # https://github.com/scikit-learn-contrib/categorical-encoding
 # http://contrib.scikit-learn.org/categorical-encoding/
