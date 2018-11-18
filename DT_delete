@@ -354,6 +354,29 @@ for score in scores:
 
 # There is no test data set. So, model evaluation is based on the cross_val_score on Train set
 
+# 4. Parameter tuning using for loop
+max_depths = np.linspace(1, 32, 32, endpoint=True)
+train_results = []
+test_results = []
+for max_depth in max_depths:
+   model = GradientBoostingClassifier(max_depth=max_depth)
+   model.fit(x_train, y_train)
+   train_pred = model.predict(x_train)
+   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_train, train_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   train_results.append(roc_auc)
+   y_pred = model.predict(x_test)
+   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_test, y_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   test_results.append(roc_auc)
+from matplotlib.legend_handler import HandlerLine2D
+line1, = plt.plot(max_depths, train_results, ‘b’, label=”Train AUC”)
+line2, = plt.plot(max_depths, test_results, ‘r’, label=”Test AUC”)
+plt.legend(handler_map={line1: HandlerLine2D(numpoints=2)})
+plt.ylabel(‘AUC score’)
+plt.xlabel(‘Tree depth’)
+plt.show()
+
 #### Model Evaluation Metrics
 # http://scikit-learn.org/stable/modules/model_evaluation.html
 confusion_matrix(Bank_y, Bank_y_Pred2)
