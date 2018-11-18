@@ -1,4 +1,5 @@
 # https://www.ritchieng.com/machine-learning-decision-trees/
+# https://medium.com/all-things-ai/in-depth-parameter-tuning-for-gradient-boosting-3363992e9bae
 
 pd.options.display.max_rows = 1500
 pd.set_option('display.max_columns', None)  # or 1000
@@ -328,7 +329,7 @@ parameter_grid = {"criterion": ["gini", "entropy"],
                   "splitter": ["best", "random"],
                   "max_depth": np.arange(4,6),
                   "min_samples_split": [40,60,70],
-                  "min_samples_leaf": [15,20,25,30],
+                  "min_samples_leaf": [15,20,25,30], #range(15,30,5)
                   "class_weight":["balanced"]}
 gridSearch = GridSearchCV(DecisionTreeModel_GridSearch, param_grid=parameter_grid, cv=10, scoring="roc_auc")
 gridSearch = gridSearch.fit(Bank_X_OneHotEncoded, Bank_y)
@@ -341,6 +342,9 @@ DecisionTreeModel_3 = gridSearch.best_estimator_
 pickle.dump(DecisionTreeModel_3,open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","wb"))
 # Import/Load Model
 DecisionTreeModel_3 = pickle.load(open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","r"))
+
+
+
 
 # Evaluation Metrics on Train set 
 scores=["roc_auc","accuracy", "precision", "recall","neg_log_loss","explained_variance"]
