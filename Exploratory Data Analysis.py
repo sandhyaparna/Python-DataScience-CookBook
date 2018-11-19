@@ -258,6 +258,8 @@ Ne_Df = pd.concat([Df1, Df2], axis=1)
 Df['Var1'] = Df['Var1'].astype('str')
 # Numeric
 Df['Var1'] = Df['Var1'].astype('int')
+# Numeric
+Df['Var1'] = Df['Var1'].astype('float')
 # DateTime
 Df['Var1'] =  pd.to_datetime(Df['Var1'], format='%Y-%m-%d %H:%M:%S')
 
