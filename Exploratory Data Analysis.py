@@ -286,6 +286,8 @@ Df.info()
 Df['Var'].isnull().sum()
 # fill all NaN values with 0 - Single variable in a data frame
 df['Var'] = df['Var'].fillna(0)
+# fill all NaN values within a variable using its mean
+df['Var'] = df['Var'].fillna(df['Var'].mean())
 # Fill NaNs of a particular column with a value
 Df = Df.fillna({"Var": "NewValue"})
 # fill entire dataset of missing values with 0
