@@ -325,7 +325,7 @@ Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_
 # i) Label encoding - Datatype of variable should be converted to character
 Df_X['Var'] = Df_X['Var'].astype('category')
 Df_X['Var'] = Df_X['Var'].cat.codes
-# ii) Label encoding - Initialize label encoder
+# ii) Label encoding - Initialize label encoder - Doesnt work if there is missing data
 label_encoder = preprocessing.LabelEncoder()
 Df_Var_array = label_encoder.fit_transform(Df_X['Var'])
 
@@ -363,8 +363,8 @@ CharFeatures = list(Df_X.select_dtypes(include=['object']))
 Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df_X)        
     
 # 3. One-hot encoding - Replace existing variable values with new encoding
-# a)
-Df_OneHotEncoded = pd.get_dummies(Df_X,drop_first=True)
+# a) Cannot use this when there are missing values - For eg, if there are 3 uniques in a var and a few missing values, a=10, b=30, c=5, np.NAN =5, Only 2 columns will be created Var_a, var_b i.e if (Var_a=0 & Var_b=0) represents both c cat as well as missing data  
+Df_OneHotEncoded = pd.get_dummies(Df_X,drop_first=True) 
 # b) LabelBinarizer is also one-hot encoding - But only single variable
 Label_Binarizer = LabelBinarizer()
 Df_Var = Label_Binarizer.fit_transform(Df_X['Var'])
