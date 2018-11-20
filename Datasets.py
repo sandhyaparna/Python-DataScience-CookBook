@@ -108,6 +108,44 @@ CreditApproval['Clusters_Num'] = np.where(CreditApproval.Clusters==12,1,
 # save
 CreditApproval.to_pickle("C:/Users/spashikanti/Desktop/Objectives/Python/Sample DataSets/CreditApproval.pkl")
 
+##### Extract Specific columns to create diff subsets #####
+# Original(Has Missing Data) - Continuous Variables only - 6
+CreditApproval_Num = CreditApproval[['A2','A3','A8','A11','A14','A15']]
+
+# Original(Has Missing Data) - Characters - Categorical Variables only - 9
+CreditApproval_Cat = CreditApproval[['A1','A4','A5','A6','A7','A9','A10','A12','A13']]
+
+# (Has Missing Data) - Categorical Variables encoded to Labels - 9 
+CreditApproval_Cat_AsNum = CreditApproval[['A1_Num','A4_Num','A5_Num','A6_Num','A7_Num','A9_Num','A10_Num','A12_Num','A13_Num']]
+
+# (No Missing Data) - Continuous Variables only, Missing values are replaced by mean - 6
+CreditApproval_Num_NoMissing = CreditApproval[['A2_NoMissing','A3','A8','A11','A14_NoMissing','A15']]
+
+# (No Missing Data => Missing data are mentioned as a separate category) - Characters - Categorical Variables only - Missing data are mentioned as a separate category - 9
+CreditApproval_Cat_NoMissing = CreditApproval[['A1_NoMissing','A4_NoMissing','A5_NoMissing','A6_NoMissing','A7_NoMissing','A9','A10','A12','A13']]
+
+# (No Missing Data => Missing data are mentioned as a separate category) - Categorical Variables encoded to Labels - 9
+CreditApproval_Cat_NoMissing_AsNum = CreditApproval[['A1_NoMissing_LabelEncoder','A4_NoMissing_LabelEncoder','A5_NoMissing_LabelEncoder','A6_NoMissing_LabelEncoder',
+                                                     'A7_NoMissing_LabelEncoder','A9_LabelEncoder','A10_LabelEncoder','A12_LabelEncoder','A13_LabelEncoder']]
+CreditApproval_Cat_NoMissing_AsNum = CreditApproval[list(Char_NoMissing_LabelEncoder)]                                                    
+
+# (No Missing Data => Missing data are mentioned as a separate category) - Categorical Variables encoded to OneHotEncoding - 36
+CreditApproval_Cat_NoMissing_AsOneHot = CreditApproval[list(Char_NoMissing_OneHotEncoder)]
+
+# Binary Target as Numeric
+CreditApproval_BinTarget_Num = CreditApproval['Target_Num']
+
+# Binary Target as cat
+CreditApproval_BinTarget_Cat = CreditApproval['Target_Cat']
+
+# Multi Target as Numeric
+CreditApproval_MultiTarget_Num = CreditApproval['Clusters_Num']
+
+# Multi Target as cat
+CreditApproval_MultiTarget_Cat = CreditApproval['Clusters_Cat']
+
+
+
 
 
 
