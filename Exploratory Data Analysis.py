@@ -311,16 +311,16 @@ df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
 # http://contrib.scikit-learn.org/categorical-encoding/
-# 1. Replace/Rename/Map Values of a variable
+# 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
 # a)
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 Df.replace(Char_Codes, inplace=True)
-# b)
+# b) Can be used when there are missing values - As Manula encoding doesnt change misisng values
 Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_Vaue3})
 
 
-# 2. Label encoding - Using Categories
+# 2. Label encoding - Using Categories (CANNOT be USED for MISSING Vars)
 # a) Single variable encoding
 # i) Label encoding - Datatype of variable should be converted to character
 Df_X['Var'] = Df_X['Var'].astype('category')
@@ -362,7 +362,7 @@ class MultiColumnLabelEncoder:
 CharFeatures = list(Df_X.select_dtypes(include=['object']))
 Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df_X)        
     
-# 3. One-hot encoding - Replace existing variable values with new encoding
+# 3. One-hot encoding - Replace existing variable values with new encoding - (CANNOT be USED for MISSING Vars)
 # a) Cannot use this when there are missing values - For eg, if there are 3 uniques in a var and a few missing values, a=10, b=30, c=5, np.NAN =5, Only 2 columns will be created Var_a, var_b i.e if (Var_a=0 & Var_b=0) represents both c cat as well as missing data  
 Df_OneHotEncoded = pd.get_dummies(Df_X,drop_first=True) 
 # b) LabelBinarizer is also one-hot encoding - But only single variable
