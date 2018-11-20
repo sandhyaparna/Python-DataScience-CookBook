@@ -93,6 +93,18 @@ Char_NoMissing_LabelEncoder = Char_NoMissing_LabelEncoder.add_suffix('_LabelEnco
 # Join Encoder data sets - 79 Variables
 CreditApproval = pd.concat([CreditApproval,Char_NoMissing_OneHotEncoder,Char_NoMissing_LabelEncoder])
 
+# Create a multiclass Target variable using kmeans (3 classes)
+# extract only Continuous variables for k-means - Doesn't accept missing data
+from sklearn.cluster import KMeans
+Cont = CreditApproval[['A2_NoMissing','A3','A8','A11','A14_NoMissing','A15']]
+kmeans = KMeans(n_clusters=20, random_state=0).fit(Cont) #Created 20 clusters as 3 clusters doesnt give 3 well defined clusters
+
+CreditApproval = CreditApproval.assign(Clusters=kmeans.labels_)
+CreditApproval['Clusters_Cat'] = np.where(CreditApproval.Clusters==12,"Clus_1",
+                                     np.where(CreditApproval.Clusters==0,"Clus_2","Clus_3"))
+CreditApproval['Clusters_Num'] = np.where(CreditApproval.Clusters==12,1,
+                                     np.where(CreditApproval.Clusters==0,2,3))                                    
+
 # save
 CreditApproval.to_pickle("C:/Users/spashikanti/Desktop/Objectives/Python/Sample DataSets/CreditApproval.pkl")
 
