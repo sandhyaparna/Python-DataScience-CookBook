@@ -311,6 +311,8 @@ df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
 # http://contrib.scikit-learn.org/categorical-encoding/
+# https://towardsdatascience.com/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
+
 # 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
 # a)
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
@@ -372,6 +374,8 @@ Df_Var = Label_Binarizer.fit_transform(Df_X['Var'])
 Df_Var = pd.DataFrame(Df_Var, columns=Label_Binarizer.classes_)
 
 # 4. BinaryEncoders using category_encoders
+# First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot
+# Performs consistently well for actual categorical vars
 Df_y = Df['Target_Var']
 Df_X is data frame with features
 CharFeatures = list(Df_X.select_dtypes(include=['object']))
