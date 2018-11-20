@@ -144,6 +144,30 @@ CreditApproval_MultiTarget_Num = CreditApproval['Clusters_Num']
 # Multi Target as cat
 CreditApproval_MultiTarget_Cat = CreditApproval['Clusters_Cat']
 
+### Different Data sets ###
+## Target as Cat
+# Original Data - HAS MISSING DATA
+CreditApproval_1 = pd.concat([CreditApproval_Num,CreditApproval_Cat,CreditApproval_BinTarget_Cat,CreditApproval_MultiTarget_Cat], axis=1)
+# Inputs converted to Numeric - HAS MISSING DATA
+CreditApproval_2 = pd.concat([CreditApproval_Num,CreditApproval_Cat_AsNum,CreditApproval_BinTarget_Cat,CreditApproval_MultiTarget_Cat], axis=1)
+# Missing Data replaced with mean in Num and Cat
+CreditApproval_3 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing,CreditApproval_BinTarget_Cat,CreditApproval_MultiTarget_Cat], axis=1)
+# Missing Data replaced with mean in Num and Cat, Cat converted to number
+CreditApproval_4 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing_AsNum,CreditApproval_BinTarget_Cat,CreditApproval_MultiTarget_Cat], axis=1)
+# Missing Data replaced with mean in Num and Cat, Cat converted to one-hot encoding
+CreditApproval_5 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing_AsOneHot,CreditApproval_BinTarget_Cat,CreditApproval_MultiTarget_Cat], axis=1)
+
+## Target as Num
+# Original Data - HAS MISSING DATA
+CreditApproval_6 = pd.concat([CreditApproval_Num,CreditApproval_Cat,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
+# Inputs converted to Numeric - HAS MISSING DATA
+CreditApproval_7 = pd.concat([CreditApproval_Num,CreditApproval_Cat_AsNum,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
+# Missing Data replaced with mean in Num and Cat
+CreditApproval_8 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
+# Missing Data replaced with mean in Num and Cat, Cat converted to number
+CreditApproval_9 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing_AsNum,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
+# Missing Data replaced with mean in Num and Cat, Cat converted to one-hot encoding
+CreditApproval_10 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing_AsOneHot,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
 
 
 
