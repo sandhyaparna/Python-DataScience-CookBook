@@ -256,9 +256,9 @@ Ne_Df = pd.concat([Df1, Df2], axis=1)
 ### Convert data type of a var
 # String/Character/object
 Df['Var1'] = Df['Var1'].astype('str')
-# Numeric
+# Numeric - When a numeric variable has missing data it cannot be stored as int and should be stored as float
 Df['Var1'] = Df['Var1'].astype('int')
-# Numeric
+# Numeric -  When a numeric variable has missing data it cannot be stored as int and should be stored as float
 Df['Var1'] = Df['Var1'].astype('float')
 # DateTime
 Df['Var1'] =  pd.to_datetime(Df['Var1'], format='%Y-%m-%d %H:%M:%S')
