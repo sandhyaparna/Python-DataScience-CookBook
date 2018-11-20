@@ -335,32 +335,33 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import Pipeline
 class MultiColumnLabelEncoder:
-    def _init_(self,columns = None):
-        self.columns = columns # array of column names to encode
-
-    def fit(self,X,y=None):
-        return self # not relevant here
-
-    def transform(self,X):
+    
+    def __init__(self, columns = None):
+        self.columns = columns # list of column to encode
+    def fit(self, X, y=None):
+        return self
+    def transform(self, X):
         '''
         Transforms columns of X specified in self.columns using
         LabelEncoder(). If no columns specified, transforms all
         columns in X.
         '''
+        
         output = X.copy()
+        
         if self.columns is not None:
             for col in self.columns:
                 output[col] = LabelEncoder().fit_transform(output[col])
         else:
-            for colname,col in output.iteritems():
+            for colname, col in output.iteritems():
                 output[colname] = LabelEncoder().fit_transform(col)
+        
         return output
-
-    def fit_transform(self,X,y=None):
-        return self.fit(X,y).transform(X)
+    def fit_transform(self, X, y=None):
+        return self.fit(X, y).transform(X)
 -
 CharFeatures = list(Df_X.select_dtypes(include=['object']))
-Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df_X)        
+Df_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Df_X[CharFeatures])        
     
 # 3. One-hot encoding - Replace existing variable values with new encoding - (CANNOT be USED for MISSING Vars)
 # a) Cannot use this when there are missing values - For eg, if there are 3 uniques in a var and a few missing values, a=10, b=30, c=5, np.NAN =5, Only 2 columns will be created Var_a, var_b i.e if (Var_a=0 & Var_b=0) represents both c cat as well as missing data  
