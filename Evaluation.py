@@ -1,7 +1,16 @@
+from sklearn.metrics import *
+
+# Different metrrics for classification, Reg, clustering etc - https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics
+  
+y - Target Variable
+y_Pred - Predicted Target variable as category and NOT continuous prob value
+y_pred_proba - Predicted Target variable as continuous prob value
+
 # Confusion Matrix
 from sklearn.metrics import confusion_matrix
-labels = ['business', 'health']
-cm = confusion_matrix(y_test, pred, labels)print(cm)
+labels = ['label1', 'label2'] # label1 & label2 should be the labels in the y
+cm = confusion_matrix(y, y_pred, labels)
+print(cm)
 fig = plt.figure()
 ax = fig.add_subplot(111)
 cax = ax.matshow(cm)
@@ -16,6 +25,47 @@ plt.show()
 # Confusion Matrix - Simple
 confusion_matrix(y, y_Pred) #Here y_Pred is a category and continuous prob value
 
+tn, fp, fn, tp = confusion_matrix(y, y_Pred).ravel()
+tn, fp, fn, tp
+pd.crosstab(y, y_Pred, rownames=['True'], colnames=['Predicted'], margins=True)
+
+classification_report(y, y_Pred) # Produces (precision,recall,f1-score,support) for each labels seperately and all labels combined
+accuracy_score(y, y_Pred)
+precision_score(y, y_Pred) # Doesnt work if y_Pred is Categorical
+roc_auc_score(y, y_Pred) # Doesnt work if y_Pred is Categorical (Works 'y_pred_proba' also but other metrics wont work)
+recall_score(y, y_Pred) # Doesnt work if y_Pred is Categorical
+f1_score((y, y_Pred) # Doesnt work if y_Pred is Categorical - F-score is computed with the harmonic mean of precision and recall
+
+# roc-curve is (sensitivity vs 1-Specificity) or (TruePositiveRate vs FalsePositiveRate)
+# FalsePositiveRate = 1-Specificity
+# ROC Curve plot - Visualization makes more sense when prediction are made using method='predict_proba'
+import matplotlib.pyplot as plt
+%matplotlib inline
+fpr, tpr, thresholds = roc_curve(y,y_pred_proba)
+# create plot
+plt.plot(fpr, tpr, label='ROC curve'+', AUC='+str(round(roc_auc_score(y, y_pred_proba).mean(),3)))
+plt.plot([0, 1], [0, 1], 'k--', label='Random guess')
+_ = plt.xlabel('False Positive Rate')
+_ = plt.ylabel('True Positive Rate')
+_ = plt.title('ROC Curve')
+_ = plt.xlim([-0.02, 1])
+_ = plt.ylim([0, 1.02])
+_ = plt.legend(loc="lower right")
+
+
+# Precision Recall curve - Visualization makes more sense when prediction are made using method='predict_proba'
+# predict_proba can be used in precision_recall_curve function but not in recall_score,precision_score functions
+precision, recall, thresholds = precision_recall_curve(y,y_pred_proba)
+# create plot 
+plt.plot(precision, recall, label='Precision-recall curve'+', recall='+str(round(recall_score(y, y_Pred).mean(),3))+', precision='+str(round(precision_score(y, y_Pred).mean(),3)))
+_ = plt.xlabel('Precision')
+_ = plt.ylabel('Recall')
+_ = plt.title('Precision-recall curve')
+
+
+# LiftChart, Actual vs predicted chart, Gains chart
+# ROC thresholds - Cross validation results as in RapidMIner
+# Decile Plots and Kolmogorov Smirnov (KS) Statistic
 
 
 
