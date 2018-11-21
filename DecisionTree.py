@@ -32,6 +32,7 @@ y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict')
 confusion_matrix(y, y_Pred) 
 
 # method='predict_proba' - Prediction on the test datesets within each set of Cross-validation
+# When a tree is too deep, a leaf is likely to contain only one single example - And hence probabilities will just be 0 for 0 and 1 for 1
 y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba') #Produces array with number of columns=number of Labels
 # Extract only 2nd column of the array i.e Prob of 1
 y_Pred = Bank_y_train_Pred[:,1]
