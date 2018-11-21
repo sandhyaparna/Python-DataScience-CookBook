@@ -39,6 +39,22 @@ y_Pred = Bank_y_train_Pred[:,1]
 y_Pred = np.where(y_Pred>Confidence_value,1,0)
 
 
+# Applying cross_val_score doesn't fit the DecisionTreeModel using the given Independent & Dependent data
+# We need to fit the model
+DecisionTreeModel = DecisionTreeModel.fit(X,y)
+# Only after the DecisionTreeModel is fit using the data - attributes & Methods in the below link can be applied
+https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier
+ 
+
+DecisionTreeModel.apply(X)  #Gives the number of the node in the Decision tree where a particular OBSERVATION ended
+DecisionTreeModel.decision_path(X) #Doesn't seem to work, checkout later
+DecisionTreeModel.get_params() #Get parameters for fitted estimator
+DecisionTreeModel.predict(Test_X) #Predict on the test data
+DecisionTreeModel.predict_proba(Test_X) #Predict on the test data - Gives array with no of columns=no of labels in Target
+DecisionTreeModel.predict_log_proba(Test_X) #Predict on the test data - Gives array with no of columns=no of labels in Target
+DecisionTreeModel.score(Test_X,Test_y) # Mean Accuracy of Test Data
+
+
 
 
     
