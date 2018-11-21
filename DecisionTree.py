@@ -31,7 +31,7 @@ y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict')
 confusion_matrix(y, y_Pred) 
 
 # method='predict_proba' - Prediction on the test datesets within each set of Cross-validation
-y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba')
+y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba') #Produces array with number of columns=number of Labels
 # Extract only 2nd column of the array i.e Prob of 1
 y_Pred = Bank_y_train_Pred[:,1]
 y_Pred = np.where(y_Pred>Confidence_value,1,0)
