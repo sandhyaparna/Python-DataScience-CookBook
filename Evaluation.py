@@ -12,3 +12,13 @@ ax.set_yticklabels([''] + labels)
 plt.xlabel('Predicted')
 plt.ylabel('True')
 plt.show()
+
+# Confusion Matrix - Simple
+confusion_matrix(y, y_Pred) #Here y_Pred is a category and continuous prob value
+
+
+
+
+
+
+
