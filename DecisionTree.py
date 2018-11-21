@@ -17,6 +17,7 @@ DecisionTreeModel_scores # Gives evaluation metrics for eah cv set
 print(score,":", "{:.3f} (std: {:.3f})".format(DecisionTreeModel_scores.mean(),DecisionTreeModel_scores.std()))
 
 # Different evaluation metrics for each set of CV
+# Multiple evaluation metrics on diff algos - https://stackoverflow.com/questions/35876508/evaluate-multiple-scores-on-sklearn-cross-val-score
 scores=["roc_auc","accuracy", "precision", "recall","neg_log_loss","explained_variance"]
 for score in scores:
     print (score,
