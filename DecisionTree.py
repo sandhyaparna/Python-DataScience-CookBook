@@ -10,7 +10,38 @@
 # method='predict' - Generates array with column and different predicted categories(Original Categories as inputed for training)
 
 
+DecisionTreeModel = DecisionTreeClassifier()
+# single evaluation metric
+DecisionTreeModel_scores = cross_val_score(DecisionTreeModel, X, y, cv=10, scoring="roc_auc")
+DecisionTreeModel_scores # Gives evaluation metrics for eah cv set
+print(score,":", "{:.3f} (std: {:.3f})".format(DecisionTreeModel_scores.mean(),DecisionTreeModel_scores.std()))
 
+# Different evaluation metrics for each set of CV
+scores=["roc_auc","accuracy", "precision", "recall","neg_log_loss","explained_variance"]
+for score in scores:
+    print (score,
+    ":",
+    "%.3f" % cross_val_score(DecisionTreeModel, X, y, cv=10, scoring=score).mean(),
+    " ( std:",
+    "%.3f" % cross_val_score(DecisionTreeModel, X, y, cv=10, scoring=score).std(),
+    ")")
+
+# method='predict' - Prediction on the test datesets within each set of Cross-validation
+y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict')
+confusion_matrix(y, y_Pred) 
+
+# method='predict_proba' - Prediction on the test datesets within each set of Cross-validation
+y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba')
+# Extract only 2nd column of the array i.e Prob of 1
+y_Pred = Bank_y_train_Pred[:,1]
+y_Pred = np.where(y_Pred>Confidence_value,1,0)
+
+
+
+
+    
+    
+    
 
 
 
