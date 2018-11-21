@@ -1,6 +1,27 @@
 from sklearn.metrics import *
 
 # Different metrrics for classification, Reg, clustering etc - https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics
+
+# True Positives = Actual True & Predicted True
+# False Positives = Actual False & Predicted True - False Alarm/Type I error
+# False Negatives = Actual True & Predicted False - Missed Cases/Type II error
+# True Negatives = Actual False & Predicted False - Correct Rejection
+
+# Sensitivity/Recall/Hit rate/True Positive rate = TP/Overall Actual Positives = (1-False Positive rate)
+# Specificity/Selectivity/True Negative rate = TN/Overall Actual Negatives
+# Precision or PPV = TP/Predicted Positive
+# Accuracy = (TP+TN)/Total cases
+# Misclassification rate = (FP+FN)/Total cases
+# F1 Score = Harmonic mean of Precision and sensitivity = (2.TP)/(2.TP+FP+FN) = 2.(Precision).(Recall)/(Precision+Recall)
+# F0.5 Score = Weighs precision(PPV) higher than recall
+# F2 SCore = Weighs precision(PPV) lower than recall
+  # F_beta = [(1 + beta^2).(precision.recall)] / [(beta^2 .precision) + (recall)]
+
+# ROC Curve - Summarizes performance of a classifier over all possible thresholds. (TP rate vs FP rate) or (Sensitivity vs 1-Specificity)
+# AUC is area under ROC curve - Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation
+# For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
+# 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
+
   
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
