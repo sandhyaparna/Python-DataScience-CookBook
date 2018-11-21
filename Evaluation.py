@@ -22,6 +22,18 @@ from sklearn.metrics import *
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
 
+![](https://cdn-images-1.medium.com/max/800/1*-TXQmEDAJpNzKBg8x7EVhA.png)
+
+# Gains Chart - https://www3.nd.edu/~busiforc/handouts/DataMining/Lift%20Charts.html
+# (X-axis - % of All cases) vs (Y-axis - % of True Cases or Count of True cases) - Line Graph is the cummulative % of true cases by each cumulative decile/group
+
+# Observations are ordered based on decreasing order of Predicted probability and then deciles/groups are created
+# Each group is x% of overall population 
+# In Decision tree -  observations within each node will have a certain prediction probability and each node is a bar in lift chart
+# Lift value of each decile - Cummulative Number of True cases / Cummulative Number of population
+# (X-axis - % of population) vs (Y-axis - Lift value) - https://www.saedsayad.com/model_evaluation_c.htm
+
+
   
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
@@ -86,8 +98,9 @@ _ = plt.title('Precision-recall curve')
 
 # LiftChart, Actual vs predicted chart, Gains chart
 # ROC thresholds - Cross validation results as in RapidMIner
-# Decile Plots and Kolmogorov Smirnov (KS) Statistic
-
+# Decile Plots and Kolmogorov Smirnov (KS) Statistic (KS chart)
+# Concordant-Discordant ratio
+        
 
 
 
