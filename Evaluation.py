@@ -37,6 +37,9 @@ from sklearn.metrics import *
 # Lift value of each decile - Cummulative Number of True cases / Cummulative Number of population
 # (X-axis - % of population) vs (Y-axis - Lift value) - https://www.saedsayad.com/model_evaluation_c.htm
 
+# K-S Kolomogorov Smirnov Chart
+# K-S is a measure of the degree of separation between the positive and negative distributions. 
+
 
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
