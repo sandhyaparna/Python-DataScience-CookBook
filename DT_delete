@@ -286,7 +286,7 @@ for score in scores:
     " ( std:",
     "%.3f" % cross_val_score(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10, scoring=score).std(),
     ")")
-# Evaluation Metrics on Train set
+# Evaluation Metrics on Test data within CV
 Bank_y_train_Pred2 = cross_val_predict(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10)
 confusion_matrix(Bank_y_train, Bank_y_train_Pred2)
 # Prediction with probability scores
@@ -395,7 +395,7 @@ roc_auc_score(Bank_y, Bank_y_Pred2)
 recall_score(Bank_y, Bank_y_Pred2) #Sensitivity 
 #(False Positives = 1-Specificity)
 
-# ROC Curve plot
+# ROC Curve plot - Visualization makes more sense when prediction are made using method='predict_proba'
 import matplotlib.pyplot as plt
 %matplotlib inline
 fpr, tpr, thresholds = roc_curve(Bank_y, Bank_y_Pred2)
@@ -418,19 +418,20 @@ _ = plt.ylabel('Recall')
 _ = plt.title('Precision-recall curve')
 _ = plt.legend(loc="lower left")
 
-# Decision Tree Viz
+# Decision Tree Viz - Works when Target Var is both Cat/Num
 # http://webgraphviz.com/
 # Use the code from the saved dot file in the above link - it gives viz
 data_feature_names = list(Bank_X_OneHotEncoded)
 target_names = pd.unique(Bank['Target'])
 # Convert data type
-target_names = target_names.astype('<U10')
+target_names = target_names.astype('<U10') #Works when Target Var is both Cat/Num
 # Viz code to a file - paste code in http://webgraphviz.com/
-dotfile = open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_2.dot", 'w')
-tree.export_graphviz(DecisionTreeModel_2, out_file=dotfile, feature_names=data_feature_names,
+# DecisionTreeModel is one that is fitted on X,y
+dotfile = open("path/DecisionTreeModel_Tree.dot", 'w')
+tree.export_graphviz(DecisionTreeModel, out_file=dotfile, feature_names=data_feature_names,
                      class_names=target_names,filled=True, rounded=True)
 dotfile.close()
-
+# Open file 
 
 
 	
