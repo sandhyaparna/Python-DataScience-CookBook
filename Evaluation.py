@@ -37,7 +37,7 @@ from sklearn.metrics import *
 # Lift value of each decile - Cummulative Number of True cases / Cummulative Number of population
 # (X-axis - % of population) vs (Y-axis - Lift value) - https://www.saedsayad.com/model_evaluation_c.htm
 
-# K-S Kolomogorov-Smirnov Chart
+# K-S Kolomogorov Smirnov Chart
 # K-S is a measure of the degree of separation between the positive and negative distributions. 
 
 
@@ -102,8 +102,9 @@ _ = plt.ylabel('Recall')
 _ = plt.title('Precision-recall curve')
 
 
-# LiftChart, Actual vs predicted chart, Gains chart
-# ROC thresholds - Cross validation results as in RapidMiner
+         
+         
+# ROC thresholds - Cross validation results as in RapidMIner
 # Decile Plots and Kolmogorov Smirnov (KS) Statistic (KS chart)
 # Concordant-Discordant ratio
         
