@@ -23,7 +23,7 @@ from sklearn.metrics import *
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
 
 # https://www3.nd.edu/~busiforc/handouts/DataMining/Lift%20Charts.html
-# Observations are ordered based on decreasing order of Predicted probability and then deciles/groups are created
+# ---Observations are ordered based on decreasing order of Predicted probability and then deciles/groups are created
 # Each group is x% of overall population 
 # In Decision tree -  observations within each node will have a certain prediction probability and each node is a bar in lift chart
 
@@ -37,8 +37,11 @@ from sklearn.metrics import *
 # Lift value of each decile - Cummulative Number of True cases / Cummulative Number of population
 # (X-axis - % of population) vs (Y-axis - Lift value) - https://www.saedsayad.com/model_evaluation_c.htm
 
-# K-S Kolomogorov Smirnov Chart
-# K-S is a measure of the degree of separation between the positive and negative distributions. 
+# K-S Kolomogorov Smirnov Chart - http://www.saedsayad.com/model_evaluation_c.htm
+# K-S is a measure of the degree of separation between the positive and negative distributions
+# Here the observations are ordered in increasing order of Predicted probability to create deciles
+# For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
+# K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
 
 
 y - Target Variable
