@@ -8,6 +8,11 @@ https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virt
 # Python on Anaconda prompt
 http://docs.anaconda.com/anaconda/user-guide/getting-started/
 
+# To install python packages using cmd
+Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
+If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
+
+
 
 ### New Version of pip
 import pip
