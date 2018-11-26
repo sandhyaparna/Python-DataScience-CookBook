@@ -8,12 +8,15 @@ https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virt
 # Python on Anaconda prompt
 http://docs.anaconda.com/anaconda/user-guide/getting-started/
 
+
+when installing python check mark - add python top Path var
 # To install python packages using cmd
 Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
 If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
 set - cd PATHoftheModule
-Type - python setup.py install
+Type - python setup.py install]
 
+pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master'])
 
 
 ### New Version of pip
