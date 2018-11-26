@@ -104,7 +104,6 @@ _ = plt.title('Precision-recall curve')
 
          
          
-# ROC thresholds - Cross validation results as in RapidMIner
 # Decile Plots and Kolmogorov Smirnov (KS) Statistic (KS chart)
 # Concordant-Discordant ratio
         
