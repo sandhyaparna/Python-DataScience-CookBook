@@ -65,7 +65,7 @@ plt.ylabel('True')
 plt.show()
 
 # Confusion Matrix - Simple
-confusion_matrix(y, y_Pred) #Here y_Pred is a category and continuous prob value
+confusion_matrix(y, y_Pred) #Here y_Pred is a category and not continuous prob value
 
 tn, fp, fn, tp = confusion_matrix(y, y_Pred).ravel()
 tn, fp, fn, tp
@@ -94,7 +94,6 @@ _ = plt.xlim([-0.02, 1])
 _ = plt.ylim([0, 1.02])
 _ = plt.legend(loc="lower right")
 
-
 # Precision Recall curve - Visualization makes more sense when prediction are made using method='predict_proba'
 # predict_proba can be used in precision_recall_curve function but not in recall_score,precision_score functions
 precision, recall, thresholds = precision_recall_curve(y,y_pred_proba)
@@ -103,6 +102,10 @@ plt.plot(precision, recall, label='Precision-recall curve'+', recall='+str(round
 _ = plt.xlabel('Precision')
 _ = plt.ylabel('Recall')
 _ = plt.title('Precision-recall curve')
+
+# 
+#
+         
 
 
          
