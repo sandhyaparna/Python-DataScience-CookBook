@@ -14,6 +14,9 @@ git clone https://github.com/cbellei/word2veclite.git
 cd word2veclite
 pip install .
 
+# To Open jupyter notebook
+type - jupyter notebook in Anaconda prompt
+
 
 
 
