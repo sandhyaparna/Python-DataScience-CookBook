@@ -7,7 +7,7 @@ Install Anaconda - 64 bit - After installation, check if anaconda prompt and ana
 In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not #In Anaconda Prompt
 Install git - Type bash, git commands to see if they are working
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/
-
+How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
 Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
 conda update pip #In Anaconda Prompt
