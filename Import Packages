@@ -3,7 +3,8 @@ https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-dee
 https://www.youtube.com/watch?v=A7E18apPQJs
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/
 
-Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed. In Anaconda prompt, type python, conda , jupyter notebook to see if they are installed or not
+Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed. 
+In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not
 Upgrade pip using command - "python -m pip install --upgrade pip"
 conda update pip
 check pip version - pip --version
@@ -26,7 +27,7 @@ pip install keras==2.2.0
 
 
 # Pip update in Anaconda prompt
-https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
+If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
 https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution
 https://medium.com/@GalarnykMichael/setting-up-pycharm-with-anaconda-plus-installing-packages-windows-mac-db2b158bd8c
 https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virtualenv-package-install
