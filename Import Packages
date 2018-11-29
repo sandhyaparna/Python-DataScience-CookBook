@@ -3,17 +3,21 @@ https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-dee
 https://www.youtube.com/watch?v=A7E18apPQJs
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/
 
-Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed. 
-In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not
-Install gIt - Type bash, git commands to see if they are working
+Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed.  #In Anaconda Prompt
+In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not #In Anaconda Prompt
+Install git - Type bash, git commands to see if they are working
 
-Upgrade pip using command - "python -m pip install --upgrade pip"
-conda update pip
-check pip version - pip --version
+Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
+conda update pip #In Anaconda Prompt
+check pip version - pip --version #In Anaconda Prompt
 
 Update Anaconda - "conda update conda" , "conda update --all"
-Install packages - conda install package-name
-Update packages - conda update package-name
+Install packages - conda install package-name #In Anaconda Prompt
+Update packages - conda update package-name #In Anaconda Prompt
+
+Install python packages from github
+In Anaconda prompt - 
+
 
 conda install scipy
 pip install --upgrade sklearn
