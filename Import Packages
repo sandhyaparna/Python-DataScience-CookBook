@@ -12,7 +12,6 @@ Update packages - conda update package-name
 
 
 
-
 # Pip update in Anaconda prompt
 https://datatofish.com/upgrade-pip-anaconda/
 https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
