@@ -37,7 +37,6 @@ pip install tensorflow==1.8.0
 pip install keras==2.2.0
 
 
-
 # Pip update in Anaconda prompt
 If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
 https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution
