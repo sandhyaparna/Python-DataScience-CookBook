@@ -95,6 +95,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 %matplotlib inline
 
+# To install packages that has '-' in their package name
+Use either _ instead of -
+Use no space/join words instead of -
 
 
 
