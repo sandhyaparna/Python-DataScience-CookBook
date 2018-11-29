@@ -3,7 +3,8 @@ https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-dee
 https://www.youtube.com/watch?v=A7E18apPQJs
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/
 
-Install Anaconda - 64 bit
+Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed. In Anaconda prompt, type python, conda , jupyter notebook to see if they are installed or not
+
 
 
 
