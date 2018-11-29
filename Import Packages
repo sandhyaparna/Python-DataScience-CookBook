@@ -5,6 +5,7 @@ https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly
 
 Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed. In Anaconda prompt, type python, conda , jupyter notebook to see if they are installed or not
 Upgrade pip using command - "python -m pip install --upgrade pip"
+conda update pip
 Update Anaconda - "conda update conda" , "conda update --all"
 Install packages - conda install package-name
 Update packages - conda update package-name
