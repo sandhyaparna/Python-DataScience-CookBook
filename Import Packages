@@ -18,7 +18,11 @@ Install packages - conda install package-name #In Anaconda Prompt
 Update packages - conda update package-name #In Anaconda Prompt
 
 Install python packages from github
-In Anaconda prompt - 
+In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name
+and then again type command - pip install package-name
+
+To install torch, use command in this website - https://pytorch.org/
+To install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
 
 
 conda install scipy
