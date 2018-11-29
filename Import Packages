@@ -23,7 +23,7 @@ and then again type command - pip install package-name
 
 To install torch, use command in this website - https://pytorch.org/
 To install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
-
+use - pip install --upgrade setuptools
 
 conda install scipy
 pip install --upgrade sklearn
