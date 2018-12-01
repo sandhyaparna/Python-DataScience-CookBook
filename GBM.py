@@ -12,6 +12,7 @@ gblinear booster treats missing values as zeros???
 ## Shrinkage parameter - Vary shrinkage parameter(all other parameters are default) to check for Test AUC, choose shrinkage parameter 
 # that gives highest Test AUC and then vary number of trees to avoid over-fitting. Optimal values usually lie between 0.01-0.2
 # Plot of AUC vs Learning Rates (2 curves - 1 for Training and another for Test)
+# Every single time this below code is run, for same Train and Test datasets - the AUC values changes for a particular learning rate
 learning_rates = [1, 0.5, 0.25, 0.1, 0.05, 0.01]
 train_results = []
 test_results = []
@@ -28,11 +29,11 @@ for eta in learning_rates:
    test_results.append(roc_auc) # Test
   
 from matplotlib.legend_handler import HandlerLine2D
-line1, = plt.plot(learning_rates, train_results, ‘b’, label=”Train AUC”)
-line2, = plt.plot(learning_rates, test_results, ‘r’, label=”Test AUC”)
+line1, = plt.plot(learning_rates, train_results, ‘b’, label='Train AUC')
+line2, = plt.plot(learning_rates, test_results, ‘r’, label='Test AUC')
 plt.legend(handler_map={line1: HandlerLine2D(numpoints=2)})
-plt.ylabel(‘AUC score’)
-plt.xlabel(‘learning rate’)
+plt.ylabel('AUC score')
+plt.xlabel('learning rate')
 plt.show()
 
 
