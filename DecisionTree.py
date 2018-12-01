@@ -77,6 +77,11 @@ tree.export_graphviz(DecisionTreeModel, out_file=dotfile, feature_names=data_fea
 dotfile.close()
 
 
+# Plot important features in a bar graph  - descending order bars
+import matplotlib.pyplot as plt
+feat_imp = pd.Series(DecisionTreeModel.feature_importances_, X.columns).sort_values(ascending=False)
+feat_imp.plot(kind='bar', title='Feature Importances')
+plt.ylabel('Feature Importance Score')
     
     
     
