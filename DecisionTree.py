@@ -9,6 +9,10 @@
 # method='predict_proba' - Generates array with 2 columns for Binary, 3 columns for Multi (columns correspond to the classes in sorted order)
 # method='predict' - Generates array with column and different predicted categories(Original Categories as inputed for training)
 
+from sklearn import *
+from sklearn.tree import *
+from sklearn.metrics import *
+from sklearn.model_selection import *
 
 DecisionTreeModel = DecisionTreeClassifier()
 # single evaluation metric
@@ -33,10 +37,10 @@ confusion_matrix(y, y_Pred)
 
 # method='predict_proba' - Prediction on the test datesets within each set of Cross-validation
 # When a tree is too deep, a leaf is likely to contain only one single example - And hence probabilities will just be 0 for 0 and 1 for 1
-y_Pred = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba') #Produces array with number of columns=number of Labels
+y_pred_proba = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predict_proba') #Produces array with number of columns=number of Labels
 # Extract only 2nd column of the array i.e Prob of 1
-y_Pred = Bank_y_train_Pred[:,1]
-y_Pred = np.where(y_Pred>Confidence_value,1,0)
+y_pred_proba = y_pred_proba[:,1]
+y_pred_proba = np.where(y_pred_proba>Confidence_value,1,0)
 
 
 # Applying cross_val_score doesn't fit the DecisionTreeModel using the given Independent & Dependent data
