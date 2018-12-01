@@ -98,7 +98,7 @@ import matplotlib.pyplot as plt
 # To install packages that has '-' in their package name
 Use either _ instead of -
 Use no space/join words instead of -
-
+Use shortform direct in import command. for eg- scikit-optimize is used in pip install command, but in import command directly use skopt
 
 
 ################## OLD VERSION pip ##################
