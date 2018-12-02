@@ -42,11 +42,9 @@ y_pred_proba = cross_val_predict(DecisionTreeModel,  X, y, cv=10, method='predic
 y_pred_proba = y_pred_proba[:,1]
 y_pred_proba = np.where(y_pred_proba>Confidence_value,1,0)
 
-
 # Applying cross_val_score doesn't fit the DecisionTreeModel using the given Independent & Dependent data
 # We need to fit the model
 DecisionTreeModel = DecisionTreeModel.fit(X,y)
-
 
 # Only after the DecisionTreeModel is fit using the data - attributes & Methods in the below link can be applied
 https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier
@@ -75,7 +73,6 @@ dotfile = open("path/DecisionTreeModel_Tree.dot", 'w')
 tree.export_graphviz(DecisionTreeModel, out_file=dotfile, feature_names=data_feature_names,
                      class_names=target_names,filled=True, rounded=True)
 dotfile.close()
-
 
 # Plot important features in a bar graph  - descending order bars
 import matplotlib.pyplot as plt
