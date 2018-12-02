@@ -66,11 +66,13 @@ DecisionTreeModel = pickle.load(open("C:/Users/User/Google Drive (sandhya.pashik
 from sklearn.grid_search import RandomizedSearchCV
 # Code is similar to GridSearchCV
 
-
-
-
-
-
+# XGBoost Import features - xgboost.plot_importance in https://xgboost.readthedocs.io/en/latest/python/python_api.html
+# https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
+# https://github.com/slundberg/shap
+xgb.plot_importance(XGBoostModel) # weight is default importance_type
+xgb.plot_importance(XGBoostModel,importance_type="weight") #weight is number of times a feature appears in a tree
+xgb.plot_importance(XGBoostModel,importance_type="cover") #cover is the average coverage of splits which use the feature where coverage is defined as the number of samples affected by the split
+xgb.plot_importance(XGBoostModel,importance_type="gain") #gain is the average gain of splits which use the feature
 
 
 
