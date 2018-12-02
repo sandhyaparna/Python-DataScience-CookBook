@@ -1,8 +1,14 @@
+# CAN handle MISSING values (DMatrix also takes missing values) - 
+  # Incidentally, xgboost and lightGBM both treat missing values in the same way as xgboost treats the zero values in sparse matrices; 
+  # it ignores them during split finding, then allocates them to whichever side reduces the loss the most.
+# CANNOT handle categorical data - Should be encoded using different encoding techniques
+# Target Variable can be BinaryLabel/MultiLabel and Numeric/Character
+
 # Parameter Tuning
 # https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/
 # https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc
-
-
+# http://mlexplained.com/2018/01/05/lightgbm-and-xgboost-explained/
+# Similar to XGBoost - https://lightgbm.readthedocs.io/en/latest/
 
 # https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/
 # Implemetation of lightgbm 
