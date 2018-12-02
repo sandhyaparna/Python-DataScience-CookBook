@@ -9,6 +9,10 @@
 # method='predict_proba' - Generates array with 2 columns for Binary, 3 columns for Multi (columns correspond to the classes in sorted order)
 # method='predict' - Generates array with column and different predicted categories(Original Categories as inputed for training)
 
+# Hyper parameter tuning using RandomizedSearchCV & GridSearchCV
+# https://www.arunprakash.org/2017/04/gridsearchcv-vs-randomizedsearchcv-for.html
+# https://scikit-learn.org/stable/modules/grid_search.html
+    
 from sklearn import *
 from sklearn.tree import *
 from sklearn.metrics import *
