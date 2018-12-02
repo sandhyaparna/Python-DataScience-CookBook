@@ -74,11 +74,31 @@ xgb.plot_importance(XGBoostModel,importance_type="weight") #weight is number of 
 xgb.plot_importance(XGBoostModel,importance_type="cover") #cover is the average coverage of splits which use the feature where coverage is defined as the number of samples affected by the split
 xgb.plot_importance(XGBoostModel,importance_type="gain") #gain is the average gain of splits which use the feature
 
-
-
-
-
-
+## Different methods of Feature importance
+# http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html
+# https://christophm.github.io/interpretable-ml-book/shapley.html#
+## SHAP - Feature Importance
+# http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html#SHAP
+# https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
+# https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html
+XGBoostModel = XGBClassifier()
+XGBoostModel = XGBoostModel.fit(X,y)
+# SHAP(SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. 
+# Help measure the impact of the features on the predictions
+# Tree SHAP method is mathematically equivalent to averaging differences in predictions over all possible orderings of the features, rather than just the ordering specified by their position in the tree.
+import shap
+# Below code produces shap value for each column of all observations 
+shap_values = shap.TreeExplainer(XGBoostModel).shap_values(X)
+# Bar chart of feature importance
+shap.summary_plot(shap_values, X, plot_type="bar")
+# Chart of feature importance for each observation
+shap.summary_plot(shap_values, X) 
+# Shap values of a particular feature vs Actual feature values - SHAP dependence plot show how the model output varies by feauture value
+# The feature(second feature) used for coloring is automatically chosen to highlight what might be driving these interactions.
+shap.dependence_plot("Var1",shap_values, X)
+# SHAP dependence plot of all var names in X
+for var in X.columns:
+    shap.dependence_plot(var, shap_values, X)
 
 
   
