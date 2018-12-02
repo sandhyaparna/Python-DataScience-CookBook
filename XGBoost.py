@@ -66,7 +66,7 @@ DecisionTreeModel = pickle.load(open("C:/Users/User/Google Drive (sandhya.pashik
 from sklearn.grid_search import RandomizedSearchCV
 # Code is similar to GridSearchCV
 
-# XGBoost Import features - xgboost.plot_importance in https://xgboost.readthedocs.io/en/latest/python/python_api.html
+# XGBoost Important features - xgboost.plot_importance in https://xgboost.readthedocs.io/en/latest/python/python_api.html
 # https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
 # https://github.com/slundberg/shap
 xgb.plot_importance(XGBoostModel) # weight is default importance_type
@@ -78,9 +78,9 @@ xgb.plot_importance(XGBoostModel,importance_type="gain") #gain is the average ga
 # http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html
 # https://christophm.github.io/interpretable-ml-book/shapley.html#
 ## SHAP - Feature Importance
-# http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html#SHAP
-# https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
-# https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html
+# Comparision of interpreting features using diff methods - http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html#SHAP
+# SHAP on Finance data - https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
+# SHAP on Health data - https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html
 XGBoostModel = XGBClassifier()
 XGBoostModel = XGBoostModel.fit(X,y)
 # SHAP(SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. 
