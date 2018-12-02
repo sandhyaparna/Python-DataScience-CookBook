@@ -1,4 +1,4 @@
-# Download Python 
+# Install Python on Windows
 https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10
 https://www.youtube.com/watch?v=A7E18apPQJs
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/
