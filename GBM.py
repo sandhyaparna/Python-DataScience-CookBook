@@ -11,8 +11,10 @@
 ## learning_rate/Shrinkage parameter - Vary shrinkage parameter(all other parameters are default) to check for Test AUC, choose shrinkage parameter 
 # that gives highest Test AUC and then vary number of trees to avoid over-fitting. Optimal values usually lie between 0.01-0.2
 
+## After tuning learning_rate and no of estimators, vary tree-specific parameters
+
 ## sub-samples - The fraction of samples to be used for fitting the individual base learners. Selection is done by random sampling. 
-#If smaller than 1.0 this results in Stochastic Gradient Boosting.
+# If smaller than 1.0 this results in Stochastic Gradient Boosting.
 # At each iteration of the algorithm, a base learner should be fit on a subsample of the training set drawn at random without replacement, help prevent overfitting, acting as a kind of regularization.
 # Choosing subsample < 1.0 leads to a reduction of variance and an increase in bias.
 # Typical values ~0.8 generally work fine but can be fine-tuned further. Values between 0.5-0.8 leads to good results for small and moderate sized training sets.
