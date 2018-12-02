@@ -26,8 +26,15 @@ from xgb import *
 # xgb.XGBClassifier is an sklearn version of xgboost and don't use DMatrix, uses regular data matrices
 # n_estimators in xgb.XGBClassifier can be set to 100 if the datset is huge, 1000 if the dataset is medium
 
-# xgboost.XGBClassifier - https://xgboost.readthedocs.io/en/latest/python/python_api.html
+## Hyper parameter tuning using randomized grid search - RandomizedSearchCV
+# GridSearchCV (exhaustive search) would take more time to get done
+# https://www.kaggle.com/tilii7/hyperparameter-grid-search-with-xgboost
+# https://scikit-learn.org/stable/modules/grid_search.html
 
+# xgboost.XGBClassifier - https://xgboost.readthedocs.io/en/latest/python/python_api.html
+# In fit of xgboost.XGBClassifier, if early_stopping_rounds is mentioned , the fit of xgboost.XGBClassifier returns the model 
+# from the last iteration (not the best one). If early stopping occurs, the model will have three additional fields: 
+# bst.best_score, bst.best_iteration and bst.best_ntree_limit. (Use bst.best_ntree_limit to get the correct value if num_parallel_tree and/or num_class appears in the parameters)
 
 
 
