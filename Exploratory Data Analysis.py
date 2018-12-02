@@ -459,7 +459,14 @@ List_X = Df['Var'].tolist()
 Df['Lag_Var'] = Df.groupby(['Group_Var'])['Var'].shift(1) #Get previous value
 Df['Lead_Var'] = Df.groupby(['Group_Var'])['Var'].shift(-1) #Get Next/Lead value                   
                        
-                       
+# Indexing of arrays within array
+p is 
+array([[1, 2, 7],
+       [3, 4, 8],
+       [5, 6, 9]])       
+p[:,0] #Gives first column values i.e 1,3,5
+p[1] #Gives 2nd row i.e 3,4,8                       
+p[1,2] #Gives 3rd column value in 2nd row i.e 8                       
                        
                        
                        
