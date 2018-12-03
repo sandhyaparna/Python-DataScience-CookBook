@@ -1,4 +1,7 @@
-# CAN handle MISSING values
+# CAN handle MISSING values (DMatrix also takes missing values) - XGBoost will automatically learn what is the best direction to go when a value is missing (or) 
+  # Automatically "learn" what is the best imputation value for missing values based on reduction on training loss.
+  # Incidentally, xgboost and lightGBM both treat missing values in the same way as xgboost treats the zero values in sparse matrices; 
+  # it ignores them during split finding, then allocates them to whichever side reduces the loss the most.
 # CANNOT handle categorical data - Should be encoded using different encoding techniques
 # Target Variable can be BinaryLabel/MultiLabel and Numeric/Character
 
@@ -8,10 +11,12 @@
 # https://xgboost.readthedocs.io/en/latest/python/python_intro.html
 # https://xgboost.readthedocs.io/en/latest/python/python_api.html
 # https://xgboost.readthedocs.io/en/latest/parameter.html
+# http://mlexplained.com/2018/01/05/lightgbm-and-xgboost-explained/
 # Explains how to handle imbalnced datsets in xgboost - https://xgboost.readthedocs.io/en/latest/tutorials/param_tuning.html
 
 
 ## xgb.train/xgb.cv is used probably for faster processing
+# xgboost implementation, prediction using xgb.train - https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/
 # Check this link to create DMatrix, apply xgb.cv, xgb.train etc - https://xgboost.readthedocs.io/en/latest/python/python_intro.html 
 # Check xgboost.cv & xgboost.train in this link for parameter tuning - https://xgboost.readthedocs.io/en/latest/python/python_api.html
 
