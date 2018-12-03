@@ -27,6 +27,8 @@ from sklearn.metrics import *
 # Each group is x% of overall population 
 # In Decision tree -  observations within each node will have a certain prediction probability and each node is a bar in lift chart
 
+# https://www.analyticsvidhya.com/blog/2016/02/7-important-model-evaluation-error-metrics/
+
 # Gains/Lift Chart - Graph inc
 # (X-axis - % of All cases) vs (Y-axis - % of True Cases ) - Line Graph is the cummulative % of true cases by each cumulative decile/group
 
