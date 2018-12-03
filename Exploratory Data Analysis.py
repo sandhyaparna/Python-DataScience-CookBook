@@ -468,7 +468,8 @@ p[:,0] #Gives first column values i.e 1,3,5
 p[1] #Gives 2nd row i.e 3,4,8                       
 p[1,2] #Gives 3rd column value in 2nd row i.e 8                       
                        
-                       
+# Create list/array of consecutive numbers between x & y
+list(range(x,y))                       
                        
 
                        
