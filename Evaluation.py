@@ -28,31 +28,38 @@ from sklearn.metrics import *
 # In Decision tree -  observations within each node will have a certain prediction probability and each node is a bar in lift chart
 
 # https://www.analyticsvidhya.com/blog/2016/02/7-important-model-evaluation-error-metrics/
+# https://towardsdatascience.com/end-to-end-python-framework-for-predictive-modeling-b8052bb96a78
 
 # Gains/Lift Chart - Graph inc
+# Top few deciles helps in capturing most of the True cases
 # (X-axis - % of All cases) vs (Y-axis - % of True Cases ) - Line Graph is the cummulative % of true cases by each cumulative decile/group
 
 # Actual vs Predicted - Graph dec
+# 
 # (X-axis - % of All cases) vs (Y-axis - Count of True Cases) - Line graph with 2 lines-one for actual and one for predicted, lines are not cumulative true cases but they are count of true cases wrt to that decile population
 
 # Lift Chart - Graph dec
-# Lift value of each decile - Cummulative Number of True cases / Cummulative Number of population
+# http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html
+# The lift chart shows how much more likely we are to receive positive responses than if we contact a random sample of customers. 
+# Lift value of each decile - Cumulative % of True cases till that decile / Cumulative % of population till that decile
 # (X-axis - % of population) vs (Y-axis - Lift value) - https://www.saedsayad.com/model_evaluation_c.htm
 
 # K-S Kolomogorov Smirnov Chart - http://www.saedsayad.com/model_evaluation_c.htm
+# https://www.analyticsvidhya.com/blog/2016/02/7-important-model-evaluation-error-metrics/
 # K-S is a measure of the degree of separation between the positive and negative distributions
 # Here the observations are ordered in increasing order of Predicted probability to create deciles
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
 
-
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
-y_pred_proba - Predicted Target variable as continuous prob value
+y_pred_proba - Predicted Target variable as continuous prob value i.e. y_pred_proba[:,1]
+y_pred_proba = y_pred_proba[:,1] #For Binary classification
 
 # Confusion Matrix
 from sklearn.metrics import confusion_matrix
-labels = ['label1', 'label2'] # label1 & label2 should be the labels in the y
+import matplotlib.pyplot as plt
+labels = ['label1', 'label2'] # label1 & label2 should be the labels in the y i.e [0,1] for binary classification
 cm = confusion_matrix(y, y_pred, labels)
 print(cm)
 fig = plt.figure()
@@ -96,6 +103,11 @@ _ = plt.xlim([-0.02, 1])
 _ = plt.ylim([0, 1.02])
 _ = plt.legend(loc="lower right")
 
+# roc curve using scikitplot
+import scikitplot
+from scikitplot.metrics import *
+plot_roc(y, y_pred_proba) #Here y_pred_proba is the original one with 2 columns of arrays for binary class and not y_pred_proba[:,1]
+                  
 # Precision Recall curve - Visualization makes more sense when prediction are made using method='predict_proba'
 # predict_proba can be used in precision_recall_curve function but not in recall_score,precision_score functions
 precision, recall, thresholds = precision_recall_curve(y,y_pred_proba)
@@ -105,14 +117,38 @@ _ = plt.xlabel('Precision')
 _ = plt.ylabel('Recall')
 _ = plt.title('Precision-recall curve')
 
-# 
-#
+# Precision Recall curve using scikitplot
+import scikitplot
+from scikitplot.metrics import *
+plot_precision_recall_curve(y, y_pred_proba) #Here y_pred_proba is the original one with 2 columns of arrays for binary class and not y_pred_proba[:,1]
+
+# Confusion Matrix         
+plot_confusion_matrix(y, y_Pred, normalize=True)
+
+# roc-curve
+plot_roc_curve(y, y_pred_proba)
+plot_roc(y, y_pred_proba)
+
+# Precision Recall curve 
+plot_precision_recall_curve(y, y_pred_proba)
+plot_precision_recall(y, y_pred_proba)
+
+# Gains/Lift Chart         
+plot_cumulative_gain(y, y_pred_proba)
+
+# Lift Chart         
+plot_lift_curve(y, y_pred_proba)         
+
+# K-S Kolomogorov Smirnov Chart
+plot_ks_statistic(y, y_pred_proba)
+       
+# For clustering
+def plot_silhouette(X, cluster_labels, title='Silhouette Analysis',
+                    metric='euclidean', copy=True, ax=None, figsize=None,
+                    cmap='nipy_spectral', title_fontsize="large",
+                    text_fontsize="medium")
          
 
-
-         
-         
-# Decile Plots and Kolmogorov Smirnov (KS) Statistic (KS chart)
 # Concordant-Discordant ratio
         
 
