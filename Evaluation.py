@@ -117,31 +117,44 @@ _ = plt.xlabel('Precision')
 _ = plt.ylabel('Recall')
 _ = plt.title('Precision-recall curve')
 
+# plot_precision_recall vs threshold
+precision, recall, thresholds = precision_recall_curve(y,y_pred_proba)
+# Create plot
+plt.figure(figsize=(8, 8))
+plt.title("Precision and Recall Scores as a function of the decision threshold")
+plt.plot(thresholds, precision[:-1], "b--", label="Precision")
+plt.plot(thresholds, recall[:-1], "g-", label="Recall")
+plt.ylabel("Score")
+plt.xlabel("Decision Threshold")
+plt.legend(loc='best')      
+         
 # Precision Recall curve using scikitplot
 import scikitplot
 from scikitplot.metrics import *
 plot_precision_recall_curve(y, y_pred_proba) #Here y_pred_proba is the original one with 2 columns of arrays for binary class and not y_pred_proba[:,1]
 
-# Confusion Matrix         
+# Confusion Matrix using scikitplot         
 plot_confusion_matrix(y, y_Pred, normalize=True)
 
-# roc-curve
+# roc-curve using scikitplot
 plot_roc_curve(y, y_pred_proba)
 plot_roc(y, y_pred_proba)
 
-# Precision Recall curve 
+# Precision Recall curve  using scikitplot
 plot_precision_recall_curve(y, y_pred_proba)
 plot_precision_recall(y, y_pred_proba)
 
-# Gains/Lift Chart         
+# Gains/Lift Chart  using scikitplot        
 plot_cumulative_gain(y, y_pred_proba)
 
-# Lift Chart         
+# Lift Chart using scikitplot         
 plot_lift_curve(y, y_pred_proba)         
 
-# K-S Kolomogorov Smirnov Chart
+# K-S Kolomogorov Smirnov Chart using scikitplot
 plot_ks_statistic(y, y_pred_proba)
        
+         
+         
 # For clustering
 def plot_silhouette(X, cluster_labels, title='Silhouette Analysis',
                     metric='euclidean', copy=True, ax=None, figsize=None,
