@@ -250,6 +250,9 @@ sns.boxplot(x="Cat_Var1", y="Var", hue="Cat_Var2", data=Df, palette="Set3")
 # Drop columns
 Df = Df.drop(['Var1', 'Var2'],axis=1)
 
+# subset rows - delete last row
+Df = Df.iloc[0:1366186]
+
 # Cbind / Concatenate 2 dataframe
 Ne_Df = pd.concat([Df1, Df2], axis=1)
 
