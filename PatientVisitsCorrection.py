@@ -53,8 +53,17 @@ UniqueID	Arrival	Departure
   # If next Arrival Arrival is 5feb and 27 feb - current visit Dep should be updated from 14th feb to 27 feb..so on
 # Self join Arrival & Dep to itself uisng Patient MRN
 # Create 2 Vars
-  #1. If Arrival_y is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x
-  #2. If Arrival_x is between (
+  #1. Dep_1 = If Arrival_y is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x
+  #2. Dep_2 = If Arrival_x is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x - This is because previous visit ARrival may actually have max Dep date for the actual visit
+# Within each Arrival_x - choose the max date of departure within Dep_1 & Dep_2
+  # So concatenate dates row wise - (Arrival_x,Dep_1) and (Arrival_x,Dep-2) - Rename Dep_1 & Dep_2 to Departure so as to do concatenation
+# Now for each Arrival we get max Departure date
+# Now we remove Duplicate Arrivals - Because 3rd feb-give 27th feb and 4th feb gives 27 feb, 7th feb - gives 27 feb.
+# But we only want 3rd feb to 27th feb
+# So, we remove Duplicate Arrivals by Calculating min(Arrival) within each Departure
+# Now for each Departure we get min Arrival date
+# Repeat from step 4 till previous step untill there are no observations where Next_Arrival is within (current Arrival & Current Departure+2Days) except last observation/visit
+
 
 #### MRN Sample Check code ####
 MRNSample_Visits1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/MRNSample_Visits1.csv",
