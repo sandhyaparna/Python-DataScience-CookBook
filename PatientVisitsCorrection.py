@@ -54,8 +54,13 @@ UniqueID	Arrival	Departure
 # Self join Arrival & Dep to itself uisng Patient MRN
 # Create 2 Vars
   #1. Dep_1 = If Arrival_y is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x
-  #2. Dep_2 = If Arrival_x is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x - This is because previous visit ARrival may actually have max Dep date for the actual visit
-# Within each Arrival_x - choose the max date of departure within Dep_1 & Dep_2
+  #2. Dep_2 = If Arrival_x is between (Arrival_y & Departure_y+2Days) then Max(Dep_x,Dep_y) if not Dep_x - This is because previous visit ARrival may actually have max Dep date for the actual visit
+# Dep_1 is at data in the self join where Arrival_y>ARrival_x 
+  # y is checked within x - to find max Dep date
+# Dep_2 is aimed at data in the self join where Arrival_y<Arrival_x - even if Arrivaly<Arrival_x - actual Dep might be here, happens where feb3-feb15th is previous visit and current visit is feb4th-feb10. we need to get feb15-so this var is created
+  # X is checked with y dates - to find max Dep date
+# So we capture an actual Departure from Arrival looking at next visit as well as previous visits
+# Within each Arrival_x - choose the max date of departure among both Dep_1 & Dep_2
   # So concatenate dates row wise - (Arrival_x,Dep_1) and (Arrival_x,Dep-2) - Rename Dep_1 & Dep_2 to Departure so as to do concatenation
 # Now for each Arrival we get max Departure date
 # Now we remove Duplicate Arrivals - Because 3rd feb-give 27th feb and 4th feb gives 27 feb, 7th feb - gives 27 feb.
