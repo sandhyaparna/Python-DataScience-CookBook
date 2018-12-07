@@ -47,7 +47,14 @@ UniqueID	Arrival	Departure
 # Now try to remove duplicate Arrivals - By Calculating max Departure for each Arrival
 # Now there are no duplicates in Arrival and data is sorted by Arrivals
 # Now check if there is atleast one observation where Next_Arrival is within (current Arrival & Current Departure+2Days) except last observation/visit
-# If there is s
+# If there is atleast one observation like discussed above, implies the visits should be still combined
+# So, to combine visits
+# We need to keep updating Departure date of each Arrival - i.e for current visit, if Arrival is 3rd Feb and Dep is 14feb
+  # If next Arrival Arrival is 5feb and 27 feb - current visit Dep should be updated from 14th feb to 27 feb..so on
+# Self join Arrival & Dep to itself uisng Patient MRN
+# Create 2 Vars
+  #1. If Arrival_y is between (Arrival_x & Departure_x+2Days) then Max(Dep_x,Dep_y) if not Dep_x
+  #2. If Arrival_x is between (
 
 #### MRN Sample Check code ####
 MRNSample_Visits1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/MRNSample_Visits1.csv",
