@@ -1,3 +1,32 @@
+UniqueID	Arrival	Departure
+1	1-Jan	5-Jan
+2	10-Jan	13-Jan
+3	3-Feb	8-Feb
+4	3-Feb	12-Feb
+5	3-Feb	4-Feb
+6	3-Feb	7-Feb
+7	3-Feb	6-Feb
+8	4-Feb	16-Feb
+9	4-Feb	6-Feb
+10	4-Feb	14-Feb
+11	7-Feb	13-Feb
+12	10-Feb	15-Feb
+13	18-Feb	19-Feb
+14	19-Feb	27-Feb
+15	20-Feb	23-Feb
+16	22-Feb	25-Feb
+17	23-Feb	26-Feb
+18	2-Mar	8-Mar
+19	3-Mar	16-Mar
+20	11-Mar	13-Mar
+21	15-Mar	15-Mar
+22	20-Mar	23-Mar
+23	26-Mar	30-Mar
+24	30-Mar	28-Mar
+25	30-Mar	31-Mar
+26	5-Apr	18-Apr
+
+
 #### MRN Sample Check code ####
 MRNSample_Visits1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/MRNSample_Visits1.csv",
                  parse_dates = ['Arrival','Departure']) # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f')
