@@ -4,15 +4,14 @@
 # So based on Arrival and Departure dates we should identify 'Actual Arrival' and 'Actual Departure' for each visit of a patient
 # We assume that if current departure and next arrival time difference is less than or equal to 48hrs, they belong to the same visit
 # Actual Arrival & Actual Departure dates for below eg are:
-#     Arrival  Departure  
-# 2018-01-01 2018-01-05                      
-# 2018-01-10 2018-01-13                      
-# 2018-02-03 2018-02-27                      
-# 2018-03-02 2018-03-16                   
-# 2018-03-20 2018-03-23                     
-# 2018-03-26 2018-03-31                     
-# 2018-04-05 2018-04-18  
-
+  #     Arrival  Departure  
+  # 2018-01-01 2018-01-05                      
+  # 2018-01-10 2018-01-13                      
+  # 2018-02-03 2018-02-27                      
+  # 2018-03-02 2018-03-16                   
+  # 2018-03-20 2018-03-23                     
+  # 2018-03-26 2018-03-31                     
+  # 2018-04-05 2018-04-18  
 
 # Data - One Patient's different visits
 UniqueID	Arrival	Departure
@@ -44,7 +43,11 @@ UniqueID	Arrival	Departure
 26	5-Apr	18-Apr
 
 ### Logic ###
-
+# Order the data by ascending order of Arrival & Departure
+# Now try to remove duplicate Arrivals - By Calculating max Departure for each Arrival
+# Now there are no duplicates in Arrival and data is sorted by Arrivals
+# Now check if there is atleast one observation where Next_Arrival is within (current Arrival & Current Departure+2Days) except last observation/visit
+# If there is s
 
 #### MRN Sample Check code ####
 MRNSample_Visits1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/MRNSample_Visits1.csv",
