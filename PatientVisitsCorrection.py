@@ -3,10 +3,18 @@
 # Some times even during the same visit of a patient they give different patient IDs.
 # So based on Arrival and Departure dates we should identify 'Actual Arrival' and 'Actual Departure' for each visit of a patient
 # We assume that if current departure and next arrival time difference is less than or equal to 48hrs, they belong to the same visit
-# For 
+# Actual Arrival & Actual Departure dates for below eg are:
+     Arrival  Departure  
+0 2018-01-01 2018-01-05                      
+1 2018-01-10 2018-01-13                      
+2 2018-02-03 2018-02-27                      
+3 2018-03-02 2018-03-16                   
+4 2018-03-20 2018-03-23                     
+5 2018-03-26 2018-03-31                     
+6 2018-04-05 2018-04-18  
 
 
-# Data
+# Data - One Patient's different visits
 UniqueID	Arrival	Departure
 1	1-Jan	5-Jan
 2	10-Jan	13-Jan
