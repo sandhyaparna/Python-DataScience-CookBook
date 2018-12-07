@@ -1,3 +1,6 @@
+# Problem Statement
+
+
 # Data
 UniqueID	Arrival	Departure
 1	1-Jan	5-Jan
@@ -26,6 +29,8 @@ UniqueID	Arrival	Departure
 24	30-Mar	28-Mar
 25	30-Mar	31-Mar
 26	5-Apr	18-Apr
+
+### Logic ###
 
 
 #### MRN Sample Check code ####
