@@ -56,11 +56,6 @@ from sklearn.metrics import *
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
 
-# Cost function 
-# Prior probability of negative and positive as π0 and π1, respectively
-# FP$ 
-
-
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
 y_pred_proba - Predicted Target variable as continuous prob value i.e. y_pred_proba[:,1]
