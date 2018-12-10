@@ -10,17 +10,20 @@ from sklearn.metrics import *
 # Sensitivity/Recall/Hit rate/True Positive rate = TP/Overall Actual Positives = (1-False Positive rate)
 # Specificity/Selectivity/True Negative rate = TN/Overall Actual Negatives
 # Precision or PPV = TP/Predicted Positive
-# Accuracy = (TP+TN)/Total cases
+# Accuracy/Concordance = (TP+TN)/Total cases
 # Misclassification rate = (FP+FN)/Total cases
 # F1 Score = Harmonic mean of Precision and sensitivity = (2.TP)/(2.TP+FP+FN) = 2.(Precision).(Recall)/(Precision+Recall)
 # F0.5 Score = Weighs precision(PPV) higher than recall
 # F2 SCore = Weighs precision(PPV) lower than recall
   # F_beta = [(1 + beta^2).(precision.recall)] / [(beta^2 .precision) + (recall)]
-
+#  
+  
 # ROC Curve - Summarizes performance of a classifier over all possible thresholds. (TP rate vs FP rate) or (Sensitivity vs 1-Specificity)
 # AUC is area under ROC curve - Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
+
+# Preciison-Recall vs Thresholds: As Decision threshold inc, Sensitivity/Recall dec, Specificity & Precision inc
 
 # https://www3.nd.edu/~busiforc/handouts/DataMining/Lift%20Charts.html
 # ---Observations are ordered based on decreasing order of Predicted probability and then deciles/groups are created
@@ -35,7 +38,6 @@ from sklearn.metrics import *
 # (X-axis - % of All cases) vs (Y-axis - % of True Cases ) - Line Graph is the cummulative % of true cases by each cumulative decile/group
 
 # Actual vs Predicted - Graph dec
-# 
 # (X-axis - % of All cases) vs (Y-axis - Count of True Cases) - Line graph with 2 lines-one for actual and one for predicted, lines are not cumulative true cases but they are count of true cases wrt to that decile population
 
 # Lift Chart - Graph dec
@@ -50,6 +52,7 @@ from sklearn.metrics import *
 # Here the observations are ordered in increasing order of Predicted probability to create deciles
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
+
 
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
