@@ -116,6 +116,7 @@ _ = plt.legend(loc="lower right")
 
 # ROC Curve and threshold 
 # Choose the TP rate you are interested in - from that point draw a vertical line - identify where the vertical line meets the threshold line(Corresponds to threshold value) 
+# http://abhay.harpale.net/blog/machine-learning/threshold-tuning-using-roc/
 fpr, tpr, thresholds = roc_curve(y,y_pred_proba)
 roc_auc = auc(fpr, tpr) # compute area under the curve
 # plot
