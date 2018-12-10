@@ -69,7 +69,7 @@ UniqueID	Arrival	Departure
 # So, we remove Duplicate Arrivals by Calculating min(Arrival) within each Departure
 # Now for each Departure we get min Arrival date
 # Repeat from step 4 till previous step untill there are no observations where Next_Arrival is within (current Arrival & Current Departure+2Days) except last observation/visit
-
+# Within each MRN - Next_Arrival_Dep_Gre2 should be 1 except the last observation
 
 #### MRN Sample Check code ####
 MRNSample_Visits1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/MRNSample_Visits1.csv",
@@ -99,7 +99,7 @@ MRNSample_Visits1['Next_Arrival_Dep_Gre2'] = np.where((MRNSample_Visits1['Arriva
 
 # Check if all values of Next_Arrival_Dep_Gre2 are 1except last obs within a MRN
 
-#### 1st Iteration,2nd,3
+#### Iterate the next steps
 
 # Create MRN 
 MRNSample_Visits1 = MRNSample_Visits1.assign(MRN=1)
@@ -157,6 +157,10 @@ MRNSample_Visits1['Departure'] =  pd.to_datetime(MRNSample_Visits1['Departure'],
 MRNSample_Visits1 = MRNSample_Visits1.sort_values(by=['Arrival'])
 MRNSample_Visits1 = MRNSample_Visits1 [['Arrival','Departure']]
 
-
 # Check if Next_Arrival is greater than Departure+2Days
 MRNSample_Visits1['Next_Arrival_Dep_Gre2'] = np.where((MRNSample_Visits1['Arrival'].shift(-1))>((MRNSample_Visits1['Departure']) + pd.Timedelta(days=2)),1,0)
+
+MRNSample_Visits1
+
+# Within a MRN if Next_Arrival_Dep_Gre2 is not 1 for all but the last obs, run the code from the line 'Iterate the next steps'
+
