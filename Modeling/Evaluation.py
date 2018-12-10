@@ -23,6 +23,9 @@ from sklearn.metrics import *
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
 
+# ROC curves are used when there are roughly equal number of observations for each class
+# Precision-Recall curves should be used there is a moderate to large class imbalance
+
 # Preciison-Recall vs Thresholds: As Decision threshold inc, Sensitivity/Recall dec, Specificity & Precision inc
 
 # https://www3.nd.edu/~busiforc/handouts/DataMining/Lift%20Charts.html
@@ -52,6 +55,10 @@ from sklearn.metrics import *
 # Here the observations are ordered in increasing order of Predicted probability to create deciles
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
+
+# Cost function 
+# Prior probability of negative and positive as π0 and π1, respectively
+# FP$ 
 
 
 y - Target Variable
@@ -90,9 +97,10 @@ roc_auc_score(y, y_Pred) # Doesnt work if y_Pred is Categorical (Works 'y_pred_p
 recall_score(y, y_Pred) # Doesnt work if y_Pred is Categorical
 f1_score((y, y_Pred) # Doesnt work if y_Pred is Categorical - F-score is computed with the harmonic mean of precision and recall
 
-# roc-curve is (sensitivity vs 1-Specificity) or (TruePositiveRate vs FalsePositiveRate)
+# roc-curve is (sensitivity vs 1-Specificity) or (TruePositiveRate vs FalsePositiveRate)      
 # FalsePositiveRate = 1-Specificity
 # ROC Curve plot - Visualization makes more sense when prediction are made using method='predict_proba'
+# https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html   
 import matplotlib.pyplot as plt
 %matplotlib inline
 fpr, tpr, thresholds = roc_curve(y,y_pred_proba)
@@ -106,6 +114,28 @@ _ = plt.xlim([-0.02, 1])
 _ = plt.ylim([0, 1.02])
 _ = plt.legend(loc="lower right")
 
+# ROC Curve and threshold          
+fpr, tpr, thresholds = roc_curve(y,y_pred_proba)
+roc_auc = auc(fpr, tpr) # compute area under the curve
+# plot
+plt.figure()
+plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % (roc_auc))
+plt.plot([0, 1], [0, 1], 'k--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver operating characteristic')
+plt.legend(loc="lower right")
+# create the axis of thresholds (scores)
+ax2 = plt.gca().twinx()
+ax2.plot(fpr, thresholds, markeredgecolor='r',linestyle='dashed', color='r')
+ax2.set_ylabel('Threshold',color='r')
+ax2.set_ylim([thresholds[-1],thresholds[0]])
+ax2.set_xlim([fpr[0],fpr[-1]]) 
+         
+![](https://raw.githubusercontent.com/sandhyaparna/Data-Science/master/Modeling/ROC.PNG) 
+         
 # roc curve using scikitplot
 import scikitplot
 from scikitplot.metrics import *
