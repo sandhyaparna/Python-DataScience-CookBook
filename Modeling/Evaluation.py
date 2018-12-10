@@ -114,7 +114,8 @@ _ = plt.xlim([-0.02, 1])
 _ = plt.ylim([0, 1.02])
 _ = plt.legend(loc="lower right")
 
-# ROC Curve and threshold          
+# ROC Curve and threshold 
+# Choose the TP rate you are interested in - from that point draw a vertical line - identify where the vertical line meets the threshold line(Corresponds to threshold value) 
 fpr, tpr, thresholds = roc_curve(y,y_pred_proba)
 roc_auc = auc(fpr, tpr) # compute area under the curve
 # plot
@@ -134,7 +135,6 @@ ax2.set_ylabel('Threshold',color='r')
 ax2.set_ylim([thresholds[-1],thresholds[0]])
 ax2.set_xlim([fpr[0],fpr[-1]]) 
          
-![](https://raw.githubusercontent.com/sandhyaparna/Data-Science/master/Modeling/ROC.PNG) 
          
 # roc curve using scikitplot
 import scikitplot
