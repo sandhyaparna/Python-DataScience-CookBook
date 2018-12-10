@@ -56,7 +56,7 @@ pip install .
 type - jupyter notebook in Anaconda prompt
 
 
-when installing python check mark - add python top Path var
+when installing python check mark - add python to Path var
 # To install python packages using cmd
 Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
 If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
