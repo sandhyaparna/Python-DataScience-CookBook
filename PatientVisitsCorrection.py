@@ -43,6 +43,7 @@ UniqueID	Arrival	Departure
 26	5-Apr	18-Apr
 
 ### Logic ###
+# Patients cohort includes any visit that has atleast one reading of Vitals or labs
 # Order the data by ascending order of Arrival & Departure
 # Now try to remove duplicate Arrivals - By Calculating max Departure for each Arrival
 # Now there are no duplicates in Arrival and data is sorted by Arrivals
