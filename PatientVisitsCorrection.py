@@ -2,6 +2,7 @@
 # A Patient is given different visit IDs every time they visit a hospital. 
 # Some times even during the same visit of a patient they give different patient IDs.
 # So based on Arrival and Departure dates we should identify 'Actual Arrival' and 'Actual Departure' for each visit of a patient
+# Departure should be after or at Arrival time 
 # We assume that if current departure and next arrival time difference is less than or equal to 48hrs, they belong to the same visit
 # Actual Arrival & Actual Departure dates for below eg are:
   #     Arrival  Departure  
