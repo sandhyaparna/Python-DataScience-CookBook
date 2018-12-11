@@ -6,6 +6,9 @@
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf
 
+# https://chrisalbon.com/#Python
+# http://file.allitebooks.com/20150823/Learning%20Data%20Mining%20with%20Python.pdf
+
 ################# Miscellaneous #################
 # Display more data in Terminal/Console
 pd.options.display.max_rows = 1500
