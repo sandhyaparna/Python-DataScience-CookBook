@@ -209,7 +209,8 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
 # countplot (Categoric or Numeric)- https://seaborn.pydata.org/generated/seaborn.countplot.html
 # Barplot (Categorical & Numeric - estimate of central tendency for a numeric variable) - https://seaborn.pydata.org/generated/seaborn.barplot.html
-Data is aggregated and then bar plots are applied - https://python-graph-gallery.com/barplot/
+Data is 
+regated and then bar plots are applied - https://python-graph-gallery.com/barplot/
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
 # Pie chart - 
 
@@ -402,6 +403,8 @@ f = {'Field1':'sum',
          'Field3':['min','mean','count'],
          'Field4':'count'}
 grouped = df.groupby('mykey').agg(f)
+# as a data frame
+grouped = pd.DataFrame(df.groupby('mykey').agg(f)).reset_index()
 
 # Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
 # All missing dates between the entire tables min and max dates are populated 
