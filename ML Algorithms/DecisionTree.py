@@ -1,3 +1,8 @@
+pd.options.display.max_rows = 1500
+pd.set_option('display.max_columns', None)  # or 1000
+pd.set_option('display.max_rows', None)  # or 1000
+pd.set_option('display.max_colwidth', -1)  # or 199
+
 # CANNOT handle MISSING values
 # CANNOT handle categorical data - Should be encoded using different encoding techniques
 # Target Variable can be BinaryLabel/MultiLabel and Numeric/Character
@@ -65,6 +70,11 @@ DecisionTreeModel.predict_log_proba(Test_X) #Predict on the test data - Gives ar
 DecisionTreeModel.score(Test_X,Test_y) # Mean Accuracy of Test Data
 
 # Decision Tree Viz- Works when Target Var is both Cat/Num
+# Imports related to Viz
+from sklearn.externals.six import StringIO  
+from IPython.display import Image  
+import pydotplus as pydotplus
+import graphviz
 # http://webgraphviz.com/
 # Use the code from the saved dot file in the above link - it gives viz
 data_feature_names = list(X)
