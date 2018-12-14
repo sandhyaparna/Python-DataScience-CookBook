@@ -1,5 +1,4 @@
-# https://www.ritchieng.com/machine-learning-decision-trees/
-# https://medium.com/all-things-ai/in-depth-parameter-tuning-for-gradient-boosting-3363992e9bae
+
 
 pd.options.display.max_rows = 1500
 pd.set_option('display.max_columns', None)  # or 1000
