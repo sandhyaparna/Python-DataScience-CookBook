@@ -3,6 +3,8 @@ pd.set_option('display.max_columns', None)  # or 1000
 pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', -1)  # or 199
 
+# https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+    
 # CANNOT handle MISSING values
 # CANNOT handle categorical data - Should be encoded using different encoding techniques
 # Target Variable can be BinaryLabel/MultiLabel and Numeric/Character
@@ -56,7 +58,8 @@ y_pred_proba = np.where(y_pred_proba>Confidence_value,1,0)
 DecisionTreeModel = DecisionTreeModel.fit(X,y)
 
 # Only after the DecisionTreeModel is fit using the data - attributes & Methods in the below link can be applied
-https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier
+#sklearn.tree.DecisionTreeClassifier
+https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
  
 DecisionTreeModel.feature_importances_ # Produces an imp value/factor for each variable in the input data
 DecisionTreeModel.tree_ #<sklearn.tree._tree.Tree at 0x1af4e920> ???
