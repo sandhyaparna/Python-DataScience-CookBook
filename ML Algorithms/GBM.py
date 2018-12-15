@@ -31,6 +31,8 @@ GBMModel = GBMModel.fit(X,y)
 # Plot of AUC vs Learning Rates (2 curves - 1 for Training and another for Test)
 # Every single time this below code is run, for same Train and Test datasets - the AUC values changes for a particular learning rate
 # Setting random_state to a fixed value avoids this problem 
+
+# Parameter tuning of learning rates and plotting AUC score of Train & Test at each learning rate
 learning_rates = [1, 0.5, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15, 0.1, 0.05, 0.025, 0.01]
 train_results = []
 test_results = []
