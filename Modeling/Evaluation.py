@@ -2,6 +2,9 @@ from sklearn.metrics import *
 
 # Different metrrics for classification, Reg, clustering etc - https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics
 
+# Stability of a model is very important i.e model should have similar performance metrics across both training and validation.
+# Comparision of both training & test performance helps us to identify overfit models
+
 # True Positives = Actual True & Predicted True
 # False Positives = Actual False & Predicted True - False Alarm/Type I error
 # False Negatives = Actual True & Predicted False - Missed Cases/Type II error
