@@ -405,6 +405,10 @@ f = {'Field1':'sum',
 grouped = df.groupby('mykey').agg(f)
 # as a data frame
 grouped = pd.DataFrame(df.groupby('mykey').agg(f)).reset_index()
+# Modify column names as column names will have 2 levels if many different types of aggregations are applied on a column
+grouped.columns = grouped.columns.map('_'.join)
+# 2 level of the column names are joined using '_'
+
 
 # Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
 # All missing dates between the entire tables min and max dates are populated 
