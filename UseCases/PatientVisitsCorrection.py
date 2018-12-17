@@ -165,3 +165,228 @@ MRNSample_Visits1
 
 # Within a MRN if Next_Arrival_Dep_Gre2 is not 1 for all but the last obs, run the code from the line 'Iterate the next steps'
 
+----------------
+####### Multiple MRNs ########
+# Load Data Frames
+import pickle
+VigiID = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/VigiID.pkl")
+AllVisits_DM = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/AllVisits_DM.pkl")
+Patient_Stay = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Stay.pkl")
+Freq_MRNs_1 = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Freq_MRNs_1.pkl")
+Freq_MRNs_2 = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Freq_MRNs_2.pkl")
+Patient_Visits_Freq1 = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits_Freq1.pkl")
+Patient_Visits = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits.pkl")
+Patient_Visits_Corr = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits_Corr.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+ = pd.read_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/.pkl")
+
+
+### Analysis is based on Admission and Discharge ###
+# Extract required columns
+Patient_Visits = Patient_Stay[['VigiClientID','UniqueID','AdmissionDateTime','DischargeDateTime']]
+
+# Join MRN to Patient_Visits
+Patient_Visits = Patient_Visits.merge(VigiID, how='inner', on=['VigiClientID','UniqueID'])
+
+# Check for cases where Admission is before Discharge
+AdmBfrDis = Patient_Visits[Patient_Visits.DischargeDateTime<Patient_Visits.AdmissionDateTime]
+# Delete cases where Discharge is before Admission
+Patient_Visits = Patient_Visits[Patient_Visits.DischargeDateTime>=Patient_Visits.AdmissionDateTime]
+
+# There are no cases where AdmissionDateTime is after DischargeDateTime - There are a very few cases where AdmissionDateTime=DischargeDateTime 
+
+# Freq of MRNs visiting once, twice etc
+Freq_MRNs = Patient_Visits[['VigiClientID','MRN']]
+Freq_MRNs = Freq_MRNs.assign(ID=1)
+Freq_MRNs = pd.DataFrame(Freq_MRNs.groupby(['VigiClientID','MRN']).size()).reset_index()
+Freq_MRNs = Freq_MRNs.rename(columns={0:"Freq"})
+# Patients/MRNs that have 1 visit only - their Visit IDs cannot be combined, so seperate them
+Freq_MRNs_1 = Freq_MRNs[Freq_MRNs.Freq==1]
+# Save as py dataframe
+Freq_MRNs_1.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Freq_MRNs_1.pkl")
+# Patients/MRNs that have atleast 2 visits
+Freq_MRNs_2 = Freq_MRNs[Freq_MRNs.Freq>=2]
+# Save as py dataframe
+Freq_MRNs_2.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Freq_MRNs_2.pkl")
+
+# Extract visits of Patients that visited just once
+Patient_Visits_Freq1 = Patient_Visits[Patient_Visits.MRN.isin(Freq_MRNs_1.MRN)]
+
+# Extract all visits of Patients that visited more than once
+Patient_Visits = Patient_Visits[Patient_Visits.MRN.isin(Freq_MRNs_2.MRN)]
+
+# save
+Patient_Visits_Freq1.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits_Freq1.pkl")
+Patient_Visits.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits.pkl")
+
+### Logic for combining visits ###
+# Extract & Sort data by  MRN,AdmissionDateTime,DischargeDateTime
+Patient_Visits_Corr = Patient_Visits[['MRN','AdmissionDateTime','DischargeDateTime']]
+Patient_Visits_Corr = Patient_Visits_Corr.sort_values(by=['MRN','AdmissionDateTime','DischargeDateTime'])
+
+# Remove duplicate AdmissionDateTimes - within each AdmissionDateTime pick max DischargeDateTime
+import pip
+from pandasql import *
+import pandasql as ps
+query = """select MRN,AdmissionDateTime,max(DischargeDateTime) as DischargeDateTime from Patient_Visits_Corr group by MRN,AdmissionDateTime"""
+Patient_Visits_Corr = ps.sqldf(query, locals())
+
+# Convert AdmissionDateTime,DischargeDateTime to datetime
+import datetime
+Patient_Visits_Corr['AdmissionDateTime'] =  pd.to_datetime(Patient_Visits_Corr['AdmissionDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+Patient_Visits_Corr['DischargeDateTime'] =  pd.to_datetime(Patient_Visits_Corr['DischargeDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+
+# Check if Next_AdmissionDateTime is greater than DischargeDateTime+2Days
+Patient_Visits_Corr['Next_Adm_Dis_Gre1'] = np.where((Patient_Visits_Corr.groupby(['MRN'])['AdmissionDateTime'].shift(-1))>((Patient_Visits_Corr['DischargeDateTime']) + pd.Timedelta(days=1)),1,0)
+
+# Check if all values of Next_Adm_Dis_Gre1 are 1 except last obs within a MRN
+# Calculate number of times each MRN occurs - Compare it with sum(Next_Adm_Dis_Gre1) - Difference should be exactly 1 for each MRN - otherwise run the code again
+Next_Adm_Dis_Gre1 = Patient_Visits_Corr.assign(ID=1)
+Next_Adm_Dis_Gre1 = pd.DataFrame(Next_Adm_Dis_Gre1.groupby('MRN').agg({'ID':'sum','Next_Adm_Dis_Gre1':'sum'})).reset_index()
+Next_Adm_Dis_Gre1['Diff'] = Next_Adm_Dis_Gre1['ID']-Next_Adm_Dis_Gre1['Next_Adm_Dis_Gre1']
+# filter to see if any MRN has Diff>1
+len(Next_Adm_Dis_Gre1[Next_Adm_Dis_Gre1.Diff>1])
+# If len(Next_Adm_Dis_Gre1[Next_Adm_Dis_Gre1.Diff>1])>0 run the below code
+
+
+#### 1st Iteration,2nd,3
+
+# Self join data using MRN
+Patient_Visits_Corr = Patient_Visits_Corr[['MRN','AdmissionDateTime','DischargeDateTime']].merge(Patient_Visits_Corr[['MRN','AdmissionDateTime','DischargeDateTime']], how='inner',on='MRN')
+
+# Since there are no duplicate AdmissionDateTimes
+# Delete obs where AdmissionDateTime_y<AdmissionDateTime_x and not AdmissionDateTime_y<=AdmissionDateTime_x because id last patientID is unique to itself - it goes away
+# Patient_Visits_Corr = Patient_Visits_Corr[(Patient_Visits_Corr.AdmissionDateTime_y>=Patient_Visits_Corr.AdmissionDateTime_x)]
+
+# Check if time difference between A_y & A_x is >=0 & A_y &D_x<=2days if yes then Ay=Ax and Dy is max(Dx,Dy)
+Patient_Visits_Corr['DischargeDateTime_New'] = np.where(( ((Patient_Visits_Corr['AdmissionDateTime_y'])<=((Patient_Visits_Corr['DischargeDateTime_x'])+(pd.Timedelta(days=1)))) & ((Patient_Visits_Corr.AdmissionDateTime_y)>=(Patient_Visits_Corr.AdmissionDateTime_x)) ), 
+                                                np.maximum(Patient_Visits_Corr['DischargeDateTime_x'],Patient_Visits_Corr['DischargeDateTime_y']),
+                                                Patient_Visits_Corr['DischargeDateTime_x'])
+
+Patient_Visits_Corr['DischargeDateTime_New1'] = np.where(( ((Patient_Visits_Corr['AdmissionDateTime_x'])<=((Patient_Visits_Corr['DischargeDateTime_y'])+(pd.Timedelta(days=1)))) & ((Patient_Visits_Corr.AdmissionDateTime_x)>=(Patient_Visits_Corr.AdmissionDateTime_y)) ), 
+                                                np.maximum(Patient_Visits_Corr['DischargeDateTime_x'],Patient_Visits_Corr['DischargeDateTime_y']),
+                                                Patient_Visits_Corr['DischargeDateTime_x'])
+
+# Extract AdmissionDateTime_x and DischargeDateTime_New
+Patient_Visits_Corra = Patient_Visits_Corr[['MRN','AdmissionDateTime_x','DischargeDateTime_New']].drop_duplicates()
+Patient_Visits_Corra = Patient_Visits_Corra.rename(columns={"DischargeDateTime_New":"DischargeDateTime"})
+
+Patient_Visits_Corrb = Patient_Visits_Corr[['MRN','AdmissionDateTime_x','DischargeDateTime_New1']].drop_duplicates()
+Patient_Visits_Corrb = Patient_Visits_Corrb.rename(columns={"DischargeDateTime_New1":"DischargeDateTime"})
+
+Patient_Visits_Corr = pd.concat([Patient_Visits_Corra,Patient_Visits_Corrb])
+
+# Remove duplicate AdmissionDateTimes - within each AdmissionDateTime pick max DischargeDateTime
+import pip
+from pandasql import *
+import pandasql as ps
+query = """select MRN,AdmissionDateTime_x as AdmissionDateTime,max(DischargeDateTime) as DischargeDateTime from Patient_Visits_Corr group by MRN,AdmissionDateTime_x"""
+Patient_Visits_Corr = ps.sqldf(query, locals())
+
+# Convert AdmissionDateTime,DischargeDateTime to datetime
+import datetime
+Patient_Visits_Corr['AdmissionDateTime'] =  pd.to_datetime(Patient_Visits_Corr['AdmissionDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+Patient_Visits_Corr['DischargeDateTime'] =  pd.to_datetime(Patient_Visits_Corr['DischargeDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+
+# Remove duplicate AdmissionDateTimes - within each DischargeDateTime pick min AdmissionDateTime
+import pip
+from pandasql import *
+import pandasql as ps
+query = """select MRN,DischargeDateTime,min(AdmissionDateTime) as AdmissionDateTime from Patient_Visits_Corr group by MRN,DischargeDateTime"""
+Patient_Visits_Corr = ps.sqldf(query, locals()) 
+
+# Convert AdmissionDateTime,DischargeDateTime to datetime
+import datetime
+Patient_Visits_Corr['AdmissionDateTime'] =  pd.to_datetime(Patient_Visits_Corr['AdmissionDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+Patient_Visits_Corr['DischargeDateTime'] =  pd.to_datetime(Patient_Visits_Corr['DischargeDateTime'], format='%Y-%m-%d %H:%M:%S.%f')
+
+# Sort data by AdmissionDateTime
+Patient_Visits_Corr = Patient_Visits_Corr.sort_values(by=['MRN','AdmissionDateTime'])
+
+# Check if Next_AdmissionDateTime is greater than DischargeDateTime+1Days
+Patient_Visits_Corr['Next_Adm_Dis_Gre1'] = np.where((Patient_Visits_Corr.groupby(['MRN'])['AdmissionDateTime'].shift(-1))>((Patient_Visits_Corr['DischargeDateTime']) + pd.Timedelta(days=1)),1,0)
+
+# Check if all values of Next_Adm_Dis_Gre1 are 1 except last obs within a MRN
+# Calculate number of times each MRN occurs - Compare it with sum(Next_Adm_Dis_Gre1) - Difference should be exactly 1 for each MRN - otherwise run the code again
+Next_Adm_Dis_Gre1 = Patient_Visits_Corr.assign(ID=1)
+Next_Adm_Dis_Gre1 = pd.DataFrame(Next_Adm_Dis_Gre1.groupby('MRN').agg({'ID':'sum','Next_Adm_Dis_Gre1':'sum'})).reset_index()
+Next_Adm_Dis_Gre1['Diff'] = Next_Adm_Dis_Gre1['ID']-Next_Adm_Dis_Gre1['Next_Adm_Dis_Gre1']
+# filter to see if any MRN has Diff>1
+Next_Adm_Dis_Gre1 = Next_Adm_Dis_Gre1[Next_Adm_Dis_Gre1.Diff>1]
+len(Next_Adm_Dis_Gre1[Next_Adm_Dis_Gre1.Diff>1])
+# If len(Next_Adm_Dis_Gre1[Next_Adm_Dis_Gre1.Diff>1])>0 run the iteration part
+       
+####### Iteration part over ########
+Patient_Visits_Corr = Patient_Visits_Corr[['MRN','AdmissionDateTime','DischargeDateTime']]
+# save as py data frame
+Patient_Visits_Corr.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Visits_Corr.pkl")
+
+# Interesting cases
+Iter1 = Patient_Visits[Patient_Visits.MRN.isin(pd.unique(Next_Adm_Dis_Gre1['MRN']))]
+Iter1.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter1.csv',index=False)
+
+Iter2 = Patient_Visits[Patient_Visits.MRN.isin(pd.unique(Next_Adm_Dis_Gre1['MRN']))]
+Iter2.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter2.csv',index=False)
+
+Iter3 = Patient_Visits[Patient_Visits.MRN.isin(pd.unique(Next_Adm_Dis_Gre1['MRN']))]
+Iter3.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter3.csv',index=False)
+
+Iter4 = Patient_Visits[Patient_Visits.MRN.isin(pd.unique(Next_Adm_Dis_Gre1['MRN']))]
+Iter4.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter4.csv',index=False)
+
+Iter5 = Patient_Visits[Patient_Visits.MRN.isin(pd.unique(Next_Adm_Dis_Gre1['MRN']))]
+Iter5.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter5.csv',index=False)
+
+
+##### Join back the correct Admission discharges to MRN-UniqueID ######
+# Corresponds to patients that have just 1 visitID
+Patient_Visits_Freq1
+
+# Corresponds to patients that have atleast 2 Visit IDs
+Patient_Visits
+
+# Join above 2 datasets
+Patient_Stay_Corr = pd.concat([Patient_Visits,Patient_Visits_Freq1])
+
+# Rename columns of Patient_Visits_Corr 
+Patient_Visits_Freq2_Corr = Patient_Visits_Corr.rename(columns={"AdmissionDateTime":"New_AdmissionDateTime","DischargeDateTime":"New_DischargeDateTime"})
+Patient_Visits_Freq2_Corr = Patient_Visits_Freq2_Corr.assign(AdmissionDateTime=Patient_Visits_Freq2_Corr.New_AdmissionDateTime)
+
+# Extract only required columns from Patient_Visits_Freq1 (There is no correction required as these patients have only 1 visit)
+Patient_Visits_Freq1_Corr = Patient_Visits_Freq1[['MRN','AdmissionDateTime','DischargeDateTime']]
+Patient_Visits_Freq1_Corr = Patient_Visits_Freq1_Corr.rename(columns={"AdmissionDateTime":"New_AdmissionDateTime","DischargeDateTime":"New_DischargeDateTime"})
+Patient_Visits_Freq1_Corr = Patient_Visits_Freq1_Corr.assign(AdmissionDateTime=Patient_Visits_Freq1_Corr.New_AdmissionDateTime)
+
+# Join above 2 data frames
+Patient_Visits_All_Corr = pd.concat([Patient_Visits_Freq2_Corr,Patient_Visits_Freq1_Corr])
+
+# Join Patient_Stay_Corr & Patient_Stay_Corr based on (MRN and AdmissionDateTime)
+Patient_Stay_Corr = Patient_Stay_Corr.merge(Patient_Visits_All_Corr, how='left', on=['MRN','AdmissionDateTime'])
+# Front fill Nas
+Patient_Stay_Corr = Patient_Stay_Corr.fillna(method='pad')
+
+# save as py data frame - Update single visits data
+Patient_Stay_Corr.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Stay_Corr.pkl")
+
+
+#### Extract specific MRNs ####
+Iter_1 =  pd.read_csv("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Iter1.csv",
+                 dtype = {'MRN': str}) # Change data type of a variable) # To import variable in datetime format default format is '%d%b%Y:%H:%M:%S.%f'
+
+Patient_Stay_Corr_Sample = Patient_Stay_Corr[Patient_Stay_Corr.MRN.isin(pd.unique(Iter_1['MRN']))]
+Patient_Stay_Corr_Sample.to_pickle("C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Stay_Corr_Sample.pkl")
+Patient_Stay_Corr_Sample.to_csv('C:/Users/spashikanti/Desktop/Readmissions - 2018/Py DataFrames/Patient_Stay_Corr_Sample.csv',index=False)
+
+# Admission Type
+Admission_Type = AllVisits_DM[[ 'UniqueID','AdmissionType','PlannedAdmission']]
+Patient_Stay_Corr_Sample = Patient_Stay_Corr_Sample.merge(Admission_Type, how='left', on=['UniqueID'])
+
+
+
+
+
+
