@@ -1,5 +1,6 @@
 # https://ai.googleblog.com/2015/08/the-reusable-holdout-preserving.html
 
+
 # Thresholdout
 from numpy import *
 def Thresholdout(sample, holdout, q):
