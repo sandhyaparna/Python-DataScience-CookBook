@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=5)  
 classifier.fit(X_train, y_train) 
 
-# To find optimal value of k
+# To find optimal value of k - Where Test error is minimum
 neighbors = list(range(1,50))
 # empty list that will hold cv scores
 cv_scores = []
