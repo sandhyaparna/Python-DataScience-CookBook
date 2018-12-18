@@ -22,13 +22,20 @@ neighbors = list(range(1,50))
 # empty list that will hold cv scores
 cv_scores = []
 # perform 10-fold cross validation
-for k in myList:
+for k in neighbors:
     knn = KNeighborsClassifier(n_neighbors=k)
     scores = cross_val_score(knn, X_train, y_train, cv=10, scoring='accuracy')
     cv_scores.append(scores.mean())
 # changing to misclassification error
 MSE = [1 - x for x in cv_scores]
-
+# Determining best k - Extract k where Misclassification cost is least
+optimal_k = neighbors[MSE.index(min(MSE))]
+print "The optimal number of neighbors is %d" % optimal_k
+# plot misclassification error vs k
+plt.plot(neighbors, MSE)
+plt.xlabel('Number of Neighbors K')  
+plt.ylabel('Misclassification Error')
+plt.show()  
 
 
 
