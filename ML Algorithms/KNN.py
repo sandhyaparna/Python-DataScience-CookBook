@@ -1,5 +1,6 @@
 # https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/
 # https://kevinzakka.github.io/2016/07/13/k-nearest-neighbor/
+# https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/
 
 # Feature scaling
 from sklearn.preprocessing import StandardScaler  
