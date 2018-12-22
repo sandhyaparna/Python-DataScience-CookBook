@@ -1,6 +1,9 @@
 ### CheatSheets ###
 # https://www.analyticsvidhya.com/blog/2015/06/infographic-cheat-sheet-data-exploration-python/
 # http://pandas.pydata.org/Pandas_Cheat_Sheet.pdf
+# https://sgfin.github.io/files/cheatsheets/Python_cheatsheet_scikit.pdf
+# https://sgfin.github.io/files/cheatsheets/Python_Keras_Cheat_Sheet.pdf
+# https://sgfin.github.io/files/cheatsheets/Python_cheatsheet_numpy.pdf
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PandasPythonForDataScience.pdf
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PythonForDataScience.pdf
 # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf
