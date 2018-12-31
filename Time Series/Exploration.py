@@ -1,3 +1,7 @@
+### Links
+# https://medium.com/@kangeugine/time-series-check-stationarity-1bee9085da05
+
+
 ### Check Stationarity
 # Split data into two parts and check if the mean and variance are very different from the first & second half of the data or not
 X = series.values
