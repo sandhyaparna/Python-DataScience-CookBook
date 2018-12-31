@@ -1,6 +1,8 @@
 ### Links
 # https://medium.com/@kangeugine/time-series-check-stationarity-1bee9085da05
 
+### Plot of Data on Y-axis and Time variable on X-axis
+
 
 ### Check Stationarity
 # Split data into two parts and check if the mean and variance are very different from the first & second half of the data or not
