@@ -19,5 +19,5 @@ def bearing_array(lat1, lng1, lat2, lng2):
     lat1, lng1, lat2, lng2 = map(np.radians, (lat1, lng1, lat2, lng2))
     y = np.sin(lng_delta_rad) * np.cos(lat2)
     x = np.cos(lat1) * np.sin(lat2) - np.sin(lat1) * np.cos(lat2) * np.cos(lng_delta_rad)
-    return np.degrees(np.arctan2(y, x))\\\\]
+    return np.degrees(np.arctan2(y, x))
     
