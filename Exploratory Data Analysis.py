@@ -505,7 +505,10 @@ p[1,2] #Gives 3rd column value in 2nd row i.e 8
 # Create list/array of consecutive numbers between x & y
 list(range(x,y))                       
                        
-
+# Standard Deviation within each group
+                       
+                       
+                       
                        
                        
                        
