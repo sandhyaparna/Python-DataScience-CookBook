@@ -30,6 +30,17 @@ Df['Var_Bin'] = pd.qcut(Df['Num_Var'],q)
 # https://github.com/paulbrodersen/entropy_based_binning
 
 
+############ Box-cox Transformation ############
+import spstats
+Num_Var = np.array(Df['Num_Var'])
+Num_Var_clean = Num_Var[~np.isnan(Num_Var)]
+l, opt_lambda = spstats.boxcox(Num_Var_clean)
+print('Optimal lambda value:', opt_lambda)
+# Transformation as a new var
+l, opt_lambda = spstats.boxcox(Df['Num_Var'])
+Df['Num_Var_boxcox_lambda_opt'] = spstats.boxcox(Df['Num_Var'], lmbda=opt_lambda)
+
+
 
 
 
