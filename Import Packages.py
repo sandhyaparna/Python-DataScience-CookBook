@@ -36,6 +36,8 @@ pip install --upgrade h5py
 pip install tensorflow==1.8.0
 pip install keras==2.2.0
 
+# Install using conda wordcloud website
+conda install -c https://conda.anaconda.org/conda-forge wordcloud
 
 # Pip update in Anaconda prompt
 If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
