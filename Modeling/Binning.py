@@ -8,6 +8,8 @@
 # k is number of bins to be created
 # Width of each bin = (Max-Min)/k
 Df['Var_Bin'] = pd.cut(Df['Num_Var'],k) 
+# W is width
+Df['Var_Bin'] = np.array(np.floor(np.array(Df['Num_Var']) / W))
 
 ### User Defined Binning ###
 # DONT use square brackets while creating bins-even if (), it is actually equivalent to (]
