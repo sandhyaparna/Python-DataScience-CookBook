@@ -8,13 +8,15 @@
 # k is number of bins to be created
 # Width of each bin = (Max-Min)/k
 Df['Var_Bin'] = pd.cut(Df['Num_Var'],k) 
-# W is width
+# W is width & Var_Bin is a numeric column with bin number, starts from 0. for eg: Age 0-10 for Width=10 will have bin value 0 
 Df['Var_Bin'] = np.array(np.floor(np.array(Df['Num_Var']) / W))
 
 ### User Defined Binning ###
 # DONT use square brackets while creating bins-even if (), it is actually equivalent to (]
 bins = pd.IntervalIndex.from_tuples([(10,20), (20, 30), (30,40), (40, 50),(50,60), (60, 70),(70,80), (80, 90)])
 Df['Var_Bin'] = pd.cut(Df['Num_Var'], bins)
+
+
 
 ### Equal Freq binning
 # https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.qcut.html
