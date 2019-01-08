@@ -36,7 +36,9 @@ pip install --upgrade h5py
 pip install tensorflow==1.8.0
 pip install keras==2.2.0
 
+# Install packages from whl 
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2
+
 # Install using conda wordcloud website
 Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
 conda install -c https://conda.anaconda.org/conda-forge wordcloud
