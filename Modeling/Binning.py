@@ -19,8 +19,6 @@ Df['Var_Bin'] = pd.cut(Df['Num_Var'], bins)
 Df['Var_Bin'] = pd.cut(np.array(Df['Num_Var']), bins)
 Df['Var_BinLabel'] = pd.cut(np.array(Df['Num_Var']), bins=bins, labels=bins_label)
 
-
-
 ### Equal Freq binning
 # https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.qcut.html
 # q is number of quantiles or array of quantiles
