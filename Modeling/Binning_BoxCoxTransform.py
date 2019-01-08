@@ -41,6 +41,8 @@ l, opt_lambda = spstats.boxcox(Df['Num_Var'])
 Df['Num_Var_boxcox_lambda_opt'] = spstats.boxcox(Df['Num_Var'], lmbda=opt_lambda)
 
 
+############ Log Transformation ############
+Df['Num_Var_log'] = np.log((1+ Df['Num_Var']))
 
 
 
