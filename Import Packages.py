@@ -38,6 +38,7 @@ pip install keras==2.2.0
 
 # Install packages from whl 
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2
+https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
 
 # Install using conda wordcloud website
 Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
