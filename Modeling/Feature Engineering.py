@@ -46,6 +46,7 @@ Df['Num_Var_boxcox_lambda_opt'] = spstats.boxcox(Df['Num_Var'], lmbda=opt_lambda
 Df['Num_Var_log'] = np.log((1+ Df['Num_Var']))
 
 
+############ Distance calculations on Globe ############
 # Haversine Distance Between the Two Lat/Lons:
 def haversine_array(lat1, lng1, lat2, lng2):
     lat1, lng1, lat2, lng2 = map(np.radians, (lat1, lng1, lat2, lng2))
