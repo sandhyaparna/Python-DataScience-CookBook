@@ -40,6 +40,9 @@ pip install keras==2.2.0
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
 
+# Instruction to install Tensorflow  
+  
+  
 # Install using conda wordcloud website
 Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
 conda install -c https://conda.anaconda.org/conda-forge wordcloud
