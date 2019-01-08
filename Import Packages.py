@@ -37,6 +37,7 @@ pip install tensorflow==1.8.0
 pip install keras==2.2.0
 
 # Install using conda wordcloud website
+Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
 conda install -c https://conda.anaconda.org/conda-forge wordcloud
 
 # Pip update in Anaconda prompt
