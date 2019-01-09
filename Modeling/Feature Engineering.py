@@ -47,6 +47,7 @@ Df['Num_Var_log'] = np.log((1+ Df['Num_Var']))
 
 
 ############ Distance calculations on Globe ############
+# geopy module in Python, Openstreetmap
 # Haversine Distance Between the Two Lat/Lons:
 def haversine_array(lat1, lng1, lat2, lng2):
     lat1, lng1, lat2, lng2 = map(np.radians, (lat1, lng1, lat2, lng2))
