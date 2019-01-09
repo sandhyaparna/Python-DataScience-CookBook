@@ -70,12 +70,44 @@ def bearing_array(lat1, lng1, lat2, lng2):
     y = np.sin(lng_delta_rad) * np.cos(lat2)
     x = np.cos(lat1) * np.sin(lat2) - np.sin(lat1) * np.cos(lat2) * np.cos(lng_delta_rad)
     return np.degrees(np.arctan2(y, x))
-#
+# Center Latitude and Longitude between Pickup and Dropoff:
+train.loc[:, 'center_latitude'] = (train['pickup_latitude'].values + train['dropoff_latitude'].values) / 2
+train.loc[:, 'center_longitude'] = (train['pickup_longitude'].values + train['dropoff_longitude'].values) / 2
 
 
+############ Web Data ############
+# https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-6-feature-engineering-and-feature-selection-8b94f870706a
+# 
+n : ua = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/ 
+...: 56.0.2924.76 Safari/537.36'
 
+In : import user_agents
 
+In : ua = user_agents.parse(ua)
 
+In : ua.is_bot 
+Out: False
+
+In : ua.is_mobile 
+Out: False
+
+In : ua.is_pc 
+Out: True
+
+In : ua.os.family 
+Out: 'Ubuntu'
+
+In : ua.os.version 
+Out: ()
+
+In : ua.browser.family 
+Out: 'Chromium'
+
+In : ua.os.version 
+Out: ()
+
+In : ua.browser.version 
+Out: (56, 0, 2924)
 
     
     
