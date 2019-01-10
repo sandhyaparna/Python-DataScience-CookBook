@@ -1,5 +1,5 @@
 # https://ai.googleblog.com/2015/08/the-reusable-holdout-preserving.html
-
+# https://github.com/bmcmenamin/thresholdOut-explorations/blob/master/Threshold%20out%20demos%20--%20tuning%20parameters%20for%20linear%20regression.ipynb
 
 # Thresholdout
 from numpy import *
