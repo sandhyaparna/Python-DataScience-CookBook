@@ -286,6 +286,9 @@ Df = DF.assign(NewVar=newSeries)
 # Assign IDs to each row - n rows
 Df = DF.assign(ID=pd.Series(range(1,n)))
 
+# Create a copy of a dataframe
+NewDf = Df.copy()
+
 ### Missing data representation - np.NAN, pd.NaT
 https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 Missing data of objects - None or NaN (NaN and None are used interchangebly)
