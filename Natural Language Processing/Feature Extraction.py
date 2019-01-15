@@ -13,7 +13,8 @@ TextDf_CountVectors_Freq = pd.DataFrame({'Word':vectorizer.get_feature_names(), 
 TextDf_CountVectors = pd.DataFrame(Y.A, columns=vectorizer.get_feature_names())
 
 ### N-Grams Vectorization
-# ngram_range : tuple (min_n, max_n) - The lower and upper boundary of the range of n-values for different n-grams to be extracted. All # values of n such that min_n <= n <= max_n will be used
+# ngram_range : tuple (min_n, max_n) - The lower and upper boundary of the range of n-values for different n-grams to be extracted. 
+# All # values of n such that min_n <= n <= max_n will be used
 NGrams_vectorizer = CountVectorizer(ngram_range=(1,2))
 X = NGrams_vectorizer.fit_transform(Df.Text_Var.values)
 TextDf_NGramsVectors = pd.DataFrame(X.A, columns=NGrams_vectorizer.get_feature_names())
