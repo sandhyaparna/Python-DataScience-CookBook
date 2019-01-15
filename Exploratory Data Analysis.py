@@ -290,6 +290,8 @@ Df = DF.assign(ID=pd.Series(range(1,n)))
 NewDf = Df.copy()
 
 ### Missing data representation - np.NAN, pd.NaT
+# Infinity inf is represented as np.inf
+# -Infinity -inf is represented as -np.inf
 https://pandas.pydata.org/pandas-docs/stable/missing_data.html
 Missing data of objects - None or NaN (NaN and None are used interchangebly)
 Missing data of Numeric data - Alwayz NaN
