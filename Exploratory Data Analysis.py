@@ -298,6 +298,8 @@ Missing data of Numeric data - Alwayz NaN
 Missing data of DateTime data - Alwayz NaT
 # All observations within a dataframe where any of the column values within the dataframe is missing
 Df[Df.isnull().any(axis=1)]
+# Number of missing values per row/observaton
+df.isnull().sum(axis=1)
 # Number of missing values in each column of a dataframe
 Df.info()
 # Number of missing values of a single column
