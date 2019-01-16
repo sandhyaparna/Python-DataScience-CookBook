@@ -52,6 +52,16 @@ Df["Text_Var5"] = Df["Text_Var"].str.findall(r'#.*?(?=\s|$)')
 # Remove numbers from Text data - Should not be Tokenized
 Df["Text_Var5"] = Df["Text_Var"].str.replace('\d+', '')
 
+# Remove Hashtag and not the word associated with it, a few other expressions
+def standardize_text(df, text_field):
+    df[text_field] = df[text_field].str.replace(r"http\S+", "")
+    df[text_field] = df[text_field].str.replace(r"http", "")
+    df[text_field] = df[text_field].str.replace(r"@\S+", "")
+    df[text_field] = df[text_field].str.replace(r"[^A-Za-z0-9(),!?@\'\`\"\_\n]", " ")
+    df[text_field] = df[text_field].str.replace(r"@", "at")
+    df[text_field] = df[text_field].str.lower()
+return df
+
 # Remove Hashtag words from text
 Df["Text_Var"] = Df["Text_Var"].str.replace('#[\w]*', '')
 
