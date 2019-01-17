@@ -209,7 +209,13 @@ Df['hastags'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.st
 ### Number of numerics
 Df['numerics'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.isdigit()]))
 
-### Continuous Bag-of-Words
+### Continuous Bag-of-Words (CBOW)
+
+
+
+### Doc2vec implementation 
+# Step by step implementation
+https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2afbbfbad5
 
 
 
