@@ -209,8 +209,13 @@ Df['hastags'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.st
 ### Number of numerics
 Df['numerics'] = Df['Text_Var'].apply(lambda x: len([x for x in x.split() if x.isdigit()]))
 
+
+### Step by step implementation of CBOW, Skip-gram & word2vec
+https://towardsdatascience.com/understanding-feature-engineering-part-4-deep-learning-methods-for-text-data-96c44370bbfa
+
 ### Continuous Bag-of-Words (CBOW)
 
+### Word2vec Imple
 
 
 ### Doc2vec implementation 
