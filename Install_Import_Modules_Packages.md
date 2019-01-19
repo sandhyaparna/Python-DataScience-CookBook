@@ -4,9 +4,9 @@ https://www.youtube.com/watch?v=A7E18apPQJs <br/>
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/ <br/>
 
 #### Install Anaconda 64 bit 
-After installation, check if anaconda prompt and anaconda navigator are installed. <br/>
-In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
-Install git - Type bash, git commands to see if they are working <br/>
+* After installation, check if anaconda prompt and anaconda navigator are installed. <br/>
+* In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
+* Install git - Type bash, git commands to see if they are working <br/>
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/ <br/>
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
