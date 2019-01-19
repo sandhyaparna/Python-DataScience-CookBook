@@ -9,6 +9,8 @@ Install git - Type bash, git commands to see if they are working
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
+Run Anaconda navigator as Administrator  
+  
 Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
 conda update pip #In Anaconda Prompt
 check pip version - pip --version #In Anaconda Prompt
