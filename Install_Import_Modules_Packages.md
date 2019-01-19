@@ -10,7 +10,7 @@ https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/ <br/>
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
-### Install Anaconda 64 bit, git
+#### Install Anaconda 64 bit, git
 * After installation, check if anaconda prompt and anaconda navigator are installed <br/>
 * In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
 * Run Anaconda navigator as Administrator if error related to user appears <br/>
@@ -23,32 +23,22 @@ Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda P
 conda update pip #In Anaconda Prompt
 check pip version - pip --version #In Anaconda Prompt
 
-
 Install python packages from github
 In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name
 and then again type command - pip install package-name
 
-To install torch, use command in this website - https://pytorch.org/
-To install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
-use - pip install --upgrade setuptools
-
-conda install scipy
-pip install --upgrade sklearn
-pip install --upgrade pandas
-pip install --upgrade pandas-datareader
-pip install --upgrade matplotlib
-pip install --upgrade pillow
-pip install --upgrade requests
-pip install --upgrade h5py
-pip install tensorflow==1.8.0
-pip install keras==2.2.0
-
-# Install packages from whl 
+# Install Specific Packages
+Install torch, use command in this website - https://pytorch.org/
+Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
+pip install --upgrade setuptools
+Install Tensorflow: python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl
+https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu
+Install packages from whl: Save file from below link the cd directory of Anaconda Prompt 
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
 
-# Instruction to install Tensorflow  
-  https://github.com/bhavsarpratik/install_Tensorflow_Windows
+
+
   
 # Install using conda wordcloud website
 Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
@@ -68,6 +58,18 @@ http://docs.anaconda.com/anaconda/user-guide/getting-started/
 git clone https://github.com/cbellei/word2veclite.git
 cd word2veclite
 pip install .
+ 
+conda install scipy
+pip install --upgrade sklearn
+pip install --upgrade pandas
+pip install --upgrade pandas-datareader
+pip install --upgrade matplotlib
+pip install --upgrade pillow
+pip install --upgrade requests
+pip install --upgrade h5py
+pip install tensorflow==1.8.0
+pip install keras==2.2.0
+
 
 # To Open jupyter notebook
 type - jupyter notebook in Anaconda prompt
