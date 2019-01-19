@@ -1,9 +1,9 @@
-# Install Python on Windows
+#### Install Python on Windows
 https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10
 https://www.youtube.com/watch?v=A7E18apPQJs
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/
 
-Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed.  #In Anaconda Prompt
+#### Install Anaconda - 64 bit - After installation, check if anaconda prompt and anaconda navigator are installed.  #In Anaconda Prompt
 In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not #In Anaconda Prompt
 Install git - Type bash, git commands to see if they are working
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/
