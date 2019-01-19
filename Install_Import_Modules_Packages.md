@@ -41,17 +41,14 @@ To Open jupyter notebook
 type - jupyter notebook in Anaconda prompt
 
 #### Install Specific Packages - Anaconda website, whl, github
- <br/>
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
 conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
 conda install -c anaconda tensorflow #tensorflow package <br/>
 https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda <br/>
- <br/>
 * Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt  <br/>
 pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
- <br/>
 * Install from github <br/>
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
@@ -63,7 +60,6 @@ and then again type command - pip install package-name <br/>
 Type the command GitBash 'pip install git+https://github.com/cbellei/word2veclite.git'
 Type in cmd 'pip install word2veclite'
 Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
- <br/>
 * Install torch, use command in this website - https://pytorch.org/ <br/>
  <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
