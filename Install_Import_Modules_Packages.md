@@ -10,20 +10,19 @@ https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/ <br/>
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
-#### Install Anaconda 64 bit, git
+### Install Anaconda 64 bit, git
 * After installation, check if anaconda prompt and anaconda navigator are installed <br/>
 * In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
 * Run Anaconda navigator as Administrator if error related to user appears <br/>
- 
-
- 
-Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
-conda update pip #In Anaconda Prompt
-check pip version - pip --version #In Anaconda Prompt
 
 Update Anaconda - "conda update conda" , "conda update --all"
 Install packages - conda install package-name #In Anaconda Prompt
 Update packages - conda update package-name #In Anaconda Prompt
+
+Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
+conda update pip #In Anaconda Prompt
+check pip version - pip --version #In Anaconda Prompt
+
 
 Install python packages from github
 In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name
