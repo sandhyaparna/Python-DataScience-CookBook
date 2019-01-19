@@ -11,6 +11,7 @@ Download Visual studio installer - https://visualstudio.microsoft.com/downloads/
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
 #### Install Anaconda 64 bit, git
+http://docs.anaconda.com/anaconda/user-guide/getting-started/ <br/>
 * After installation, check if anaconda prompt and anaconda navigator are installed <br/>
 * In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
 * Run Anaconda navigator as Administrator if error related to user appears <br/>
@@ -33,32 +34,26 @@ Install python packages from github <br/>
 In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
 and then again type command - pip install package-name <br/>
 
-#### Install Specific Packages
-* Install using conda wordcloud website https://conda.anaconda.org/conda-forge look for package in below website and see the syntax associated with the specific package u r looking for <br/>
+#### Install Specific Packages - Anaconda website, whl, github
+* Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
 conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
 conda install -c anaconda tensorflow #tensorflow package <br/>
 https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda <br/>
+* Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt  <br/>
+pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
+https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
+* Install from github <br/>
+git clone https://github.com/cbellei/word2veclite.git <br/> <br/>
+cd word2veclite <br/>
+pip install .  <br/>
 * Install torch, use command in this website - https://pytorch.org/ <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 pip install --upgrade setuptools <br/>
 * Install Tensorflow:  <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
-* Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt  <br/>
-pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
-https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
 
-
-# Pip update in Anaconda prompt
-
-# Python on Anaconda prompt
-http://docs.anaconda.com/anaconda/user-guide/getting-started/
-
-# In cmd
-git clone https://github.com/cbellei/word2veclite.git
-cd word2veclite
-pip install .
  
 conda install scipy
 pip install --upgrade sklearn
