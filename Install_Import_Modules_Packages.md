@@ -31,19 +31,18 @@ and then again type command - pip install package-name
 Install torch, use command in this website - https://pytorch.org/
 Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
 pip install --upgrade setuptools
-Install Tensorflow: python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl
+Install Tensorflow: 
+python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu
-Install packages from whl: Save file from below link the cd directory of Anaconda Prompt 
+Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt 
 pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2 
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
-
-
-
-  
-# Install using conda wordcloud website
-Install Packages -  https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda  
+Install using conda wordcloud website: look for package in below website and see the syntax associated with the specific package u r looking for
+https://conda.anaconda.org/conda-forge 
 conda install -c https://conda.anaconda.org/conda-forge wordcloud
+https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda
+    
 
 # Pip update in Anaconda prompt
 If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
