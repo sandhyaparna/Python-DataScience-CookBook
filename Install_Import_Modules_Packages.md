@@ -66,7 +66,9 @@ pip install --upgrade setuptools <br/>
 * Install Tensorflow:  <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
- <br/>
+* A few ways to solve errors
+https://www.tensorflow.org/install/errors  <br/>
+<br/>
 conda install scipy <br/>
 pip install --upgrade sklearn <br/>
 pip install --upgrade pandas <br/>
