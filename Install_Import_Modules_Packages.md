@@ -86,7 +86,6 @@ Use shortform direct in import command. for eg- scikit-optimize is used in pip i
  <br/>
  
 #### Install in Rodeo - New Version of pip ###
- <br/>
 * Install/Upgrade Packages
 import pip <br/>
 import subprocess <br/>
@@ -94,10 +93,8 @@ subprocess.check_call(["python", '-m', 'pip', 'install', 'scipy']) # install pkg
 subprocess.check_call(["python", '-m', 'pip', 'install',"--upgrade", 'scipy']) # upgrade pkg - pkg name should all be small letter NO CAPITALS <br/>
 from scipy import * <br/>
 import scipy as sy <br/>
- <br/>
 * Check Version of pip installed <br/>
 pip.__version__ <br/>
- <br/>
 * List of all installed packages <br/>
 import subprocess <br/>
 import sys <br/>
@@ -106,7 +103,6 @@ installed_packages = [r.decode().split('==')[0] for r in reqs.split()] <br/>
 print(installed_packages) <br/>
 
 #### Install in Rodeo - old Version of pip ###
- <br/>
 * Upgrade pip <br/>
 pip.main(['install', '--upgrade', 'pip']) <br/>
 * Install and Upgrade Packages in Rodeo <br/>
@@ -123,7 +119,6 @@ from sklearn import * <br/>
 import sklearn as sklearn <br/>
 
 #### Packages for Data Science
- <br/>
 * General
 import numpy as np <br/>
 import pandas as pd <br/>
