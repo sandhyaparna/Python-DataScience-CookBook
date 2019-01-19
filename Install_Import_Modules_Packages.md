@@ -3,12 +3,12 @@ when installing python check mark - add python to Path var
 https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10 <br/>
 https://www.youtube.com/watch?v=A7E18apPQJs <br/>
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/ <br/>
-To install python packages using cmd
-Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
-If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
-set - cd PATHoftheModule
-Type - python setup.py install]
-pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master'])
+To install python packages using cmd <br/>
+Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/ <br/>
+If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working <br/>
+set - cd PATHoftheModule <br/>
+Type - python setup.py install] <br/>
+pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master']) <br/>
 
 #### Install git 
 * In git - Type bash, git commands to see if they are working <br/>
