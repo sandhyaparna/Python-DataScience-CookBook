@@ -1,7 +1,14 @@
 #### Install Python on Windows
+when installing python check mark - add python to Path var
 https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10 <br/>
 https://www.youtube.com/watch?v=A7E18apPQJs <br/>
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/ <br/>
+To install python packages using cmd
+Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
+If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
+set - cd PATHoftheModule
+Type - python setup.py install]
+pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master'])
 
 #### Install git 
 * In git - Type bash, git commands to see if they are working <br/>
@@ -26,13 +33,12 @@ Update Anaconda - "conda update conda" , "conda update --all" <br/>
 Install packages - conda install package-name #In Anaconda Prompt <br/>
 Update packages - conda update package-name #In Anaconda Prompt <br/>
  <br/>
-Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt <br/>
+Upgrade Packages using pip - "python -m pip install --upgrade pip" #In Anaconda Prompt <br/>
 conda update pip #In Anaconda Prompt <br/>
 check pip version - pip --version #In Anaconda Prompt <br/>
  <br/>
-Install python packages from github <br/>
-In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
-and then again type command - pip install package-name <br/>
+To Open jupyter notebook
+type - jupyter notebook in Anaconda prompt
 
 #### Install Specific Packages - Anaconda website, whl, github
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
@@ -44,9 +50,12 @@ pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
 * Install from github <br/>
-git clone https://github.com/cbellei/word2veclite.git <br/> <br/>
+git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
 pip install .  <br/>
+<br/>
+pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
+and then again type command - pip install package-name <br/>
 * Install torch, use command in this website - https://pytorch.org/ <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 pip install --upgrade setuptools <br/>
@@ -54,7 +63,6 @@ pip install --upgrade setuptools <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
 
- 
 conda install scipy
 pip install --upgrade sklearn
 pip install --upgrade pandas
@@ -67,21 +75,7 @@ pip install tensorflow==1.8.0
 pip install keras==2.2.0
 
 
-# To Open jupyter notebook
-type - jupyter notebook in Anaconda prompt
-
-
-when installing python check mark - add python to Path var
-# To install python packages using cmd
-Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
-If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working
-set - cd PATHoftheModule
-Type - python setup.py install]
-
-pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master'])
-
-
-### New Version of pip
+#### Install in Rodeo - New Version of pip ###
 import pip
 import subprocess
 subprocess.check_call(["python", '-m', 'pip', 'install', 'scipy']) # install pkg - pkg name should all be small letter NO CAPITALS
