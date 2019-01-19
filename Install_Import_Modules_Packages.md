@@ -3,15 +3,20 @@ https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-dee
 https://www.youtube.com/watch?v=A7E18apPQJs <br/>
 https://www.reddit.com/r/Python/comments/2crput/how_to_install_with_pip_directly_from_github/ <br/>
 
-#### Install Anaconda 64 bit, git
-* After installation, check if anaconda prompt and anaconda navigator are installed. <br/>
-* In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
+#### Install git 
 * In git - Type bash, git commands to see if they are working <br/>
+
+#### Install C++ compiler for python
 Download Visual studio installer - https://visualstudio.microsoft.com/downloads/ <br/>
 How to install visual studio installer - https://stackoverflow.com/questions/29846087/microsoft-visual-c-14-0-is-required-unable-to-find-vcvarsall-bat
 
-Run Anaconda navigator as Administrator  
-  
+#### Install Anaconda 64 bit, git
+* After installation, check if anaconda prompt and anaconda navigator are installed <br/>
+* In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
+* Run Anaconda navigator as Administrator if error related to user appears <br/>
+ 
+
+ 
 Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
 conda update pip #In Anaconda Prompt
 check pip version - pip --version #In Anaconda Prompt
