@@ -14,42 +14,43 @@ How to install visual studio installer - https://stackoverflow.com/questions/298
 * After installation, check if anaconda prompt and anaconda navigator are installed <br/>
 * In Anaconda prompt, type python, conda (or) conda list , jupyter notebook to see if they are installed or not  <br/>
 * Run Anaconda navigator as Administrator if error related to user appears <br/>
+ <br/>
+If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444 <br/>
+https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution <br/>
+https://medium.com/@GalarnykMichael/setting-up-pycharm-with-anaconda-plus-installing-packages-windows-mac-db2b158bd8c <br/>
+https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virtualenv-package-install <br/>
+https://www.youtube.com/watch?v=z0qhKP2liHs <br/>
+ <br/>
+Update Anaconda - "conda update conda" , "conda update --all" <br/>
+Install packages - conda install package-name #In Anaconda Prompt <br/>
+Update packages - conda update package-name #In Anaconda Prompt <br/>
+ <br/>
+Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt <br/>
+conda update pip #In Anaconda Prompt <br/>
+check pip version - pip --version #In Anaconda Prompt <br/>
+ <br/>
+Install python packages from github <br/>
+In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
+and then again type command - pip install package-name <br/>
 
-Update Anaconda - "conda update conda" , "conda update --all"
-Install packages - conda install package-name #In Anaconda Prompt
-Update packages - conda update package-name #In Anaconda Prompt
+#### Install Specific Packages
+* Install using conda wordcloud website https://conda.anaconda.org/conda-forge look for package in below website and see the syntax associated with the specific package u r looking for <br/>
+conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
+conda install -c anaconda tensorflow #tensorflow package <br/>
+https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda <br/>
+* Install torch, use command in this website - https://pytorch.org/ <br/>
+* Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
+pip install --upgrade setuptools <br/>
+* Install Tensorflow:  <br/>
+python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
+https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
+* Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt  <br/>
+pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
+https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
 
-Upgrade pip using command - "python -m pip install --upgrade pip" #In Anaconda Prompt
-conda update pip #In Anaconda Prompt
-check pip version - pip --version #In Anaconda Prompt
-
-Install python packages from github
-In Anaconda prompt - pip install -e git+https://github.com/package-name/package-name.git#egg=package-name
-and then again type command - pip install package-name
-
-# Install Specific Packages
-Install torch, use command in this website - https://pytorch.org/
-Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439
-pip install --upgrade setuptools
-Install Tensorflow: 
-python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command
-https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu
-Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt 
-pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2 
-https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
-Install using conda wordcloud website: look for package in below website and see the syntax associated with the specific package u r looking for
-https://conda.anaconda.org/conda-forge 
-conda install -c https://conda.anaconda.org/conda-forge wordcloud
-https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda
-    
 
 # Pip update in Anaconda prompt
-If python/conda are not recoginzed - https://medium.com/@GalarnykMichael/install-python-on-windows-anaconda-c63c7c3d1444
-https://stackoverflow.com/questions/31935714/how-to-install-rodeo-ide-in-anaconda-python-distribution
-https://medium.com/@GalarnykMichael/setting-up-pycharm-with-anaconda-plus-installing-packages-windows-mac-db2b158bd8c
-https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virtualenv-package-install
-https://www.youtube.com/watch?v=z0qhKP2liHs
 
 # Python on Anaconda prompt
 http://docs.anaconda.com/anaconda/user-guide/getting-started/
