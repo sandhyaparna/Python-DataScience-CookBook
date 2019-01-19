@@ -41,6 +41,7 @@ To Open jupyter notebook
 type - jupyter notebook in Anaconda prompt
 
 #### Install Specific Packages - Anaconda website, whl, github
+ <br/>
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
 conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
 conda install -c anaconda tensorflow #tensorflow package <br/>
@@ -91,6 +92,7 @@ Use shortform direct in import command. for eg- scikit-optimize is used in pip i
  <br/>
  
 #### Install in Rodeo - New Version of pip ###
+ <br/>
 * Install/Upgrade Packages
 import pip <br/>
 import subprocess <br/>
@@ -110,6 +112,7 @@ installed_packages = [r.decode().split('==')[0] for r in reqs.split()] <br/>
 print(installed_packages) <br/>
 
 #### Install in Rodeo - old Version of pip ###
+ <br/>
 * Upgrade pip <br/>
 pip.main(['install', '--upgrade', 'pip']) <br/>
 * Install and Upgrade Packages in Rodeo <br/>
@@ -126,6 +129,7 @@ from sklearn import * <br/>
 import sklearn as sklearn <br/>
 
 #### Packages for Data Science
+ <br/>
 * General
 import numpy as np <br/>
 import pandas as pd <br/>
