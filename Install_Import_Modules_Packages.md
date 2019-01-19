@@ -53,18 +53,16 @@ https://stackoverflow.com/questions/30083067/encountering-error-when-installing-
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
 pip install .  <br/>
-<br/>
+  *
 pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
 and then again type command - pip install package-name <br/>
- <br/> 
+  *
 Type the command GitBash 'pip install git+https://github.com/cbellei/word2veclite.git'
 Type in cmd 'pip install word2veclite'
 Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
 * Install torch, use command in this website - https://pytorch.org/ <br/>
- <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 pip install --upgrade setuptools <br/>
- <br/>
 * Install Tensorflow:  <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
