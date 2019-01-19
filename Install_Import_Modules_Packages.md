@@ -34,7 +34,8 @@ pip install --upgrade setuptools
 Install Tensorflow: python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu
 Install packages from whl: Save file from below link the cd directory of Anaconda Prompt 
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2
+pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2 
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman
 
 
