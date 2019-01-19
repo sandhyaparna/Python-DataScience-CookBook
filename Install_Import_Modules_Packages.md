@@ -45,10 +45,12 @@ type - jupyter notebook in Anaconda prompt
 conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
 conda install -c anaconda tensorflow #tensorflow package <br/>
 https://stackoverflow.com/questions/41409570/cant-install-wordcloud-in-python-anaconda <br/>
+ <br/>
 * Install packages from whl: wordcloud, rpy2 Save file from below link in the cd directory of Anaconda Prompt  <br/>
 pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
+ <br/>
 * Install from github <br/>
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
@@ -56,93 +58,88 @@ pip install .  <br/>
 <br/>
 pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
 and then again type command - pip install package-name <br/>
+ <br/> 
+Type the command GitBash 'pip install git+https://github.com/cbellei/word2veclite.git'
+Type in cmd 'pip install word2veclite'
+Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
+ <br/>
 * Install torch, use command in this website - https://pytorch.org/ <br/>
+ <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 pip install --upgrade setuptools <br/>
+ <br/>
 * Install Tensorflow:  <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
-
-conda install scipy
-pip install --upgrade sklearn
-pip install --upgrade pandas
-pip install --upgrade pandas-datareader
-pip install --upgrade matplotlib
-pip install --upgrade pillow
-pip install --upgrade requests
-pip install --upgrade h5py
-pip install tensorflow==1.8.0
-pip install keras==2.2.0
-
-
-#### Install in Rodeo - New Version of pip ###
-import pip
-import subprocess
-subprocess.check_call(["python", '-m', 'pip', 'install', 'scipy']) # install pkg - pkg name should all be small letter NO CAPITALS
-subprocess.check_call(["python", '-m', 'pip', 'install',"--upgrade", 'scipy']) # upgrade pkg - pkg name should all be small letter NO CAPITALS
-from scipy import *
-import scipy as sy
-
-### List of installed packages
-import subprocess
-import sys
-reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze'])
-installed_packages = [r.decode().split('==')[0] for r in reqs.split()]
-print(installed_packages)
-
-# Version of pip installed
-pip.__version__
-
-### Packages for Data Science
-# General
-import numpy as np
-import pandas as pd
-import os
-
-# Visualization
-import seaborn as sns
-import matplotlib.pyplot as plt
-%matplotlib inline
-
-# To install packages that has '-' in their package name
-Use either _ instead of -
-Use no space/join words instead of -
+ <br/>
+conda install scipy <br/>
+pip install --upgrade sklearn <br/>
+pip install --upgrade pandas <br/>
+pip install --upgrade pandas-datareader <br/>
+pip install --upgrade matplotlib <br/>
+pip install --upgrade pillow <br/>
+pip install --upgrade requests <br/>
+pip install --upgrade h5py <br/>
+pip install tensorflow==1.8.0 <br/>
+pip install keras==2.2.0 <br/>
+ <br/>
+ 
+#### To install packages that has '-' in their package name
+Use either _ instead of -  <br/>
+Use no space/join words instead of - <br/>
 Use shortform direct in import command. for eg- scikit-optimize is used in pip install command, but in import command directly use skopt
+ <br/>
+ 
+#### Install in Rodeo - New Version of pip ###
+* Install/Upgrade Packages
+import pip <br/>
+import subprocess <br/>
+subprocess.check_call(["python", '-m', 'pip', 'install', 'scipy']) # install pkg - pkg name should all be small letter NO CAPITALS <br/>
+subprocess.check_call(["python", '-m', 'pip', 'install',"--upgrade", 'scipy']) # upgrade pkg - pkg name should all be small letter NO CAPITALS <br/>
+from scipy import * <br/>
+import scipy as sy <br/>
+ <br/>
+* Check Version of pip installed <br/>
+pip.__version__ <br/>
+ <br/>
+* List of all installed packages <br/>
+import subprocess <br/>
+import sys <br/>
+reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze']) <br/>
+installed_packages = [r.decode().split('==')[0] for r in reqs.split()] <br/>
+print(installed_packages) <br/>
 
+#### Install in Rodeo - old Version of pip ###
+* Upgrade pip <br/>
+pip.main(['install', '--upgrade', 'pip']) <br/>
+* Install and Upgrade Packages in Rodeo <br/>
+import pip <br/>
+pip.main(['install','SciPy']) # install pkg <br/>
+pip.main(['install', '--upgrade', 'statsmodels']) # upgrade pkg <br/>
+from scipy import * <br/>
+import scipy as sy <br/>
+  * Packages that have -
+import pip <br/>
+pip.main(['install','scikit-learn']) <br/>
+pip.main(['install', '--upgrade', 'statsmodels']) <br/>
+from sklearn import * <br/>
+import sklearn as sklearn <br/>
 
-################## OLD VERSION pip ##################
-### Upgrade pip
-pip.main(['install', '--upgrade', 'pip'])
+#### Packages for Data Science
+* General
+import numpy as np <br/>
+import pandas as pd <br/>
+import os <br/>
+* Visualization
+import seaborn as sns <br/>
+import matplotlib.pyplot as plt <br/>
+%matplotlib inline <br/>
 
-### Install and Upgrade Packages in Rodeo
-import pip
-pip.main(['install','SciPy']) # install pkg
-pip.main(['install', '--upgrade', 'statsmodels']) # upgrade pkg
-from scipy import *
-import scipy as sy
+#### Packages unable to install
+* word2vec
+* word2veclite
+* fastai
 
-import pip
-pip.main(['install','scikit-learn'])
-pip.main(['install', '--upgrade', 'statsmodels'])
-from sklearn import *
-import sklearn as sklearn
-
-
-### Import from Git
-# Type the command GitBash
-pip install git+https://github.com/cbellei/word2veclite.git
-# Type the below in cmd
-pip install word2veclite
-# Packages are stored in this location - 
-C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
-
-
+###### Path Var
 C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Users\User\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python37\;C:\Users\User\Anaconda3;C:\Users\User\Anaconda3\Library\mingw-w64\bin;C:\Users\User\Anaconda3\Library\usr\bin;C:\Users\User\Anaconda3\Library\bin;C:\Users\User\Anaconda3\Scripts;C:\Users\User\AppData\Local\rodeo\app-2.5.2\bin;C:\Users\User\AppData\Local\rodeo\app-2.5.2\resources\conda
-
-
-### Packages unable to install
-# word2vec
-# word2veclite
-# fastai
-
 
