@@ -68,6 +68,7 @@ Install java, check bios update, install latest drivers from dell <br/>
 Tensorflow is not supported in 3.7, install 3.6 version from https://www.python.org/downloads/windows/ <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
+https://medium.com/datadriveninvestor/install-python-3-6-and-tensorflow-92eeff0ad4f5 <br/>
 * A few ways to solve errors
 https://www.tensorflow.org/install/errors  <br/>
 <br/>
