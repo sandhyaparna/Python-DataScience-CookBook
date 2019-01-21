@@ -64,6 +64,7 @@ Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Pyth
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 pip install --upgrade setuptools <br/>
 * Install Tensorflow:  <br/>
+Step by step instructions: https://media.readthedocs.org/pdf/tensorflow-object-detection-api-tutorial/latest/tensorflow-object-detection-api-tutorial.pdf <br/>
 Install java, check bios update, install latest drivers from dell <br/>
 Tensorflow is not supported in 3.7, install 3.6 version from https://www.python.org/downloads/windows/ <br/>
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
