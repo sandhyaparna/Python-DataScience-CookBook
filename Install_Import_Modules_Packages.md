@@ -71,6 +71,12 @@ https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
 https://medium.com/datadriveninvestor/install-python-3-6-and-tensorflow-92eeff0ad4f5 <br/>
 * A few ways to solve errors
 https://www.tensorflow.org/install/errors  <br/>
+
+#### Create Environments
+https://media.readthedocs.org/pdf/tensorflow-object-detection-api-tutorial/latest/tensorflow-object-detection-api-tutorial.pdf
+To identify environments installed: conda info --envs 
+Environments are loaded at: C:\ProgramData\Anaconda3\envs
+
 <br/>
 conda install scipy <br/>
 pip install --upgrade sklearn <br/>
