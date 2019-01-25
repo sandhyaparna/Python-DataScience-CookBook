@@ -240,12 +240,29 @@ columns = ['Unnamed','text','tokens']
 df_ = pd.DataFrame( columns=columns)
 my_dic = {'Unnamed':3, 'text':'just happened a terrible car crash', 'tokens':'[just, happened, a, terrible, car, crash]'}
 df_.loc[len(df_)] = my_dic
+my_dic = {'Unnamed':2, 'text':'our deeds are the reason of this earthquake', 'tokens':'[our, deeds, are, the, reason, of, this, earthquake]'}
+df_.loc[len(df_)] = my_dic
+my_dic = {'Unnamed':4, 'text':'there is a forest fire at spot pond, geese ', 'tokens':'[[there, is, a, forest, fire, at, spot, pond, geese]'}
+df_.loc[len(df_)] = my_dic
 
+def get_average_word2vec(tokens_list, vector, generate_missing=False, k=300):
+    if len(tokens_list)<1:
+        return np.zeros(k)
+    if generate_missing:
+        vectorized = [vector[word] if word in vector else np.random.rand(k) for word in tokens_list]
+    else:
+        vectorized = [vector[word] if word in vector else np.zeros(k) for word in tokens_list]
+    length = len(vectorized)
+    summed = np.sum(vectorized, axis=0)
+    averaged = np.divide(summed, length)
+    return averaged
 
+def get_word2vec_embeddings(vectors, clean_questions, generate_missing=False):
+    embeddings = clean_questions['tokens'].apply(lambda x: get_average_word2vec(x, vectors, 
+                                                                                generate_missing=generate_missing))
+    return list(embeddings)
 
-
-
-
+embeddings = get_word2vec_embeddings(word2vec, df_)
 
 
 
