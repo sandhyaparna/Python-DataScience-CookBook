@@ -235,6 +235,11 @@ https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2af
 import gensim
 word2vec = gensim.models.KeyedVectors.load_word2vec_format("C:/Users/sandh/Downloads/GoogleNews-vectors-negative300.bin.gz", binary=True)
 
+# Apply word2vec model on a sentence -  For each word in the sentence 300 values are generated
+sentence = ["London", "is", "the", "capital", "Great", "Britain"]
+vectors = [word2vec[w] for w in sentence]
+
+# Apply averaging on the words of a sentence - For each sentence 300 values/vectors are generated
 # Create empty data frame and add text data as in clean_questions -  https://github.com/hundredblocks/concrete_NLP_tutorial/blob/master/NLP_notebook.ipynb
 columns = ['Unnamed','text','tokens']
 df_ = pd.DataFrame( columns=columns)
@@ -262,6 +267,7 @@ def get_word2vec_embeddings(vectors, clean_questions, generate_missing=False):
                                                                                 generate_missing=generate_missing))
     return list(embeddings)
 
+# embeddings return 300 values/vectors for each sentence
 embeddings = get_word2vec_embeddings(word2vec, df_)
 
 
