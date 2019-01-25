@@ -225,13 +225,21 @@ https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2af
 
 
 ### Google New Word2vec model
+# https://github.com/sandhyaparna/Python-DataScience-CookBook/blob/master/Natural%20Language%20Processing/NLP_notebook.ipynb
 # Save Google's pre trained model from - https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
+# STEPS
+# Open Anaconda Prompt - Run as Administrator
+# In Anconda Prompt - activate tensorflow_cpu
+# Install necessary packages
+# Open jupyter notebook 
 import gensim
-word2vec_path = "Downloads/GoogleNews-vectors-negative300.bin.gz"
-word2vec = gensim.models.KeyedVectors.load_word2vec_format(word2vec_path, binary=True)
+word2vec = gensim.models.KeyedVectors.load_word2vec_format("C:/Users/sandh/Downloads/GoogleNews-vectors-negative300.bin.gz", binary=True)
 
-
-
+# Create empty data frame and add text data as in clean_questions -  https://github.com/hundredblocks/concrete_NLP_tutorial/blob/master/NLP_notebook.ipynb
+columns = ['Unnamed','text','tokens']
+df_ = pd.DataFrame( columns=columns)
+my_dic = {'Unnamed':3, 'text':'just happened a terrible car crash', 'tokens':'[just, happened, a, terrible, car, crash]'}
+df_.loc[len(df_)] = my_dic
 
 
 
