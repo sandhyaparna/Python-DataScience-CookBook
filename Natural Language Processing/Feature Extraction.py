@@ -224,8 +224,11 @@ https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2af
 
 
 
-
-
+### Google New Word2vec model
+# Save Google's pre trained model from - https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
+import gensim
+word2vec_path = "Downloads/GoogleNews-vectors-negative300.bin.gz"
+word2vec = gensim.models.KeyedVectors.load_word2vec_format(word2vec_path, binary=True)
 
 
 
