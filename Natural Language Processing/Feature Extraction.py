@@ -224,7 +224,7 @@ https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2af
 
 
 
-### Google New Word2vec model
+### Google News Word2vec model
 # https://github.com/sandhyaparna/Python-DataScience-CookBook/blob/master/Natural%20Language%20Processing/NLP_notebook.ipynb
 # Save Google's pre trained model from - https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
 # STEPS
