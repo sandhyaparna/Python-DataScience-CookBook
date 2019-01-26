@@ -63,6 +63,7 @@ Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Pyth
 * Install torch, use command in this website - https://pytorch.org/ <br/>
 * Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 Install using new env using conda https://forums.fast.ai/t/fastai-v0-7-install-issues-thread/24652 <br/>
+https://github.com/fastai/fastai/blob/master/README.md#installation <br/>
 pip install --upgrade setuptools <br/>
 * Install Tensorflow:  <br/>
 Step by step instructions: https://media.readthedocs.org/pdf/tensorflow-object-detection-api-tutorial/latest/tensorflow-object-detection-api-tutorial.pdf <br/>
