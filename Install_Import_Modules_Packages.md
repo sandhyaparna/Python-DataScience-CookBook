@@ -145,9 +145,7 @@ import matplotlib.pyplot as plt <br/>
 %matplotlib inline <br/>
 
 #### Packages unable to install
-* word2vec
-* word2veclite
-* fastai
+
 
 #### Errors
 * Could not find a version that satisfies the requirement opencv (from versions: )  No matching distribution found for opencv
