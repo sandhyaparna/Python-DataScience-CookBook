@@ -40,6 +40,9 @@ check pip version - pip --version #In Anaconda Prompt <br/>
 To Open jupyter notebook
 type - jupyter notebook in Anaconda prompt
 
+#### Jupyter Notebook Basics
+https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/00_notebook_tutorial.ipynb
+
 #### Install Specific Packages - Anaconda website, whl, github
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
 conda install -c https://conda.anaconda.org/conda-forge wordcloud #wordcloud package <br/>
