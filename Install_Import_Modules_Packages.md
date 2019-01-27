@@ -64,7 +64,8 @@ Type the command GitBash 'pip install git+https://github.com/cbellei/word2veclit
 Type in cmd 'pip install word2veclite'
 Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages
 * Install torch, use command in this website - https://pytorch.org/ <br/>
-* Install fastai - https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
+* Install fastai - conda install -c pytorch -c fastai fastai  <br/>
+https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 Install using new env using conda https://forums.fast.ai/t/fastai-v0-7-install-issues-thread/24652 <br/>
 https://github.com/fastai/fastai/blob/master/README.md#installation <br/>
 Set up AWS EC2 instance for fastai https://course.fast.ai/start_aws.html <br/>
