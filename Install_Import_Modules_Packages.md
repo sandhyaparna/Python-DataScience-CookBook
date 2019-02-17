@@ -53,10 +53,11 @@ pip install rpy2-2.9.5-cp37-cp37m-win_amd64.whl <br/>
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2  <br/>
 https://stackoverflow.com/questions/30083067/encountering-error-when-installing-rpy2-tried-to-guess-rs-home-but-no-r-comman <br/>
 * Install from github <br/>
+  * Below code works
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
 pip install .  <br/>
-  *
+  * Not sure if the below one works
 pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
 and then again type command - pip install package-name <br/>
   *
