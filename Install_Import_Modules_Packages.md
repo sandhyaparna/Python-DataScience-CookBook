@@ -86,6 +86,8 @@ https://media.readthedocs.org/pdf/tensorflow-object-detection-api-tutorial/lates
 To identify environments installed: conda info --envs   <br/>
 Environments are loaded at: C:\ProgramData\Anaconda3\envs  <br/>
 Ideally you should install each variant(tensorflow & tensorflow-gpu) under a different (virtual) environment.  <br/>
+* tensorflow_cpu - Environment for 
+* tensorflow - Environment to do chapter2,3 of Tensorflow setup documentation pdf
 
 <br/>
 conda install scipy <br/>
