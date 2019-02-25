@@ -263,6 +263,10 @@ Df.drop(Df.columns[[4,5]], axis=1)
 # subset rows - delete last row
 Df = Df.iloc[0:1366186]
 
+# Filter/subset/check if a column/string contains only numerics implies check if the column contains any characters within it
+# Extract character observations within a column (Non-numeric)
+x = x[x['ZipCode'].str.contains("[a-zA-Z]+")] 
+
 # Cbind / Concatenate 2 dataframe
 Ne_Df = pd.concat([Df1, Df2], axis=1)
 
