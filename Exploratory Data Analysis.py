@@ -430,7 +430,10 @@ New_df = pd.pivot_table(Df,columns=['Var1'], values='Var2', index=['Var_ID1','Va
 df.reset_index(inplace=True)
 # Manually convert index to columns - It might not work when there are multiple indexes in df
 df['Var_ID1'] = df.index
-
+# when using 2 or more variables in values of pivot_table, Var names are multi-row column
+# coalesce the multi-index into a single string index without caring about the index level order
+df.columns = list(map("_".join, df.columns))
+# Then you can rename columns as u wish
 
 # Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
 # All missing dates between the entire tables min and max dates are populated 
