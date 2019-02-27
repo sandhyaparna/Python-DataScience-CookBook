@@ -217,6 +217,12 @@ https://towardsdatascience.com/understanding-feature-engineering-part-4-deep-lea
 
 ### Training Word2vec model from documents
 https://medium.freecodecamp.org/how-to-get-started-with-word2vec-and-then-how-to-make-it-work-d0a2fca9dad3
+
+### Pre-trained Wikipedia corpus Word2vec
+Training of Word2vec on Wiki Corpus 
+https://medium.com/@black_swan/how-to-train-word2vec-and-fasttext-embedding-on-wikipedia-corpus-9e8ac45a0c0a    
+Train and Update Word2vec 
+https://medium.com/@maxminicherrycc/word2vec-how-to-train-and-update-it-4eed4260cf75 <br/>
     
 ### Google News Word2vec model
 # https://github.com/sandhyaparna/Python-DataScience-CookBook/blob/master/Natural%20Language%20Processing/NLP_notebook.ipynb
