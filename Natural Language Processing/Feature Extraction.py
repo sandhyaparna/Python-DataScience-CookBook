@@ -215,15 +215,9 @@ https://towardsdatascience.com/understanding-feature-engineering-part-4-deep-lea
 
 ### Continuous Bag-of-Words (CBOW)
 
-### Word2vec Imple
-
-
-### Doc2vec implementation 
-# Step by step implementation
-https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2afbbfbad5
-
-
-
+### Training Word2vec model from documents
+https://medium.freecodecamp.org/how-to-get-started-with-word2vec-and-then-how-to-make-it-work-d0a2fca9dad3
+    
 ### Google News Word2vec model
 # https://github.com/sandhyaparna/Python-DataScience-CookBook/blob/master/Natural%20Language%20Processing/NLP_notebook.ipynb
 # Save Google's pre trained model from - https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
@@ -270,6 +264,10 @@ def get_word2vec_embeddings(vectors, clean_questions, generate_missing=False):
 # embeddings return 300 values/vectors for each sentence
 embeddings = get_word2vec_embeddings(word2vec, df_)
 
+
+### Doc2vec implementation 
+# Step by step implementation
+https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2afbbfbad5
 
 
 
