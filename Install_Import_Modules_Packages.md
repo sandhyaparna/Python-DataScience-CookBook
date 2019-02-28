@@ -57,6 +57,7 @@ https://stackoverflow.com/questions/30083067/encountering-error-when-installing-
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
 pip install .  <br/>
+  * If setup.py is not present the above code doesn't work. Just an unfinished, broken package, it isn't supposed to be installed by Python tools. Install it manually — clone the repo and copy files to site-packages.
   * Not sure if the below one works <br/> 
 pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
 and then again type command - pip install package-name <br/>
