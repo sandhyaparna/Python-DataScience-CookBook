@@ -486,6 +486,12 @@ New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fi
 # Convert str to datetime
 import datetime
 Df['DateVar'] =  pd.to_datetime(Df['DateVar'], format='%Y-%m-%d %H:%M:%S.%f')
+
+# Create Date range
+df2['Date']= pd.date_range('2000-1-1', periods=6, freq='M')
+# Dates as Index
+index = pd.DatetimeIndex(dates)
+index = pd.date_range(datetime(2012,2,1), end, freq='BM')
                        
 # Min of 2 date times
 Df['Var'] = np.minimum(Df['Var1'],Df['Var2'])
@@ -571,15 +577,15 @@ df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]'
 df['Mod'] = df['cum_n'] % 14
 df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]')                       
 # End is start + pd.Timedelta(days=13)
+
                        
-## Split a dataframe into multiple dataframes based on column values
+### Split a dataframe into multiple dataframes based on column values
 # Using a single column values
 a.New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'])))  
 b. Unique_Vigi_Org = df.Vigi_Org.unique()   # Vigi_Org is a concated column of VigiID and Organism
 df_Dict = {elem : pd.DataFrame for elem in Unique_Vigi_Org}
 for key in df_Dict.keys():
-    df_Dict[key] = df_Dict[:][df_Dict.Vigi_Org == key]
-                       
+    df_Dict[key] = df_Dict[:][df_Dict.Vigi_Org == key]                       
 # using 2/two columns - where Var1 is numeric and Var2 is string column (string column can have spaces in the string values but we can 
 # first replace spaces within strings with _)
 df['String_Var'] = df['String_Var'].replace(' ', '_', regex=True) 
