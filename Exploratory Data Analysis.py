@@ -46,6 +46,9 @@ SQLCommand = ('select * \
               where y=a')
 Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
 
+# From sql table - https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PandasPythonForDataScience.pdf
+pd.read_sql_table('my_table', Connection)
+
 ### CSV files 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html
 Df = pd.read_csv("path/file.csv",
@@ -101,6 +104,8 @@ Df.to_csv('path/NewFile.txt', sep='|', index=False)
 ### Export to Excel
 Df = pd.to_excel('dir/myDataFrame.xlsx', sheet_name='Sheet1')
 
+### Export to SQL
+pd.to_sql('myDf', Connection)
 
 ################# Descriptive Stats #################
 # Size of a dataframe
