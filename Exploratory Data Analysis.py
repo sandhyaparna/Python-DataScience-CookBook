@@ -111,6 +111,9 @@ pd.to_sql('myDf', Connection)
 # Size of a dataframe
 print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) + ' columns')
 
+# Rows, Columns
+Df.shape
+
 # Column names
 list(Df)
 
