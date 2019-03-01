@@ -283,6 +283,11 @@ x = x[x['ZipCode'].str.contains("[a-zA-Z]+")]
 # Cbind / Concatenate 2 dataframe
 Ne_Df = pd.concat([Df1, Df2], axis=1)
 
+# Sort data - Sort by labels along an axis
+df.sort_index() 
+#  Sort by the values along an axis
+df.sort_values(by='Country')
+
 ### Convert data type of a var
 # String/Character/object
 Df['Var1'] = Df['Var1'].astype('str')
