@@ -554,7 +554,24 @@ df.groupby('A').agg(np.std, ddof=0)
 # Sample Std dev                       
 df.groupby('A').agg(np.std, ddof=1)                       
 
-                       
+### Join Data frames
+# Left Join
+Df = pd.merge(Df1, Df2, how='left', on='Var1')                      
+# Joins - Diff variable/column names
+A.merge(B, left_on='lkey', right_on='rkey', how='outer')
+# Join only specific columns - Since we joining based on Var1 & Var2 - those 2 variables should be part of B df in the code
+df = A.merge(B[['Var1','Var2','Var5','Var8']], how='outer', on=['Var1','Var2'])
+# Join more than 2 dataframes - based on specific columns
+df = A.merge(B[['Var1','Var2','Var5','Var8']], how='outer', on=['Var1','Var2']).merge(C[['Var6','Var2']], how='outer', on=['Var6'])
+df = A.merge(B, how='outer', on=['Var1','Var2']).merge(C, how='outer', on=['Var6'])
+#  Join multiple data frames
+New_DF = pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(Df1,Df2, how='outer', on=['Var1','Var2']),
+                                                                  Df3, how='outer',on='Var1'),
+                                                         Df4, how='outer',on=['Var1','Var3']),
+                                                Df5, how='outer',on='Var1'),
+                                         Df6, how='outer',on='Var1'),
+                              Df7, how='outer',on='Var1'),
+                      Df8, how='outer',on='Var1')                    
                        
                        
                        
