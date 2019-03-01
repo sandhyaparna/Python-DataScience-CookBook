@@ -28,7 +28,7 @@ http://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.h
 list(open('path/file.csv'))
 list(open('path/file.txt'))
 
-### 
+### SQL Server
 Server - import files/tables directly 
 import pip
 pip.main(['install','--upgrade','pyodbc']) # old versio pip
@@ -78,6 +78,11 @@ Df = pd.read_table("path/file.txt",
 # read_clipboard - Version of read_table that reads data from the clipboard. Useful for converting tables from web pages
 # read_fwf - Read data in fixed-width column format (that is, no delimiters)
 
+### Excel files
+Df = pd.read_excel('file.xlsx')
+# Read Multiple sheets
+xlsx = pd.ExcelFile('file.xls')
+Df = pd.read_excel(xlsx, 'Sheet1')
 
 ################# SAVE DATA / EXPORTING #################
 ### Export dataframes/tables to SQL Servere 
@@ -92,6 +97,9 @@ Df.to_csv('path/NewFile.txt', sep='\t', index=False)
 
 ### Export TEXT files - Pipe Delimited
 Df.to_csv('path/NewFile.txt', sep='|', index=False)
+
+### Export to Excel
+Df = pd.to_excel('dir/myDataFrame.xlsx', sheet_name='Sheet1')
 
 
 ################# Descriptive Stats #################
