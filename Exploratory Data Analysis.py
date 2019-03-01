@@ -286,6 +286,13 @@ x = x[x['ZipCode'].str.contains("[a-zA-Z]+")]
 # Cbind / Concatenate 2 dataframe
 Ne_Df = pd.concat([Df1, Df2], axis=1)
 
+## Sorting - https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_values.html
+# Sort data
+LOS_Vitals = LOS_Vitals.sort_values(by=['PatientID','CollectionDateTime'])
+# Sort or Order by Descending order
+df.sort_values('mpg',ascending=False)
+# Sort few variables by ascending and others by descending - default is Ascending order
+Df = Df.sort_values(by=['var1','var2','var3'], ascending=[True, False, True])
 # Sort data - Sort by labels along an axis
 df.sort_index() 
 #  Sort by the values along an axis
@@ -475,16 +482,63 @@ New_Df = Df.set_index(['DateVar','var1']).unstack(fill_value=0).asfreq('D', fill
 # Fill in missing values/Dates based on 3 columns where 1st column is date and other 2 columns are char
 New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fill_value=0).asfreq('D', fill_value=0).stack().stack().sort_index(level=2).reset_index()
 
-### Date Time                 
+### Date Time  
+# Convert str to datetime
+import datetime
+Df['DateVar'] =  pd.to_datetime(Df['DateVar'], format='%Y-%m-%d %H:%M:%S.%f')
+                       
+# Min of 2 date times
+Df['Var'] = np.minimum(Df['Var1'],Df['Var2'])
+                       
+# Difference between 2 datetimes
+Df['Var'] = (Df.EndDate-Df.StartDate)
+# Overall Difference in Days, hours, seconds, mins
+Df['Var'] = (Df.EndDatee-Df.StartDate)
+# Difference In days
+Df['Var'] = (Df.EndDate-Df.StartDate).dt.days
+# Difference In Seconds
+Df['Var'] = (Df.EndDate-Df.StartDate).dt.seconds
+# Difference In Minutes
+Df['Var'] = ((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60)
+# Difference In hours
+Df['Var'] = (((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60))/60
+
+# Get Year, month, date, day, week_day, day of week, day of year etc
+df.Var.dt.year
+# Examples and a lot more options are there
+Df.DateTimeVar.dt.date
+Df.DateTimeVar.dt.year
+Df.DateTimeVar.dt.month
+Df.DateTimeVar.dt.day
+# week starts on Monday i.e Monday=0 - Both weekday and dayofweek gives same output
+Df.DateTimeVar.dt.weekday
+Df.DateTimeVar.dt.dayofweek
+Df.DateTimeVar.dt.dayofyear
+Df.DateTimeVar.dt.days_in_month
+Df.DateTimeVar.dt.weekday_name
+Df.DateTimeVar.dt.weekofyear                       
+
+https://pandas.pydata.org/pandas-docs/stable/timedeltas.html
+# Add days or time to datetime variables
+# Add 1 day
+df['Var1'] = (df['Var']) + pd.Timedelta(days=1)
+# Add hours
+df['Var1'] = (df['Var']) + pd.Timedelta(hours=1)
+# Add minutes
+df['Var1'] = (df['Var']) + pd.Timedelta(minutes=60)
+# Add minutes
+df['Var1'] = (df['Var']) + pd.Timedelta(seconds=60)
+
+# Add hours variable to DateTime variable - Create New DateTime var
+# HoursVar is a float or int
+Df['New_DateTimeVar'] = (Df['DateTimeVar']) + pd.to_timedelta(Df.HoursVar, unit='h')
+                                             
 # Get Start and end date of a week based on a date variable
 # Week starts on Monday - https://stackoverflow.com/questions/27989120/get-week-start-date-monday-from-a-date-column-in-python-pandas
 # Start Date of the week
 df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]')
 # end date of the week
 df['End'] =  df['Start'] +  pd.Timedelta(days=6)                       
-
-# Min of 2 date times
-Df['Var'] = np.minimum(Df['Var1'],Df['Var2'])
                        
 # weekday start on Sunday - https://stackoverflow.com/questions/45458525/get-week-start-date-sunday-from-a-date-column-in-python
 # 1st solution
