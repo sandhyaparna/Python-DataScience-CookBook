@@ -172,7 +172,9 @@ CreditApproval_9 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_No
 CreditApproval_10 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_NoMissing_AsOneHot,CreditApproval_BinTarget_Num,CreditApproval_MultiTarget_Num], axis=1)
 
 
-
+### Train and Test split
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=0)
 
 
 
