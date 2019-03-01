@@ -460,6 +460,14 @@ df['Var_ID1'] = df.index
 df.columns = list(map("_".join, df.columns))
 # Then you can rename columns as u wish
 
+### Wide to long format - Columns to rows
+New_df = pd.melt(Df, 
+ id_vars=["Date"],
+ value_vars=["Type", "Value"],
+ value_name="Observations")
+
+
+### long to wide format & back to long format
 # Fill in missing values/Dates based on 2 columns where 1st column is date and other is char
 # All missing dates between the entire tables min and max dates are populated 
 # Below code is a way of pivoting and unpivoting back( long to wide format & back to long format)
@@ -467,7 +475,7 @@ New_Df = Df.set_index(['DateVar','var1']).unstack(fill_value=0).asfreq('D', fill
 # Fill in missing values/Dates based on 3 columns where 1st column is date and other 2 columns are char
 New_Df = Df.set_index(['DateVar','var1','var2]).unstack(fill_value=0).unstack(fill_value=0).asfreq('D', fill_value=0).stack().stack().sort_index(level=2).reset_index()
 
-                     
+###                      
 # Get Start and end date of a week based on a date variable
 # Week starts on Monday - https://stackoverflow.com/questions/27989120/get-week-start-date-monday-from-a-date-column-in-python-pandas
 # Start Date of the week
