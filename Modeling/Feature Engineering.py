@@ -74,6 +74,34 @@ def bearing_array(lat1, lng1, lat2, lng2):
 train.loc[:, 'center_latitude'] = (train['pickup_latitude'].values + train['dropoff_latitude'].values) / 2
 train.loc[:, 'center_longitude'] = (train['pickup_longitude'].values + train['dropoff_longitude'].values) / 2
 
+############# Pre-processing ##############
+### Standardization
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler().fit(X_train)
+standardized_X = scaler.transform(X_train)
+ standardized_X_test = scaler.transform(X_test)
+
+### Normalization
+from sklearn.preprocessing import Normalizer
+scaler = Normalizer().fit(X_train)
+normalized_X = scaler.transform(X_train)
+normalized_X_test = scaler.transform(X_test)
+    
+### Binarization
+from sklearn.preprocessing import Binarizer
+binarizer = Binarizer(threshold=0.0).fit(X)
+binary_X = binarizer.transform(X)
+
+### Impute missing values
+from sklearn.preprocessing import Imputer
+imp = Imputer(missing_values=0, strategy='mean', axis=0)
+imp.fit_transform(X_train)
+
+### Generating Polynomial Features
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(5)
+poly.fit_transform(X) 
+
 
 ############ Web Data ############
 # https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-6-feature-engineering-and-feature-selection-8b94f870706a
