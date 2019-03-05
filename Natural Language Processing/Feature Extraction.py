@@ -219,7 +219,9 @@ https://towardsdatascience.com/understanding-feature-engineering-part-4-deep-lea
 https://medium.freecodecamp.org/how-to-get-started-with-word2vec-and-then-how-to-make-it-work-d0a2fca9dad3
 
 ### Pre-trained Wikipedia corpus Word2vec
-Training of Word2vec on Wiki Corpus 
+Training of Word2vec on Wiki Corpus   
+First, we need process the xml format wikipedia to text format
+https://textminingonline.com/training-word2vec-model-on-english-wikipedia-by-gensim
 https://medium.com/@black_swan/how-to-train-word2vec-and-fasttext-embedding-on-wikipedia-corpus-9e8ac45a0c0a    
 Train and Update Word2vec 
 https://medium.com/@maxminicherrycc/word2vec-how-to-train-and-update-it-4eed4260cf75 <br/>
