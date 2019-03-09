@@ -1,4 +1,5 @@
-# 
+# https://github.com/sandhyaparna/dlaicourse/blob/master/Course%201%20-%20Part%204%20-%20Lesson%202%20-%20Notebook.ipynb
+# https://github.com/aamini/introtodeeplearning_labs/blob/master/lab2/Part1_mnist.ipynb
 import tensorflow as tf
 from tf.keras.layers import *
 
