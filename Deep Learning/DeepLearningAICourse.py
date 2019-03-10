@@ -86,7 +86,28 @@ model = tf.keras.models.Sequential([
 
 model.summary()
 
-### 
+# Visualizing layers - Journey of an image through Convolution
+import matplotlib.pyplot as plt
+f, axarr = plt.subplots(3,4) #3 corresponds to the number of images of same fashion item passed
+                             #4 is because there are 2 convolutional layers and 2 max pooling layers
+FIRST_IMAGE=0 #Shoe is present as 1st obs in test image, 
+SECOND_IMAGE=7 #Shoe is also present as 8th obs
+THIRD_IMAGE=26 #Shoe is also present as 26th obs
+CONVOLUTION_NUMBER = 1 #filter 1 or 2 or 3 or 4 etc
+from tensorflow.keras import models
+layer_outputs = [layer.output for layer in model.layers]
+activation_model = tf.keras.models.Model(inputs = model.input, outputs = layer_outputs)
+for x in range(0,4):
+  f1 = activation_model.predict(test_images[FIRST_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[0,x].imshow(f1[0, : , :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[0,x].grid(False)
+  f2 = activation_model.predict(test_images[SECOND_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[1,x].imshow(f2[0, : , :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[1,x].grid(False)
+  f3 = activation_model.predict(test_images[THIRD_IMAGE].reshape(1, 28, 28, 1))[x]
+  axarr[2,x].imshow(f3[0, : , :, CONVOLUTION_NUMBER], cmap='inferno')
+  axarr[2,x].grid(False)
+
 
 
 
