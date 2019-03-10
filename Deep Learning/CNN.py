@@ -110,8 +110,11 @@ model.compile(loss='binary_crossentropy',
               optimizer=RMSprop(lr=0.001),
               metrics=['acc'])
 
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 # All images will be rescaled by 1./255
 train_datagen = ImageDataGenerator(rescale=1/255)
+validation_datagen = ImageDataGenerator(rescale=1/255)
 
 # Flow training images in batches of 128 using train_datagen generator
 train_generator = train_datagen.flow_from_directory(
@@ -122,6 +125,14 @@ train_generator = train_datagen.flow_from_directory(
            # Since we use binary_crossentropy loss, we need binary labels
         class_mode='binary')
 
+validation_generator = validation_datagen.flow_from_directory(
+        'C:/Users/sandh/Google Drive/Data Science/Python Learning/DataSets/Images/Horses_Humans/Validation_Horse_Human/',  # This is the source directory for training images
+        target_size=(300, 300),  # All images will be resized to 150x150
+        batch_size=32,
+        # Since we use binary_crossentropy loss, we need binary labels
+        class_mode='binary')
+
+
 from tensorflow.keras.optimizers import RMSprop
 
 # fit the model
@@ -131,15 +142,6 @@ history = model.fit_generator( # model.fit generator is used instead of datasets
       epochs=15,
       verbose=1)
 
-# Validation Generator
-valid_generator = valid_datagen.flow_from_directory(
-                 # This is the source directory for training images - Names of Subdirectories will be the labels of the images
-        'C:/Users/sandh/Google Drive/Data Science/Python Learning/DataSets/Images/Horses_Humans/Train_Horse_Human/',  
-        target_size=(300, 300),  # All images will be resized to 150x150. Input data of NN should all be of same size
-        batch_size=128,
-           # Since we use binary_crossentropy loss, we need binary labels
-        class_mode='binary')
-
 # to get validation loss as well
 history = model.fit_generator(
       train_generator,
@@ -148,8 +150,7 @@ history = model.fit_generator(
       validation_data=validation_generator,
       validation_steps=8,
       verbose=2)
-  
-  
+   
   
   
   
