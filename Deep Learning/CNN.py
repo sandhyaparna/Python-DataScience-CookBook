@@ -67,5 +67,15 @@ for x in range(0,4):
   axarr[2,x].imshow(f3[0, : , :, CONVOLUTION_NUMBER], cmap='inferno')
   axarr[2,x].grid(False)
 
-
+### Image Generator API
+In many practical applications, A
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
