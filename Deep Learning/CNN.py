@@ -25,9 +25,11 @@ import tensorflow as tf
 print(tf.__version__)
 mnist = tf.keras.datasets.fashion_mnist
 (training_images, training_labels), (test_images, test_labels) = mnist.load_data()
-training_images=training_images.reshape(60000, 28, 28, 1)
-training_images=training_images / 255.0
+
+training_images=training_images.reshape(60000, 28, 28, 1) #reshaping is done? probably do accomodate colour
 test_images = test_images.reshape(10000, 28, 28, 1)
+
+training_images=training_images / 255.0
 test_images=test_images/255.0
 model = tf.keras.models.Sequential([
   tf.keras.layers.Conv2D(64, (3,3), activation='relu', input_shape=(28, 28, 1)),
