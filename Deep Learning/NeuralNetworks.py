@@ -2,7 +2,9 @@
 # https://github.com/aamini/introtodeeplearning_labs/blob/master/lab2/Part1_mnist.ipynb
 
 * Training Neural Networks 
-  * model.compile to set optimizer and loss function
+  * model.compile to set optimizer and loss function - https://www.tensorflow.org/api_docs/python/tf/keras/optimizers 
+    https://www.tensorflow.org/api_docs/python/tf/keras/losses
+    https://www.tensorflow.org/api_docs/python/tf/keras/metrics
   * model.fit on train data
   * model.evaluate on test data gives loss and acc
   * model.predict gives the probability of targets 0,1,2 etc
