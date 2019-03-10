@@ -12,7 +12,11 @@
   * Number of Neurons in the last layer should always match the number of classes u are classifying for
   * First layer in your network should be the same shape as your data
   * callbacks is used to stop training on more epochs if desired value of loss or accuracy is obtained
-  
+* CNN on Image
+  * Convolution is added on top of NN in model
+ 
+ 
+ 
 ### Neural Networks
 # keras is a Tensorflow API
 # Dense - layers of connection
@@ -67,7 +71,17 @@ class myCallback(tf.keras.callbacks.Callback):
       print("\nReached 99% accuracy so cancelling training!")
       self.model.stop_training = True
 
-
+### CNN
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu', input_shape=(28, 28, 1)), #Generate 64 filters, each of 3*3 matrix, 
+                                                       # ReLU activation, 1 in input shape is where we are mentioning colour depth
+  tf.keras.layers.MaxPooling2D(2, 2),
+  tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+  tf.keras.layers.MaxPooling2D(2,2),
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dense(10, activation='softmax')
+])
 
 
 
