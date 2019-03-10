@@ -140,6 +140,14 @@ valid_generator = valid_datagen.flow_from_directory(
            # Since we use binary_crossentropy loss, we need binary labels
         class_mode='binary')
 
+# to get validation loss as well
+history = model.fit_generator(
+      train_generator,
+      steps_per_epoch=8,  
+      epochs=15,
+      validation_data=validation_generator,
+      validation_steps=8,
+      verbose=2)
   
   
   
