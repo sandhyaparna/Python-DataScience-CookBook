@@ -131,7 +131,7 @@ validation_generator = validation_datagen.flow_from_directory(
         batch_size=32,
         # Since we use binary_crossentropy loss, we need binary labels
         class_mode='binary')
-
+# instead of 300*300 if the images are resized to 150*150 - the training is quicker
 
 from tensorflow.keras.optimizers import RMSprop
 
