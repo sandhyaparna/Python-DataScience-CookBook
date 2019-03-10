@@ -153,6 +153,7 @@ history = model.fit_generator(
    
   
 ### kFold - in tensorflow
+# https://stackoverflow.com/questions/38164798/does-tensorflow-have-cross-validation-implemented-for-its-users?rq=1
 from sklearn.model_selection import KFold
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
