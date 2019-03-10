@@ -125,7 +125,7 @@ train_generator = train_datagen.flow_from_directory(
 from tensorflow.keras.optimizers import RMSprop
 
 # fit the model
-history = model.fit_generator(
+history = model.fit_generator( # model.fit generator is used instead of datasets
       train_generator,
       steps_per_epoch=8,  
       epochs=15,
