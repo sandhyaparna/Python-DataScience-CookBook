@@ -1,5 +1,21 @@
 # https://github.com/sandhyaparna/dlaicourse/blob/master/Course%201%20-%20Part%204%20-%20Lesson%202%20-%20Notebook.ipynb
 # https://github.com/aamini/introtodeeplearning_labs/blob/master/lab2/Part1_mnist.ipynb
+
+* Training Neural Networks 
+  * model.compile to set optimizer and loss function
+  * model.fit on train data
+  * model.evaluate on test data gives loss and acc
+  * model.predict gives the probability of targets 0,1,2 etc
+* Image DataSet 
+  * How to load data that is already present in tf.keras datasets API as training and test images and their labels
+  * How to standardize data from images for Neural networks
+  * model.predict of a particular observation gives the probability of that obs being classifies as 0,1,2,3 etc (depends on number of target labels)
+  * As number of neurons in tf.keras.layers.Dense layer increases - accuracy of model inc along with time to train
+  * Number of Neurons in the last layer should always match the number of classes u are classifying for
+  * First layer in your network should be the same shape as your data
+  * callbacks is used to stop training on more epochs if desired value of loss or accuracy is obtained
+  
+  
 import tensorflow as tf
 from tf.keras.layers import *
 
