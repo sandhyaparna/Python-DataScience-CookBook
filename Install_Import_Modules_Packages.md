@@ -42,9 +42,12 @@ type - jupyter notebook in Anaconda prompt
 
 #### Jupyter Notebook Basics
 https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/00_notebook_tutorial.ipynb
-Install packages directly in Jupyter notebook
-import sys
-!{sys.executable} -m pip install gensim
+* Install packages directly in Jupyter notebook <br/>
+import sys <br/>
+!{sys.executable} -m pip install gensim <br/>
+* Install Keras with pip
+!pip install -q keras <br/>
+import keras <br/>
 
 #### Install Specific Packages - Anaconda website, whl, github
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
