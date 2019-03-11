@@ -37,20 +37,24 @@ Upgrade Packages using pip - "python -m pip install --upgrade pip" #In Anaconda 
 conda update pip #In Anaconda Prompt <br/>
 check pip version - pip --version #In Anaconda Prompt <br/>
  <br/>
-To Open jupyter notebook
-type - jupyter notebook in Anaconda prompt
+To Open jupyter notebook type - jupyter notebook in Anaconda prompt
 
 #### Jupyter Notebook Basics
 https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/00_notebook_tutorial.ipynb
 * Install packages directly in Jupyter notebook <br/>
 import sys <br/>
 !{sys.executable} -m pip install gensim <br/>
-* Google colab: Install Keras with pip <br/>
+
+
+### Google colab
+* Install Keras with pip <br/>
 !pip install -q keras <br/>
 import keras <br/>
-  * Install GraphViz with apt
-!apt-get install graphviz -y
-
+* Install GraphViz with apt <br/>
+!apt-get install graphviz -y <br/>
+* Import local files <br/>
+from google.colab import files <br/>
+uploaded = files.upload() <br/>
 
 
 #### Install Specific Packages - Anaconda website, whl, github
