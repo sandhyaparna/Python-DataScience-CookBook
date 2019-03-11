@@ -45,7 +45,7 @@ https://nbviewer.jupyter.org/github/fastai/course-v3/blob/master/nbs/dl1/00_note
 * Install packages directly in Jupyter notebook <br/>
 import sys <br/>
 !{sys.executable} -m pip install gensim <br/>
-* Install Keras with pip
+* Google colab: Install Keras with pip <br/>
 !pip install -q keras <br/>
 import keras <br/>
 
