@@ -161,8 +161,30 @@ history = model.fit_generator(
       validation_data=validation_generator,
       validation_steps=8,
       verbose=2)
-   
-  
+
+# Graph of Training and Validation accuracy vs epoch, Training & Validation loss vs epoch
+import matplotlib.pyplot as plt
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(len(acc))
+
+plt.plot(epochs, acc, 'r', label='Training accuracy')
+plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.legend()
+plt.figure()
+
+plt.plot(epochs, loss, 'r', label='Training Loss')
+plt.plot(epochs, val_loss, 'b', label='Validation Loss')
+plt.title('Training and validation loss')
+plt.legend()
+
+plt.show()
+ 
+ 
 ### kFold - in tensorflow
 # https://stackoverflow.com/questions/38164798/does-tensorflow-have-cross-validation-implemented-for-its-users?rq=1
 from sklearn.model_selection import KFold
