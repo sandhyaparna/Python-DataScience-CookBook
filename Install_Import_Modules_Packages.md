@@ -48,6 +48,10 @@ import sys <br/>
 * Google colab: Install Keras with pip <br/>
 !pip install -q keras <br/>
 import keras <br/>
+  * Install GraphViz with apt
+!apt-get install graphviz -y
+
+
 
 #### Install Specific Packages - Anaconda website, whl, github
 * Install using Anaconda website, https://conda.anaconda.org/conda-forge ,look for package and see the syntax associated with the specific package u r looking for <br/>
