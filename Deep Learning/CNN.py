@@ -116,6 +116,17 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale=1/255)
 validation_datagen = ImageDataGenerator(rescale=1/255)
 
+#Image pre-processing
+train_datagen = ImageDataGenerator(
+    rescale=1. / 255,
+    rotation_range=40,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True,
+    fill_mode='nearest')
+
 # Flow training images in batches of 128 using train_datagen generator
 train_generator = train_datagen.flow_from_directory(
                  # This is the source directory for training images - Names of Subdirectories will be the labels of the images
