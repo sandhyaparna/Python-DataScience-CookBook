@@ -370,8 +370,10 @@ Df_X is data frame with features
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
               "Char_Var2": {"Value1": New_Vaue1, "Value2": New_Vaue2, "Value3": New_Vaue3, "Value4": New_Vaue4 }}
 Df.replace(Char_Codes, inplace=True)
-# b) Can be used when there are missing values - As Manula encoding doesnt change misisng values
+# b) Can be used when there are missing values - As Manual encoding doesnt change misisng values
 Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_Vaue3})
+# Replace 0 or False values in the entire dataset to missing
+Df = Df.replace([0,"False"],np.NAN)
 
 
 # 2. Label encoding - Using Categories (CANNOT be USED for MISSING Vars)
