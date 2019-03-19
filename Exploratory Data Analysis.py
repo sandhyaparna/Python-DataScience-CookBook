@@ -102,7 +102,6 @@ Df.to_csv('path/NewFile.txt', sep='\t', index=False)
 Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 ### Export to Excel
-Df = pd.to_excel('dir/myDataFrame.xlsx', sheet_name='Sheet1')
 
 ### Export to SQL
 pd.to_sql('myDf', Connection)
