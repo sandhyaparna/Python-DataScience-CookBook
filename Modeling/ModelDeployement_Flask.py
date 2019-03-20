@@ -2,7 +2,7 @@
 # https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
 # https://hackernoon.com/deploy-a-machine-learning-model-using-flask-da580f84e60c
 # https://www.analyticsvidhya.com/blog/2017/09/machine-learning-models-as-apis-using-flask/
-#
+# https://towardsdatascience.com/designing-a-machine-learning-model-and-deploying-it-using-flask-on-heroku-9558ce6bde7b
 
 ### Save Model as pickle file
 import pickle
