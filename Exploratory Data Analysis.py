@@ -580,7 +580,7 @@ df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]'
 # End is start + pd.Timedelta(days=13)
 
                        
-### Split a dataframe into multiple dataframes based on column values
+### Split/Filter/Subset a dataframe into multiple dataframes based on column values
 # Using a single column values
 a.New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'])))  
 b. Unique_Vigi_Org = df.Vigi_Org.unique()   # Vigi_Org is a concated column of VigiID and Organism
