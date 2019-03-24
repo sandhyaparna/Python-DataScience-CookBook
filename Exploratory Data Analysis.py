@@ -120,6 +120,8 @@ list(Df)
 Df.dtypes
 # Data type of a single var
 Df['Var1'].dtype
+# List of vars by datatype
+Df.columns.to_series().groupby(DF.dtypes).groups
 
 # Non-missing values in each column, data type of vars
 Df.info()
