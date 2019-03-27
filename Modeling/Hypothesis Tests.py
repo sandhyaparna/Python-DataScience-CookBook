@@ -1,4 +1,4 @@
-https://machinelearningmastery.com/statistical-hypothesis-tests-in-python-cheat-sheet/
+# https://machinelearningmastery.com/statistical-hypothesis-tests-in-python-cheat-sheet/
 
 ### Quantitative Data
 from scipy import stats
