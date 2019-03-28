@@ -8,6 +8,7 @@ https://github.com/datascienceinc/Skater
 https://github.com/marcotcr/lime
 
 ### SHAP ###
+* Cannot contain Missing values
 https://github.com/slundberg/shap
 http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html
 https://christophm.github.io/interpretable-ml-book/shapley.html#
