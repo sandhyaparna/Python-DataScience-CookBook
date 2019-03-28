@@ -11,6 +11,9 @@ https://github.com/marcotcr/lime
 https://github.com/slundberg/shap
 http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html
 https://christophm.github.io/interpretable-ml-book/shapley.html#
+Comparision of interpreting features using diff methods - http://savvastjortjoglou.com/intrepretable-machine-learning-nfl-combine.html
+SHAP on Finance data - https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27
+SHAP on Health data - https://slundberg.github.io/shap/notebooks/NHANES%20I%20Survival%20Model.html
 # SHAP(SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. 
 # Help measure the impact of the features on the predictions
 # Tree SHAP method is mathematically equivalent to averaging differences in predictions over all possible orderings of the features, rather than just the ordering specified by their position in the tree.
