@@ -1,3 +1,6 @@
+### ELI5 ###
+https://github.com/TeamHG-Memex/eli5
+
 ### Skater ###
 https://github.com/datascienceinc/Skater
 
@@ -5,6 +8,7 @@ https://github.com/datascienceinc/Skater
 https://github.com/marcotcr/lime
 
 ### SHAP ###
+https://github.com/slundberg/shap
 # SHAP(SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. 
 # Help measure the impact of the features on the predictions
 # Tree SHAP method is mathematically equivalent to averaging differences in predictions over all possible orderings of the features, rather than just the ordering specified by their position in the tree.
