@@ -70,7 +70,7 @@ https://stackoverflow.com/questions/30083067/encountering-error-when-installing-
   * Below code works <br/> 
 git clone https://github.com/cbellei/word2veclite.git <br/> 
 cd word2veclite <br/>
-pip install .  <br/>
+pip install .  (OR) python setup.py install <br/>
   * If setup.py is not present the above code doesn't work. Just an unfinished, broken package, it isn't supposed to be installed by Python tools. Install it manually — clone the repo and copy files to site-packages.
   * Not sure if the below one works <br/> 
 pip install -e git+https://github.com/package-name/package-name.git#egg=package-name <br/>
@@ -174,6 +174,10 @@ import matplotlib.pyplot as plt <br/>
   * Either the python version required for the package is not present 
   * Module/Package name is wrong/incorrect. Eg codecs is actually part of 'openapi-codec'
 * Building wheel error: pip install --no-cache-dir MODULENAME
+* python setup.py egg_info failed with error code 1
+  * pip install --upgrade setuptools
+  *  
+
 
 ###### Path Var
 C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Users\User\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python37\;C:\Users\User\Anaconda3;C:\Users\User\Anaconda3\Library\mingw-w64\bin;C:\Users\User\Anaconda3\Library\usr\bin;C:\Users\User\Anaconda3\Library\bin;C:\Users\User\Anaconda3\Scripts;C:\Users\User\AppData\Local\rodeo\app-2.5.2\bin;C:\Users\User\AppData\Local\rodeo\app-2.5.2\resources\conda
