@@ -52,9 +52,12 @@ import sys <br/>
 import keras <br/>
 * Install GraphViz with apt <br/>
 !apt-get install graphviz -y <br/>
-* Import local files <br/>
+
+* Import files into Google Colab - https://towardsdatascience.com/3-ways-to-load-csv-files-into-colab-7c14fcbdcb92 <br/>
 from google.colab import files <br/>
 uploaded = files.upload() <br/>
+
+
 
 
 #### Install Specific Packages - Anaconda website, whl, github
