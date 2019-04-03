@@ -584,8 +584,11 @@ df['BiWeekStartDate'] = df['CollectionDate'] - df['Mod'].astype('timedelta64[D]'
                        
 ### Split/Filter/Subset a dataframe into multiple dataframes based on column values
 # Using a single column values
-a.New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'])))  
-b. Unique_Vigi_Org = df.Vigi_Org.unique()   # Vigi_Org is a concated column of VigiID and Organism
+# Option 1
+New_Dict_MultipleDfs =  dict(tuple(df.groupby(df['Var1'])))  
+New_Dict_MultipleDfs[Unq values in var1]  #Gives splited datasets
+# Option 2                       
+Unique_Vigi_Org = df.Vigi_Org.unique()   # Vigi_Org is a concated column of VigiID and Organism
 df_Dict = {elem : pd.DataFrame for elem in Unique_Vigi_Org}
 for key in df_Dict.keys():
     df_Dict[key] = df_Dict[:][df_Dict.Vigi_Org == key]                       
