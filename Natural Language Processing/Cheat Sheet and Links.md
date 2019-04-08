@@ -7,6 +7,6 @@ Google word2vec model http://mccormickml.com/2016/04/12/googles-pretrained-word2
 #### Links
 https://www.analyticsvidhya.com/blog/2017/01/ultimate-guide-to-understand-implement-natural-language-processing-codes-in-python/ <br/>
 Word2vec Viz using t-sne https://towardsdatascience.com/google-news-and-leo-tolstoy-visualizing-word2vec-word-embeddings-with-t-sne-11558d8bd4d <br/>
-
+https://medium.com/@ageitgey/natural-language-processing-is-fun-9a0bff37854e <br/>
 
 
