@@ -1,5 +1,5 @@
 ### Links
-# https://medium.com/@kangeugine/time-series-check-stationarity-1bee9085da05
+# Check for Stationarity: https://medium.com/@kangeugine/time-series-check-stationarity-1bee9085da05
 # https://www.kdnuggets.com/2018/09/end-to-end-project-time-series-analysis-forecasting-python.html
 
 
