@@ -1,4 +1,5 @@
 ### Links
+# Check for Stationarity: https://medium.com/analytics-vidhya/a-gentle-introduction-to-handling-a-non-stationary-time-series-in-python-8be1c1d4b402
 # Check for Stationarity: https://medium.com/@kangeugine/time-series-check-stationarity-1bee9085da05
 # https://www.kdnuggets.com/2018/09/end-to-end-project-time-series-analysis-forecasting-python.html
 
