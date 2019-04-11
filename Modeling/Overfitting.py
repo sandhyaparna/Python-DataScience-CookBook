@@ -16,8 +16,8 @@ def Thresholdout(sample, holdout, q):
    else:
        # q overfits (you may have overfit using your training data)
        return holdout_mean + random.normal(0, sigma)
-
-
+ 
+# 
 
 
 
