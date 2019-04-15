@@ -3,6 +3,10 @@
 # https://hackernoon.com/deploy-a-machine-learning-model-using-flask-da580f84e60c
 # https://www.analyticsvidhya.com/blog/2017/09/machine-learning-models-as-apis-using-flask/
 # https://towardsdatascience.com/designing-a-machine-learning-model-and-deploying-it-using-flask-on-heroku-9558ce6bde7b
+# 
+
+https://www.analyticsindiamag.com/5-python-libraries-to-package-and-deploy-machine-learning-models/
+
 
 ### Save Model as pickle file
 import pickle
