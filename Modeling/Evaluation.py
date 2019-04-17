@@ -60,6 +60,14 @@ from sklearn.metrics import *
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
 
+# Cost Function 
+# False_Positives = abs(fpr * Actual Negatives)
+# True_Positives = abs(tpr * Actual Positives)
+# Specificity = 1-fpr
+# True_Negatives = abs(Specificity*Actual Negatives)
+# False_Negatives = abs(Total - False_Positives - True_Positives - True_Negatives)
+
+
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
 y_pred_proba - Predicted Target variable as continuous prob value i.e. y_pred_proba[:,1]
