@@ -66,7 +66,8 @@ from sklearn.metrics import *
 # Specificity = 1-fpr
 # True_Negatives = abs(Specificity*Actual Negatives)
 # False_Negatives = abs(Total - False_Positives - True_Positives - True_Negatives)
-
+# Cost Function (Incurred) = True_Positives*(Cost Incurred for intervention - Cost Saved)  +  False_Positives*(Cost incurred for intervention)  +
+#                            False_Negatives*(Cost if there is NO intervention)
 
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
