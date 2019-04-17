@@ -25,6 +25,7 @@ from sklearn.metrics import *
 # AUC is area under ROC curve - Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
+# AUC of 70% desirable
 
 # ROC curves are used when there are roughly equal number of observations for each class
 # Precision-Recall curves should be used there is a moderate to large class imbalance
