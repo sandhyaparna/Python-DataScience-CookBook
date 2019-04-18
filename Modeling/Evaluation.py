@@ -60,7 +60,7 @@ from sklearn.metrics import *
 # For each decile - Calculate counts, cumulative counts, cumulative count% of 1s and 0s for each decile
 # K-S value for each decile is the difference between Cumulative 1s % and cumulatiev 0s % - Max k-s value within all deciles is the final K-S stat
 
-# Cost Function 
+# Cost Function - https://towardsdatascience.com/model-performance-cost-functions-for-classification-models-a7b1b00ba60
 # False_Positives = abs(fpr * Actual Negatives)
 # True_Positives = abs(tpr * Actual Positives)
 # Specificity = 1-fpr
