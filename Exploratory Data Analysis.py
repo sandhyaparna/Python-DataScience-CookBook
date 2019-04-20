@@ -57,7 +57,8 @@ Df = pd.read_csv("path/file.csv",
                  usecols = ['Var1', # Import specific columns
                             'Var2',
                             'Var5',
-                            'Var8']) 
+                            'Var8'],
+                na_values= ['missing', 'not available', 'NA']) #Read these words as missing values
 
 ### TEXT files - Tab Delimited is default 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_table.html
