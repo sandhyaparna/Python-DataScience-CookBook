@@ -1,3 +1,5 @@
+# https://www.kdnuggets.com/2016/08/include-high-cardinality-attributes-predictive-model.html
+  
 ### Character variables encoding ###
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
