@@ -8,6 +8,25 @@ https://github.com/datascienceinc/Skater
 https://github.com/marcotcr/lime
 Python code with clear explanation on how to implement    
 https://pythondata.com/local-interpretable-model-agnostic-explanations-lime-python/
+# Train data on Random forest
+rf = sklearn.ensemble.RandomForestRegressor(n_estimators=1000)
+train, test, labels_train, labels_test = train_test_split(boston.data, boston.target, train_size=0.80)
+rf.fit(train, labels_train)
+# Extract Categorical features
+categorical_features = np.argwhere(
+    np.array([len(set(boston.data[:,x]))
+    for x in range(boston.data.shape[1])]) <= 10).flatten()
+# Create LIME explainer
+explainer = lime.lime_tabular.LimeTabularExplainer(train, 
+                                                   feature_names=boston.feature_names, 
+                                                   class_names=['price'], 
+                                                   categorical_features=categorical_features, 
+                                                   verbose=True, mode='regression')
+# Now, we can grab one of our test values and check out our prediction(s)
+i = 100 # 100th test observation is used
+exp = explainer.explain_instance(test[i], rf.predict, num_features=5)
+exp.show_in_notebook(show_table=True)
+    
     
 ### SHAP ###
 * Cannot contain Missing values
