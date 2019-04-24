@@ -6,7 +6,9 @@ https://github.com/datascienceinc/Skater
 
 ### LIME ###
 https://github.com/marcotcr/lime
-
+Python code with clear explanation on how to implement    
+https://pythondata.com/local-interpretable-model-agnostic-explanations-lime-python/
+    
 ### SHAP ###
 * Cannot contain Missing values
 https://github.com/slundberg/shap
