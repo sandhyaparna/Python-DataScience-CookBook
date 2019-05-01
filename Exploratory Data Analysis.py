@@ -647,7 +647,10 @@ New_DF = pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(Df1,Df2,
 # Compare/Check if 2 columns are same or equal
 Df['Var1'].equals(Df['Var2'])                       
                        
-                       
+# Rescale data 
+newvalue= (max'-min')/(max-min)*(value-max)+max'
+ or
+newvalue= (max'-min')/(max-min)*(value-min)+min'
                        
                        
                        
