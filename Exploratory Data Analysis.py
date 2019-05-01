@@ -642,8 +642,10 @@ New_DF = pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(pd.merge(Df1,Df2,
                                          Df6, how='outer',on='Var1'),
                               Df7, how='outer',on='Var1'),
                       Df8, how='outer',on='Var1')                    
+
                        
-                       
+# Compare/Check if 2 columns are same or equal
+Df['Var1'].equals(Df['Var2'])                       
                        
                        
                        
