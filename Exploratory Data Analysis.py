@@ -455,6 +455,11 @@ grouped = pd.DataFrame(df.groupby('mykey').agg(f)).reset_index()
 grouped.columns = grouped.columns.map('_'.join)
 # 2 level of the column names are joined using '_'
 
+# Caluclate % of 1s & 0s withina a categorical column i.e within each state what is the % of 1s and what is the % of 0s
+# Similar to supervised ratio
+Perc = Df.groupby(['CatCOlum','BinColumn'])['BinColumn'].count().rename("count")
+Perc / Perc.groupby(level=0).sum()
+
 
 ### Convert from long to wide format
 # The columns used for pivoting - distinct rows for the columns selected
