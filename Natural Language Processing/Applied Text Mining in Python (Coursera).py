@@ -156,3 +156,10 @@ replace(r'(\w+day\b)', lambda x: x.groups()[0][:3])
 str.str.extract(r'(\d?\d):(\d\d)') - this produces 2 new columns
 
 # What is the difference between str.extract and str.extractall
+
+# Extract floating numbers from a text column pandas
+Df['X'] = Df['Y'].str.extract('(\d*\.?\d*)').astype(float)
+
+# Replace text characters but not floating numbers i.e decimal values are not removed
+Df['X'].replace(regex=True,inplace=True,to_replace=r'([_,a-zA-Z ]+)',value=r'')
+
