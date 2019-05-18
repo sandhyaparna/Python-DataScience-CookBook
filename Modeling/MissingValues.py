@@ -12,8 +12,12 @@ missing_data = pd.concat([MissingCount, MissingPercent], axis=1, keys=['MissingC
 missing_data.reset_index(inplace=True)
 
 # Plot Percentages of missing values
-
-
+f, ax = plt.subplots(figsize=(15, 6))
+plt.xticks(rotation='90')
+sns.barplot(x=missing_data['index'], y=missing_data['MissingPercent'])
+plt.xlabel('Features', fontsize=15)
+plt.ylabel('Percent of missing values', fontsize=15)
+plt.title('Percent missing data by feature', fontsize=15)
 
 
 
