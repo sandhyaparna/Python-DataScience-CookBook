@@ -676,4 +676,33 @@ for k, v in X_train[list(CategoricalColumns)].nunique().to_dict().items():
 for k, v in Df.nunique().to_dict().items():
     print('{}={}'.format(k,v))                       
                        
+# Extract p value based on chisq test  for multiple columns                      
+for col in list(CategoricalColumns):
+    pValue = scipy.stats.chi2_contingency(pd.crosstab(Df[col],Df['TargetVar']))[1]
+    print('{}={}'.format(col,pValue))
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                        
