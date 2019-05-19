@@ -659,7 +659,11 @@ newvalue = [ (max*-min*)/(max-min)*(value-max) ] + max*
  or
 newvalue = [ (max*-min*)/(max-min)*(value-min) ] + min*
                        
-
-                       
+# https://stackoverflow.com/questions/41577468/replace-low-frequency-categorical-values-from-pandas-dataframe-while-ignoring-na
+# Replace low frequency values as Other in Categorical columns
+for col in list(CategoricalColumns):
+    val = X_train[col].value_counts()
+    y = val[val < 100].index
+    X_train[col] = X_train[col].replace({x:'other' for x in y})                       
                        
                        
