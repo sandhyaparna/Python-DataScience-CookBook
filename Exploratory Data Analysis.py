@@ -670,7 +670,10 @@ for col in list(CategoricalColumns):
 MultipleCategoryColumns = []
 for k, v in X_train[list(CategoricalColumns)].nunique().to_dict().items():
     if v >=4:
-        MultipleCategoryColumns.append(k)                      
+        MultipleCategoryColumns.append(k)      
                        
+# Number of unique values within Categorical data
+for k, v in Df.nunique().to_dict().items():
+    print('{}={}'.format(k,v))                       
                        
                        
