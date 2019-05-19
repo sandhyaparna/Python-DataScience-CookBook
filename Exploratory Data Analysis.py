@@ -666,4 +666,11 @@ for col in list(CategoricalColumns):
     y = val[val < 100].index
     X_train[col] = X_train[col].replace({x:'other' for x in y})                       
                        
+# Extract columns if they have multiple categories within them 
+MultipleCategoryColumns = []
+for k, v in X_train[list(CategoricalColumns)].nunique().to_dict().items():
+    if v >=4:
+        MultipleCategoryColumns.append(k)                      
+                       
+                       
                        
