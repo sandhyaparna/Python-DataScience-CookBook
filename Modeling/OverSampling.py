@@ -1,3 +1,4 @@
+# https://imbalanced-learn.readthedocs.io/en/stable/api.html#module-imblearn.over_sampling
 # SMOTE
 from imblearn.over_sampling import SMOTE,ADASYN
 
