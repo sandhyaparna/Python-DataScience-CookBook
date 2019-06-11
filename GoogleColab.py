@@ -1,4 +1,8 @@
 ### Loading data ###
+
+# Uploading large files
+https://www.freecodecamp.org/news/how-to-transfer-large-files-to-google-colab-and-remote-jupyter-notebooks-26ca252892fa/
+
 from google.colab import files
 uploaded = files.upload()
 
