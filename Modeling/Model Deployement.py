@@ -1,5 +1,6 @@
 ########## Flask ##########
 # Deploying Keras Deep Learning models using Flask https://towardsdatascience.com/deploying-keras-deep-learning-models-with-flask-5da4181436a2
+# Flask Videos https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
 # https://www.kdnuggets.com/2019/01/build-api-machine-learning-model-using-flask.html
 # https://towardsdatascience.com/develop-a-nlp-model-in-python-deploy-it-with-flask-step-by-step-744f3bdd7776
 # https://medium.com/fintechexplained/flask-host-your-python-machine-learning-model-on-web-b598151886d
