@@ -1,3 +1,7 @@
+### Google Colab Notebooks
+# https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%202%20-%20Lesson%202%20-%20Notebook.ipynb
+
+
 # https://github.com/lmoroney/dlaicourse
 * Training Neural Networks 
   * model.compile to set optimizer and loss function
@@ -23,6 +27,9 @@
 # Dense - layers of connection
 # Units - Number of Neurons
 # Sequential - Successive layers are defined in Sequence
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
 model = keras.sequential([keras.layers.Dense(units=1, input_shape=[1])])
 
 # 3 layers
