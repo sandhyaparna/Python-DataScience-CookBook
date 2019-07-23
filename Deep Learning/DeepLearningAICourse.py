@@ -30,6 +30,7 @@
 import tensorflow as tf
 import numpy as np
 from tensorflow import keras
+# NN with 1 layer and that layer has 1 neuron and the input shape to it is just 1 value
 model = keras.sequential([keras.layers.Dense(units=1, input_shape=[1])])
 
 # 3 layers
