@@ -1,11 +1,6 @@
 ### Google Colab Notebooks
-# My notes https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%202%20-%20Lesson%202%20-%20Notebook.ipynb
-# https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%202%20-%20Lesson%202%20-%20Notebook.ipynb
-# https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Answer.ipynb#scrollTo=PUNO2E6SeURH
-# MNIST data https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%204%20-%20Lesson%202%20-%20Notebook.ipynb#scrollTo=kRH19pWs6ZDn
+# Notebooks https://github.com/lmoroney/dlaicourse
 
-
-# https://github.com/lmoroney/dlaicourse
 * Training Neural Networks 
   * model.compile to set optimizer and loss function
   * model.fit on train data
