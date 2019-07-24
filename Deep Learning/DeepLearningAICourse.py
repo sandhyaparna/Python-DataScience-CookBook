@@ -2,7 +2,7 @@
 # My notes https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%202%20-%20Lesson%202%20-%20Notebook.ipynb
 # https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%202%20-%20Lesson%202%20-%20Notebook.ipynb
 # https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Answer.ipynb#scrollTo=PUNO2E6SeURH
-# 
+# MNIST data https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Course%201%20-%20Part%204%20-%20Lesson%202%20-%20Notebook.ipynb#scrollTo=kRH19pWs6ZDn
 
 
 # https://github.com/lmoroney/dlaicourse
@@ -36,18 +36,6 @@ from tensorflow import keras
 # NN with 1 layer and that layer has 1 neuron and the input shape to it is just 1 value
 model = keras.sequential([keras.layers.Dense(units=1, input_shape=[1])])
 
-# 3 layers
-# First layer corresponds to input - shape to be expected for the data to be in. Flatten is used to take image to convert it into a simple array
-# Each image in MNIST data is represented as 28*28 array of (rows and columns)
-# Last layer corresponds to diff Target classes
-# Hidden Layer - 128 neurons - 
-model = tf.keras.models.Sequential([tf.keras.layers.Flatten(input_shape=(28,28)),  #tf.keras.layers.Flatten(), - flattening is imp in images
-                                    tf.keras.layers.Dense(128, activation=tf.nn.relu), 
-                                    tf.keras.layers.Dense(128, activation=tf.nn.relu), #more hidden layers
-                                    tf.keras.layers.Dense(10, activation=tf.nn.softmax)])
-
-# for image data - Normalize the input values
-
 # Loss functions - Measure how good the current guess is
 # Optimizer - First NN starts with a guess and then optimizer is used to improve upon it. It generates a new and improved guess
 # (sgd - stochastic gradient descent)
@@ -71,6 +59,19 @@ import tensorflow as tf
 from tensorflow import keras
 fashion_mnist = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
+# 3 layers
+# First layer corresponds to input - shape to be expected for the data to be in. Flatten is used to take image to convert it into a simple array
+# Each image in MNIST data is represented as 28*28 array of (rows and columns)
+# Last layer corresponds to diff Target classes
+# Hidden Layer - 128 neurons - 
+model = tf.keras.models.Sequential([tf.keras.layers.Flatten(input_shape=(28,28)),  #tf.keras.layers.Flatten(), - flattening is imp in images
+                                    tf.keras.layers.Dense(128, activation=tf.nn.relu), 
+                                    tf.keras.layers.Dense(128, activation=tf.nn.relu), #more hidden layers
+                                    tf.keras.layers.Dense(10, activation=tf.nn.softmax)])
+
+# for image data - Normalize the input values
+
 
 # Stops training based on callbacks
 # callbacks is based on loss
