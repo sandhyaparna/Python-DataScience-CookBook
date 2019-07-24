@@ -65,6 +65,10 @@ model.evaluate(test_images, test_labels)
 model.predict(test_images)
 model.predict([y])
 
+# Load fashion MNIST data
+fashion_mnist = keras.datasets.fashion_mnist
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
 # Stops training based on callbacks
 # callbacks is based on loss
 class myCallback(tf.keras.callbacks.Callback):
