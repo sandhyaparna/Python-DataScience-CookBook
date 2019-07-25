@@ -683,6 +683,7 @@ for col in list(CategoricalColumns):
                        
                        
 ### Pivot Data
+https://pbpython.com/pandas-pivot-table-explained.html
 # Convert a column as features and get binary 0 or 1 in the values
 pd.get_dummies(Df, columns=['FeatureColumn'])
                        
