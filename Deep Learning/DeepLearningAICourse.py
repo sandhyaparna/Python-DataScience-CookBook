@@ -1,6 +1,9 @@
 ### Google Colab Notebooks
 # Notebooks https://github.com/lmoroney/dlaicourse
 
+# Week3 - CNN
+# Week4 - Image Generator
+
 * Training Neural Networks 
   * model.compile to set optimizer and loss function
   * model.fit on train data
