@@ -687,8 +687,11 @@ for col in list(CategoricalColumns):
 pd.get_dummies(Df, columns=['FeatureColumn'])
                        
                        
-                       
-                       
+### Functions            
+# function to reverse an array                       
+arr =[3,2,1]
+func = lambda x: (func (x[1:]) + x[:1] if x else [])
+print(func(arr))
                        
                        
                        
