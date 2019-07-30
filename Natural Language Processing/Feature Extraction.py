@@ -20,7 +20,7 @@ X = NGrams_vectorizer.fit_transform(Df.Text_Var.values)
 TextDf_NGramsVectors = pd.DataFrame(X.A, columns=NGrams_vectorizer.get_feature_names())
 TextDf_NGramsVectors_Freq = pd.DataFrame({'Word':NGrams_vectorizer.get_feature_names(), 'frequency':sum(X).toarray()[0]})
 
-### Character level Vectorization
+### Character level Vectorization - single letter based
 Char_vectorizer = CountVectorizer(analyzer='char') #ngrams can also be added
 X = Char_vectorizer.fit_transform(Df.Text_Var.values)
 TextDf_CharVectors = pd.DataFrame(X.A, columns=Char_vectorizer.get_feature_names())
