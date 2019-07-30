@@ -277,6 +277,6 @@ embeddings = get_word2vec_embeddings(word2vec, df_)
 # Step by step implementation
 https://medium.com/@mishra.thedeepak/doc2vec-simple-implementation-example-df2afbbfbad5
 
-
+### Glove Model
 
 
