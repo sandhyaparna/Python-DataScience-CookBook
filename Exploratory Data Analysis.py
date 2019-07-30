@@ -60,6 +60,10 @@ Df = pd.read_csv("path/file.csv",
                             'Var8'],
                 na_values= ['missing', 'not available', 'NA']) #Read these words as missing values
 
+# Code to read many csv files and combine them
+# https://github.com/tcbonds/lyme-disease-classifier/blob/master/2_Parsing_Climate_CSV_Files_Into_Features.ipynb
+
+
 ### TEXT files - Tab Delimited is default 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_table.html
 Df = pd.read_table("path/file.txt", 
