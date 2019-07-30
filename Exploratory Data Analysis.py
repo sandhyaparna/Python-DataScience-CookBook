@@ -156,6 +156,8 @@ Df.mean(axis=1)
 # Number of missing values in each column
 Df.isnull().sum()
 Df['Var1'].isnull().sum()
+# Percentage of missing values
+Df.isnull().sum()/len(Df)*100
 
 # First few rows sample - Glimpse of data
 Df.head()
