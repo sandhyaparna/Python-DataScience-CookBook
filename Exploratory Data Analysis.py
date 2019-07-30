@@ -230,8 +230,7 @@ Df.groupby(['Var1', 'Var2']).Var3.describe().unstack()
 # Histogram - https://seaborn.pydata.org/generated/seaborn.distplot.html?highlight=distplot#seaborn.distplot
 # countplot (Categoric or Numeric)- https://seaborn.pydata.org/generated/seaborn.countplot.html
 # Barplot (Categorical & Numeric - estimate of central tendency for a numeric variable) - https://seaborn.pydata.org/generated/seaborn.barplot.html
-Data is 
-regated and then bar plots are applied - https://python-graph-gallery.com/barplot/
+Data is segregated and then bar plots are applied - https://python-graph-gallery.com/barplot/
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
 # Pie chart - 
 
@@ -258,6 +257,15 @@ sns.barplot(x="Var", y="Var1", data=Df)
 
 # Line Graph - Var(Cat), Var1(Num) - For each unique value of Var, values of Var1 are plotted as a line graph
 Df.groupby(['Var'])['Var1'].plot(legend=True)
+
+# Line Graph - When each variable sum is represented as a point in the graph (By year) - Each variable is a different year
+plt.figure(dpi=300)
+year_list = [str(x) for x in range(2000,2018)]
+plt.plot(Df.sum()[4:]) # Sum of the columns from 4th column to last column
+plt.title('Reported Lyme Disease Cases from 2000 to 2017')
+plt.xlabel('Year')
+plt.xticks(range(18), year_list, rotation=85)
+plt.ylabel('Number of Reported Cases');
 
 # Bar Graph - Within unique values of Var(Cat) - give sum of values in Var1(Numeric)
 Df.groupby('Cat_Var').Var.sum().plot.bar()
