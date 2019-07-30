@@ -5,7 +5,7 @@
 ## Different deep learning algos for NLP
 # CNN - Convolutional Neural Network
 # RNN - Recurrent Neural Network
-# HNN - Hierarchical Attention Network
+# HAN - Hierarchical Attention Network
 
 
 
