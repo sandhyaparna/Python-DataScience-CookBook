@@ -92,6 +92,23 @@ Df = pd.read_excel('file.xlsx')
 xlsx = pd.ExcelFile('file.xls')
 Df = pd.read_excel(xlsx, 'Sheet1')
 
+### Extract data from json/website
+!wget --no-check-certificate \
+    https://storage.googleapis.com/laurencemoroney-blog.appspot.com/sarcasm.json \
+    -O /tmp/sarcasm.json #Saving to: ‘/tmp/sarcasm.json’
+import json
+with open("/tmp/sarcasm.json", 'r') as f:
+    datastore = json.load(f)
+    
+sentences = [] 
+labels = []
+urls = []
+for item in datastore:
+    sentences.append(item['headline']) #headlines are stored in sentences
+    labels.append(item['is_sarcastic'])
+    urls.append(item['article_link'])
+
+
 ################# SAVE DATA / EXPORTING #################
 ### Export dataframes/tables to SQL Servere 
 ???
