@@ -50,6 +50,8 @@ import sys <br/>
 * Install Keras with pip <br/>
 !pip install -q keras <br/>
 import keras <br/>
+* Install 2.0 version of tensorflow <br/>
+!pip install tensorflow==2.0.0-beta0 <br/>
 * Install GraphViz with apt <br/>
 !apt-get install graphviz -y <br/>
 
