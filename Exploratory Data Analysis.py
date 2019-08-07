@@ -132,6 +132,11 @@ pd.to_sql('myDf', Connection)
 # Size of a dataframe
 print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) + ' columns')
 
+# Description 
+def return_desc(df): 
+    return print (df.dtypes),print (df.head(3)) ,print(df.apply(lambda x: [x.unique()])), print(df.apply(lambda x: [len(x.unique())])),print (df.shape)
+
+
 # Rows, Columns
 Df.shape
 
