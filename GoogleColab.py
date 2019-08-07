@@ -21,3 +21,7 @@ from google.colab import files
 df.to_csv('filename.csv') 
 files.download('filename.csv')
 
+### Install packages that 
+git clone https://github.com/text-machine-lab/CliNER.git
+  
+
