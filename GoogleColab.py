@@ -16,6 +16,8 @@ Df = pd.read_csv(io.BytesIO(uploaded['Df.csv']))
 Df = pickle.load(io.BytesIO(uploaded['Df.pkl']))
 
 
-
-
+### Exporting csv file to local machine ###
+from google.colab import files
+df.to_csv('filename.csv') 
+files.download('filename.csv')
 
