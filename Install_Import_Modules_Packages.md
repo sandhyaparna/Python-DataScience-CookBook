@@ -99,6 +99,13 @@ Tensorflow is not supported in 3.7, install 3.6 version from https://www.python.
 python -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #Whole line is a command <br/>
 https://github.com/bhavsarpratik/install_Tensorflow_Windows #Requires gpu <br/>
 https://medium.com/datadriveninvestor/install-python-3-6-and-tensorflow-92eeff0ad4f5 <br/>
+* Install Valx - https://github.com/Tony-Hao/Valx <br/>
+Here the Valx_core module is stored as python file - Python Modules https://docs.python.org/3/tutorial/modules.html <br/>
+cd directory path <br/>
+In the above directory save few functions in XYZ.py file <br/>
+Go to Jupyter notebook - Use 'Import XYZ' to be able to use the python module  <br/>
+
+ <br/>
 * A few ways to solve errors
 https://www.tensorflow.org/install/errors  <br/>
 https://github.com/aymericdamien/TensorFlow-Examples <br/>
