@@ -22,11 +22,20 @@ df.to_csv('filename.csv')
 files.download('filename.csv')
 
 ### Install packages that consists of packages to be installed from CliNER
-git clone https://github.com/text-machine-lab/CliNER.git
+!git clone https://github.com/text-machine-lab/CliNER.git
  
 from google.colab import files
 uploaded = files.upload()
 for fn in uploaded.keys():
   print('User uploaded file "{name}" with length {length} bytes'.format(
       name=fn, length=len(uploaded[fn])))
+# Upload Requirements file here
+
+!pip install -r requirements.txt
+
+
+
+
+
+
 
