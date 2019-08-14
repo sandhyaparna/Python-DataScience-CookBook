@@ -26,6 +26,9 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))
 
+### Regex - Pattern Extraction/Matching Findall search
+http://www.pyregex.com/
+
 ### Noise Removal
 # Tokenization - splitting text into words (Removal of stop words, etc)
 # http://www.nltk.org/api/nltk.tokenize.html - Different types of tokenization 
