@@ -18,8 +18,8 @@ ClinicalNote_extract_candidates_name = extract_candidates_name(ClinicalNote_extr
 ClinicalNote_extract_candidates_name
 * ClinicalNote_formalize_expressions = formalize_expressions(ClinicalNote_extract_candidates_name[1][1])
 ClinicalNote_formalize_expressions
-• feature_dict_dk = {}
-fea_dict_umls = {}
+• fea_dict_dk = ufile.read_csv_as_dict ('data\variable_features_dk.csv', 0, 1, True)
+fea_dict_umls = ufile.read_csv_as_dict ('data\variable_features_umls.csv', 0, 1, True)
 ClinicalNote_identify_variable = identify_variable(ClinicalNote_preprocessing, feature_dict_dk, fea_dict_umls)
 ClinicalNote_identify_variable
 
