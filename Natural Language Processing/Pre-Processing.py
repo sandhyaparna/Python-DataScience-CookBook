@@ -135,7 +135,8 @@ class RepeatReplacer(object):
   else:
    return repl_word
 
-# Spelling Correction
+
+# Spelling Correction - enchant package stopped working - No update
 import enchant
 from nltk.metrics import edit_distance
 class SpellingReplacer(object):
@@ -157,6 +158,7 @@ Df["Text_Var"] = replacer.replace(Df["Text_Var"])
 d = enchant.DictWithPWL('en_US', 'mywords.txt')
 replacer = CustomSpellingReplacer(d)
 Df["Text_Var"] = replacer.replace(Df["Text_Var"])
+
 
 # Replace with Synonyms - Your CSV file should consist of two columns, where the first column is the word and the second column is the synonym meant to replace it
 class WordReplacer(object):
