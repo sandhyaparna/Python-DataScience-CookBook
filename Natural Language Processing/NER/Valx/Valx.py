@@ -22,7 +22,8 @@ ClinicalNote_formalize_expressions
 fea_dict_umls = ufile.read_csv_as_dict ('data\variable_features_umls.csv', 0, 1, True)
 ClinicalNote_identify_variable = identify_variable(ClinicalNote_preprocessing, fea_dict_dk, fea_dict_umls)
 ClinicalNote_identify_variable
-
+* ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
+ClinicalNote_associate_variable_values
 
 
 
