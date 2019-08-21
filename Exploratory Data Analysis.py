@@ -730,7 +730,15 @@ arr =[3,2,1]
 func = lambda x: (func (x[1:]) + x[:1] if x else [])
 print(func(arr))
                        
-                       
+### Write functions to iterate over rows of a dataframe - create new variable
+# Spelling correction example
+# parser.parse(row)['result'] gives the correct spelling of row value
+NewVar = []
+# For each row
+for row in Df['Var']:
+    NewVar.append(parser.parse(row)['result'])
+Df['NewVar'] = NewVar
+
                        
                        
                        
