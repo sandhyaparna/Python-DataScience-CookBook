@@ -733,6 +733,8 @@ print(func(arr))
 ### Write functions to iterate over rows of a dataframe - create new variable
 # Spelling correction example
 # parser.parse(row)['result'] gives the correct spelling of row value
+from gingerit.gingerit import GingerIt
+parser = GingerIt()
 NewVar = []
 # For each row
 for row in Df['Var']:
