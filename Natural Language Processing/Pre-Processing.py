@@ -27,7 +27,7 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))
 
-# Option2: 
+# Option2: Takes a lot of time
 from gingerit.gingerit import GingerIt
 parser = GingerIt()
 corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']                      
