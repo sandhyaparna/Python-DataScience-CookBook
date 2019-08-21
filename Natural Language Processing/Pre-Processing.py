@@ -22,10 +22,22 @@ trainDF['text'] = texts
 trainDF['label'] = labels
 
 ### Spelling Correction 
-# https://www.analyticsvidhya.com/blog/2018/02/natural-language-processing-for-beginners-using-textblob/
+# Option1: https://www.analyticsvidhya.com/blog/2018/02/natural-language-processing-for-beginners-using-textblob/
 import textblob
 from textblob import TextBlob
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))
+
+# Option2: 
+from gingerit.gingerit import GingerIt
+parser = GingerIt()
+corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']
+                       
+NewVar = []
+# For each row
+for row in Df['Var']:
+    NewVar.append(parser.parse(row)['result'])
+Df['NewVar'] = NewVar
+
 
 ### Regex - Pattern Extraction/Matching Findall search
 http://www.pyregex.com/
