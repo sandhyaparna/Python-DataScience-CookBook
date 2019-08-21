@@ -27,7 +27,7 @@ import textblob
 from textblob import TextBlob
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))
 
-# Option2: Takes a lot of time
+# Option2: Takes a lot of time for many rows
 from gingerit.gingerit import GingerIt
 parser = GingerIt()
 corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']                      
@@ -36,6 +36,11 @@ NewVar = []
 for row in Df['Var']:
     NewVar.append(parser.parse(row)['result'])
 Df['NewVar'] = NewVar
+
+# Option3: Takes more time even for a single sentence and doesn't do the correction properly
+!pip install pyspellchecker
+from spellchecker import SpellChecker
+SpellChecker().correction("The smelt of fliwers bring back memories")
 
 
 ### Regex - Pattern Extraction/Matching Findall search
