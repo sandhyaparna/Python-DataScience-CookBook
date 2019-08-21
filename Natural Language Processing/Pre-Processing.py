@@ -30,8 +30,7 @@ Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correc
 # Option2: 
 from gingerit.gingerit import GingerIt
 parser = GingerIt()
-corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']
-                       
+corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']                      
 NewVar = []
 # For each row
 for row in Df['Var']:
