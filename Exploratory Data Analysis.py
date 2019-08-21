@@ -735,16 +735,21 @@ print(func(arr))
 # parser.parse(row)['result'] gives the correct spelling of row value
 from gingerit.gingerit import GingerIt
 parser = GingerIt()
+corrected = parser.parse("Analytics Vidhya is a gret platfrm to learn data scence")['result']
+                       
 NewVar = []
 # For each row
 for row in Df['Var']:
     NewVar.append(parser.parse(row)['result'])
 Df['NewVar'] = NewVar
 
+# Diff type of iterating over rows     
+import textblob
+from textblob import TextBlob                       
+blob = TextBlob("Analytics Vidhya is a gret platfrm to learn data scence")
+corrected = blob.correct() 
                        
-                       
-                       
-                       
+Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))                  
                        
                        
                        
