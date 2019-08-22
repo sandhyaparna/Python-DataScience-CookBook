@@ -21,6 +21,9 @@ trainDF = pandas.DataFrame()
 trainDF['text'] = texts
 trainDF['label'] = labels
 
+# Length of the text column as a new column
+Df["Name Length"]= data["Name"].str.len() 
+
 ### Spelling Correction 
 # Option1: https://www.analyticsvidhya.com/blog/2018/02/natural-language-processing-for-beginners-using-textblob/
 import textblob
