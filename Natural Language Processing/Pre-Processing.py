@@ -45,6 +45,8 @@ Df['NewVar'] = NewVar
 from spellchecker import SpellChecker
 SpellChecker().correction("The smelt of fliwers bring back memories")
 
+# Option4: hunspell (Didn't try)
+https://github.com/hunspell/hunspell
 
 ### Regex - Pattern Extraction/Matching Findall search
 http://www.pyregex.com/
