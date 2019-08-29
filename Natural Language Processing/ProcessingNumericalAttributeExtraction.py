@@ -2,7 +2,7 @@
 # Remove records based on Source type - some types of documentation doesn't contain patient details
 # How to remove rows that are not useful in the initial stage of Analysis - Based on length, Based on number of words & length of the text
 
-
+# Date formats - http://strftime.org/
 
 ##### DateTime Packages for Text data ####
 ### https://github.com/alvinwan/timefhuman - time f human
@@ -26,7 +26,7 @@ def date_extractor(text):
 
 ### Extract dates - findall or 
 
-### Find one date format in file and replace with another
+### Find one date format in file and replace with another - http://strftime.org/
 textToSearch = "date of service from 8/6/19 to 9/8/19"
 for match in re.findall(r'\d+/\d+/\d+', textToSearch):
     #convert match to new format
