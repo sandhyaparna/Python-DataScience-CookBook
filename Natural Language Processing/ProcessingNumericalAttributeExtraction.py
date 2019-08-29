@@ -59,6 +59,26 @@ for match in re.findall(r'\d+/\d+', textToSearch):
 print(textToSearch)
 
 
+# Nested for loop
+# convert %m/%d/%y formatted texts to %m/%d
+for match in re.findall(r'\d+/\d+/\d+', textToSearch):
+    #convert match to new format
+    datetime_object = datetime.strptime(match, "%m/%d/%y")
+    dateNewFormat = datetime_object.strftime("%m/%d")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
+    for matchx in re.findall(r'\d+/\d+/\d+', textToSearch):
+        #convert match to new format
+        datetime_objectx = datetime.strptime(matchx, "%m/%d")
+        dateNewFormatx = datetime_objectx.strftime("%B%d")
+        #substitute the old date with the new
+        textToSearch = re.sub(matchx, dateNewFormatx, textToSearch)
+print(textToSearch)
+
+
+
+
+
 
 
 
