@@ -58,7 +58,7 @@ print(textToSearch)
 # Definition for 2 loops
 # convert %m/%d/%y formatted texts to %m/%d
 def ChangeDateFormat(TextwithDates):
-# convert %m/%d/%y formatted texts to %m/%d
+    # convert %m/%d/%y formatted texts to %m/%d
     for match in re.findall(r'\d+/\d+/\d+', TextwithDates):
         #convert match to new format
         datetime_object = datetime.strptime(match, "%m/%d/%y")
