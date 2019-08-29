@@ -26,6 +26,7 @@ def date_extractor(text):
 
 ### Extract dates - findall or 
 
+### Find one format of a date in a string and convert it to another
 
 
 
