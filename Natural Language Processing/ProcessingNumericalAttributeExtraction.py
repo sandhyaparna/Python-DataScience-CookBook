@@ -38,6 +38,28 @@ print(textToSearch)
 # Output:
 date of service from 08/06/2019 00:00 AM to 09/08/2019 00:00 AM
 
+# First convert dates in format of %m/%d/%y to %m/%d
+textToSearch = "date of service from 8/6 to 9/8/19"
+
+# convert %m/%d/%y formatted texts to %m/%d
+for match in re.findall(r'\d+/\d+/\d+', textToSearch):
+    #convert match to new format
+    datetime_object = datetime.strptime(match, "%m/%d/%y")
+    dateNewFormat = datetime_object.strftime("%m/%d")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
+
+# convert %m/%d formatted texts to %B%d
+for match in re.findall(r'\d+/\d+', textToSearch):
+    #convert match to new format
+    datetime_object = datetime.strptime(match, "%m/%d")
+    dateNewFormat = datetime_object.strftime("%B%d")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
+print(textToSearch)
+
+
+
 
 
 
