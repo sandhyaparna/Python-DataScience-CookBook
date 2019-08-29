@@ -28,7 +28,6 @@ def date_extractor(text):
 
 ### Find one date format in file and replace with another
 textToSearch = "date of service from 8/6/19 to 9/8/19"
-
 for match in re.findall(r'\d+/\d+/\d+', textToSearch):
     #convert match to new format
     datetime_object = datetime.strptime(match, "%m/%d/%y")
@@ -36,7 +35,8 @@ for match in re.findall(r'\d+/\d+/\d+', textToSearch):
     #substitute the old date with the new
     textToSearch = re.sub(match, dateNewFormat, textToSearch)
 print(textToSearch)
-
+# Output:
+date of service from 08/06/2019 00:00 AM to 09/08/2019 00:00 AM
 
 
 
