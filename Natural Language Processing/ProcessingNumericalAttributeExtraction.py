@@ -26,8 +26,15 @@ def date_extractor(text):
 
 ### Extract dates - findall or 
 
-### Find one format of a date in a string and convert it to another
-
+### Find one date format in file and replace with another
+import re
+import datetime
+for match in re.findall(mySearchPattern, textToSearch)
+    #convert match to new format
+    datetime_object = datetime.strptime(match, "%Y-%m-%dT%H:%m:%s.000Z")
+    dateNewFormat = datetime_object.strftime("%m/%d/%Y %H:%M %p")
+    #substitute the old date with the new
+    re.sub(match, dateNewFormat, textToSearch)
 
 
 
