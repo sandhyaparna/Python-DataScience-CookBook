@@ -78,9 +78,105 @@ def ChangeDateFormat(TextwithDates):
         TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
     return(TextwithDates)
 
+textToSearch = "08/05/19 17:26:00 CDT 08/05 4:05 9/8/19 and 12/8/2019 temp 101 january8th and september 6 2019 march 8th xxx jan10th xyz jan 8th  na 140 (aug 07) 143 (aug 06) 141 (aug 05) " # 
+MonDD = r"jan\d+|feb\d+|mar\d+|apr\d+|may\d+|jun\d+|jul\d+|aug\d+|sep\d+|oct\d+|nov\d+|dec\d+"
+# First convert jan to january etc
+for match in re.findall(MonDD, textToSearch):
+    datetime_object = datetime.strptime(match,"%b%d")
+    dateNewFormat = datetime_object.strftime("%B%d ")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
 
+Mon_DD = r"jan \d+|feb \d+|mar \d+|apr \d+|may \d+|jun \d+|jul \d+|aug \d+|sept \d+|oct \d+|nov \d+|dec \d+"
+for match in re.findall(Mon_DD, textToSearch):
+    datetime_object = datetime.strptime(match,"%b %d")
+    dateNewFormat = datetime_object.strftime("%B%d ")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
 
+MonthDD = r"january\d+|february\d+|march\d+|april\d+|may\d+|june\d+|july\d+|august\d+|september\d+|october\d+|november\d+|december\d+"
+for match in re.findall(MonthDD, textToSearch):
+    datetime_object = datetime.strptime(match,"%B%d")
+    dateNewFormat = datetime_object.strftime("%B%d ")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
 
+Month_DD = r"january \d+|february \d+|march \d+|april \d+|may \d+|june \d+|july \d+|august \d+|september \d+|october \d+|november \d+|december \d+"
+for match in re.findall(Month_DD, textToSearch):
+    datetime_object = datetime.strptime(match,"%B %d")
+    dateNewFormat = datetime_object.strftime("%B%d ")
+    #substitute the old date with the new
+    textToSearch = re.sub(match, dateNewFormat, textToSearch)
+print(textToSearch)
+
+# If error then return the original text itself
+def ChangeDateTimeFormat(TextwithDates):
+    try:
+        for match in re.findall(r'/\d{4}', TextwithDates):
+            match = re.sub('/','' , match)
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%Y")
+            dateNewFormat = datetime_object.strftime("%y")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        # convert %m/%d/%y formatted texts to %m/%d
+        for match in re.findall(r'\d+/\d+/\d+', TextwithDates):
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%m/%d/%y")
+            dateNewFormat = datetime_object.strftime("%m/%d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        # convert %m/%d formatted texts to %B%d
+        for match in re.findall(r'\d+/\d+ \d+:\d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M:%S")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M:%S")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        for match in re.findall(r'\d+/\d+ \d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        for match in re.findall(r'\d+/\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d")
+            dateNewFormat = datetime_object.strftime("%B%d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        MonDD = r"jan\d+|feb\d+|mar\d+|apr\d+|may\d+|jun\d+|jul\d+|aug\d+|sep\d+|oct\d+|nov\d+|dec\d+"
+        # First convert jan to january etc
+        for match in re.findall(MonDD, TextwithDates):
+            datetime_object = datetime.strptime(match,"%b%d")
+            dateNewFormat = datetime_object.strftime("%B%d ")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+        Mon_DD = r"jan \d+|feb \d+|mar \d+|apr \d+|may \d+|jun \d+|jul \d+|aug \d+|sept \d+|oct \d+|nov \d+|dec \d+"
+        for match in re.findall(Mon_DD, TextwithDates):
+            datetime_object = datetime.strptime(match,"%b %d")
+            dateNewFormat = datetime_object.strftime("%B%d ")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        MonthDD = r"january\d+|february\d+|march\d+|april\d+|may\d+|june\d+|july\d+|august\d+|september\d+|october\d+|november\d+|december\d+"
+        for match in re.findall(MonthDD, TextwithDates):
+            datetime_object = datetime.strptime(match,"%B%d")
+            dateNewFormat = datetime_object.strftime("%B%d ")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        Month_DD = r"january \d+|february \d+|march \d+|april \d+|may \d+|june \d+|july \d+|august \d+|september \d+|october \d+|november \d+|december \d+"
+        for match in re.findall(Month_DD, TextwithDates):
+            datetime_object = datetime.strptime(match,"%B %d")
+            dateNewFormat = datetime_object.strftime("%B%d ")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+        return(TextwithDates)
+    except Exception:
+        return(TextwithDates)
 
 
 
