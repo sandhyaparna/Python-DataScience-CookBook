@@ -7,6 +7,8 @@
 
 
 # Date formats - http://strftime.org/
+# Functions -findall, sub
+
 
 ##### DateTime Packages for Text data ####
 ### https://github.com/alvinwan/timefhuman - time f human
