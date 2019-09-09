@@ -185,10 +185,82 @@ def ChangeDateTimeFormat(TextwithDates):
         return(TextwithDates)
 
 
+        # Replace 2/29 to february29
+        for match in re.findall("2/29", TextwithDates):
+            TextwithDates = re.sub(match, "February29", TextwithDates)
 
+        for match in re.findall(r'/\d{4}', TextwithDates):
+            match = re.sub('/','' , match)
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%Y")
+            dateNewFormat = datetime_object.strftime("%y")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
 
+        # convert %m/%d/%y formatted texts to %m/%d
+        for match in re.findall(r'\d+/\d+/\d+', TextwithDates):
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%m/%d/%y")
+            dateNewFormat = datetime_object.strftime("%#m/%#d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
 
+        # convert %m/%d formatted texts to %B%d
+        for match in re.findall(r'\d+/\d+ \d+:\d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M:%S")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M:%S")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
 
+        for match in re.findall(r'\d+/\d+ \d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
 
+        for match in re.findall(r'\d+/\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d")
+            dateNewFormat = datetime_object.strftime("%B%d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        # Replace 2/29 to february29
+        for match in re.findall("2/29", TextwithDates):
+            TextwithDates = re.sub(match, "February29", TextwithDates)
+
+        for match in re.findall(r'/\d{4}', TextwithDates):
+            match = re.sub('/','' , match)
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%Y")
+            dateNewFormat = datetime_object.strftime("%y")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        # convert %m/%d/%y formatted texts to %m/%d
+        for match in re.findall(r'\d+/\d+/\d+', TextwithDates):
+            #convert match to new format
+            datetime_object = datetime.strptime(match, "%m/%d/%y")
+            dateNewFormat = datetime_object.strftime("%#m/%#d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        # convert %m/%d formatted texts to %B%d
+        for match in re.findall(r'\d+/\d+ \d+:\d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M:%S")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M:%S")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        for match in re.findall(r'\d+/\d+ \d+:\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d %H:%M")
+            dateNewFormat = datetime_object.strftime("%B%d_%H:%M")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
+
+        for match in re.findall(r'\d+/\d+', TextwithDates):
+            datetime_object = datetime.strptime(match, "%m/%d")
+            dateNewFormat = datetime_object.strftime("%B%d")
+            #substitute the old date with the new
+            TextwithDates = re.sub(match, dateNewFormat, TextwithDates)
 
 
