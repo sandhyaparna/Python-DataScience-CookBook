@@ -7,6 +7,8 @@
 
 ### Approach
 # Data consists of Date, SourceType and Text
+# Only SourceTypes - Documentation & User Entered are suitable for our analysis - Analysis is done using length of the text and manual checking
+# 
 
 
 
