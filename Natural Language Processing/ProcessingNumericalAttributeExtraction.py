@@ -2,12 +2,12 @@
 # Remove records based on Source type - some types of documentation doesn't contain patient details
 # How to remove rows that are not useful in the initial stage of Analysis - Based on length, Based on number of words & length of the text
 # For datetime patterns - we need to convert dates of any format to %B%d
-
-
-
-
 # Date formats - http://strftime.org/
 # Functions -findall, sub
+
+### Approach
+# Data consists of Date, SourceType and Text
+
 
 
 ##### DateTime Packages for Text data ####
