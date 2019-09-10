@@ -753,10 +753,35 @@ Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correc
 Df.apply(lambda x: functiom(x.Text), axis=1)    
                        
                        
-                       
-                       
-                       
-                       
+# Extract only the sentences if a specific mentioned word appears in that sentence
+# Here sentence is split based on fullstop
+from nltk import sent_tokenize,word_tokenize
+searched_words = ['august','jan']
+ClinicalNotes['august'] = ClinicalNotes['Text_DateTimeFormatted'].apply(lambda text: [sent for sent in sent_tokenize(text)
+                                       if any(True for w in word_tokenize(sent) 
+                                               if w.lower() in searched_words)])
+ClinicalNotes_error = ClinicalNotes[(ClinicalNotes['august'].str.len())!=0]                       
+                                             
+#### Trace back the error ####
+import linecache
+import sys
+
+def PrintException():
+    exc_type, exc_obj, tb = sys.exc_info()
+    f = tb.tb_frame
+    lineno = tb.tb_lineno
+    filename = f.f_code.co_filename
+    linecache.checkcache(filename)
+    line = linecache.getline(filename, lineno, f.f_globals)
+    print('EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj)
+
+import traceback
+textToSearch = "august 2017 3/125 oneal, imogene - 86yom - escherichia coli uti with bacteremia\n\nallegy: no abx\n\npmh: chf, cad, and ckd, pad with renal stent, parkinson's disease, hx ecoli bacteremia and uti august 2017, bladder suspension, cholecystectomy\n\nsh: currently residning at morning pointe alf\n\ncxc:\n4/27 blood e coli pans\n4/27 urine e coli\n\n\nabx:\nceftriaxone 4/27-\nazithro 4/27-5/1\nvanco 4/27x1\n\n5/1 approp, continue"
+try:
+    print(XChangeDateTimeFormat(textToSearch))
+except:
+#     PrintException()
+    print(traceback.print_last())                    
                        
                        
                        
