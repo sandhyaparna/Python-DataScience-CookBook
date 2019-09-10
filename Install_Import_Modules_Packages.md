@@ -59,7 +59,7 @@ import keras <br/>
 from google.colab import files <br/>
 uploaded = files.upload() <br/>
 
-
+### PyCharm IDE
 
 
 #### Install Specific Packages - Anaconda website, whl, github
