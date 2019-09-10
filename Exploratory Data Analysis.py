@@ -750,7 +750,7 @@ blob = TextBlob("Analytics Vidhya is a gret platfrm to learn data scence")
 corrected = blob.correct() 
                        
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))                  
-                       
+Df.apply(lambda x: functiom(x.Text), axis=1)    
                        
                        
                        
