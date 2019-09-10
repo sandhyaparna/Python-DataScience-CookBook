@@ -29,6 +29,8 @@ https://medium.com/@GalarnykMichael/setting-up-pycharm-with-anaconda-plus-instal
 https://stackoverflow.com/questions/11438727/how-to-use-subprocess-to-run-a-virtualenv-package-install <br/>
 https://www.youtube.com/watch?v=z0qhKP2liHs <br/>
  <br/>
+ 
+To install pip - After installing Anaconda Nagivator use cmd - conda install pip 
 Update Anaconda - "conda update conda" , "conda update --all" <br/>
 Install packages - conda install package-name #In Anaconda Prompt <br/>
 Update packages - conda update package-name #In Anaconda Prompt <br/>
