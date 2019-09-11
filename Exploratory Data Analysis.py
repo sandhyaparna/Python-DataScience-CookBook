@@ -783,7 +783,8 @@ except:
 #     PrintException()
     print(traceback.print_last())                    
                        
-# When                     
+# Shuffle rows       
+Df = Df.sample(frac=1)
                        
                        
     
