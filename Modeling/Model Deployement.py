@@ -7,7 +7,7 @@
 # https://www.analyticsvidhya.com/blog/2017/09/machine-learning-models-as-apis-using-flask/
 # https://towardsdatascience.com/designing-a-machine-learning-model-and-deploying-it-using-flask-on-heroku-9558ce6bde7b
 # https://www.analyticsindiamag.com/5-python-libraries-to-package-and-deploy-machine-learning-models/
-
+# Deploy ML model using Flask - video - https://www.youtube.com/watch?v=UbCWoMf80PY
 ### Overview 
 # 2 key components: WSGI & Jinja2
 # First phase: Host ML model to your local machine
