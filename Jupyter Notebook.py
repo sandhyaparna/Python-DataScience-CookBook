@@ -1,3 +1,5 @@
+# “4 Awesome Tips for Enhancing Jupyter Notebooks” by George Seif https://link.medium.com/OY7PpANt5Z
+
 # Import data
 Df = pd.read_csv('path/file.csv', encoding='latin-1')
 
