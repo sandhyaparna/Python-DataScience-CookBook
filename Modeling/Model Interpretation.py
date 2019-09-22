@@ -1,3 +1,6 @@
+# Python libraries for model interpretation
+https://www.kdnuggets.com/2019/09/python-libraries-interpretable-machine-learning.html
+
 ### ELI5 ###
 https://github.com/TeamHG-Memex/eli5
 
