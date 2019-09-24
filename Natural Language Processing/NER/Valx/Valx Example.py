@@ -18,6 +18,7 @@ from Valx_core import *
 
 Valx_core.init_features ()
 name_list=""
+name_list="heart rate | temperature | blood pressure"
 
 fea_dict_dk = ufile.read_csv_as_dict ('data/variable_features_dk.csv', 0, 1, True)
 fea_dict_umls = ufile.read_csv_as_dict ('data/variable_features_umls.csv', 0, 1, True)
