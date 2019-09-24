@@ -3,6 +3,31 @@
 
 import sys 
 !{sys.executable} -m pip install nltk
+
+### After making changes to the codes - To import all the functions 
+from W_utility.log import * 
+from W_utility.file import * 
+
+from NLP.porter2 import *
+from NLP.word import *
+from NLP.sentence import *
+from NLP.sentence_keywords import * 
+
+import Valx_core
+from Valx_core import *
+
+fea_dict_dk = ufile.read_csv_as_dict ('data/variable_features_dk.csv', 0, 1, True)
+fea_dict_umls = ufile.read_csv_as_dict ('data/variable_features_umls.csv', 0, 1, True)
+
+### Valx package as it is
+ClinicalNote_preprocessing = Valx_core.preprocessing(ClinicalNote)
+ClinicalNote_split_text_inclusion_exclusion = Valx_core.split_text_inclusion_exclusion(ClinicalNote_preprocessing)
+ClinicalNote_extract_candidates_numeric = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)
+ClinicalNote_formalize_expressions = Valx_core.formalize_expressions(ClinicalNote_extract_candidates_numeric[1][0])
+ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
+ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
+ClinicalNote_associate_variable_values
+
 # Trail ID: NCT00297583
 # NCT00211536
 * ClinicalNote = "- Her vital signs: heart rate of 66, blood pressure 120/63, respiratory rate 14, 100% on 5 liters nasal cannula O2 saturation# -  Significant endogenous insulin secretion indicated by fasting C-peptide# -  The value of HbA1c is <= 10.0 %# - glucose test is 99.8"
