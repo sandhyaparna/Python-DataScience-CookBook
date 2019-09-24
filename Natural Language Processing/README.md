@@ -6,7 +6,9 @@ Keras Callbacks https://medium.com/towards-artificial-intelligence/keras-callbac
 * Sentiment Analysis
 * NER - Named Entity Recognition
 
-
+### HealthCare
+* Numerical Attribute Extraction - 
+* Disease Extraction - https://ii-public1.nlm.nih.gov/metamaplite/rest https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5884681/
 
 
 
