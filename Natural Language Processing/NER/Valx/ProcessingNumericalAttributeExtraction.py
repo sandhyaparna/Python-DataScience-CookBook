@@ -7,7 +7,7 @@
 
 ### Approach
 # Original Data consists of Date, SourceType and Text; Text data may again contain different dates
-# Only SourceTypes - Documentation & User Entered are suitable for our analysis - Analysis is done using length of the text and manual checking
+# Only SourceTypes - Documentation & User Entered are suitable for our analysis - Analysis is done using length of the text, total numbers in the text, if a numeric is present in text or not and manual checking
 # Excel cannot import ore export more than 32767 characters per cell and since the data contains line breaks (encoded \n), data is further truncated when imported into Python - This can be solved later on by using sql directly for exporting
 # Data is further reduced based on TextLength, Total words in it and If a numeric is present in a text or not
 # Data needs to be exploded based on line breaks, fullstops etc 
