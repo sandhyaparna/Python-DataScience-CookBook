@@ -13,9 +13,31 @@
 # Data needs to be exploded based on line breaks, fullstops etc 
 # Dates procesing - 
 
-
 ##### DateTime Packages for Text data ####
-### https://github.com/alvinwan/timefhuman - time f human
+# https://github.com/alvinwan/timefhuman - time f human
+
+# Diff date patterns covered:Covered to MonthDD format
+# sep 6; sep 6th; sep 1st; sep 2nd, sep 3rd (space between month & date AND no space between month and date) & (full forms of Months)
+# jan 2014  & (full forms of Months)
+# jan 6 H:M:S & (full forms of Months)
+# Jan 6 H:M & (full forms of Months)
+# MM/DD/YYYY (H:M:S) & (H:M)
+# MM/DD/YY (H:M:S) & (H:M)
+# MM/DD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Datefinder
 import datefinder
