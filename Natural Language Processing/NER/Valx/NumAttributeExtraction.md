@@ -21,6 +21,17 @@
   * qtc
   * pulse, gluc, nasal canula, protein, platelet, bmi, inr, fi02
 
+## Challenges
+#### Dates
+* 2/29 : Day is out of range for month - Manual correction
+* Sept is written instead of Sep
+* If 1 date is written in 2 different formats - 06/25 gets converted to 006/25 - %B%d is replaced with %B%#d
+* If an error happens in a sentence, the ehole sentence after the error remains unchanged - Try to trace back the error AND hence, blood pressure in the format of p/q cannot be extracted fully because of this issue
+#### UserEntered vs Documentation
+* A patients will have multiple records - Each additional date no
+
+
+
 ##### DateTime Packages for Text data ####
 * https://github.com/alvinwan/timefhuman - time f human
 
@@ -39,20 +50,11 @@
 * Typos - Back to back dates 9/229/23; 
 * 5-6/10 implies 5th to 6th October (Gets converted to 5-June10
 
-### Challenges
-#### Dates
-* 2/29 : Day is out of range for month - Manual correction
-* Sept is written instead of Sep
-* If 1 date is written in 2 different formats - 06/25 gets converted to 006/25 - %B%d is replaced with %B%#d
-* If an error happens in a sentence, the ehole sentence after the error remains unchanged - Try to trace back the error AND hence, blood pressure in the format of p/q cannot be extracted fully because of this issue
-#### UserEntered vs Documentation
-* A patients will have multiple records - Each additional date no
 
+
+## Code
 * ClinicalNotes_WBC['Text_DateTimeFormatted'].str.findall(r'wbc')
 * re.findall(r'\d+/\d+/\d+', textToSearch)
-
-
-
 
 
 
