@@ -16,17 +16,24 @@
 ##### DateTime Packages for Text data ####
 # https://github.com/alvinwan/timefhuman - time f human
 
-# Diff date patterns covered:Covered to MonthDD format
+### Diff date patterns covered: Coverted to MonthDD format
 # sep 6; sep 6th; sep 1st; sep 2nd, sep 3rd (space between month & date AND no space between month and date) & (full forms of Months)
 # jan 2014  & (full forms of Months)
 # jan 6 H:M:S & (full forms of Months)
 # Jan 6 H:M & (full forms of Months)
 # MM/DD/YYYY (H:M:S) & (H:M)
 # MM/DD/YY (H:M:S) & (H:M)
-# MM/DD
+# MM/DD (H:M:S) & (H:M)
 
+## DateTime formats not covered
+# MM.DD
+# DD/MM gets converted to MM/DD format
+# Typos - Back to back dates 9/229/23; 
 
-
+## Challenges
+# 2/29 is out of date format - Manual correction
+# Sept is written instead of Sep
+# If 1 date is written in 2 different formats - 06/25 gets converted to 006/25 - %B%d is replaced with %B%#d
 
 
 
