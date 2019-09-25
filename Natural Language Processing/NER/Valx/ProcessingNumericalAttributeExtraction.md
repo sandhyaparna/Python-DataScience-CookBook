@@ -12,7 +12,7 @@
 * Excel cannot import ore export more than 32767 characters per cell and since the data contains line breaks (encoded \n), data is further truncated when imported into Python - This can be solved later on by using sql directly for exporting
 * Dates processing - first 
 * Data is further reduced based on TextLength, Total words in it and If a numeric is present in a text or not
-* Data needs to be exploded based on line breaks and then again Dateformatting is to be done (In some observations if error is present whole obs wont be formatted) 
+* Data needs to be exploded based on line breaks or special characters that are used to end a sentence and then again Dateformatting is to be done (In some observations if error is present whole obs wont be formatted) 
 
 
 ##### DateTime Packages for Text data ####
