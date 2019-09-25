@@ -1,12 +1,12 @@
 ### Explore data
-# Remove records based on Source type - some types of documentation doesn't contain patient details
+# Remove records based on Source type - some types of source types doesn't contain patient details
 # How to remove rows that are not useful in the initial stage of Analysis - Based on length, Based on number of words & length of the text
 # For datetime patterns - we need to convert dates of any format to %B%d
 # Date formats - http://strftime.org/
 # Functions -findall, sub
 
 ### Approach
-# Data consists of Date, SourceType and Text
+# Original Data consists of Date, SourceType and Text; Text data may again contain different dates
 # Only SourceTypes - Documentation & User Entered are suitable for our analysis - Analysis is done using length of the text and manual checking
 # Excel cannot import ore export more than 32767 characters per cell and since the data contains line breaks (encoded \n), data is further truncated when imported into Python - This can be solved later on by using sql directly for exporting
 # Data is further reduced based on TextLength, Total words in it and If a numeric is present in a text or not
