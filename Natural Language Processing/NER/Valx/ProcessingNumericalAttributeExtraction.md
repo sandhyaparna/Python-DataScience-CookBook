@@ -1,11 +1,11 @@
-### Explore data
+## Explore data
 * Remove records based on Source type - some types of source types doesn't contain patient details
 * How to remove rows that are not useful in the initial stage of Analysis - Based on length, Based on number of words & length of the text
 * For datetime patterns - we need to convert dates of any format to %B%d
 * Date formats - http://strftime.org/
 * Functions - findall, sub. replace
 
-### Approach
+## Approach
 * Original Data consists of Date, SourceType and Text; Text data may again contain different dates
 * Data Cleaning - Convert to lower case, remove special chars from start of a string, 
 * Only SourceTypes - Documentation & User Entered are suitable for our analysis 
@@ -18,7 +18,7 @@
 ##### DateTime Packages for Text data ####
 * https://github.com/alvinwan/timefhuman - time f human
 
-# Diff date patterns covered: Coverted to MonthDD format
+## Diff date patterns covered: Coverted to MonthDD format
 * sep 6; sep 6th; sep 1st; sep 2nd, sep 3rd (space between month & date AND no space between month and date) & (full forms of Months)
 * jan 2014  & (full forms of Months)
 * jan 6 H:M:S & (full forms of Months)
