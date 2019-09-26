@@ -42,10 +42,10 @@
 * MM/DD/YY (H:M:S) & (H:M)
 * MM/DD (H:M:S) & (H:M)
 
-### DateTime formats not covered
+### DateTime formats not covered (Exceptions)
 * MM.DD
 * DD/MM gets converted to MM/DD format
-* Typos - Back to back dates 9/229/23; 
+* Typos - Back to back dates 9/229/23; If 4/6 is written as 4\6 
 * 5-6/10 implies 5th to 6th October (Gets converted to 5-June10
 
 #### DateTime Packages for Text data ####
