@@ -18,7 +18,7 @@
   * WBC
   * yof/yom - yo female or male - Age
   * crCl or Scr
-  * Temp - tmax, tmin, febrile, afebrile, fever, fib, afib
+  * Temp - tmax, tmin, febrile, afebrile, fever, fib, afib, temperature
   * qtc
   * pulse, gluc, nasal cannula, protein, platelet, bmi, inr, fi02
 
