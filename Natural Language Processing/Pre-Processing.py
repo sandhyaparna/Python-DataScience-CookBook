@@ -51,6 +51,7 @@ https://github.com/hunspell/hunspell
 ### Regex - Pattern Extraction/Matching Findall search
 http://www.pyregex.com/
 Regex Cheat Sheet: https://www.rexegg.com/regex-quickstart.html
+DateTime Pattern http://strftime.org/
 
 ### Noise Removal
 # Tokenization - splitting text into words (Removal of stop words, etc)
