@@ -46,6 +46,8 @@
 ### DateTime formats not covered (Exceptions)
 * MM.DD
 * DD/MM gets converted to MM/DD format
+* Diff date formats: 2012/4/11
+* If Month and Year are written as Sep 17, even when it sep 2017 it will be considered as Sep 17th
 * Typos - Back to back dates 9/229/23; If 4/6 is written as 4\6; 11//23 instead of 11/23
 * 5-6/10 implies 5th to 6th October (Gets converted to 5-June10
 
