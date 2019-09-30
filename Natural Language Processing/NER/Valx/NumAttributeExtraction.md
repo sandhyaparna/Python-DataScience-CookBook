@@ -20,7 +20,7 @@
   * crCl or Scr
   * Temp - tmax, tmin, febrile, afebrile, fever, fib, afib, temperature
   * qtc
-  * pulse, gluc, nasal cannula, protein, platelet, bmi, inr, fi02
+  * pulse, respiratory, gluc, nasal cannula (nc, oxygen), protein, platelet, bmi, inr, fi02
 
 ## Challenges
 #### Dates
