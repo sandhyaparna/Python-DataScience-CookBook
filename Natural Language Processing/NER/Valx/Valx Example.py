@@ -97,7 +97,7 @@ def NumericAttributeExtraction(ClinicalNote):
     ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
     ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
     return(ClinicalNote_associate_variable_values)
-
+# End
   
   
   
