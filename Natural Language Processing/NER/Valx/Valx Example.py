@@ -57,6 +57,52 @@ ClinicalNote_identify_variable
 ClinicalNote_associate_variable_values
 
 
+##### Running the whole thing as a function ######
+# Create a function for NumericAttributeExtraction
+from W_utility.log import * 
+from W_utility.file import * 
 
+from NLP.porter2 import *
+from NLP.word import *
+from NLP.sentence import *
+from NLP.sentence_keywords import * 
+import Valx_core
+from Valx_core import *
+Valx_core.init_features ()
 
+fea_dict_dk = ufile.read_csv_as_dict ('data/variable_features_dk.csv', 0, 1, True)
+fea_dict_umls = ufile.read_csv_as_dict ('data/variable_features_umls.csv', 0, 1, True)
+   
+def NumericAttributeExtraction(ClinicalNote):
+    ClinicalNote_preprocessing = Valx_core.preprocessing(ClinicalNote)
+    ClinicalNote_split_text_inclusion_exclusion = Valx_core.split_text_inclusion_exclusion(ClinicalNote_preprocessing)
+    ClinicalNote_extract_candidates_numeric = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)
+    ClinicalNote_formalize_expressions = Valx_core.formalize_expressions(ClinicalNote_extract_candidates_numeric[1][0])
+    ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
+    ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
+    return(ClinicalNote_associate_variable_values)
+## End
 
+# Function by adding name_list
+def NumericAttributeExtraction(ClinicalNote):
+    ClinicalNote_preprocessing = Valx_core.preprocessing(ClinicalNote)
+    ClinicalNote_split_text_inclusion_exclusion = Valx_core.split_text_inclusion_exclusion(ClinicalNote_preprocessing)
+    
+    name_list="heart rate | temperature | blood pressure | wbc"
+    sections_num = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)[0]
+    candidates_num = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)[1]
+    ClinicalNote_extract_candidates_name = Valx_core.extract_candidates_name(sections_num, candidates_num, name_list)
+    
+    ClinicalNote_formalize_expressions = Valx_core.formalize_expressions(ClinicalNote_extract_candidates_name[1][0])
+    ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
+    ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
+    return(ClinicalNote_associate_variable_values)
+
+  
+  
+  
+  
+  
+  
+  
+  
