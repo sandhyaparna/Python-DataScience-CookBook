@@ -113,6 +113,10 @@ for item in datastore:
 matching_tables = pd.read_html(url, match='String')
 len(matching_tables)
 
+### Extract tables from PDF into a dataframe
+from tubula import read_pdf
+Df = read_pdf('test_pdf', pages='all')
+
 
 ################# SAVE DATA / EXPORTING #################
 ### Export dataframes/tables to SQL Servere 
