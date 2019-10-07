@@ -108,6 +108,11 @@ for item in datastore:
     labels.append(item['is_sarcastic'])
     urls.append(item['article_link'])
 
+### Scraping a webpage using read_html()
+# If it returns too many tables, use the 'match' parameter to find tables that contain a particular string
+matching_tables = pd.read_html(url, match='String')
+len(matching_tables)
+
 
 ################# SAVE DATA / EXPORTING #################
 ### Export dataframes/tables to SQL Servere 
@@ -786,9 +791,15 @@ except:
 # Shuffle rows       
 Df = Df.sample(frac=1)
                        
-                       
+# Remove a column from a dataframe and store it as a seperate series
+New_Series = Df.pop('Var')
     
- 
+# Filter Df to include only the largest cat
+* Value_counts - counts =Df.Var.value_counts()
+* Largest_Cat = counts.head(3).index
+* isin to filter
+          
+          
 # Tips
 Guinicorn + flask.        
           
