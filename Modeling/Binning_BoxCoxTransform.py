@@ -15,6 +15,8 @@ Df['Var_Bin'] = np.array(np.floor(np.array(Df['Num_Var']) / W))
 # DONT use square brackets while creating bins-even if (), it is actually equivalent to (]
 bins = pd.IntervalIndex.from_tuples([(10,20), (20, 30), (30,40), (40, 50),(50,60), (60, 70),(70,80), (80, 90)])
 bins_label = [1, 2, 3, 4, 5, 6]
+# bins can also be specified as below
+bins = [20,30,40,50,60,70,80,90]
 Df['Var_Bin'] = pd.cut(Df['Num_Var'], bins)
 Df['Var_Bin'] = pd.cut(np.array(Df['Num_Var']), bins)
 Df['Var_BinLabel'] = pd.cut(np.array(Df['Num_Var']), bins=bins, labels=bins_label)
@@ -24,6 +26,8 @@ Df['Var_BinLabel'] = pd.cut(np.array(Df['Num_Var']), bins=bins, labels=bins_labe
 # q is number of quantiles or array of quantiles
 # q is 10 for deciles, 4 for quantiles etc; array of quantiles:[0, .25, .5, .75, 1.] for quartiles
 Df['Var_Bin'] = pd.qcut(Df['Num_Var'],q) 
+Df['Var_BinLabel'] = pd.qcut(Df['Num_Var'],q,labels=bins_label) 
+
 
 ### Entropy Based Binning
 # http://www.saedsayad.com/unsupervised_binning.htm
