@@ -34,7 +34,7 @@
 * If multiple values are present irrespective of their relation to Numerical attribute, they also get extracted
   * Any var not part of 'variable_feature_umls' will not be rceognized - UMLS concepts needs to be used
   * 
-* If value is before Numerical attribute
+* If value is before Numerical attribute (Tip: If only 1 numerical attribute is in that sentence, value gets extracted for it, no matter if it is before or after. But if 2 numerical attributes value should be after the numerical attribute for correct extraction) 
 * Data gets split again based on fullstops etc
 
 
