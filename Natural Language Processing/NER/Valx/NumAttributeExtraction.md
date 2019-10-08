@@ -30,8 +30,12 @@
 * If an error happens in a sentence, the ehole sentence after the error remains unchanged - Try to trace back the error AND hence, blood pressure in the format of p/q cannot be extracted fully because of this issue
 #### UserEntered vs Documentation
 * A patients will have multiple records - Each additional day may be written as a new paragraph and concatenated to previous notes subsequently
-
-
+#### Numerical Attributes & their values
+* If multiple values are present irrespective of their relation to Numerical attribute, they also get extracted
+  * Any var not part of 'variable_feature_umls' will not be rceognized - UMLS concepts needs to be used
+  * 
+* If value is before Numerical attribute
+* Data gets split again based on fullstops etc
 
 
 ## Diff date patterns covered: Coverted to MonthDD format
