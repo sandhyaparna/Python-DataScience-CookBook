@@ -94,4 +94,3 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 ![](https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png)
 
-
