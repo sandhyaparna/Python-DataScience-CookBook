@@ -8,6 +8,8 @@ Df_X is data frame with features
 # https://towardsdatascience.com/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
 # https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02?_branch_match_id=568145403917380761
 
+# WHen to use what kind of encoding - https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png
+
 # 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
 # a)
 Char_Codes = {"Char_Var1": {"Value1": New_Vaue1, "Value2": New_Vaue2},
@@ -92,5 +94,5 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 # 8. Weight of Evidence Encoding
 
 
-![](https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png)
+
 
