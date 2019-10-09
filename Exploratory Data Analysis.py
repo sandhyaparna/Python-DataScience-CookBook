@@ -63,6 +63,18 @@ Df = pd.read_csv("path/file.csv",
 # Code to read many csv files and combine them
 # https://github.com/tcbonds/lyme-disease-classifier/blob/master/2_Parsing_Climate_CSV_Files_Into_Features.ipynb
 
+# Import csv 2 column file as a dictionary
+feature_set = ufile.read_csv_as_dict ('data\\numeric_features.csv', 0, 1, True) #Valx - Data
+greater, greater_equal, greater_equal2, lower, lower_equal, lower_equal2, equal, between, selects, connect, features, temporal, temporal_con, error1, error2, symbols, numbers, unit_special, unit_ori, unit_ori_s, unit_exp, negation = "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
+def init_features ():
+    feature_set = ufile.read_csv_as_dict ('data\\numeric_features.csv', 0, 1, True)
+    global greater, greater_equal, greater_equal2, lower, lower_equal, lower_equal2, equal, between, selects, connect, features, temporal, temporal_con, error1, error2, symbols, numbers, unit_special, unit_ori, unit_ori_s, unit_exp, negation
+    greater, greater_equal, greater_equal2, lower, lower_equal, lower_equal2, equal, between, selects, connect, features, temporal, temporal_con, error1, error2, symbols, numbers, unit_special, unit_ori, unit_ori_s, unit_exp, negation = \
+    feature_set["greater"], feature_set["greater_equal"], feature_set["greater_equal2"], feature_set["lower"], feature_set["lower_equal"], feature_set["lower_equal2"], feature_set["equal"], feature_set["between"], feature_set["selects"], feature_set["connect"], feature_set["features"], feature_set["temporal"], feature_set["temporal_con"], feature_set["error1"], feature_set["error2"], feature_set["symbols"], feature_set["numbers"], feature_set["unit_special"], feature_set["unit_ori"], feature_set["unit_ori_s"], feature_set["unit_exp"], feature_set["negation"]
+    temporal = temporal + '|' + temporal.replace('|', 's|') + 's'
+    unit = (unit_ori + "|" + unit_ori_s.replace("|", "s|") + "s|" + unit_ori_s + "|" + temporal)
+    return ""
+
 
 ### TEXT files - Tab Delimited is default 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_table.html
