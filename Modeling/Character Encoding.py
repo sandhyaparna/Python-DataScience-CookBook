@@ -6,6 +6,7 @@ Df_X is data frame with features
 # https://github.com/scikit-learn-contrib/categorical-encoding
 # http://contrib.scikit-learn.org/categorical-encoding/
 # https://towardsdatascience.com/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
+# https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02?_branch_match_id=568145403917380761
 
 # 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
 # a)
@@ -67,7 +68,7 @@ Label_Binarizer = LabelBinarizer()
 Df_Var = Label_Binarizer.fit_transform(Df_X['Var'])
 Df_Var = pd.DataFrame(Df_Var, columns=Label_Binarizer.classes_)
 
-# 4. BinaryEncoders using category_encoders
+# 4. BinaryEncoders using category_encoders *******
 # First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot
 # Performs consistently well for actual categorical vars
 import category_encoders as ce
@@ -76,4 +77,21 @@ Df_X is data frame with features
 CharFeatures = list(Df_X.select_dtypes(include=['object']))
 Df_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Df_X, Df_y)
 Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
+
+# 5. Helmert Encoding -
+
+# 6. Freq Encoding
+# Freq of a particular category in the whole data
+
+# 7. Mean Encoding
+#   Select a categorical variable you would like to transform
+#   Group by the categorical variable and obtain aggregated sum over “Target” variable. (total number of 1’s for each category in ‘Temperature’)
+#   Group by the categorical variable and obtain aggregated count over “Target” variable
+#   Divide the step 2 / step 3 results and join it back with the train.
+
+# 8. Weight of Evidence Encoding
+
+
+![](https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png)
+
 
