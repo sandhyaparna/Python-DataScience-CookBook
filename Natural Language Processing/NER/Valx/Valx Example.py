@@ -101,17 +101,20 @@ def NumericAttributeExtraction(ClinicalNote):
   
 # Function for running all sentences within a text 
 def NumericAttributeExtraction(ClinicalNote):
-    ClinicalNote_preprocessing = Valx_core.preprocessing(ClinicalNote)
-    ClinicalNote_split_text_inclusion_exclusion = Valx_core.split_text_inclusion_exclusion(ClinicalNote_preprocessing)
-    ClinicalNote_extract_candidates_numeric = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)
-    
-   ClinicalNote_Numerical_Attributes = []
-    for i in range(len(ClinicalNote_extract_candidates_numeric[1])-1):
-        ClinicalNote_formalize_expressions = Valx_core.formalize_expressions(ClinicalNote_extract_candidates_numeric[1][i])
-        ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
-        ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
-        ClinicalNote_Numerical_Attributes = ClinicalNote_Numerical_Attributes + list(ClinicalNote_associate_variable_values)[1]
-    return(ClinicalNote_Numerical_Attributes)
+    try:
+        ClinicalNote_preprocessing = Valx_core.preprocessing(ClinicalNote)
+        ClinicalNote_split_text_inclusion_exclusion = Valx_core.split_text_inclusion_exclusion(ClinicalNote_preprocessing)
+        ClinicalNote_extract_candidates_numeric = Valx_core.extract_candidates_numeric(ClinicalNote_preprocessing)
+
+        ClinicalNote_Numerical_Attributes = []
+        for i in range(len(ClinicalNote_extract_candidates_numeric[1])):
+            ClinicalNote_formalize_expressions = Valx_core.formalize_expressions(ClinicalNote_extract_candidates_numeric[1][i])
+            ClinicalNote_identify_variable = Valx_core.identify_variable(ClinicalNote_formalize_expressions, fea_dict_dk, fea_dict_umls)
+            ClinicalNote_associate_variable_values = Valx_core.associate_variable_values(ClinicalNote_identify_variable[0])
+            ClinicalNote_Numerical_Attributes = ClinicalNote_Numerical_Attributes + list(ClinicalNote_associate_variable_values)[1]
+        return(ClinicalNote_Numerical_Attributes)
+    except Exception:
+        pass
 
 
   
