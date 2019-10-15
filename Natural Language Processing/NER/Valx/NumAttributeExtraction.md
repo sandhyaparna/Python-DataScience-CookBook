@@ -21,6 +21,10 @@
   * Temp - tmax, tmin, febrile, afebrile, fever, fib, afib, temperature
   * qtc
   * pulse, respiratory, gluc, nasal cannula (nc, oxygen), protein, platelet, bmi, inr, fi02
+* Function to process whole file - differnt sentences within a para
+* Understand Valx_core.py in depth - 
+
+
 
 ## Challenges
 #### Dates
