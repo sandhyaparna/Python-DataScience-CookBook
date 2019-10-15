@@ -23,7 +23,7 @@
   * pulse, respiratory, gluc, nasal cannula (nc, oxygen), protein, platelet, bmi, inr, fi02
 * Function to process whole file - differnt sentences within a para
 * Understand Valx_core.py in depth - 
-
+* Correct pre-processing by checking out the issues in Numerical Values extraction alone. Using 
 
 
 ## Challenges
@@ -31,7 +31,7 @@
 * 2/29 : Day is out of range for month - Manual correction
 * Sept is written instead of Sep
 * If 1 date is written in 2 different formats - 06/25 gets converted to 006/25 (Happens when 6/25 is present before 06/25); 08/21 gets converted to 0August21 - %B%d is replaced with %B%#d
-* If an error happens in a sentence, the ehole sentence after the error remains unchanged - Try to trace back the error AND hence, blood pressure in the format of p/q cannot be extracted fully because of this issue
+* If an error happens in a sentence, the whole sentence after the error remains unchanged - Try to trace back the error AND hence, blood pressure in the format of p/q cannot be extracted fully because of this issue
 #### UserEntered vs Documentation
 * A patients will have multiple records - Each additional day may be written as a new paragraph and concatenated to previous notes subsequently
 #### Numerical Attributes & their values
