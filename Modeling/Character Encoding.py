@@ -18,6 +18,9 @@ Df.replace(Char_Codes, inplace=True)
 # b) Can be used when there are missing values - As Manula encoding doesnt change misisng values
 Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_Vaue3})
 
+# 1. Eg- convert Trure or False, Yes or No to Binary
+bin_dict = { 'T':1,'F':0,'Y':1,'N':0}
+test['bin_3'] = test['bin_3'].map(bin_dict)  
 
 # 2. Label encoding - Using Categories (CANNOT be USED for MISSING Vars)
 # a) Single variable encoding
