@@ -1,5 +1,11 @@
 # https://www.kdnuggets.com/2016/08/include-high-cardinality-attributes-predictive-model.html
   
+  
+# Binary Features
+# Low & High Cardinality Nominal Features
+# Low & High Cardinality Ordinal Features
+# Cyclical Features 
+  
 ### Character variables encoding ###
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
