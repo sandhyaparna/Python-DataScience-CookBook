@@ -69,6 +69,16 @@ from sklearn.metrics import *
 # Cost Function (Incurred) = True_Positives*(Cost Incurred for intervention - Cost Saved)  +  False_Positives*(Cost incurred for intervention)  +
 #                            False_Negatives*(Cost if there is NO intervention)
 
+# Multi-class classification Problem
+# Quadratic Weighted Kappa - which measures the agreement between two ratings. This metric typically varies from 0 (random agreement between raters) to 1 (complete agreement between raters). In the event that there is less agreement between the raters than expected by chance, the metric may go below 0. The quadratic weighted kappa is calculated between the scores which are expected/known and the predicted scores. 
+# 5 step breakdown for Weighted Kappa Metric
+  # First, create a multi class confusion matrix O between predicted and actual ratings.
+  #   # Second, construct a weight matrix w which calculates the weight between the actual and predicted ratings.
+  # Third, calculate value_counts() for each rating in preds and actuals.
+  #   # Fourth, calculate E, which is the outer product of two value_count vectors
+  # Fifth, normalise the E and O matrix
+  # Caclulate, weighted kappa as per formula
+
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
 y_pred_proba - Predicted Target variable as continuous prob value i.e. y_pred_proba[:,1]
