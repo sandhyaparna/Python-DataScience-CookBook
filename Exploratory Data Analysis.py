@@ -155,28 +155,44 @@ print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) 
 
 # Description 
 def return_desc(df): 
-    return print('This dataset has ' + str(df.shape[0]) + ' rows, and ' + str(df.shape[1]) + ' columns'), print(" "), print("DATA TYPES"), print (df.dtypes), print(" "), print("TOP OBSERVATIONS"), print (display(df.head(5))) , print(" ") , print("NUMBER OF MISSING VALUES IN EACH VARIABLE"), print(df.isnull().sum()), print(" "), print("UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [x.unique()])), print(" "), print("NUMBER OF UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [len(x.unique())]))
+    return print('This dataset has ' + str(df.shape[0]) + ' rows, and ' + str(df.shape[1]) + ' columns'), print(" "), print("DATA TYPES"), print (df.dtypes), print(" "), print("TOP OBSERVATIONS"), print (display(df.head(5))) , print(" ") , print("NUMBER OF MISSING VALUES IN EACH VARIABLE"), print(df.isnull().sum()), print(" "), print("PERCENTAGE OF MISSING VALUES"),print(df.isnull().sum()/len(df)*100), print(" "),print("UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [x.unique()])), print(" "), print("NUMBER OF UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [len(x.unique())]))
 
 #
 def SummaryTable(df):
-    print(f"Dataset Shape: {df.shape}")
-    summary = pd.DataFrame(df.dtypes,columns=['dtypes'])
+    print('This dataset has ' + str(df.shape[0]) + ' rows, and ' + str(df.shape[1]) + ' columns')
+    print("\n","TOP FEW OBSERVATIONS:")
+    print(display(df.head(5)))
+    print("\n","BOTTOM FEW OBSERVATIONS:")
+    print(display(df.tail(5)))
+    print("\n","SUMMARY of Quantitative Data:")
+    print(display(df.describe()),"\n")
+    summary = pd.DataFrame(df.dtypes,columns=['DataType'])
     summary = summary.reset_index()
-    summary['Name'] = summary['index']
-    summary = summary[['Name','dtypes']]
-    summary['Missing'] = df.isnull().sum().values    
+    summary['VariableName'] = summary['index']
+    summary = summary[['VariableName','DataType']]
+    summary['Missing'] = df.isnull().sum().values
+    summary['MissingPercentage'] = df.isnull().sum().values/len(df)*100
     summary['Uniques'] = df.nunique().values
-    summary['First Value'] = df.loc[0].values
-    summary['Second Value'] = df.loc[1].values
-    summary['Third Value'] = df.loc[2].values
-    summary['Fourth Value'] = df.loc[3].values
-    summary['Fifth Value'] = df.loc[4].values
-
-    for name in summary['Name'].value_counts().index:
-        summary.loc[summary['Name'] == name, 'Entropy'] = round(stats.entropy(df[name].value_counts(normalize=True), base=2),2) 
-
+#     summary['First Value'] = df.loc[0].values
+#     summary['Second Value'] = df.loc[1].values
+#     summary['Third Value'] = df.loc[2].values
+#     summary['Fourth Value'] = df.loc[3].values
+#     summary['Fifth Value'] = df.loc[4].values
+    
+#     for name in summary['VariableName'].value_counts().index:
+#         summary.loc[summary['VariableName'] == name, 'Entropy'] = round(stats.entropy(df[name].value_counts(normalize=True), base=2),2) 
+    categorical_features = df.select_dtypes(include = np.object)
+    print("Frequency of Categorical Data:","\n")
+    for i in categorical_features.columns:
+        print(i + ":" + str(categorical_features[i].nunique()))
+        print(categorical_features[i].value_counts())
+        print('\n')
+    
     return summary
-  
+#
+  SummaryTable(X_train) 
+
+
 
 # Rows, Columns
 Df.shape
