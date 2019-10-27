@@ -155,8 +155,28 @@ print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) 
 
 # Description 
 def return_desc(df): 
-    return print (df.dtypes),print (df.head(3)) ,print(df.apply(lambda x: [x.unique()])), print(df.apply(lambda x: [len(x.unique())])),print (df.shape)
+    return print('This dataset has ' + str(df.shape[0]) + ' rows, and ' + str(df.shape[1]) + ' columns'), print(" "), print("DATA TYPES"), print (df.dtypes), print(" "), print("TOP OBSERVATIONS"), print (display(df.head(5))) , print(" ") , print("NUMBER OF MISSING VALUES IN EACH VARIABLE"), print(df.isnull().sum()), print(" "), print("UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [x.unique()])), print(" "), print("NUMBER OF UNIQUE VALUES IN EACH VARIABLE"), print(df.apply(lambda x: [len(x.unique())]))
 
+#
+def SummaryTable(df):
+    print(f"Dataset Shape: {df.shape}")
+    summary = pd.DataFrame(df.dtypes,columns=['dtypes'])
+    summary = summary.reset_index()
+    summary['Name'] = summary['index']
+    summary = summary[['Name','dtypes']]
+    summary['Missing'] = df.isnull().sum().values    
+    summary['Uniques'] = df.nunique().values
+    summary['First Value'] = df.loc[0].values
+    summary['Second Value'] = df.loc[1].values
+    summary['Third Value'] = df.loc[2].values
+    summary['Fourth Value'] = df.loc[3].values
+    summary['Fifth Value'] = df.loc[4].values
+
+    for name in summary['Name'].value_counts().index:
+        summary.loc[summary['Name'] == name, 'Entropy'] = round(stats.entropy(df[name].value_counts(normalize=True), base=2),2) 
+
+    return summary
+  
 
 # Rows, Columns
 Df.shape
