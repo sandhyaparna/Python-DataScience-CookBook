@@ -192,6 +192,16 @@ def SummaryTable(df):
 #
   SummaryTable(X_train) 
 
+# Cross Tab of Categorical Vars by Target Variable: Freq & Percentage
+for i in categorical_features.columns:
+    print(i + ":" + str(categorical_features[i].nunique()))
+#     print(pd.concat([pd.crosstab(train_data[i], train_data['is_late'], margins=True),
+#                    pd.crosstab(train_data[i], train_data['is_late'], normalize='index')]))
+    Df = pd.concat([pd.DataFrame(pd.crosstab(train_data[i], train_data['is_late'], margins=True)),
+                   pd.DataFrame(pd.crosstab(train_data[i], train_data['is_late'], normalize='index'))], axis=1, sort=False)
+    Df.columns = ['Target_0', 'Target_1', 'All',"Target_Percent0","Target_Percent1"]
+    print(Df)
+    print('\n')
 
 
 # Rows, Columns
