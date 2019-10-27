@@ -198,10 +198,19 @@ for i in categorical_features.columns:
 #     print(pd.concat([pd.crosstab(train_data[i], train_data['is_late'], margins=True),
 #                    pd.crosstab(train_data[i], train_data['is_late'], normalize='index')]))
     Df = pd.concat([pd.DataFrame(pd.crosstab(train_data[i], train_data['is_late'], margins=True)),
-                   pd.DataFrame(pd.crosstab(train_data[i], train_data['is_late'], normalize='index'))], axis=1, sort=False)
-    Df.columns = ['Target_0', 'Target_1', 'All',"Target_Percent0","Target_Percent1"]
+                    pd.DataFrame(train_data[i].value_counts(normalize=True).mul(100).round(1).astype(str) + '%'),
+                   pd.DataFrame(pd.crosstab(train_data[i], train_data['is_late'], normalize='index')).mul(100).round(1).astype(str) + '%'], axis=1, sort=False)
+    Df.columns = ['Target_0', 'Target_1', 'Freq','FreqPercent',"Target_Percent0","Target_Percent1"]
+    
     print(Df)
     print('\n')
+
+# Frequency table for each catergorical variable
+# Cross tab of Categorical variable vs Target Variable
+for i in categorical_features.columns:
+    print(i + ":" + str(categorical_features[i].nunique()))
+    print(categorical_features[i].value_counts(), "\n",pd.crosstab(train_data[i], train_data['is_late']))
+    print('\n') 
 
 
 # Rows, Columns
