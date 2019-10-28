@@ -47,7 +47,14 @@ label_encoder = preprocessing.LabelEncoder()
 Df_Var_array = label_encoder.fit_transform(Df_X['Var'])
 
 # b) MultiColumnLabelEncoder - should be used only on categorical vars
-# It encodes integer variables also - so only char variables should be mentioned
+# i) 
+lencoder = ['ord_5', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'day', 'month']
+test['target'] = 'test'
+df = pd.concat([train, test], axis=0, sort=False )
+for feat in lencoder:
+    lbl_enc = preprocessing.LabelEncoder()
+    df[feat] = lbl_enc.fit_transform(df[feat].values)
+# ii) It encodes integer variables also - so only char variables should be mentioned
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import Pipeline
