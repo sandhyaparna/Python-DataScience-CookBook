@@ -115,6 +115,11 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 # 10. Ordinal
 # The first unique value in your column becomes 1, the second becomes 2, the third becomes 3. So, mapping is best for correct & accurate mapping
+ord_3 = CategoricalDtype(categories=['a', 'b', 'c', 'd', 'e', 'f', 'g',
+                                     'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'], ordered=True)
+ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                                     'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                                     'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'], ordered=True)
 
 # 11. Hashing
 # Default is 8 columns
