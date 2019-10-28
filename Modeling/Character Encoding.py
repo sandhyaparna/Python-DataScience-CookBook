@@ -111,9 +111,11 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 # 8. Weight of Evidence Encoding
 
-# 9. Ordinal
+# 9. Supervise Ratio
+
+# 10. Ordinal
 # The first unique value in your column becomes 1, the second becomes 2, the third becomes 3. So, mapping is best for correct & accurate mapping
 
-# 10. Hashing
+# 11. Hashing
 # Default is 8 columns
 
