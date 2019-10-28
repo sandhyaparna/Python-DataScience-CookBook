@@ -2,8 +2,8 @@
   
   
 # Binary Features
-# Low & High Cardinality Nominal Features
-# Low & High Cardinality Ordinal Features
+# Low & High(a lot of unique values) Cardinality Nominal Features
+# Low & High(a lot of unique values) Cardinality Ordinal Features
 # Cyclical Features 
   
 ### Character variables encoding ###
