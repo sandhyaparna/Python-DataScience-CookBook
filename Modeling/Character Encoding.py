@@ -2,9 +2,18 @@
   
   
 # Binary Features
+  # Map Values
 # Low & High(a lot of unique values) Cardinality Nominal Features
+  # Nominal - Hashing, LeaveOneOut, Target encoding (For regression - Target & LeaveOneOut won't work well)
+  # High Cardinal Data - Target (Mean of DV), LeaveOneOut, WeightOfEvidence, 
+  
 # Low & High(a lot of unique values) Cardinality Ordinal Features
+  # Oridinal, Binary, OneHot, LeaveOneOut, Target encoding
 # Cyclical Features 
+  
+
+  
+  
   
 ### Character variables encoding ###
 Df_X is data frame with features
@@ -14,7 +23,7 @@ Df_X is data frame with features
 # https://towardsdatascience.com/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
 # https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02?_branch_match_id=568145403917380761
 
-# WHen to use what kind of encoding - https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png
+# When to use what kind of encoding - https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png
 
 # 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
 # a)
@@ -102,6 +111,9 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 # 8. Weight of Evidence Encoding
 
+# 9. Ordinal
+# The first unique value in your column becomes 1, the second becomes 2, the third becomes 3. So, mapping is best for correct & accurate mapping
 
-
+# 10. Hashing
+# Default is 8 columns
 
