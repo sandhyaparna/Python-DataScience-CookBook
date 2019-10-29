@@ -29,6 +29,8 @@ train['Age']=train['Age'].fillna(median_value)
 # For Mean
 mean_value=train['Age'].mean()
 train['Age']=train['Age'].fillna(mean_value)
+# Mode
+data['Gender'].fillna(mode(data['Gender']).mode[0], inplace=True)
 
 # Forward or Backward fill
 #for back fill 
