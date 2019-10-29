@@ -88,7 +88,32 @@ def Fill_NaNs_Numeric(col):
 
 """-------------------------------------------------------------------------"""
 
-
+def Fill_NaNs_Catigorical(col): 
+    """Calculating probability and expected value."""
+    proportion = np.array(valueCounts[col].values) / valueCounts[col].sum() * nanCounts[col]
+    proportion = np.around(proportion).astype('int')
+    
+    """Adjusting proportion."""
+    diff = int(nanCounts[col] - np.sum(proportion))
+    if diff > 0:
+        for x in range(diff):
+            idx = random.randint(0, len(proportion) - 1)
+            proportion[idx] =  proportion[idx] + 1
+    else:
+        diff = -diff
+        while(diff != 0):
+            idx = random.randint(0, len(proportion) - 1)
+            if proportion[idx] > 0:
+                proportion[idx] =  proportion[idx] - 1
+                diff = diff - 1
+        
+    """Filling NaNs."""
+    nan_indexes = df[df[col].isnull()].index.tolist() 
+    for x in range(len(proportion)):
+        if proportion[x] > 0:
+            random_subset = random.sample(population = nan_indexes, k = proportion[x])
+            df.loc[random_subset, col] = valueCounts[col].keys()[x]
+            nan_indexes = list(set(nan_indexes) - set(random_subset))
 
 
 
