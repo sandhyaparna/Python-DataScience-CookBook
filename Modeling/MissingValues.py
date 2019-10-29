@@ -46,6 +46,22 @@ from impyute.imputation.cs import mice
 Df_NumericalVars = Df.select_dtypes(include = np.number)
 Df_Imputed_MICE = pd.DataFrame(data=mice(Df_NumericalVars.values), columns=Df_NumericalVars.columns, index=Df_NumericalVars.index)
 
+# DataWig Imputation - https://github.com/awslabs/datawig
+import datawig
+# Var1 needs to be imputed
+# Split data into obs with Var1 not missing and Var1 missing
+X_train = X[pd.notnull(X.var1)] #Var1 not missing is used to in training
+X_test = X[pd.isnull(X.Var1)] #Var1 missing
+# Parameters
+imputer = datawig.SimpleImputer(
+    input_columns=['Var2','Var3','Var4','Var5','Var6', 'Var7'], # column(s), Categorical & Numerical, these vars themselves can have missing data
+    output_column='revol_util', # the column we'd like to impute values for
+    output_path = 'imputer_model') # stores model data and metrics
+#Fit an imputer model on the train data
+imputer.fit(train_df=X_train, num_epochs=50)    #num_epochs is not needed while imputing for Categorical Var (i.e misisng in Cat var)
+#Impute missing values and return original dataframe with predictions
+imputed = imputer.predict(X_test)
+
 # Soft Probability Imputation
 valueCounts = {}
 def CountAll():
