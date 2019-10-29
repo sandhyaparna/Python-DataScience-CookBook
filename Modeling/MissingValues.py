@@ -40,7 +40,7 @@ train.fillna(method=''ffill)
 #one can also specify an axis to propagate (1 is for rows and 0 is for columns)
 train.fillna(method='bfill', axis=1)
 
-# MICE - Works only on Numerical Vars
+# MICE - Works & takes only Numerical Vars 
 from impyute.imputation.cs import mice
 # start the MICE training (Can be applied to all numerical Vars that have missing info in datasets)
 Df_NumericalVars = Df.select_dtypes(include = np.number)
