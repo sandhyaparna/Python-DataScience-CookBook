@@ -157,3 +157,36 @@ def Fill_NaNs_Catigorical(col):
 
 
 
+# Using Linear Regression
+from sklearn.linear_model import LinearRegression
+linreg = LinearRegression()
+data = train[['Pclass','SibSp','Parch','Fare','Age']]
+#Step-1: Split the dataset that contains the missing values and no missing values are test and train respectively.
+x_train = data[data['Age'].notnull()].drop(columns='Age')
+y_train = data[data['Age'].notnull()]['Age']
+x_test = data[data['Age'].isnull()].drop(columns='Age')
+y_test = data[data['Age'].isnull()]['Age']
+#Step-2: Train the machine learning algorithm
+linreg.fit(x_train, y_train)
+#Step-3: Predict the missing values in the attribute of the test data.
+predicted = linreg.predict(x_test)
+#Step-4: Let’s obtain the complete dataset by combining with the target attribute.
+train.Age[train.Age.isnull()] = predicted
+train.info()
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 891 entries, 0 to 890
+Data columns (total 12 columns):
+PassengerId    891 non-null int64
+Pclass         891 non-null int64
+Name           891 non-null object
+Sex            891 non-null object
+Age            891 non-null float64
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Ticket         891 non-null object
+Fare           891 non-null float64
+Cabin          204 non-null object
+Embarked       889 non-null object
+saleprice      891 non-null int64
+dtypes: float64(2), int64(5), object(5)
+memory usage: 90.5+ KB
