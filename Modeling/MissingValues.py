@@ -22,6 +22,22 @@ plt.title('Percent missing data by feature', fontsize=15)
 # Calculate skewness
 Df['Var'].skew()
 
+# Median Imputaion
+#For Median
+meadian_value=train['Age'].median()
+train['Age']=train['Age'].fillna(median_value)
+# For Mean
+mean_value=train['Age'].mean()
+train['Age']=train['Age'].fillna(mean_value)
+
+# Forward or Backward fill
+#for back fill 
+train.fillna(method='bfill')
+#for forward-fill
+train.fillna(method=''ffill)
+#one can also specify an axis to propagate (1 is for rows and 0 is for columns)
+train.fillna(method='bfill', axis=1)
+
 # Soft Probability Imputation
 valueCounts = {}
 def CountAll():
