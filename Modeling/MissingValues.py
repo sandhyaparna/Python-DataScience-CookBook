@@ -19,7 +19,10 @@ plt.xlabel('Features', fontsize=15)
 plt.ylabel('Percent of missing values', fontsize=15)
 plt.title('Percent missing data by feature', fontsize=15)
 
+# Calculate skewness
+Df['Var'].skew()
 
+# Soft Probability Imputation
 
 
 
