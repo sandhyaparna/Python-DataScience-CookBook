@@ -62,7 +62,8 @@ imputer.fit(train_df=X_train, num_epochs=50)    #num_epochs is not needed while 
 #Impute missing values and return original dataframe with predictions
 imputed = imputer.predict(X_test)
 
-# Soft Probability Imputation
+
+### Soft Probability Imputation - https://gist.github.com/Vernal-Inertia/bf2e75e23ea0a508bbebfeadb0aafabe
 valueCounts = {}
 def CountAll():
     global all_columns, nanCounts, valueCounts
