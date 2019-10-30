@@ -31,6 +31,10 @@ mean_value=train['Age'].mean()
 train['Age']=train['Age'].fillna(mean_value)
 # Mode
 data['Gender'].fillna(mode(data['Gender']).mode[0], inplace=True)
+# Mode
+emp_length_mode = X_train['emp_length'].mode()
+X_train['emp_length']=X_train['emp_length'].fillna(emp_length_mode[0])
+X_test['emp_length']=X_test['emp_length'].fillna(emp_length_mode[0])
 
 # Forward or Backward fill
 #for back fill 
