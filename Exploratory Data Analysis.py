@@ -398,7 +398,9 @@ Df = Df.iloc[0:1366186]
 x = x[x['ZipCode'].str.contains("[a-zA-Z]+")] 
 
 # Cbind / Concatenate 2 dataframe
-Ne_Df = pd.concat([Df1, Df2], axis=1)
+New_Df = pd.concat([Df1, Df2], axis=1)
+# Cbind/ Combine 2 rows
+Df['New_Var'] = Df['Var1'].astype(str) + " " +  Df['Var2'].astype(str)
 
 ## Sorting - https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_values.html
 # Sort data
