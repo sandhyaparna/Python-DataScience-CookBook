@@ -24,7 +24,7 @@ Df['Var'].skew()
 
 # Median Imputaion
 #For Median
-meadian_value=train['Age'].median()
+median_value=train['Age'].median()
 train['Age']=train['Age'].fillna(median_value)
 # For Mean
 mean_value=train['Age'].mean()
