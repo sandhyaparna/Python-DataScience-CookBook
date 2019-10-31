@@ -171,7 +171,7 @@ def SummaryTable(df):
     summary['VariableName'] = summary['index']
     summary = summary[['VariableName','DataType']]
     summary['Missing'] = df.isnull().sum().values
-    summary['MissingPercentage'] = df.isnull().sum().values/len(df)*100
+    summary['MissingPercentage'] = (summary['Missing']/len(df)*100).round(2)
     summary['Uniques'] = df.nunique().values
 #     summary['First Value'] = df.loc[0].values
 #     summary['Second Value'] = df.loc[1].values
