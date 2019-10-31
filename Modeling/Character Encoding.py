@@ -9,12 +9,10 @@
   
 # Low & High(a lot of unique values) Cardinality Ordinal Features
   # Oridinal, Binary, OneHot, LeaveOneOut, Target encoding
-# Cyclical Features 
-  
+# Cyclical Features - Day, week, month, year 
+  # sin-cos features
 
-  
-  
-  
+
 ### Character variables encoding ###
 Df_X is data frame with features
 # http://pbpython.com/categorical-encoding.html
