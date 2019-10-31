@@ -168,6 +168,14 @@ CBE_encoder = CatBoostEncoder()
 train_cbe = CBE_encoder.fit_transform(train[feature_list], target)
 test_cbe = CBE_encoder.transform(test[feature_list])
 
+# 17. Sin-cos encoding - for cyclical features
+def encode(data, col, max_val):
+    data[col + '_sin'] = np.sin(2 * np.pi * data[col]/max_val)
+    data[col + '_cos'] = np.cos(2 * np.pi * data[col]/max_val)
+    return data
+data = encode(data, 'month', 12)
+data = encode(data, 'hr', 23)
+data = encode(data, 'year', 365)
 
 #### Apply different encoding techniques simultaneously -https://www.kaggle.com/subinium/11-categorical-encoders-and-benchmark#1.-Label-Encoder-(LE),-Ordinary-Encoder(OE)
 %%time
