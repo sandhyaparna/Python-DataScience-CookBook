@@ -36,6 +36,18 @@ emp_length_mode = X_train['emp_length'].mode()
 X_train['emp_length']=X_train['emp_length'].fillna(emp_length_mode[0])
 X_test['emp_length']=X_test['emp_length'].fillna(emp_length_mode[0])
 
+# sklearn 
+# Featurization of numeric data
+imputer_num = SimpleImputer(strategy='median')
+X_train_num = imputer_num.fit_transform(X_train[num_cols]) #X_train_num - Df with numeric columns
+X_val_num = imputer_num.transform(X_val[num_cols])
+X_test_num = imputer_num.transform(X_test[num_cols])
+# Featurization of categorical data
+imputer_cat = SimpleImputer(strategy='constant', fill_value='MISSING')
+X_train_cat = imputer_cat.fit_transform(X_train[cat_cols]) ##X_train_num - Df with categoric columns
+X_val_cat = imputer_cat.transform(X_val[cat_cols])
+X_test_cat = imputer_cat.transform(X_test[cat_cols])
+
 # Forward or Backward fill
 #for back fill 
 train.fillna(method='bfill')
