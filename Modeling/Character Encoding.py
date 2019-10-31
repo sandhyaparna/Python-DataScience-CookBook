@@ -106,6 +106,11 @@ Df_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Df_X, Df_y)
 Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 # 5. Helmert Encoding -
+# %%time
+# this method didn't work because of RAM memory. 
+# HE_encoder = HelmertEncoder(feature_list)
+# train_he = HE_encoder.fit_transform(train[feature_list], target)
+# test_he = HE_encoder.transform(test[feature_list])
 
 # 6. Freq Encoding
 # Freq of a particular category in the whole data
@@ -117,6 +122,10 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 #   Divide the step 2 / step 3 results and join it back with the train.
 
 # 8. Weight of Evidence Encoding
+%%time
+WOE_encoder = WOEEncoder()
+train_woe = WOE_encoder.fit_transform(train[feature_list], target)
+test_woe = WOE_encoder.transform(test[feature_list])
 
 # 9. Supervise Ratio
 
@@ -130,4 +139,23 @@ ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
 
 # 11. Hashing
 # Default is 8 columns
+
+#12. M-Estimate Encoder
+%%time
+MEE_encoder = MEstimateEncoder()
+train_mee = MEE_encoder.fit_transform(train[feature_list], target)
+test_mee = MEE_encoder.transform(test[feature_list])
+
+#13. Target Encoder
+%%time
+TE_encoder = TargetEncoder()
+train_te = TE_encoder.fit_transform(train[feature_list], target)
+test_te = TE_encoder.transform(test[feature_list])
+
+#14. James-Stein Encoder
+%%time
+JSE_encoder = JamesSteinEncoder()
+train_jse = JSE_encoder.fit_transform(train[feature_list], target)
+test_jse = JSE_encoder.transform(test[feature_list])
+
 
