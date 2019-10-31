@@ -22,7 +22,7 @@ Df_X is data frame with features
 # http://contrib.scikit-learn.org/categorical-encoding/
 # https://towardsdatascience.com/smarter-ways-to-encode-categorical-data-for-machine-learning-part-1-of-3-6dca2f71b159
 # https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02?_branch_match_id=568145403917380761
-
+# https://www.kaggle.com/subinium/11-categorical-encoders-and-benchmark#1.-Label-Encoder-(LE),-Ordinary-Encoder(OE)
 # When to use what kind of encoding - https://miro.medium.com/max/2100/0*NBVi7M3sGyiUSyd5.png
 
 # 1. Replace/Rename/Map Values of a variable (CAN be USED for MISSING Vars)
