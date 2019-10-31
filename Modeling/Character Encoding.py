@@ -128,7 +128,12 @@ test_woe = WOE_encoder.transform(test[feature_list])
 # 9. Supervise Ratio
 
 # 10. Ordinal
-# The first unique value in your column becomes 1, the second becomes 2, the third becomes 3. So, mapping is best for correct & accurate mapping
+# a) Values are sorted and dictionary is created - works weel with Alphabets
+grade = sorted(list(set(X_train['grade'].values)))
+grade = dict(zip(grade, [x+1 for x in range(len(grade))]))
+X_train.loc[:, 'grade'] = X_train['grade'].apply(lambda x: grade[x]).astype(int)
+X_test.loc[:, 'grade'] = X_test['grade'].apply(lambda x: grade[x]).astype(int)
+# b) The first unique value in your column becomes 1, the second becomes 2, the third becomes 3. So, mapping is best for correct & accurate mapping
 ord_3 = CategoricalDtype(categories=['a', 'b', 'c', 'd', 'e', 'f', 'g',
                                      'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'], ordered=True)
 ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
