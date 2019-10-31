@@ -140,22 +140,65 @@ ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
 # 11. Hashing
 # Default is 8 columns
 
-#12. M-Estimate Encoder
+# 12. M-Estimate Encoder
 %%time
 MEE_encoder = MEstimateEncoder()
 train_mee = MEE_encoder.fit_transform(train[feature_list], target)
 test_mee = MEE_encoder.transform(test[feature_list])
 
-#13. Target Encoder
+# 13. Target Encoder
 %%time
 TE_encoder = TargetEncoder()
 train_te = TE_encoder.fit_transform(train[feature_list], target)
 test_te = TE_encoder.transform(test[feature_list])
 
-#14. James-Stein Encoder
+# 14. James-Stein Encoder
 %%time
 JSE_encoder = JamesSteinEncoder()
 train_jse = JSE_encoder.fit_transform(train[feature_list], target)
 test_jse = JSE_encoder.transform(test[feature_list])
+
+# 15. Leave-one-out Encoder (LOO or LOOE)
+%%time
+LOOE_encoder = LeaveOneOutEncoder()
+train_looe = LOOE_encoder.fit_transform(train[feature_list], target)
+test_looe = LOOE_encoder.transform(test[feature_list])
+
+# 16. Catboost Encoder
+%%time
+CBE_encoder = CatBoostEncoder()
+train_cbe = CBE_encoder.fit_transform(train[feature_list], target)
+test_cbe = CBE_encoder.transform(test[feature_list])
+
+
+#### Apply different encoding techniques simultaneously -https://www.kaggle.com/subinium/11-categorical-encoders-and-benchmark#1.-Label-Encoder-(LE),-Ordinary-Encoder(OE)
+%%time
+import gc
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score as auc
+from sklearn.linear_model import LogisticRegression
+
+encoder_list = [ OrdinalEncoder(), WOEEncoder(), TargetEncoder(), MEstimateEncoder(), JamesSteinEncoder(), LeaveOneOutEncoder() ,CatBoostEncoder()]
+
+X_train, X_val, y_train, y_val = train_test_split(train, target, test_size=0.2, random_state=97)
+
+for encoder in encoder_list:
+    print("Test {} : ".format(str(encoder).split('(')[0]), end=" ")
+    train_enc = encoder.fit_transform(X_train[feature_list], y_train)
+    #test_enc = encoder.transform(test[feature_list])
+    val_enc = encoder.transform(X_val[feature_list])
+    lr = LogisticRegression(C=0.1, solver="lbfgs", max_iter=1000)
+    lr.fit(train_enc, y_train)
+    lr_pred = lr.predict_proba(val_enc)[:, 1]
+    score = auc(y_val, lr_pred)
+    print("score: ", score)
+    del train_enc
+    del val_enc
+    gc.collect()
+
+
+
+
+
 
 
