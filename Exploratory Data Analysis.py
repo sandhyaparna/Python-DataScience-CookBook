@@ -829,6 +829,8 @@ corrected = blob.correct()
                        
 Df["Text_Var_Corrected"] = Df["Text_Var"].apply(lambda x: str(TextBlob(x).correct()))                  
 Df.apply(lambda x: functiom(x.Text), axis=1)    
+# swifter can be used before apply function for faster processing
+Df.swifter.apply(lambda x: functiom(x.Text), axis=1) 
                        
                        
 # Extract only the sentences if a specific mentioned word appears in that sentence
