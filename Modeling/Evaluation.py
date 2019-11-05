@@ -71,13 +71,16 @@ from sklearn.metrics import *
 
 # Multi-class classification Problem
 # Quadratic Weighted Kappa - which measures the agreement between two ratings. This metric typically varies from 0 (random agreement between raters) to 1 (complete agreement between raters). In the event that there is less agreement between the raters than expected by chance, the metric may go below 0. The quadratic weighted kappa is calculated between the scores which are expected/known and the predicted scores. 
+# https://www.kaggle.com/c/data-science-bowl-2019/overview/evaluation
 # 5 step breakdown for Weighted Kappa Metric
   # First, create a multi class confusion matrix O between predicted and actual ratings.
   #   # Second, construct a weight matrix w which calculates the weight between the actual and predicted ratings.
+  wi,j=(i−j)2(N−1)2
   # Third, calculate value_counts() for each rating in preds and actuals.
   #   # Fourth, calculate E, which is the outer product of two value_count vectors
   # Fifth, normalise the E and O matrix
   # Caclulate, weighted kappa as per formula
+  κ=1−∑i,jwi,jOi,j∑i,jwi,jEi,j.
 
 # Multi-class log loss
 sklearn.metrics.log_loss
