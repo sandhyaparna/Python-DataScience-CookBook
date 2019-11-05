@@ -80,10 +80,10 @@ from sklearn.metrics import *
   # Caclulate, weighted kappa as per formula
 
 # Multi-class log loss
+sklearn.metrics.log_loss
   
   
-  
-
+#
 y - Target Variable
 y_Pred - Predicted Target variable as category and NOT continuous prob value
 y_pred_proba - Predicted Target variable as continuous prob value i.e. y_pred_proba[:,1]
