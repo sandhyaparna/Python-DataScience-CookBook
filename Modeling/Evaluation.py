@@ -210,8 +210,7 @@ plot_lift_curve(y, y_pred_proba)
 # K-S Kolomogorov Smirnov Chart using scikitplot
 plot_ks_statistic(y, y_pred_proba)
        
-         
-         
+    
 # For clustering
 def plot_silhouette(X, cluster_labels, title='Silhouette Analysis',
                     metric='euclidean', copy=True, ax=None, figsize=None,
@@ -222,6 +221,20 @@ def plot_silhouette(X, cluster_labels, title='Silhouette Analysis',
 # Concordant-Discordant ratio
         
 
+########## Image Data ##########
+# Dice coefficient
+# The Dice coefficient can be used to compare the pixel-wise agreement between a predicted segmentation and its corresponding ground truth. 
+# The formula is given by:  2∗|X∩Y||X|+|Y|
+# where X is the predicted set of pixels and Y is the ground truth. The Dice coefficient is defined to be 1 when both X and Y are empty.
+         
+
+         
+         
+         
+         
+         
+         
+         
 
 
 
