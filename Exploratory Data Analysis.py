@@ -63,6 +63,10 @@ Df = pd.read_csv("path/file.csv",
 # Code to read many csv files and combine them
 # https://github.com/tcbonds/lyme-disease-classifier/blob/master/2_Parsing_Climate_CSV_Files_Into_Features.ipynb
 
+# Specify path seperately as a variable and use it in read_csv
+INPUT_DIR = '.../folder/'
+Df = pd.read_csv(INPUT_DIR + 'file.csv')
+
 # Import csv 2 column file as a dictionary
 feature_set = ufile.read_csv_as_dict ('data\\numeric_features.csv', 0, 1, True) #Valx - Data
 greater, greater_equal, greater_equal2, lower, lower_equal, lower_equal2, equal, between, selects, connect, features, temporal, temporal_con, error1, error2, symbols, numbers, unit_special, unit_ori, unit_ori_s, unit_exp, negation = "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
