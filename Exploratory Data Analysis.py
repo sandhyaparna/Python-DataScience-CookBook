@@ -330,6 +330,8 @@ columns_without_id = [col for col in Df.columns if col!='Col_ID']
 # Checking for duplicates in the data.
 Df[Df.duplicated(subset = columns_without_id, keep=False)]
 print('The no of duplicates in the data:',Df[Df.duplicated(subset = columns_without_id, keep=False)].shape[0])
+# Remove Duplicates
+Df = Df.drop_duplicates()
 
 ################# Visualization #################
 ### https://python-graph-gallery.com/
