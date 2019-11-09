@@ -182,6 +182,9 @@ import seaborn as sns <br/>
 import matplotlib.pyplot as plt <br/>
 %matplotlib inline <br/>
 
+#### Set up new environment for a project
+https://github.com/andfanilo/ieee-fraud-detection
+
 #### Packages unable to install
 
 
