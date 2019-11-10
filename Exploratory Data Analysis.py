@@ -68,6 +68,7 @@ INPUT_DIR = '.../folder/'
 Df = pd.read_csv(INPUT_DIR + 'file.csv')
 
 # Firstly, create function to optimize memory for loading the data
+# Can also be used for merging data sets
 # From: https://www.kaggle.com/arjanso/reducing-dataframe-memory-size-by-65
 def reduce_mem_usage(props):
     start_mem_usg = props.memory_usage().sum() / 1024 ** 2
@@ -121,6 +122,7 @@ def load_csv(path):
     return reduce_mem_usage(pd.read_csv(path))
 # 
 train_identity = load_csv(f'{PATH}/train_identity.csv')
+train_df = reduce_mem_usage(pd.merge(train_transaction, train_identity, on='TransactionID', how='left'))
 
 # Import data as reduced file (Function)
 def reduce_mem_usage(df, verbose=True):
