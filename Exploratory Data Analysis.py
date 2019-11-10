@@ -164,10 +164,7 @@ def load_data(file):
     return reduce_mem_usage(pd.read_csv(file))
 with multiprocessing.Pool() as pool:
     test_identity, test_transaction, train_identity, train_transaction, sample_submission = pool.map(load_data, files)
-
-    
-    
-    
+   
     
 # Import csv 2 column file as a dictionary
 feature_set = ufile.read_csv_as_dict ('data\\numeric_features.csv', 0, 1, True) #Valx - Data
