@@ -509,6 +509,19 @@ fig.gca().add_artist(centre_circle)
 plt.axis('equal')
 plt.show()  
 
+# Bar Chart for Target label viz
+print("FREQUENCY OF TARGET: \n",pd.value_counts(y_train))
+plt.subplot(121)
+plot_tr = sns.countplot(train_data["is_late"])
+plot_tr.set_title("Fraud Transactions Distribution \n 0: Not Late | 1: Late", fontsize=12)
+plot_tr.set_xlabel("Is Late?", fontsize=8)
+plot_tr.set_ylabel('Count', fontsize=8)
+for p in plot_tr.patches:
+    height = p.get_height()
+    plot_tr.text(p.get_x()+p.get_width()/2.,
+            height + 3,
+            '{:1.2f}%'.format(height/(len(train_data))*100),
+            ha="center", fontsize=10) 
 
 ################# Data Manipulation #################
 # Drop columns
