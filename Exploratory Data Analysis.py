@@ -67,6 +67,61 @@ Df = pd.read_csv("path/file.csv",
 INPUT_DIR = '.../folder/'
 Df = pd.read_csv(INPUT_DIR + 'file.csv')
 
+# Firstly, create function to optimize memory for loading the data
+# From: https://www.kaggle.com/arjanso/reducing-dataframe-memory-size-by-65
+def reduce_mem_usage(props):
+    start_mem_usg = props.memory_usage().sum() / 1024 ** 2
+    print("Memory usage of properties dataframe is :", start_mem_usg, " MB")
+    for col in props.columns:
+        if props[col].dtype != object:  # Exclude strings
+            IsInt = False
+
+            mx = props[col].max()
+            mn = props[col].min()
+
+            if not np.isfinite(props[col]).all():
+                props[col].fillna(-999, inplace=True)
+
+            asint = props[col].fillna(0).astype(np.int64)
+            result = (props[col] - asint)
+            result = result.sum()
+
+            if -0.01 < result < 0.01:
+                IsInt = True
+
+            if IsInt:
+                if mn >= 0:
+                    if mx < 255:
+                        props[col] = props[col].astype(np.uint8)
+                    elif mx < 65535:
+                        props[col] = props[col].astype(np.uint16)
+                    elif mx < 4294967295:
+                        props[col] = props[col].astype(np.uint32)
+                    else:
+                        props[col] = props[col].astype(np.uint64)
+                else:
+                    if mn > np.iinfo(np.int8).min and mx < np.iinfo(np.int8).max:
+                        props[col] = props[col].astype(np.int8)
+                    elif mn > np.iinfo(np.int16).min and mx < np.iinfo(np.int16).max:
+                        props[col] = props[col].astype(np.int16)
+                    elif mn > np.iinfo(np.int32).min and mx < np.iinfo(np.int32).max:
+                        props[col] = props[col].astype(np.int32)
+                    elif mn > np.iinfo(np.int64).min and mx < np.iinfo(np.int64).max:
+                        props[col] = props[col].astype(np.int64)
+            else:
+                props[col] = props[col].astype(np.float32)
+
+    print("___MEMORY USAGE AFTER COMPLETION:___")
+    mem_usg = props.memory_usage().sum() / 1024 ** 2
+    print("Memory usage is: ", mem_usg, " MB")
+    print("This is ", 100 * mem_usg / start_mem_usg, "% of the initial size")
+    return props
+
+def load_csv(path):
+    return reduce_mem_usage(pd.read_csv(path))
+# 
+train_identity = load_csv(f'{PATH}/train_identity.csv')
+
 # Import data as reduced file (Function)
 def reduce_mem_usage(df, verbose=True):
     numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
@@ -108,6 +163,10 @@ def load_data(file):
 with multiprocessing.Pool() as pool:
     test_identity, test_transaction, train_identity, train_transaction, sample_submission = pool.map(load_data, files)
 
+    
+    
+    
+    
 # Import csv 2 column file as a dictionary
 feature_set = ufile.read_csv_as_dict ('data\\numeric_features.csv', 0, 1, True) #Valx - Data
 greater, greater_equal, greater_equal2, lower, lower_equal, lower_equal2, equal, between, selects, connect, features, temporal, temporal_con, error1, error2, symbols, numbers, unit_special, unit_ori, unit_ori_s, unit_exp, negation = "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
