@@ -493,6 +493,21 @@ sns.boxplot(x=Df["Var"])
 sns.boxplot(x="Cat_Var", y="Var", data=Df)
 sns.boxplot(x="Cat_Var1", y="Var", hue="Cat_Var2", data=Df, palette="Set3")
 
+# Donut plot for Target label viz
+print("Distribution of data points among output class\n")
+print(pd.value_counts(y_train))
+import matplotlib.pyplot as plt
+# The slices will be ordered and plotted counter-clockwise.
+labels = y_train.value_counts().index #labels = train_data["is_late"].value_counts().index
+sizes = y_train.value_counts().values #sizes = train_data["is_late"].value_counts().values
+# colors = ['yellowgreen', 'gold', 'lightskyblue', 'lightcoral']
+explode = (0, 0, 0, 0)  # explode a slice if required
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True)
+centre_circle = plt.Circle((0,0),0.75,color='black', fc='white',linewidth=1.25)
+fig = plt.gcf()
+fig.gca().add_artist(centre_circle)
+plt.axis('equal')
+plt.show()  
 
 
 ################# Data Manipulation #################
