@@ -610,6 +610,8 @@ df.fillna(method='pad')
 df.fillna(method='pad', limit=1)
 # bfill / backfill - Fill values backward
 df.fillna(method='bfill')
+# bfill / backfill - Fill values backward - for a column based on another column - Values in Var column are backfilled based on UniqueId columnm
+Df['Var'] = Flagler_Output.groupby(['UniqueID'])['Var'].bfill()
 
 # Cumulative sum of a column in df
 df['Var_cum_sum'] = df.val1.cumsum()
