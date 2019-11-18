@@ -175,7 +175,9 @@ CreditApproval_10 = pd.concat([CreditApproval_Num_NoMissing,CreditApproval_Cat_N
 ### Train and Test split
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=0)
-
+# Split based on rows
+Train = Df[:-100,]
+Test = Df[-100:,]
 
 
 
