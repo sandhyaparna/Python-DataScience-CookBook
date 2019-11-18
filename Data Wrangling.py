@@ -341,6 +341,8 @@ Vitals_Freq = ps.sqldf(query, locals())
 
 ## Rename column names
 New_df = df.rename(columns={"old_Col_name":"New_Col_name","old_Col_name1":"New_Col_name1","old_Col_name2":"New_Col_name2"})
+# Rename column names by sequence order
+df.columns = ['labels', 'data']
 
 ## Quantiles
 # 10 reprents 10 quantiles
