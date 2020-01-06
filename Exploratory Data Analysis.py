@@ -1025,10 +1025,21 @@ New_Series = Df.pop('Var')
 # Tips
 Guinicorn + flask.        
           
+# Similar to Excel drag down - R code looping function - YoY growth/ mom
+library(dplyr) 
+library(lubridate) 
+Date<-seq.Date(as.Date("2018-01-01"),as.Date("2020-12-01"),"months") 
+Dataset<-as.data.frame(Date)
+names(Dataset)[1]<-"month"
+Dataset$mom<-4
+for(i in 2: nrow(Dataset))
+{
+  Dataset[i,]$mom<-Dataset[(i-1),]$mom*1.04
+  
+}
+#         
+          
 
-          
-          
-          
           
   
           
