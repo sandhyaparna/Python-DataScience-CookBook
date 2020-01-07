@@ -254,6 +254,7 @@ df_.loc[len(df_)] = my_dic
 my_dic = {'Unnamed':4, 'text':'there is a forest fire at spot pond, geese ', 'tokens':'[[there, is, a, forest, fire, at, spot, pond, geese]'}
 df_.loc[len(df_)] = my_dic
 
+# Coordinate-wise averaging
 def get_average_word2vec(tokens_list, vector, generate_missing=False, k=300):
     if len(tokens_list)<1:
         return np.zeros(k)
