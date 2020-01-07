@@ -239,6 +239,7 @@ import gensim
 word2vec = gensim.models.KeyedVectors.load_word2vec_format("C:/Users/sandh/Downloads/GoogleNews-vectors-negative300.bin.gz", binary=True)
 
 # Apply word2vec model on a sentence -  For each word in the sentence 300 values are generated
+# Performance of word2vec is evaluated using similarity (2 words are inputted) & words nearest (word is mentioned, outputs the nearest words to the input word)
 sentence = ["London", "is", "the", "capital", "Great", "Britain"]
 vectors = [word2vec[w] for w in sentence]
 
