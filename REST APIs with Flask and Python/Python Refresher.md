@@ -6,7 +6,7 @@
 * Loops in Python
   * While loop - With the while loop we can execute a set of statements as long as a condition is true - https://www.w3schools.com/python/python_while_loops.asp
     * Break, continue, else statements - https://www.w3schools.com/python/python_for_loops.asp
-    
+     
     
 
 
