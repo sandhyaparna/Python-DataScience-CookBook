@@ -256,6 +256,8 @@ Df.to_csv('path/NewFile.txt', sep='|', index=False)
 pd.to_sql('myDf', Connection)
 
 ################# Descriptive Stats #################
+# Speed EDA - https://speedml.com/automate-exploratory-data-analysis/
+
 # Size of a dataframe
 print('This dataset has ' + str(Df.shape[0]) + ' rows, and ' + str(Df.shape[1]) + ' columns')
 
