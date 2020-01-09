@@ -320,6 +320,32 @@ for i in categorical_features.columns:
     print(categorical_features[i].value_counts(), "\n",pd.crosstab(train_data[i], train_data['is_late']))
     print('\n') 
 
+# Identify number of unique values in each variable of a Df - Constant features - Identy using Train set and remove on Train & Test set
+feat_counts = train.nunique(dropna=False)
+feat_counts.sort_values()[:10]
+# Remove constant features
+constant_features = feats_counts.loc[feats_counts==1].index.tolist()
+print (constant_features)
+traintest.drop(constant_features,axis = 1,inplace=True)
+
+# identify & Remove duplicated features - Identy using Train set and remove on Train & Test set
+traintest.fillna('NaN', inplace=True)
+#  let's encode each feature- train_enc[col] = train[col].map(train[col].value_counts())
+train_enc =  pd.DataFrame(index = train.index)
+for col in tqdm_notebook(traintest.columns):
+    train_enc[col] = train[col].factorize()[0]
+# Identify
+dup_cols = {}
+for i, c1 in enumerate(tqdm_notebook(train_enc.columns)):
+    for c2 in train_enc.columns[i + 1:]:
+        if c2 not in dup_cols and np.all(train_enc[c1] == train_enc[c2]):
+            dup_cols[c2] = c1
+# Save them
+import cPickle as pickle
+pickle.dump(dup_cols, open('dup_cols.p', 'w'), protocol=pickle.HIGHEST_PROTOCOL)
+# Drop from TrainTest set
+traintest.drop(dup_cols.keys(), axis = 1,inplace=True)
+
 
 # Rows, Columns
 Df.shape
