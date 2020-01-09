@@ -112,6 +112,11 @@ Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
 # 6. Freq Encoding
 # Freq of a particular category in the whole data
+encoding  = Df.groupby('Var').size()
+encoding = encoding/len(Df)
+Df['NewVar'] = Df.Var.map(encoding)
+
+from scipy.stats import rankdata
 
 # 7. Mean Encoding
 #   Select a categorical variable you would like to transform
