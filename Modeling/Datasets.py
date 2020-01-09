@@ -178,8 +178,9 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=0)
 # Split based on rows
 Train = Df[:-100,]
 Test = Df[-100:,]
-
-
-
-
+## If sampling - Train is again split into Train_Upsample and Validation
+x_train_Upsample, x_val, y_train_Upsample, y_val = train_test_split(X_train, y_train, est_size = .1, andom_state=12)
+## SMOTE applied
+sm = SMOTE(random_state=12, ratio = 1.0)
+x_train_res, y_train_res = sm.fit_sample(x_train_Upsample, y_train_Upsample)
 
