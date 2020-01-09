@@ -70,6 +70,10 @@ Df = pd.read_csv("path/file.csv",
 INPUT_DIR = '.../folder/'
 Df = pd.read_csv(INPUT_DIR + 'file.csv')
 
+DATA_FOLDER = '../readonly/final_project_data/' </br>
+transactions    = pd.read_csv(os.path.join(DATA_FOLDER, 'sales_train.csv.gz'))
+
+
 # Firstly, create function to optimize memory for loading the data
 # Can also be used for merging data sets
 # From: https://www.kaggle.com/arjanso/reducing-dataframe-memory-size-by-65
