@@ -346,6 +346,12 @@ pickle.dump(dup_cols, open('dup_cols.p', 'w'), protocol=pickle.HIGHEST_PROTOCOL)
 # Drop from TrainTest set
 traintest.drop(dup_cols.keys(), axis = 1,inplace=True)
 
+## Identify and look at variables with a lot of unique values
+mask = (nunique.astype(float)/train.shape[0] > 0.8)
+train.loc[:, mask]
+# different subset of unique values
+mask = (nunique.astype(float)/train.shape[0] < 0.8) & (nunique.astype(float)/train.shape[0] > 0.4)
+train.loc[:25, mask]
 
 # Rows, Columns
 Df.shape
