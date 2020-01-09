@@ -12,6 +12,10 @@
 # Cyclical Features - Day, week, month, year 
   # sin-cos features
 
+# Label & Freq encoding works well for tree based methods. Tree methods slow down in OnehotEncoding
+# On-Hot encoding works well for Non-Tree based models
+
+  
 
 ### Character variables encoding ###
 Df_X is data frame with features
