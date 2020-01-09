@@ -15,7 +15,7 @@
 # Label & Freq encoding works well for tree based methods. Tree methods slow down in OnehotEncoding
 # On-Hot encoding works well for Non-Tree based models
 # Interactions of Cat features ( COncatenating & on-hot encoding) can help linear models & KNN
-  
+# Label encoding is better than one-hot in tree based model when Cat feature is ordinal,no of categories is huge,  When we can come up with label encoder, that assigns close labels to similar (in terms of target) categories
 
 ### Character variables encoding ###
 Df_X is data frame with features
