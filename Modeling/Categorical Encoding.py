@@ -41,8 +41,9 @@ test['bin_3'] = test['bin_3'].map(bin_dict)
 Df_X['Var'] = Df_X['Var'].astype('category')
 Df_X['Var'] = Df_X['Var'].cat.codes
 # ii) Label encoding - Initialize label encoder - Doesnt work if there is missing data
-label_encoder = preprocessing.LabelEncoder()
+label_encoder = preprocessing.LabelEncoder() #Alphabetical order based
 Df_Var_array = label_encoder.fit_transform(Df_X['Var'])
+- Pandas.factorize is used for Label encoding in order of appearance
 
 # b) MultiColumnLabelEncoder - should be used only on categorical vars
 # i) 
