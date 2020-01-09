@@ -14,7 +14,7 @@
 
 # Label & Freq encoding works well for tree based methods. Tree methods slow down in OnehotEncoding
 # On-Hot encoding works well for Non-Tree based models
-
+# Interactions of Cat features ( COncatenating & on-hot encoding) can help linear models & KNN
   
 
 ### Character variables encoding ###
