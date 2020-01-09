@@ -1,6 +1,9 @@
 # Number of missing values in each column
 Df.isnull().sum()
 
+# Number of missing values in each row
+Df.isnull().sum(axis=1).head(100) #Missing rows in first 100 observations
+
 # Percentage of missing values in each column
 Df.isnull().sum() * 100 / len(Df)
 
