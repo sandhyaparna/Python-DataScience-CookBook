@@ -39,7 +39,9 @@ from sklearn.ensemble import *
 RandomForestModel = RandomForestClassifier(max_depth=4,random_state=0)
 RandomForestModel = RandomForestModel.fit(X,y)
 
-
+# Feature importance
+import pandas as pd
+pd.DataFrame(RandomForestModel.feature_importances_,index = project_data_X_train.columns,columns=['importance'])
 
 
 
