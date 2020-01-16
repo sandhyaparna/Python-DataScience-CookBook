@@ -22,7 +22,7 @@ from sklearn.metrics import *
 #  
   
 # ROC Curve - Summarizes performance of a classifier over all possible thresholds. (TP rate vs FP rate) or (Sensitivity vs 1-Specificity)
-# AUC is area under ROC curve - Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation
+# AUC is area under ROC curve - Measure of seperability. Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation. 70 auc implies 70% chance that model is capable of distinguishing between classes
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
 # AUC of 70% desirable
