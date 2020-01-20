@@ -979,7 +979,9 @@ for k, v in Df.nunique().to_dict().items():
 for col in list(CategoricalColumns):
     pValue = scipy.stats.chi2_contingency(pd.crosstab(Df[col],Df['TargetVar']))[1]
     print('{}={}'.format(col,pValue))
-                       
+
+# Concatenate 2 columns
+Df['New_Col'] = Df['Var1'] + Df['Var2']
                        
 ### Pivot Data
 https://pbpython.com/pandas-pivot-table-explained.html
