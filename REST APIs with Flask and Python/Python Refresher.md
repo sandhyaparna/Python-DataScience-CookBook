@@ -5,8 +5,9 @@
   * Sets are made using the set() builtin function - To initialize empty set using set function
 * Loops in Python
   * While loop - With the while loop we can execute a set of statements as long as a condition is true - https://www.w3schools.com/python/python_while_loops.asp
+  https://healthedge.udemy.com/course/rest-api-flask-and-python/learn/lecture/5960068#overview
     * Break, continue, else statements - https://www.w3schools.com/python/python_for_loops.asp
-     
+  * For Loop -     
     
 
 
