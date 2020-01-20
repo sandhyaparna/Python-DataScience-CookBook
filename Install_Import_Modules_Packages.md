@@ -10,6 +10,8 @@ If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then ty
 set - cd PATHoftheModule <br/>
 Type - python setup.py install] <br/>
 pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master']) <br/>
+Visual Studio Code for Python: https://code.visualstudio.com/ <br/>
+
 
 #### Install git 
 * In git - Type bash, git commands to see if they are working <br/>
