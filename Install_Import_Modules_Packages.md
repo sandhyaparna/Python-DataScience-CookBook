@@ -10,7 +10,7 @@ If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then ty
 set - cd PATHoftheModule <br/>
 Type - python setup.py install] <br/>
 pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master']) <br/>
-Visual Studio Code for Python: https://code.visualstudio.com/ <br/>
+Visual Studio Code for Python: https://code.visualstudio.com/ Open Visual Studio Code and navigate to the Extensions panel on the left hand side. There, look for the Python extension and install it <br/>
 
 
 #### Install git 
