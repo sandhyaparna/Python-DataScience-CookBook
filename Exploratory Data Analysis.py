@@ -850,7 +850,8 @@ Df['New_DateTimeVar'] = (Df['DateTimeVar']) + pd.to_timedelta(Df.HoursVar, unit=
 # Get Start and end date of a week based on a date variable
 # Week starts on Monday - https://stackoverflow.com/questions/27989120/get-week-start-date-monday-from-a-date-column-in-python-pandas
 # Start Date of the week
-df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]')
+df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]') #This retains time 
+Df['Start'] = DF['Date'].dt.to_period('W').apply(lambda r: r.start_time) #Generates only Date
 # end date of the week
 df['End'] =  df['Start'] +  pd.Timedelta(days=6)                       
                        
