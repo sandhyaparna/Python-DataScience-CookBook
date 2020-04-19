@@ -13,13 +13,26 @@ sum(y_train_SMOTE==0) #Gives Target=0 values in the smote data
 X_SMOTE.shape # 
 
 
+https://towardsdatascience.com/handling-imbalanced-datasets-in-deep-learning-f48407a0e758
 ### Weight Balancing
 import keras
 class_weight = {"buy": 0.75,  #Positive class is given more weight
                 "don't buy": 0.25}
 model.fit(X_train, Y_train, epochs=10, batch_size=32, class_weight=class_weight)
 
-
+### Focal loss
+import keras
+from keras import backend as K
+import tensorflow as tf
+# Define our custom loss function
+def focal_loss(y_true, y_pred):
+    gamma = 2.0, alpha = 0.25
+    pt_1 = tf.where(tf.equal(y_true, 1), y_pred, tf.ones_like(y_pred))
+    pt_0 = tf.where(tf.equal(y_true, 0), y_pred, tf.zeros_like(y_pred))
+    return -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1))-K.sum((1-alpha) * K.pow( pt_0, gamma) * K.log(1. - pt_0))
+# Compile our model
+adam = Adam(lr=0.0001)
+model.compile(loss=[focal_loss], metrics=["accuracy"], optimizer=adam) 
 
 
 
