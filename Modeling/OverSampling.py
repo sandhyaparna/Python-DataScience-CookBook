@@ -13,7 +13,11 @@ sum(y_train_SMOTE==0) #Gives Target=0 values in the smote data
 X_SMOTE.shape # 
 
 
-
+### Weight Balancing
+import keras
+class_weight = {"buy": 0.75,
+                "don't buy": 0.25}
+model.fit(X_train, Y_train, epochs=10, batch_size=32, class_weight=class_weight)
 
 
 
