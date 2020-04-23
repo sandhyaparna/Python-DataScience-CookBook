@@ -8,7 +8,8 @@ img_dir = 'nih/images-small/'
 # Extracting first observation in the Image Variable. 
 sample_img = Df.Image[0]  #Df.Var[0] 
 # Extraing First image
-image = plt.imread(os.path.join(img_dir, sample_img))
+plt.imread(os.path.join(img_dir, sample_img)) #Gives 2-D array of pixels
+image = plt.imread(os.path.join(img_dir, sample_img))  #
 plt.imshow(image,cmap='gray')
 plt.axis('off') # Removes Axis and Graph like lines
 plt.tight_layout()
