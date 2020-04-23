@@ -9,7 +9,7 @@ img_dir = 'nih/images-small/'
 sample_img = Df.Image[0]  #Df.Var[0] 
 # Extraing First image
 plt.imread(os.path.join(img_dir, sample_img)) #Gives 2-D array of pixels
-image = plt.imread(os.path.join(img_dir, sample_img))  #
+image = plt.imread(os.path.join(img_dir, sample_img))  # Image.shape[0] produces pixel width; Image.shape[1] produces pixel height; Image.max() gives max pixel value; Image.std() gives std of pixels in the image; Image.mean() gives mean
 plt.imshow(image,cmap='gray')
 plt.axis('off') # Removes Axis and Graph like lines
 plt.tight_layout()
