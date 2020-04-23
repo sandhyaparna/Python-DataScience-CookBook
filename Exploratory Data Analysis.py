@@ -304,6 +304,11 @@ def SummaryTable(df):
 #
   SummaryTable(X_train) 
 
+# Eg: Predicting various disease looking at a image. Each disease is represented as a binary label.  
+# Print out the number of 1s for each class/disease
+for column in columns:
+    print(f"The class {column} has {Df[column].sum()} samples")
+  
 # Cross Tab of Categorical Vars by Target Variable: Freq & Percentage
 for i in categorical_features.columns:
     print(i + ":" + str(categorical_features[i].nunique()))
