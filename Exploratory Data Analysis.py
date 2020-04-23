@@ -485,6 +485,10 @@ print('The no of duplicates in the data:',Df[Df.duplicated(subset = columns_with
 # Remove Duplicates
 Df = Df.drop_duplicates()
 
+# List of all observations within a variable
+Df['Var'].values # Gives an array
+
+
 ################# Visualization #################
 ### https://python-graph-gallery.com/
 
