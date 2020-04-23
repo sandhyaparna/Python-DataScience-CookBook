@@ -495,6 +495,7 @@ Data is segregated and then bar plots are applied - https://python-graph-gallery
 
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
+sns.set()
 # This produces bars and density line
 sns.distplot(Df.NumVar.dropna())
 # Specify Bins
