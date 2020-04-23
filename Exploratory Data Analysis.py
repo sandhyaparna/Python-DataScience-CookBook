@@ -541,6 +541,7 @@ sns.boxplot(x="Cat_Var1", y="Var", hue="Cat_Var2", data=Df, palette="Set3")
 print("Distribution of data points among output class\n")
 print(pd.value_counts(y_train))
 import matplotlib.pyplot as plt
+%matplotlib inline
 # The slices will be ordered and plotted counter-clockwise.
 labels = y_train.value_counts().index #labels = train_data["is_late"].value_counts().index
 sizes = y_train.value_counts().values #sizes = train_data["is_late"].value_counts().values
