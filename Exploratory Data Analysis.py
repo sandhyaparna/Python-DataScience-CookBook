@@ -332,6 +332,9 @@ constant_features = feats_counts.loc[feats_counts==1].index.tolist()
 print (constant_features)
 traintest.drop(constant_features,axis = 1,inplace=True)
 
+# Number of Unique values in a variable
+Df['Var'].value_counts().shape[0]
+
 # identify & Remove duplicated features - Identy using Train set and remove on Train & Test set
 traintest.fillna('NaN', inplace=True)
 #  let's encode each feature- train_enc[col] = train[col].map(train[col].value_counts())
