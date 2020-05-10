@@ -5,6 +5,8 @@ Keras Callbacks https://medium.com/towards-artificial-intelligence/keras-callbac
 * LDA - Latent Dirichlet Allocation
 * Sentiment Analysis
 * NER - Named Entity Recognition
+* DistilBERT to create sentence embeddings https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/
+
 
 ### HealthCare
 * Numerical Attribute Extraction - 
