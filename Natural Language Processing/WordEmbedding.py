@@ -42,7 +42,7 @@ model_ted = FastText(sentences_ted, size=100, window=5, min_count=5, workers=4,s
 model_ted.wv.most_similar("Gastroenteritis")
 
 
-##### ULMFit - Transfer Learning
+##### ULMFit - Transfer Learning technique
 # https://colab.research.google.com/drive/1NMaMt94_shDH7kTktC5yvgAKsYfQBEHF
 
 
