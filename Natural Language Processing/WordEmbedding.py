@@ -45,6 +45,25 @@ model_ted.wv.most_similar("Gastroenteritis")
 ##### ULMFit - Transfer Learning technique
 # https://colab.research.google.com/drive/1NMaMt94_shDH7kTktC5yvgAKsYfQBEHF
 
+##### ELMo 
+# ELMo from Scratch - Training on Custom data - https://appliedmachinelearning.blog/2019/11/30/training-elmo-from-scratch-on-custom-data-set-for-generating-embeddings-tensorflow/
+# Using pre-trained ELMo - https://www.analyticsvidhya.com/blog/2019/03/learn-to-use-elmo-to-extract-features-from-text/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
