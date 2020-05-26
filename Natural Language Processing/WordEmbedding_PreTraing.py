@@ -50,6 +50,9 @@ model_ted.wv.most_similar("Gastroenteritis")
 # Using pre-trained ELMo - https://www.analyticsvidhya.com/blog/2019/03/learn-to-use-elmo-to-extract-features-from-text/
 
 
+##### Transformer 
+# Implementation in Colab https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb#scrollTo=s19ucTii_wYb
+
 
 
 
