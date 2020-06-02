@@ -13,7 +13,7 @@ pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master']) <
 Visual Studio Code for Python: https://code.visualstudio.com/ Open Visual Studio Code and navigate to the Extensions panel on the left hand side. There, look for the Python extension and install it <br/>
 
 
-#### Install git 
+#### Install git - https://git-scm.com/downloads
 * In git - Type bash, git commands to see if they are working <br/>
 
 #### Install C++ compiler for python
