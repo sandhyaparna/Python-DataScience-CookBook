@@ -90,7 +90,7 @@ and then again type command - pip install package-name <br/>
 Type the command GitBash 'pip install git+https://github.com/cbellei/word2veclite.git' <br/> 
 Type in cmd 'pip install word2veclite' <br/> 
 Packages are stored in this location - C:\Users\User\AppData\Local\Programs\Python\Python37\Lib\site-packages <br/> 
-* Install torch, use command in this website - https://pytorch.org/ <br/>
+* Install torch, use command in this website - https://pytorch.org/ and then type pip install torchvision <br/>
 * Install fastai - conda install -c pytorch -c fastai fastai  <br/>
 https://forums.fast.ai/t/howto-installation-on-windows/10439 <br/>
 Install using new env using conda https://forums.fast.ai/t/fastai-v0-7-install-issues-thread/24652 <br/>
