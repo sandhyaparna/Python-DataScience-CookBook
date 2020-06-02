@@ -7,8 +7,8 @@ https://machinelearningmastery.com/setup-python-environment-machine-learning-dee
 To install python packages using cmd <br/>
 Setup python in Environmental variables - https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/ <br/>
 If adding to environment vars doesnt work - set path=C:\Python24 in cmd, then type 'python' to check if it z working <br/>
-set - cd PATHoftheModule <br/>
-Type - python setup.py install] <br/>
+set: cd PATHoftheModule <br/>
+Type: python setup.py install] <br/>
 pip.main(['install','-e','C:/Users/spashikanti/Downloads/scikit-plot-master']) <br/>
 Visual Studio Code for Python: https://code.visualstudio.com/ Open Visual Studio Code and navigate to the Extensions panel on the left hand side. There, look for the Python extension and install it <br/>
 
