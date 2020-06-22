@@ -587,6 +587,8 @@ Df.drop(Df.columns[[4,5]], axis=1)
 # Split a column's text into into 2 columns based on space or delimeter. Full name into First and Last name
 df['first_name'] = df['name'].str.split(' ', expand = True)[0]
 df['last_name'] = df['name'].str.split(' ', expand = True)[1]
+# Create VigiClientID, PatientID & Label as seperate variable from UniqueID_Label. Split into 3 columns
+New_Df <- data.frame(stringr::str_split_fixed(Df$UniqueID_Label, " ", 3))
 
 # subset rows - delete last row
 Df = Df.iloc[0:1366186]
