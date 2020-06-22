@@ -779,6 +779,7 @@ Perc / Perc.groupby(level=0).sum()
 New_df = df.pivot(index=['Var_ID1','Var_ID2','Var_ID3'],columns='Var1', values='Var2')
 # If there are duplicated in index columns
 New_df = pd.pivot_table(Df,columns=['Var1'], values='Var2', index=['Var_ID1','Var_ID2','Var_ID3']).reset_index()
+New_Df = Df.pivot_Table(values='Var2', index=['Var_ID1','Var_ID2','Var_ID3'], aggfunc = np.mean)
 # index variables are not converted to columns in df.pivot
 # Convert all indexes to columns - run the code as is, dont assign it to a new df
 df.reset_index(inplace=True)
