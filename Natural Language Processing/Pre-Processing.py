@@ -62,7 +62,7 @@ re.findall(r'\d+/\d+/\d+', textToSearch) #textToSearch is a string
 subset of Data = UserEntered_Num[UserEntered_Num['Text_DateTimeFormatted'].str.contains(WordsList)]
 
 ### Noise Removal
-# Tokenization - splitting text into words (Removal of stop words, etc)
+# Tokenization - splitting text into words (Removal of stop words, etc) - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
 # http://www.nltk.org/api/nltk.tokenize.html - Different types of tokenization 
 
 from nltk.corpus import stopwords
@@ -355,7 +355,7 @@ def expandContractions(text, c_re=c_re):
     return c_re.sub(replace, text)
 Df["Text_Var"] = Df["Text_Var"].apply(expandContractions)
 
-### Tokenizing
+### Tokenizing - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
 # Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
 tokenizer = RegexpTokenizer(r'\w+') #Alpha-numeic
 Df["Text_Var4"] = Df["Text_Var"].apply(tokenizer.tokenize)
