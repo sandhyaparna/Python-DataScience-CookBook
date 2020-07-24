@@ -210,7 +210,7 @@ Df = pd.read_table("path/file.txt",
 
 ### Excel files
 # xlrd to read Excel files
-Df = pd.read_excel('file.xlsx', index_col=0)
+Df = pd.read_excel('file.xlsx', index_col=0, sheet_name='xyz',parse_dates=['Date_col'])
 # Read Multiple sheets
 xlsx = pd.ExcelFile('file.xls')
 Df = pd.read_excel(xlsx, 'Sheet1')
@@ -240,10 +240,18 @@ len(matching_tables)
 from tubula import read_pdf
 Df = read_pdf('test_pdf', pages='all')
 
+### Pickle files
+df.to_pickle('data.pickle')
+
 
 ################# SAVE DATA / EXPORTING #################
 ### Export dataframes/tables to SQL Servere 
-???
+$ pip install sqlalchemy
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///data.db', echo=False)
+Df.to_sql('data.db', con=engine, index_label='ID')
+### Export to SQL
+pd.to_sql('myDf', Connection)
 
 ### Export CSV files 
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html
@@ -259,10 +267,10 @@ Df.to_csv('path/NewFile.txt', sep='|', index=False)
 # xlwt to write to .xls files
 # openpyxl or XlsxWriter to write to .xlsx files
 $ pip install xlwt openpyxl xlsxwriter xlrd
-df.to_excel('data.xlsx')
+df.to_excel('data.xlsx', sheet_name='xyz',startrow=2, startcol=4)
 
-### Export to SQL
-pd.to_sql('myDf', Connection)
+### Pickle files
+df = pd.read_pickle('data.pickle')
 
 ################# Descriptive Stats #################
 # Speed EDA - https://speedml.com/automate-exploratory-data-analysis/
