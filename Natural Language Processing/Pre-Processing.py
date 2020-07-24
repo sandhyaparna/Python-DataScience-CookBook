@@ -58,6 +58,9 @@ ClinicalNotes_WBC['wbcRows'] = ClinicalNotes_WBC['Text_DateTimeFormatted'].str.f
 textToSearch = "date of service from 8/6 to 9/8/19 "
 re.findall(r'\d+/\d+/\d+', textToSearch) #textToSearch is a string
 
+# find the non-alphanumeric characters from the string
+re.findall("\W+",string)
+
 # Difference between findall & contains - Findall looks for exact pattern
 subset of Data = UserEntered_Num[UserEntered_Num['Text_DateTimeFormatted'].str.contains(WordsList)]
 
