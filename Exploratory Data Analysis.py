@@ -209,7 +209,8 @@ Df = pd.read_table("path/file.txt",
 # read_fwf - Read data in fixed-width column format (that is, no delimiters)
 
 ### Excel files
-Df = pd.read_excel('file.xlsx')
+# xlrd to read Excel files
+Df = pd.read_excel('file.xlsx', index_col=0)
 # Read Multiple sheets
 xlsx = pd.ExcelFile('file.xls')
 Df = pd.read_excel(xlsx, 'Sheet1')
@@ -255,6 +256,10 @@ Df.to_csv('path/NewFile.txt', sep='\t', index=False)
 Df.to_csv('path/NewFile.txt', sep='|', index=False)
 
 ### Export to Excel
+# xlwt to write to .xls files
+# openpyxl or XlsxWriter to write to .xlsx files
+$ pip install xlwt openpyxl xlsxwriter xlrd
+df.to_excel('data.xlsx')
 
 ### Export to SQL
 pd.to_sql('myDf', Connection)
