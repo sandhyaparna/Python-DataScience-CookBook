@@ -52,6 +52,10 @@ https://github.com/hunspell/hunspell
 http://www.pyregex.com/
 Regex Cheat Sheet: https://www.rexegg.com/regex-quickstart.html
 DateTime Pattern http://strftime.org/
+https://www.analyticsvidhya.com/blog/2015/06/regular-expression-python/?utm_source=blog&utm_medium=learning-path-nlp-2020
+    
+Import re
+
 # Findall on a text column
 ClinicalNotes_WBC['wbcRows'] = ClinicalNotes_WBC['Text_DateTimeFormatted'].str.findall(r'wbc') #On entire column
 
@@ -63,6 +67,10 @@ re.findall("\W+",string)
 
 # Difference between findall & contains - Findall looks for exact pattern
 subset of Data = UserEntered_Num[UserEntered_Num['Text_DateTimeFormatted'].str.contains(WordsList)]
+
+# re.match() - Find matches at the beginning of the string only
+result = re.match(r'AV', 'AV Analytics Vidhya AV')
+
 
 ### Noise Removal
 # Tokenization - splitting text into words (Removal of stop words, etc) - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
