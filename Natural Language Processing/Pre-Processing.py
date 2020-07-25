@@ -70,6 +70,10 @@ subset of Data = UserEntered_Num[UserEntered_Num['Text_DateTimeFormatted'].str.c
 
 # re.match() - Find matches at the beginning of the string only
 result = re.match(r'AV', 'AV Analytics Vidhya AV')
+Print(result.group(0)) # Outputs 'AV' if it is present at the start of the string - 'AV Analytics Vidhya AV'
+print ('\nStarting position of the match :',result.start()) # Outputs 0 
+print ('Ending position of the match :',result.end()) # Outputs 2 
+
 
 
 ### Noise Removal
