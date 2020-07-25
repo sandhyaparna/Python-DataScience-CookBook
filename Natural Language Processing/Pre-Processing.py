@@ -68,12 +68,52 @@ re.findall("\W+",string)
 # Difference between findall & contains - Findall looks for exact pattern
 subset of Data = UserEntered_Num[UserEntered_Num['Text_DateTimeFormatted'].str.contains(WordsList)]
 
-# re.match() - Find matches at the beginning of the string only
+# re.match(pattern, string) - Find matches at the beginning of the string only
 result = re.match(r'AV', 'AV Analytics Vidhya AV')
 Print(result.group(0)) # Outputs 'AV' if it is present at the start of the string - 'AV Analytics Vidhya AV'
 print ('\nStarting position of the match :',result.start()) # Outputs 0 
 print ('Ending position of the match :',result.end()) # Outputs 2 
 
+# re.search(pattern, string) -  It is similar to match() but it doesn’t restrict us to find matches at the beginning of the string only.
+result = re.search(r'Analytics', 'AV Analytics Vidhya AV')
+print result.group(0)
+Output:
+Analytics
+
+# re.findall (pattern, string):It helps to get a list of all matching patterns. It has no constraints of searching from start or end. In given string it will return both occurrence of AV. 
+result = re.findall(r'AV', 'AV Analytics Vidhya AV')
+print result
+Output:
+['AV', 'AV']
+
+# re.split(pattern, string, [maxsplit=0]): This methods helps to split string by the occurrences of given pattern.
+result=re.split(r'y','Analytics')
+result
+Output:
+['Anal', 'tics']
+# Max split can be used to restrict splits
+result=re.split(r'i','Analytics Vidhya',maxsplit=1)
+result
+Output:
+['Analyt', 'cs Vidhya']
+
+# re.sub(pattern, repl, string): It helps to search a pattern and replace with a new sub string. If the pattern is not found, string is returned unchanged.
+result=re.sub(r'India','the World','AV is largest Analytics community of India')
+result
+Output:
+'AV is largest Analytics community of the World'
+
+# re.compile(pattern, repl, string): We can combine a regular expression pattern into pattern objects, which can be used for pattern matching. It also helps to search a pattern again without rewriting it.
+import re
+pattern=re.compile('AV')
+result=pattern.findall('AV Analytics Vidhya AV')
+print result
+Output:
+['AV', 'AV']
+result2=pattern.findall('AV is largest analytics community of India')
+print result2
+Output:
+['AV']
 
 
 ### Noise Removal
