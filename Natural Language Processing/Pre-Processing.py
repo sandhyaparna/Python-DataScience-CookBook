@@ -127,9 +127,23 @@ nltk.download('punkt')
 nltk.download('wordnet')
 
 # Stop words
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize 
+set(stopwords.words('english'))
 stop_words = set(stopwords.words('english'))  # stop_words = nltk.corpus.stopwords.words('english')
 new_stop_words = ['stopWord1','stopWord2']
 stop_words.extend(new_stop_words)
+Df["Text_Var3"] = Df["Text_Var2"].apply(lambda x: [item for item in x if item not in stop_words]) #Removes stop words from the Text var2
+# Using spacy
+from spacy.lang.en import English
+nlp = English()
+my_doc = nlp(text)
+text = """He determined to drop his litigation with the monastry"""
+from spacy.lang.en.stop_words import STOP_WORDS
+# Using Gensim
+from gensim.parsing.preprocessing import remove_stopwords
+result = remove_stopwords("""He determined to drop his litigation with the monastry""")
 
 # Word Tokenization should be performed first and the removal of stop words - As Text may have sentences and punctuations are split in tokenization
 
