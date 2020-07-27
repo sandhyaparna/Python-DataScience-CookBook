@@ -169,6 +169,17 @@ return df
 # Remove Hashtag words from text
 Df["Text_Var"] = Df["Text_Var"].str.replace('#[\w]*', '')
 
+# Remove/strip HTML
+def strip_html_tags(text):
+    soup = BeautifulSoup(text, "html.parser")
+    stripped_text = soup.get_text()
+    return stripped_text
+
+# Removing accented characters
+def remove_accented_chars(text):
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
+    return text
+
 # Replace multiple texts at once
 from collections import OrderedDict
 # replacement Patterns
@@ -423,6 +434,28 @@ def expandContractions(text, c_re=c_re):
         return cList[match.group(0)]
     return c_re.sub(replace, text)
 Df["Text_Var"] = Df["Text_Var"].apply(expandContractions)
+
+# 2nd way - Using Contractions package
+!pip install contractions
+from contractions import contractions_dict
+def expand_contractions(text, contraction_mapping=contractions_dict):
+    
+    contractions_pattern = re.compile('({})'.format('|'.join(contraction_mapping.keys())), 
+                                      flags=re.IGNORECASE|re.DOTALL)
+    def expand_match(contraction):
+        match = contraction.group(0)
+        first_char = match[0]
+        expanded_contraction = contraction_mapping.get(match)\
+                                if contraction_mapping.get(match)\
+                                else contraction_mapping.get(match.lower())                       
+        expanded_contraction = first_char+expanded_contraction[1:]
+        return expanded_contraction
+        
+    expanded_text = contractions_pattern.sub(expand_match, text)
+    expanded_text = re.sub("'", "", expanded_text)
+    return expanded_text
+
+
 
 ### Tokenizing - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
 # Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
