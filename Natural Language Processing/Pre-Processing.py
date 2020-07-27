@@ -546,5 +546,54 @@ print(antonyms)
 #FlashText - 
 
 
+####### Text Visualization #######
+# The distribution of top unigrams BEFORE removing stop words
+def get_top_n_words(corpus, n=None):
+    vec = CountVectorizer().fit(corpus)    #Im case of Bi-Grams: vec = CountVectorizer(ngram_range=(2, 2)).fit(corpus); 
+    bag_of_words = vec.transform(corpus)
+    sum_words = bag_of_words.sum(axis=0) 
+    words_freq = [(word, sum_words[0, idx]) for word, idx in vec.vocabulary_.items()]
+    words_freq =sorted(words_freq, key = lambda x: x[1], reverse=True)
+    return words_freq[:n]
+common_words = get_top_n_words(df['Review Text'], 20)
+for word, freq in common_words:
+    print(word, freq)
+df1 = pd.DataFrame(common_words, columns = ['ReviewText' , 'count'])
+df1.groupby('ReviewText').sum()['count'].sort_values(ascending=False).iplot(
+    kind='bar', yTitle='Count', linecolor='black', title='Top 20 words in review before removing stop words')
+
+
+# The distribution of top unigrams AFTER removing stop words
+def get_top_n_words(corpus, n=None):
+    vec = CountVectorizer(stop_words = 'english').fit(corpus)   # In case of BI-GRAMS: vec = CountVectorizer(ngram_range=(2, 2), stop_words='english').fit(corpus)
+    bag_of_words = vec.transform(corpus)
+    sum_words = bag_of_words.sum(axis=0) 
+    words_freq = [(word, sum_words[0, idx]) for word, idx in vec.vocabulary_.items()]
+    words_freq =sorted(words_freq, key = lambda x: x[1], reverse=True)
+    return words_freq[:n]
+common_words = get_top_n_words(df['Review Text'], 20)
+for word, freq in common_words:
+    print(word, freq)
+df2 = pd.DataFrame(common_words, columns = ['ReviewText' , 'count'])
+df2.groupby('ReviewText').sum()['count'].sort_values(ascending=False).iplot(
+    kind='bar', yTitle='Count', linecolor='black', title='Top 20 words in review after removing stop words')
+
+
+# The distribution of top part-of-speech tags of review corpus
+blob = TextBlob(str(df['Review Text']))
+pos_df = pd.DataFrame(blob.tags, columns = ['word' , 'pos'])
+pos_df = pos_df.pos.value_counts()[:20]
+pos_df.iplot(
+    kind='bar',
+    xTitle='POS',
+    yTitle='count', 
+    title='Top 20 Part-of-speech tagging for review corpus')
+
+
+
+
+
+
+
 
 
