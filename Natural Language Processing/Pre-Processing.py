@@ -555,6 +555,12 @@ from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
+#2nd way:
+def lemmatize_text(text):
+    text = nlp(text)
+    text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
+    return text
+
 ### Most frequent/common words (Top 50)
 Freqs = pd.Series(' '.join(Df["Text_Var"]).split()).value_counts()[:50]
 
