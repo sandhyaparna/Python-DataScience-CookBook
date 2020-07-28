@@ -185,6 +185,8 @@ return df
 # Remove Hashtag words from text
 Df["Text_Var"] = Df["Text_Var"].str.replace('#[\w]*', '')
 
+# https://github.com/dipanjanS/practical-machine-learning-with-python/blob/master/notebooks/Ch07_Analyzing_Movie_Reviews_Sentiment/Text%20Normalization%20Demo.ipynb
+
 # Remove/strip HTML
 def strip_html_tags(text):
     soup = BeautifulSoup(text, "html.parser")
