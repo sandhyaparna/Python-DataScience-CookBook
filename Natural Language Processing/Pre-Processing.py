@@ -438,6 +438,7 @@ Df["Text_Var"] = Df["Text_Var"].apply(expandContractions)
 # 2nd way - Using Contractions package
 !pip install contractions
 from contractions import contractions_dict
+import re
 def expand_contractions(text, contraction_mapping=contractions_dict):
     
     contractions_pattern = re.compile('({})'.format('|'.join(contraction_mapping.keys())), 
@@ -454,7 +455,7 @@ def expand_contractions(text, contraction_mapping=contractions_dict):
     expanded_text = contractions_pattern.sub(expand_match, text)
     expanded_text = re.sub("'", "", expanded_text)
     return expanded_text
-
+# Eg: expand_contractions("I don't have to be there at 9 o'clock") # Output: I do not have to be there at 9 of the clock
 
 
 ### Tokenizing - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
