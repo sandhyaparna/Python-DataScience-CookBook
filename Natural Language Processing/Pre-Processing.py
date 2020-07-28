@@ -144,6 +144,22 @@ from spacy.lang.en.stop_words import STOP_WORDS
 # Using Gensim
 from gensim.parsing.preprocessing import remove_stopwords
 result = remove_stopwords("""He determined to drop his litigation with the monastry""")
+# Another way
+from nltk.tokenize.toktok import ToktokTokenizer
+tokenizer = ToktokTokenizer()
+stopword_list = nltk.corpus.stopwords.words('english')
+stopword_list.remove('no')
+stopword_list.remove('not')
+def remove_stopwords(text, is_lower_case=False):
+    tokens = tokenizer.tokenize(text)
+    tokens = [token.strip() for token in tokens]
+    if is_lower_case:
+        filtered_tokens = [token for token in tokens if token not in stopword_list]
+    else:
+        filtered_tokens = [token for token in tokens if token.lower() not in stopword_list]
+    filtered_text = ' '.join(filtered_tokens)    
+    return filtered_text
+
 
 # Word Tokenization should be performed first and the removal of stop words - As Text may have sentences and punctuations are split in tokenization
 
@@ -556,6 +572,8 @@ wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
 
 #2nd way:
+import spacy
+nlp = spacy.load('en', parse = False, tag=False, entity=False)
 def lemmatize_text(text):
     text = nlp(text)
     text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
