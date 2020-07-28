@@ -297,6 +297,11 @@ Df["Text_Var"] = Df["Text_Var"].apply(lambda x: x.translate(None, string.punctua
 # Remove Numbers from strings
 Df["Text_Var"] = Df["Text_Var"].apply(lambda x: x.translate(None, string.digits))
 
+# Remove Special characters
+def remove_special_characters(text):
+    text = re.sub('[^a-zA-z0-9\s]', '', text)
+    return text
+
 # Word Tokenization - words are seperated by commas
 Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)   # Df["Text_Var2"] = Df["Text_Var"].str.lower().str.split() -- Same as Tokenization but . and , are attached to words as is in the text
 
