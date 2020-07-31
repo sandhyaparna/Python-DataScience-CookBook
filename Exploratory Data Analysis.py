@@ -1096,6 +1096,8 @@ New_Series = Df.pop('Var')
 * Largest_Cat = counts.head(3).index
 * isin to filter
           
+# Set operation on Dataframes. Df1-Df2 
+Df = pd.concat([Df1,Df2,Df2]).drop_duplicates(keep=False)
           
 # Tips
 Guinicorn + flask.        
