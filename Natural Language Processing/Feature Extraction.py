@@ -312,6 +312,7 @@ def get_word2vec_embeddings(vectors, clean_questions, generate_missing=False):
 embeddings = get_word2vec_embeddings(word2vec, df_)
 
 # Word2Vec Gensim
+# Download model from https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit
 from gensim.models import Word2Vec
 #loading the downloaded model
 model = Word2Vec.load_word2vec_format('GoogleNews-vectors-negative300.bin', binary=True, norm_only=True)
