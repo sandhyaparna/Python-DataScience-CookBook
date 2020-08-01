@@ -555,16 +555,13 @@ sen = sp(u"I like to play football. I hated it in my childhood though")
 # word.pos_ for coarse POS
 # word.tag_ for fine-grained
 # To view description of either ones spacy.explain(tag)
-
 # POS of all words in a sentence
 for word in sen:
     print(f'{word.text:{12}} {word.pos_:{10}} {word.tag_:{8}} {spacy.explain(word.tag_)}') # 12 is number of spaces added between text and coarse POS; 10 is number of spaces between coarse POS and fine-grained POS
-
 # POS for a single word
 sen = sp(u'Can you google it?')
 word = sen[2]
 print(f'{word.text:{12}} {word.pos_:{10}} {word.tag_:{8}} {spacy.explain(word.tag_)}')
-    
 # POS dependancy visualization
 from spacy import displacy
 displacy.render(sen,style='dep', jupyter=True)
@@ -653,7 +650,6 @@ df1 = pd.DataFrame(common_words, columns = ['ReviewText' , 'count'])
 df1.groupby('ReviewText').sum()['count'].sort_values(ascending=False).iplot(
     kind='bar', yTitle='Count', linecolor='black', title='Top 20 words in review before removing stop words')
 
-
 # The distribution of top unigrams AFTER removing stop words
 def get_top_n_words(corpus, n=None):
     vec = CountVectorizer(stop_words = 'english').fit(corpus)   # In case of BI-GRAMS: vec = CountVectorizer(ngram_range=(2, 2), stop_words='english').fit(corpus)
@@ -668,7 +664,6 @@ for word, freq in common_words:
 df2 = pd.DataFrame(common_words, columns = ['ReviewText' , 'count'])
 df2.groupby('ReviewText').sum()['count'].sort_values(ascending=False).iplot(
     kind='bar', yTitle='Count', linecolor='black', title='Top 20 words in review after removing stop words')
-
 
 # The distribution of top part-of-speech tags of review corpus
 blob = TextBlob(str(df['Review Text']))
