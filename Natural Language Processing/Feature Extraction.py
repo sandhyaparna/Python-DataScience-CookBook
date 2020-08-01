@@ -157,6 +157,9 @@ for ent in tokens.ents:
     print(ent.text, ent.label_)
 # Visualize named entities with displacy
 spacy.displacy.render(tokens, style='ent', jupyter=True)
+# Explain Category
+spacy.explain('WORK_OF_ART')
+spacy.explain('NORP')
 # Most freq word tokens
 items = [x.text for x in tokens.ents]
 Counter(items).most_common(20)
