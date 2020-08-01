@@ -311,6 +311,20 @@ def get_word2vec_embeddings(vectors, clean_questions, generate_missing=False):
 # embeddings return 300 values/vectors for each sentence
 embeddings = get_word2vec_embeddings(word2vec, df_)
 
+# Word2Vec Gensim
+from gensim.models import Word2Vec
+#loading the downloaded model
+model = Word2Vec.load_word2vec_format('GoogleNews-vectors-negative300.bin', binary=True, norm_only=True)
+#the model is loaded. It can be used to perform all of the tasks mentioned above.
+# getting word vectors of a word
+dog = model['dog']
+#performing king queen magic
+print(model.most_similar(positive=['woman', 'king'], negative=['man']))
+#picking odd one out
+print(model.doesnt_match("breakfast cereal dinner lunch".split()))
+#printing similarity index
+print(model.similarity('woman', 'man'))
+
 
 ### Doc2vec implementation 
 # Step by step implementation
