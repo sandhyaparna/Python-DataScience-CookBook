@@ -155,6 +155,8 @@ tokens = nlp(''.join(str(Df["Text_Var"].tolist())))
 # For tokens generated above, if the words are part of entities category, those words are outputed using below code
 for ent in tokens.ents:
     print(ent.text, ent.label_)
+# Visualize named entities with displacy
+spacy.displacy.render(tokens, style='ent', jupyter=True)
 # Most freq word tokens
 items = [x.text for x in tokens.ents]
 Counter(items).most_common(20)
