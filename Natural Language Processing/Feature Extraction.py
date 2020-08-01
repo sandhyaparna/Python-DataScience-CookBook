@@ -146,8 +146,33 @@ def get_continuous_chunks(text):
 Df["TextVar_Chunked"] = Df["Text_Var"].apply(get_continuous_chunks)
 
 ## Using spacy
-
-
+import spacy
+from collections import Counter
+import en_core_web_sm
+nlp = en_core_web_sm.load()
+# Gives tokens for all the words in the column - corpus_df["Document"]
+tokens = nlp(''.join(str(Df["Text_Var"].tolist())))
+# For tokens generated above, if the words are part of entities category, those words are outputed using below code
+for ent in tokens.ents:
+    print(ent.text, ent.label_)
+# Most freq word tokens
+items = [x.text for x in tokens.ents]
+Counter(items).most_common(20)
+# Extract only Person category
+person_list = []
+for ent in tokens.ents:
+    if ent.label_ == 'PERSON':
+        person_list.append(ent.text)
+person_counts = Counter(person_list).most_common(20)
+df_person = pd.DataFrame(person_counts, columns =['text', 'count'])
+# Extract only NORP (nationalities, religious and political groups) category
+norp_list = []
+for ent in tokens.ents:
+    if ent.label_ == 'NORP':
+        norp_list.append(ent.text)
+        
+norp_counts = Counter(norp_list).most_common(20)
+df_norp = pd.DataFrame(norp_counts, columns =['text', 'count'])
 
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
 # Import textblob.download_corpora
