@@ -126,7 +126,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
 
-# Stop words
+## Stop words
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
@@ -504,6 +504,16 @@ from nltk.tokenize import TreebankWordTokenizer
 tokenizer = TreebankWordTokenizer()
 Df["Text_Var"] = tokenizer.tokenize(Df["Text_Var"])
 
+## Using spacy - Tokenize
+# Load model to return language object
+nlp = spacy.load('en')
+df['Tokenized_Text'] = [nlp(text) for text in df.Text_Var]
+# Sum the number of tokens in each Doc
+df['num_tokens'] = [len(token) for token in df.Tokenized_Text]
+# Visualize histogram of tokens per tweet
+g = sns.distplot(df.num_tokens)
+
+
 # Remove stop words from the text with adding comas between words
 Df["Text_Var4"] = Df["Text_Var1"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
 
@@ -595,8 +605,7 @@ Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [Regexp_stemmer.stem(y
 from nltk.stem import WordNetLemmatizer
 wordnet_lemmatizer = WordNetLemmatizer()
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [wordnet_lemmatizer.lemmatize(y) for y in x])
-
-#2nd way:
+#2nd way: Using spacy
 import spacy
 nlp = spacy.load('en', parse = False, tag=False, entity=False)
 def lemmatize_text(text):
