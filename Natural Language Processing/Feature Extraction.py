@@ -145,6 +145,10 @@ def get_continuous_chunks(text):
     return continuous_chunk
 Df["TextVar_Chunked"] = Df["Text_Var"].apply(get_continuous_chunks)
 
+## Using spacy
+
+
+
 ### Extract different part of speech word sets from Text_Var and append them to create a single var
 # Import textblob.download_corpora
 import textblob
