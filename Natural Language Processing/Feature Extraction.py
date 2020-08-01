@@ -27,6 +27,8 @@ TextDf_CharVectors = pd.DataFrame(X.A, columns=Char_vectorizer.get_feature_names
 TextDf_CharVectors_Freq = pd.DataFrame({'Word':Char_vectorizer.get_feature_names(), 'frequency':sum(X).toarray()[0]})
 
 ### TF-IDF
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 1. Word level TF-IDF
 TFIDF_vectorizer = TfidfVectorizer()
 X = TFIDF_vectorizer.fit_transform(Df.Text_Var.values) #fit_transform on Train data
