@@ -115,6 +115,30 @@ print result2
 Output:
 ['AV']
 
+# Rule based matching using spcay 
+# With this spaCy matcher, you can find words and phrases in the text using user-defined rules. While Regular Expressions use text patterns to find words and phrases, the spaCy matcher not only uses the text patterns but lexical properties of the word, such as POS tags, dependency tags, lemma, etc.
+# So, the pattern is a list of token attributes. For example, ‘TEXT’ is a token attribute that means the exact text of the token. There are, in fact, many other useful token attributes in spaCy which can be used to define a variety of rules and patterns.
+# https://spacy.io/usage/rule-based-matching
+import spacy
+nlp = spacy.load('en_core_web_sm')
+# Import spaCy Matcher
+from spacy.matcher import Matcher
+# Initialize the matcher with the spaCy vocabulary
+matcher = Matcher(nlp.vocab)
+doc = nlp("Some people start their day with lemon water")
+# Define rule - we define the rule/pattern for what we want to extract from the text.
+# our objective in the below pattern is that whenever “lemon” is followed by the word “water”, then the matcher should be able to find this pattern in the text.
+pattern = [{'TEXT': 'lemon'}, {'TEXT': 'water'}]
+# Add rule
+matcher.add('rule_1', None, pattern)
+# Extraction matched text using rule
+matches = matcher(doc)
+for match_id, start, end in matches:
+    # Get the matched span
+    matched_span = doc[start:end]
+    print(matched_span.text)
+# Below pattern finds the word “book” only if it has been used in the sentence as a noun.
+pattern = [{'TEXT': 'book', 'POS': 'NOUN'}]
 
 ### Noise Removal
 # Tokenization - splitting text into words (Removal of stop words, etc) - https://www.analyticsvidhya.com/blog/2020/06/hugging-face-tokenizers-nlp-library/
