@@ -575,7 +575,18 @@ print(f'{word.text:{12}} {word.pos_:{10}} {word.tag_:{8}} {spacy.explain(word.ta
 # POS dependancy visualization
 from spacy import displacy
 displacy.render(sen,style='dep', jupyter=True)
- 
+
+spacy.explain('nsubj')
+# Dependancy parsing
+import spacy
+sp = spacy.load('en_core_web_sm')
+sen = sp(u"I like to play football. I hated it in my childhood though")
+# token.dep_ gives dependency tag
+# The dependency tag ROOT denotes the main verb or action in the sentence. The other words are directly or indirectly connected to the ROOT word of the sentence.
+for token in sen:
+    print(token.text, "-->", token.dep_)
+    
+    
 ### Stemming
 # Stemming is a rudimentary rule-based process of stripping the suffixes (“ing”, “ly”, “es”, “s” etc) from a word
 # Different types of Stemming algorithms
