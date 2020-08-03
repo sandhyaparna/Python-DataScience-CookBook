@@ -177,7 +177,6 @@ norp_list = []
 for ent in tokens.ents:
     if ent.label_ == 'NORP':
         norp_list.append(ent.text)
-        
 norp_counts = Counter(norp_list).most_common(20)
 df_norp = pd.DataFrame(norp_counts, columns =['text', 'count'])
 
