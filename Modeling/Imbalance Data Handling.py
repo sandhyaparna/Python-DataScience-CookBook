@@ -35,6 +35,15 @@ adam = Adam(lr=0.0001)
 model.compile(loss=[focal_loss], metrics=["accuracy"], optimizer=adam) 
 
 
+# Tomek Links
+## In the code below, we’ll use ratio='majority' to resample the majority class.
+# import library
+from imblearn.under_sampling import TomekLinks
+tl = RandomOverSampler(sampling_strategy='majority')
+# fit predictor and target variable
+x_tl, y_tl = ros.fit_resample(x, y)
+print('Original dataset shape', Counter(y))
+print('Resample dataset shape', Counter(y_ros))
 
 
 
