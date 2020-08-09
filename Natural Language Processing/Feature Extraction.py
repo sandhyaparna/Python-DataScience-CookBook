@@ -61,6 +61,7 @@ Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).senti
 
 ### Topic Modeling (Latent Dirichlet Allocation) as features
 Data link - https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/
+https://www.analyticsvidhya.com/blog/2018/10/stepwise-guide-topic-modeling-latent-semantic-analysis/
 Data from the above website - https://gist.github.com/kunalj101/ad1d9c58d338e20d09ff26bcc06c4235
 # First apply count vectorization (or) Tf-idf
 from sklearn.feature_extraction.text import CountVectorizer
