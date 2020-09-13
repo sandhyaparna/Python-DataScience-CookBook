@@ -540,6 +540,20 @@ sns.distplot(Df.NumVar.dropna(), bins = 100,hist=False)
 # limit kde to data range
 sns.kdeplot(Df.NumVar.dropna().dropna(),cut=0)
 
+# Histogram with hovering
+def new_len(x):
+    if type(x) is str:
+        return len(x.split())
+    else:
+        return 0
+Jigsaw_Toxic_Comment_TrainData["comment_words"] = Jigsaw_Toxic_Comment_TrainData["comment_text"].apply(new_len)
+nums = Jigsaw_Toxic_Comment_TrainData.query("comment_words != 0 and comment_words < 200").sample(frac=0.1)["comment_words"]
+fig = ff.create_distplot(hist_data=[nums],
+                         group_labels=["All comments"],
+                         colors=["coral"])
+fig.update_layout(title_text="Histogram of number of words in comments", xaxis_title="Number of words", template="simple_white", showlegend=False)
+fig.show()
+
 # Countplot of a single variable
 sns.countplot(x="Var1", data=Df, color="c")
 # Count plot of a variable within a group variable - For each unique value in Var, give the count of each unique value in Var1
