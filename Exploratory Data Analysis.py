@@ -577,6 +577,20 @@ fig.gca().add_artist(centre_circle)
 plt.axis('equal')
 plt.show()  
 
+# Bar chart of Target label viz
+# x corresponds to 
+fig = px.bar(df_en, x="Language", y="Count", title="Language of comments", color="Language", text="Count")
+fig.update_layout(template="plotly_white")
+fig.data[0].marker.line.color = 'rgb(0, 0, 0)'
+fig.data[0].marker.line.width = 0.5
+fig.data[1].marker.line.color = 'rgb(0, 0, 0)'
+fig.data[1].marker.line.width = 0.5
+fig.data[0].textfont.color = "black"
+fig.data[0].textposition = "outside"
+fig.data[1].textfont.color = "black"
+fig.data[1].textposition = "outside"
+fig
+
 # Bar Chart for Target label viz
 print("FREQUENCY OF TARGET: \n",pd.value_counts(y_train))
 plt.subplot(121)
