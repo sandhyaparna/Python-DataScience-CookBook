@@ -642,6 +642,12 @@ for p in plot_tr.patches:
             '{:1.2f}%'.format(height/(len(train_data))*100),
             ha="center", fontsize=10) 
 
+# Bar chart hovering - same colour bars
+import plotly.figure_factory as ff
+fig = go.Figure(go.Bar(x=AvgWordsPerLang["Language"], y=AvgWordsPerLang["Average_comment_words"]))
+fig.update_layout(xaxis_title="Language", yaxis_title="Average number of words in comments by Language", title_text="Average comment words vs. language", template="plotly_white")
+fig.show()
+    
 ################# Data Manipulation #################
 # Drop columns
 Df = Df.drop(['Var1', 'Var2'],axis=1)
