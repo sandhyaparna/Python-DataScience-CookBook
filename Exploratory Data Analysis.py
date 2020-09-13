@@ -514,6 +514,16 @@ Df['Var'].values # Gives an array
 Data is segregated and then bar plots are applied - https://python-graph-gallery.com/barplot/
 # Boxplot - https://seaborn.pydata.org/generated/seaborn.boxplot.html
 # Pie chart - 
+import plotly.graph_objects as go
+CodeLang = Jigsaw_Toxic_Comment_TrainData["lang"].value_counts().rename_axis('Language').reset_index(name='Count')
+# converted pd.value_counts to dataframe - lang variable is used for counts, index is names as language and freq is named as count
+fig = go.Figure([go.Pie(labels=CodeLang.query("Language != 'en' and Language != 'un'").query("Count >= 50")["Language"],
+           values=CodeLang.query("Language != 'en' and Language != 'un'").query("Count >= 50")["Count"])])
+fig.update_layout(title_text="Pie chart of non-English languages", template="plotly_white")
+fig.data[0].marker.colors = [px.colors.qualitative.Plotly[2:]]
+fig.data[0].textfont.color = "black"
+fig.data[0].textposition = "outside"
+fig.show()
 
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
@@ -580,9 +590,9 @@ plt.axis('equal')
 plt.show()  
 
 # Bar chart of Target label viz
-# x corresponds to 
-df_en = pd.DataFrame(pd.value_counts(Jigsaw_Toxic_Comment_TrainData["Language"]))
-fig = px.bar(df_en, x=df_en.index, y="Language", title="Language of comments", color=df_en.index, text="Language")
+df_en = Jigsaw_Toxic_Comment_TrainData["Language"].value_counts().rename_axis('Language').reset_index(name='Count')
+# converted pd.value_counts to dataframe
+fig = px.bar(df_en, x="Language", y="Count", title="Language of comments", color="Language", text="Count")
 fig.update_layout(template="plotly_white")
 fig.data[0].marker.line.color = 'rgb(0, 0, 0)'
 fig.data[0].marker.line.width = 0.5
@@ -592,6 +602,16 @@ fig.data[0].textfont.color = "black"
 fig.data[0].textposition = "outside"
 fig.data[1].textfont.color = "black"
 fig.data[1].textposition = "outside"
+fig
+
+# Horizontal Bar chart
+CodeLang = Jigsaw_Toxic_Comment_TrainData["lang"].value_counts().rename_axis('Language').reset_index(name='Count')
+# converted pd.value_counts to dataframe
+fig = px.bar(CodeLang.query("Language != 'en' and Language != 'un'").query("Count >= 50"),
+             y="Language", x="Count", title="Language of non-English comments", template="plotly_white", color="Language", text="Count", orientation="h")
+fig.update_traces(marker=dict(line=dict(width=0.75,
+                                        color='black')),  textposition="outside")
+fig.update_layout(showlegend=False)
 fig
 
 # Bar Chart for Target label viz
