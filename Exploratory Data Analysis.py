@@ -561,6 +561,8 @@ sns.boxplot(x="Cat_Var", y="Var", data=Df)
 sns.boxplot(x="Cat_Var1", y="Var", hue="Cat_Var2", data=Df, palette="Set3")
 
 # Donut plot for Target label viz
+Jigsaw_Toxic_Comment_TrainData["Language"] = np.where(Jigsaw_Toxic_Comment_TrainData.lang=="en","English","Non-English")
+y_train = Jigsaw_Toxic_Comment_TrainData["Language"]
 print("Distribution of data points among output class\n")
 print(pd.value_counts(y_train))
 import matplotlib.pyplot as plt
@@ -579,7 +581,8 @@ plt.show()
 
 # Bar chart of Target label viz
 # x corresponds to 
-fig = px.bar(df_en, x="Language", y="Count", title="Language of comments", color="Language", text="Count")
+df_en = pd.DataFrame(pd.value_counts(Jigsaw_Toxic_Comment_TrainData["Language"]))
+fig = px.bar(df_en, x=df_en.index, y="Language", title="Language of comments", color=df_en.index, text="Language")
 fig.update_layout(template="plotly_white")
 fig.data[0].marker.line.color = 'rgb(0, 0, 0)'
 fig.data[0].marker.line.width = 0.5
