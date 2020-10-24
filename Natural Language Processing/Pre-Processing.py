@@ -24,7 +24,11 @@ trainDF['label'] = labels
 # Length of the text column as a new column
 Df["Name Length"]= data["Name"].str.len() 
 
-# 
+# Split the string into words
+Df["text"].str.split()
+
+# Number of the words in the string - First split the string into words and then count them
+Df["text"].str.split().apply(lambda x: len(x))
 
 ### Spelling Correction 
 # Option1: https://www.analyticsvidhya.com/blog/2018/02/natural-language-processing-for-beginners-using-textblob/
