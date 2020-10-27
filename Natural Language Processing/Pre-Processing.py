@@ -41,7 +41,7 @@ df['count_word']=df["comment_text"].apply(lambda x: len(str(x).split()))
 # Number of sentences '\n' can be used to count the number of sentences in each comment
 df['count_sent']=df["comment_text"].apply(lambda x: len(re.findall("\n",str(x)))+1)
 
-#Unique word count - Number of unique words
+#Unique word count - Number of unique words - If unique words are more, that can be a sign of spamming 
 df['count_unique_word']=df["comment_text"].apply(lambda x: len(set(str(x).split())))
 
 #Letter count - length of the text
