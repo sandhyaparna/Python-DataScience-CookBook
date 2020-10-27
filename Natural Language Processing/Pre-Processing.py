@@ -29,6 +29,32 @@ Df["text"].str.split()
 
 # Number of the words in the string - First split the string into words and then count them
 Df["text"].str.split().apply(lambda x: len(x))
+df['count_word']=df["comment_text"].apply(lambda x: len(str(x).split()))
+
+# Number of sentences '\n' can be used to count the number of sentences in each comment
+df['count_sent']=df["comment_text"].apply(lambda x: len(re.findall("\n",str(x)))+1)
+
+#Unique word count - Number of unique words
+df['count_unique_word']=df["comment_text"].apply(lambda x: len(set(str(x).split())))
+
+#Letter count - length of the text
+df['count_letters']=df["comment_text"].apply(lambda x: len(str(x)))
+
+#punctuation count - Number of punctuations
+df["count_punctuations"] =df["comment_text"].apply(lambda x: len([c for c in str(x) if c in string.punctuation]))
+
+#upper case words count - whole upper case written words
+df["count_words_upper"] = df["comment_text"].apply(lambda x: len([w for w in str(x).split() if w.isupper()]))
+
+#title case words count
+df["count_words_title"] = df["comment_text"].apply(lambda x: len([w for w in str(x).split() if w.istitle()]))
+
+#Number of stopwords
+df["count_stopwords"] = df["comment_text"].apply(lambda x: len([w for w in str(x).lower().split() if w in eng_stopwords]))
+
+#Average length of the words
+df["mean_word_len"] = df["comment_text"].apply(lambda x: np.mean([len(w) for w in str(x).split()]))
+
 
 ### Spelling Correction 
 # Option1: https://www.analyticsvidhya.com/blog/2018/02/natural-language-processing-for-beginners-using-textblob/
