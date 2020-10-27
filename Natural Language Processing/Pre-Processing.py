@@ -27,6 +27,13 @@ Df["Name Length"]= data["Name"].str.len()
 # Split the string into words
 Df["text"].str.split()
 
+# Remove ip address
+TrainData["comment_text"] = TrainData["comment_text"].str.replace(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", "")
+# Extract ip address in a comment and then count
+df['ip']=df["comment_text"].apply(lambda x: re.findall("\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}",str(x)))
+#count of ip addresses
+df['count_ip']=df["ip"].apply(lambda x: len(x))
+
 # Number of the words in the string - First split the string into words and then count them
 Df["text"].str.split().apply(lambda x: len(x))
 df['count_word']=df["comment_text"].apply(lambda x: len(str(x).split()))
@@ -54,6 +61,8 @@ df["count_stopwords"] = df["comment_text"].apply(lambda x: len([w for w in str(x
 
 #Average length of the words
 df["mean_word_len"] = df["comment_text"].apply(lambda x: np.mean([len(w) for w in str(x).split()]))
+
+
 
 
 ### Spelling Correction 
