@@ -34,6 +34,21 @@ df['ip']=df["comment_text"].apply(lambda x: re.findall("\d{1,3}\.\d{1,3}\.\d{1,3
 #count of ip addresses
 df['count_ip']=df["ip"].apply(lambda x: len(x))
 
+# Remove any links (whole link is replaced)
+TrainData["comment_text"] = TrainData["comment_text"].str.replace(r"http://.*", "")
+TrainData["comment_text"] = TrainData["comment_text"].str.replace(r"https://.*", "")
+# Extract links
+df['link']=df["comment_text"].apply(lambda x: re.findall("http://.*com",str(x)))
+#count of links
+df['count_links']=df["link"].apply(lambda x: len(x))
+
+#article ids
+df['article_id']=df["comment_text"].apply(lambda x: re.findall("\d:\d\d\s{0,5}$",str(x)))
+
+#username - regex for     Match anything with [[User: ---------- ]]
+# regexp = re.compile("\[\[User:(.*)\|")
+df['username']=df["comment_text"].apply(lambda x: re.findall("\[\[User(.*)\|",str(x)))
+
 # Number of the words in the string - First split the string into words and then count them
 Df["text"].str.split().apply(lambda x: len(x))
 df['count_word']=df["comment_text"].apply(lambda x: len(str(x).split()))
