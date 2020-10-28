@@ -325,10 +325,15 @@ Df.apply(pd.Series.value_counts)
 for k, v in Df.nunique().to_dict().items():
     print('{}={}'.format(k,v))
 
-
 ### Freq table as dataframe ###
 # size() is for count - outputs patientID, count(PatientID)
 y = pd.DataFrame(df.groupby('PatientID').size()).reset_index()
+
+# Count of unique values with in a list - Produces dictionary
+from collections import Counter
+Counter(x)
+# Count of unique values where rows consits of values as List
+Df["Var"].apply(lambda x: Counter(x))
 
 #### Minimum or Maximum of 2 or more datetime variables - np.minimum / np.maximum is only for 2 vars - similar to union in r
 New_Var = np.minimum(np.minimum(np.minimum(Var1,Var2),Var3),Var4)
