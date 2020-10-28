@@ -9,4 +9,6 @@ https://www.analyticsvidhya.com/blog/2017/01/ultimate-guide-to-understand-implem
 Word2vec Viz using t-sne https://towardsdatascience.com/google-news-and-leo-tolstoy-visualizing-word2vec-word-embeddings-with-t-sne-11558d8bd4d <br/>
 https://medium.com/@ageitgey/natural-language-processing-is-fun-9a0bff37854e <br/>
 
-
+#### 
+CNN, RNN, HAN Implementation https://github.com/jatana-research/Text-Classification </br>
+Keras Callbacks https://medium.com/towards-artificial-intelligence/keras-callbacks-explained-in-three-minutes-846a43b44a16 </br>
