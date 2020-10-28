@@ -51,7 +51,9 @@ Vitals = pd.read_csv("C:/Users/spashikanti/Desktop/Tri-City Sepsis #43206/Raw Da
                                  'LabValue',
                                  'CollectionDateTime']) # Import only specific columns, if u wanna drop a column don't include in the list)
 # Convert data type of PatientID to object
-Vitals['PatientID'] = Vitals['PatientID'].astype('str')
+Df['PatientID'] = Df['PatientID'].astype('str')
+Df['PatientID'] = Df['PatientID'].map('str')
+
 # Data Types
 Vitals.dtypes # data type/class of vars - sapply(df,class)
 # Var names
