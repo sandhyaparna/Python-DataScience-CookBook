@@ -23,6 +23,8 @@ trainDF['label'] = labels
 
 # Length of the text column as a new column
 Df["Name Length"]= data["Name"].str.len() 
+Df["Name Length"]= data["Name"].apply(lambda x: len(str(x)))
+Df["Name Length"]= data["Name"].apply(len)
 
 # Split the string into words
 Df["text"].str.split()
@@ -62,9 +64,6 @@ df['count_sent']=df["comment_text"].apply(lambda x: len(re.findall("\n",str(x)))
 #Unique word count - Number of unique words - If unique words are more, that can be a sign of spamming 
 df['count_unique_word']=df["comment_text"].apply(lambda x: len(set(str(x).split())))
 
-#Letter count - length of the text
-df['count_letters']=df["comment_text"].apply(lambda x: len(str(x)))
-
 #punctuation count - Number of punctuations
 df["count_punctuations"] =df["comment_text"].apply(lambda x: len([c for c in str(x) if c in string.punctuation]))
 
@@ -77,9 +76,10 @@ df["count_words_title"] = df["comment_text"].apply(lambda x: len([w for w in str
 #Number of stopwords
 df["count_stopwords"] = df["comment_text"].apply(lambda x: len([w for w in str(x).lower().split() if w in eng_stopwords]))
 
-#Average length of the words
+#Average length of the words 
 df["mean_word_len"] = df["comment_text"].apply(lambda x: np.mean([len(w) for w in str(x).split()]))
-
+#Average length of the words - takes special characters into account - Length of the sentence divided by 
+Df["Name Length"]/(df['count_word']+1)
 
 
 
