@@ -178,6 +178,8 @@ New_df = df[df.var.isin([20,22,24,25,26,28,30,36])]
 
 # Unique Values of a variable
 UqPatsVitals = pd.unique(Vitals.PatientID)
+# Unique values of a variable that contains lists in each row
+Df['UniqueValues'] = Df["List_Var"].apply(lambda x: np.unique(x))
 
 # Unique labs
 UqLabs = pd.unique(Vitals.LabName)
