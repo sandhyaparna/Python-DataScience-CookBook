@@ -182,6 +182,7 @@ UqLabs = pd.unique(Vitals.LabName)
 
 # New Variable - ifelse - where
 Vitals['Temp'] =  np.where(Vitals['LabName']=='Temperature (C)',(Vitals['LabValue']*1.8)+32,np.NAN)
+df['Rating'] = [1 if rating > 3 else 0 for rating in df['Rating']]
 
 # Remove Outliers (Not is represented by ~)
 Vitals = Vitals[~((Vitals['LabName']=='Creatinine Serum') & ((Vitals['LabValue']<0.1) | (Vitals['LabValue']>20)))]
