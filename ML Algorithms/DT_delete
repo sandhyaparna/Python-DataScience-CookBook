@@ -1,0 +1,453 @@
+
+
+pd.options.display.max_rows = 1500
+pd.set_option('display.max_columns', None)  # or 1000
+pd.set_option('display.max_rows', None)  # or 1000
+pd.set_option('display.max_colwidth', -1)  # or 199
+
+pip.__version__
+
+import subprocess
+subprocess.check_call(["python", '-m', 'pip', 'install', 'informationvalue']) # install pkg - pkg name should all be small letter NO CAPITALS
+subprocess.check_call(["python", '-m', 'pip', 'install', "--upgrade", 'sklearn']) 
+
+import seaborn as sns
+%matplotlib inline
+from matplotlib import pyplot as plt
+from matplotlib import style
+
+import pip
+import category_encoders as ce
+import pickle
+
+#### Run ####
+import sklearn as sklearn
+from sklearn import *
+from sklearn.tree import *
+from sklearn.ensemble import *
+from sklearn.linear_model import *
+from sklearn.neighbors import *
+from sklearn.svm import *
+from sklearn.naive_bayes import *
+
+from sklearn.preprocessing import *
+from sklearn.model_selection import *
+from sklearn.metrics import *
+
+#from sklearn import grid_search # - Not working
+
+# Imports related to Viz
+from sklearn.externals.six import StringIO  
+from IPython.display import Image  
+import pydotplus as pydotplus
+import graphviz
+
+# Support functions import
+from support_functions import calculate_accuracy, plot_confusion_matrix
+
+# DataSet Import
+# https://archive.ics.uci.edu/ml/datasets/bank+marketing
+
+Bank = pd.read_csv("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DataSets/bank-additional-full.csv")
+
+# Analysis
+# Subscription - Target Variable
+Bank.dtypes
+
+### Data Manipulation ###
+# Drop duration variable
+Bank = Bank.drop(['duration'],axis=1)
+
+# Create a ID variable (will be created as Int)
+Bank = Bank.assign(ID=pd.Series(range(1,41189))) 
+
+# Replace 'unknown' value with missing
+# Bank.job[Bank.job == 'unknown'] = "None"
+
+Bank.describe(include = 'all')
+Bank.info()
+
+# Explore missing values - look at the unique values in each column
+
+## Age variable
+pd.unique(Bank.age)
+# Missing values
+Bank['age'].isnull().sum()
+# Quantiles
+pd.qcut(Bank.age,10,labels=False,retbins=True)
+np.percentile(Bank.age, 99.5)
+# Hist
+sns.distplot(Bank.age.dropna())
+# 99%le age is 71 - Patients with age above 71 can be removed
+
+### Freq Values
+pd.value_counts(Bank['job'].values)
+# unknown-80
+pd.value_counts(Bank['marital'].values)
+# illiterate-18
+pd.value_counts(Bank['education'].values)
+# yes-3
+pd.value_counts(Bank['default'].values)
+pd.value_counts(Bank['housing'].values)
+pd.value_counts(Bank['contact'].values)
+pd.value_counts(Bank['month'].values)
+pd.value_counts(Bank['day_of_week'].values)
+pd.value_counts(Bank['campaign'].values)
+pd.value_counts(Bank['pdays'].values)
+pd.value_counts(Bank['previous'].values)
+pd.value_counts(Bank['poutcome'].values)
+pd.value_counts(Bank['emp_var_rate'].values)
+pd.value_counts(Bank['cons_price_idx'].values)
+pd.value_counts(Bank['cons_conf_idx'].values)
+pd.value_counts(Bank['euribor3m'].values)
+pd.value_counts(Bank['nr_employed'].values)
+pd.value_counts(Bank['Target'].values)
+# pdays - 999 means client was not previously contacted - set this value to missing
+# Rename values
+# Bank['pdays'] =  np.where(Bank['pdays']==999,np.NAN,Bank['pdays'])
+# Missing values
+# Bank['pdays'].isnull().sum()
+
+## Filter Data based on age
+Bank = Bank[Bank.age<=80]
+Bank = Bank[Bank.education!="illiterate"]
+Bank = Bank[Bank.default!="yes"]
+
+# Convert Target variable to Integer
+# Bank['Subscription'] =  np.where(Bank['Subscription']=="yes",1,0)
+
+#### Modeling ####
+## Convert Target variable to integer
+# 1.Using Formula
+# Convert Subscription column to int
+def encode_target(df, target_column):
+    df_mod = df.copy()
+    targets = df_mod[target_column].unique()
+    map_to_int = {name: n for n, name in enumerate(targets)}
+    df_mod["Target"] = df_mod[target_column].replace(map_to_int)
+    return (df_mod, targets)
+# Convert Subscription variable to Int
+Bank, targets = encode_target(Bank, "Subscription")
+
+# 2.Code
+Bank['Target'] =  np.where(Bank['Subscription']=="yes",1,0)
+
+##### Char features need to be encoded - cannot be used directly ####
+# Extract data set with only predictor features
+Bank_X = Bank.drop(['Subscription','ID','Target'],axis=1)
+Predictors = [x for x in Bank.columns if x not in [Subscription, ID, Target]]
+-------------------------------------------------------------------------------------------------
+# https://github.com/scikit-learn-contrib/categorical-encoding
+# http://contrib.scikit-learn.org/categorical-encoding/
+# http://pbpython.com/categorical-encoding.html
+
+### 1.Label Encoding 
+## a.Single variable encoding
+# i)Initialize label encoder
+label_encoder = preprocessing.LabelEncoder()
+Bank_education = label_encoder.fit_transform(Bank_X['education'])
+# ii)Converting datatype to character and then encoding
+Bank_X['education'] = Bank_X['education'].astype('category')
+Bank_X['education'] = Bank_X['education'].cat.codes
+
+## b.MultiColumnLabelEncoder - should be used only on categorical vars
+# https://stackoverflow.com/questions/24458645/label-encoding-across-multiple-columns-in-scikit-learn
+# It encodes integer variables also - so only char variables should be mentioned
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.pipeline import Pipeline
+class MultiColumnLabelEncoder:
+    def _init_(self,columns = None):
+        self.columns = columns # array of column names to encode
+
+    def fit(self,X,y=None):
+        return self # not relevant here
+
+    def transform(self,X):
+        '''
+        Transforms columns of X specified in self.columns using
+        LabelEncoder(). If no columns specified, transforms all
+        columns in X.
+        '''
+        output = X.copy()
+        if self.columns is not None:
+            for col in self.columns:
+                output[col] = LabelEncoder().fit_transform(output[col])
+        else:
+            for colname,col in output.iteritems():
+                output[colname] = LabelEncoder().fit_transform(col)
+        return output
+
+    def fit_transform(self,X,y=None):
+        return self.fit(X,y).transform(X)
+# CharFeatures within Bank_X
+CharFeatures = list(Bank_X.select_dtypes(include=['object']))
+# Only CharFeatures within Bank_X will be encoded, numeric variables will remain as is
+Bank_X_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Bank_X)        
+# Or drop variables from Bank directly
+Bank_X_LabelEncoded = MultiColumnLabelEncoder(CharFeatures).fit_transform(Bank.drop(['Subscription','ID','Target'],axis=1))         
+
+
+### 2.One-hot encoding
+Bank_X_OneHotEncoded = pd.get_dummies(Bank_X,drop_first=True)
+
+# LabelBinarizer is also one-hot encoding
+Label_Binarizer = LabelBinarizer()
+Bank_X_Education = Label_Binarizer.fit_transform(Bank_X['education'])
+Bank_X_Education = pd.DataFrame(Bank_X_Education, columns=Label_Binarizer.classes_).head()
+
+### 3. Binary encoding
+import category_encoders as ce
+Bank_y = Bank['Target']
+CharFeatures = list(Bank_X.select_dtypes(include=['object']))
+Bank_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Bank_X, Bank_y)
+Bank_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Bank_X)
+
+
+# http://contrib.scikit-learn.org/categorical-encoding/
+## Not able to install category_encoders module ???
+## Not able to install  - from sklearn.preprocessing import CategoricalEncoder???
+-------------------------------------------------------------------------
+
+# Extract data with Target variables
+--Bank_y =  np.array(Bank["Target"])
+# Bank_y =  Bank["Target"]
+
+### Create Train and Test datasets
+# http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+# Data is split in a stratified fashion by default, data is shuffled by default 
+
+## Using Formula
+# Train test split
+def TrainTestSplit(X,y,size = 0.3,seed=50):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = size, random_state = seed)
+    X_train = X_train.reset_index(drop='index')
+    X_test = X_test.reset_index(drop='index')
+    return X_train, X_test, y_train, y_test
+# Train and Test datasets
+TrainTestSplit(Bank_X,Bank_y,size = 0.2, seed=50)
+
+# Datasets Generation
+# Data is split in a stratified fashion by default, data is shuffled by default 
+Bank_X_train, Bank_X_test, Bank_y_train, Bank_y_test = train_test_split(Bank_X_OneHotEncoded, Bank_y, test_size=0.2)
+Bank_X_train = Bank_X_train.reset_index(drop='index')
+Bank_X_test = Bank_X_test.reset_index(drop='index')
+
+# http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier
+
+#### Model Building ####
+# https://www.kaggle.com/niklasdonges/end-to-end-project-with-python/notebook
+# https://machinelearningmastery.com/train-final-machine-learning-model/
+* cross_val_predict - Gives the predictions of the test data within cross-validation
+* Check scores from cross_val_score 
+* confusion matrix for evaluation of model - depends on predictions from cross_val_predict
+* If satisfied with the model, train the model again on the entire training set(No cross validation - CV is used only to select a model) and predict the results on test data set
+* In kaggle - Apply CV on the entire train data set provided and when decided on a model - fit a model using train data and predict on the unseen test data
+* Outside of kaggle - Split data into 90% Train and 10% Test. Apply CV on 90% of train and then evaluate the results from cross_val_predict on train predictions and 
+predict on test dataset - see if the model is good. Later on build the entire dataset to build final model
+
+### 1. Train and Test - No cross validation (Here only Training set and Testing set metrics are used for evaluating a model)
+# Datasets Generation
+Bank_X_train, Bank_X_test, Bank_y_train, Bank_y_test = train_test_split(Bank_X_OneHotEncoded, Bank_y, test_size=0.2)
+Bank_X_train = Bank_X_train.reset_index(drop='index')
+Bank_X_test = Bank_X_test.reset_index(drop='index')
+
+# DecisionTreeModel - Model is fitted on 80% data
+DecisionTreeModel_1 = DecisionTreeClassifier(criterion='entropy',max_depth=5,min_samples_split=40,min_samples_leaf=15,class_weight='balanced')
+DecisionTreeModel_1 = DecisionTreeModel_1.fit(Bank_X_train,Bank_y_train)
+# Evaluation Metrics on Train set
+DecisionTreeModel_1.score(Bank_X_train,Bank_y_train)
+Bank_y_train_Pred1 = DecisionTreeModel_1.predict(Bank_X_train)
+roc_auc_score(Bank_y_train,Bank_y_train_Pred1)
+confusion_matrix(Bank_y_train, Bank_y_train_Pred1)
+# Evaluation Metrics on Test set
+Bank_y_test_Pred1 = DecisionTreeModel_1.predict(Bank_X_test)
+roc_auc_score(Bank_y_test,Bank_y_test_Pred1)
+accuracy_score(Bank_y_test,Bank_y_test_Pred1)
+confusion_matrix(Bank_y_test,Bank_y_test_Pred1)
+
+
+# 2. Cross validation on 90% Train
+# Datasets Generation
+Bank_X_train, Bank_X_test, Bank_y_train, Bank_y_test = train_test_split(Bank_X_OneHotEncoded, Bank_y, test_size=0.1)
+Bank_X_train = Bank_X_train.reset_index(drop='index')
+Bank_X_test = Bank_X_test.reset_index(drop='index')
+
+# DecisionTreeModel
+DecisionTreeModel_2 = DecisionTreeClassifier(criterion='entropy',max_depth=5,min_samples_split=40,min_samples_leaf=15,class_weight='balanced')
+# Scoring params http://scikit-learn.org/stable/modules/model_evaluation.html
+# Evaluation Metrics on Train set - 'For loop' for different scoring parameters
+scores=["roc_auc","accuracy", "precision", "recall","neg_log_loss","explained_variance"]
+for score in scores:
+    print (score,
+    ":",
+    "%.3f" % cross_val_score(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10, scoring=score).mean(),
+    " ( std:",
+    "%.3f" % cross_val_score(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10, scoring=score).std(),
+    ")")
+# Evaluation Metrics on Test data within CV
+Bank_y_train_Pred2 = cross_val_predict(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10)
+confusion_matrix(Bank_y_train, Bank_y_train_Pred2)
+# Prediction with probability scores
+Bank_y_train_Pred2_Prob = cross_val_predict(DecisionTreeModel_2, Bank_X_train, Bank_y_train, cv=10, method='predict_proba')
+Bank_y_train_Pred2_Prob = Bank_y_train_Pred2_Prob[:,1]
+Bank_y_train_Pred2_Prob = np.where(Bank_y_train_Pred2_Prob>0.5,1,0)
+confusion_matrix(Bank_y_train, Bank_y_train_Pred2_Prob)
+
+# Satisfied with CV results, fit the model on Train data - will be different from 1 in terms on train data -90%
+DecisionTreeModel_2 = DecisionTreeClassifier(criterion='entropy',max_depth=5,min_samples_split=40,min_samples_leaf=15,class_weight='balanced')
+DecisionTreeModel_2 = DecisionTreeModel_2.fit(Bank_X_train,Bank_y_train)
+
+# Evaluation Metrics on Test set - These results are closer to what we saw on the CV output
+Bank_y_test_Pred2 = DecisionTreeModel_2.predict(Bank_X_test)
+roc_auc_score(Bank_y_test,Bank_y_test_Pred2)
+accuracy_score(Bank_y_test,Bank_y_test_Pred2)
+confusion_matrix(Bank_y_test,Bank_y_test_Pred2)
+
+# Prediction with probability scores
+Bank_y_test_Pred2_Prob = DecisionTreeModel_2.predict_proba(Bank_X_OneHotEncoded)[:,1]
+Bank_y_test_Pred2_Prob = np.where(Bank_y_test_Pred2_Prob>0.5,1,0)
+confusion_matrix(Bank_y_test, Bank_y_test_Pred2_Prob)
+
+# A final model can be built on the entire data i.e Bank_X_OneHotEncoded
+
+# Different models and different scoring options
+models = [GaussianNB(), DecisionTreeClassifier(), SVC()]
+names = ["Naive Bayes", "Decision Tree", "SVM"]
+for model, name in zip(models, names):
+    print name
+    start = time.time()
+    for score in ["accuracy", "precision", "recall"]:
+        print score,
+        print " : ",
+        print cross_val_score(model, iris.data, iris.target,scoring=score, cv=10).mean()
+    print time.time() - start
+
+# 3. GridSearchCV
+DecisionTreeModel_GridSearch = DecisionTreeClassifier(random_state=0)
+parameter_grid = {"criterion": ["gini", "entropy"],
+                  "splitter": ["best", "random"],
+                  "max_depth": np.arange(4,6),
+                  "min_samples_split": [40,60,70],
+                  "min_samples_leaf": [15,20,25,30], #range(15,30,5)
+                  "class_weight":["balanced"]}
+gridSearch = GridSearchCV(DecisionTreeModel_GridSearch, param_grid=parameter_grid, cv=10, scoring="roc_auc")
+gridSearch = gridSearch.fit(Bank_X_OneHotEncoded, Bank_y)
+gridSearch.grid_scores_ #Gives scores of each of the parameter_grid parameters
+print('Best score: {}'.format(gridSearch.best_score_))
+print('Best parameters: {}'.format(gridSearch.best_params_))
+# best_estimator_ - Generates DecisionTreeClassifier function with the paremeters that gives the best result
+DecisionTreeModel_3 = gridSearch.best_estimator_
+# Test set results decide the best params
+# U dont need to fit this model on the train data set - It is already fit in gridsearch.fit
+# Export/Save Model
+pickle.dump(DecisionTreeModel_3,open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","wb"))
+# Import/Load Model
+DecisionTreeModel_3 = pickle.load(open("C:/Users/User/Google Drive (sandhya.pashikanti@uconn.edu)/Data Science/Python Learning/DecisionTreeModel_3.pkl","r"))
+
+
+# Evaluation Metrics on Train set 
+scores=["roc_auc","accuracy", "precision", "recall","neg_log_loss","explained_variance"]
+for score in scores:
+    print (score,
+    ":",
+    "%.3f" % cross_val_score(DecisionTreeModel_3, Bank_X_OneHotEncoded, Bank_y, cv=10, scoring=score).mean(),
+    " ( std:",
+    "%.3f" % cross_val_score(DecisionTreeModel_3, Bank_X_OneHotEncoded, Bank_y, cv=10, scoring=score).std(),
+    ")")
+
+# There is no test data set. So, model evaluation is based on the cross_val_score on Train set
+
+# 4. Parameter tuning using for loop
+max_depths = np.linspace(1, 32, 32, endpoint=True)
+train_results = []
+test_results = []
+for max_depth in max_depths:
+   model = GradientBoostingClassifier(max_depth=max_depth)
+   model.fit(x_train, y_train)
+   train_pred = model.predict(x_train)
+   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_train, train_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   train_results.append(roc_auc)
+   y_pred = model.predict(x_test)
+   false_positive_rate, true_positive_rate, thresholds = roc_curve(y_test, y_pred)
+   roc_auc = auc(false_positive_rate, true_positive_rate)
+   test_results.append(roc_auc)
+from matplotlib.legend_handler import HandlerLine2D
+line1, = plt.plot(max_depths, train_results, ‘b’, label=”Train AUC”)
+line2, = plt.plot(max_depths, test_results, ‘r’, label=”Test AUC”)
+plt.legend(handler_map={line1: HandlerLine2D(numpoints=2)})
+plt.ylabel(‘AUC score’)
+plt.xlabel(‘Tree depth’)
+plt.show()
+
+#### Model Evaluation Metrics
+# http://scikit-learn.org/stable/modules/model_evaluation.html
+confusion_matrix(Bank_y, Bank_y_Pred2)
+tn, fp, fn, tp = confusion_matrix(Bank_y, Bank_y_Pred2).ravel()
+tn, fp, fn, tp
+pd.crosstab(Bank_y_train, Bank_y_train_Pred1, rownames=['True'], colnames=['Predicted'], margins=True)
+classification_report(Bank_y, Bank_y_Pred2)
+accuracy_score(Bank_y, Bank_y_Pred2)
+precision_score(Bank_y, Bank_y_Pred2)
+roc_auc_score(Bank_y, Bank_y_Pred2)
+recall_score(Bank_y, Bank_y_Pred2) #Sensitivity 
+#(False Positives = 1-Specificity)
+
+# ROC Curve plot - Visualization makes more sense when prediction are made using method='predict_proba'
+import matplotlib.pyplot as plt
+%matplotlib inline
+fpr, tpr, thresholds = roc_curve(Bank_y, Bank_y_Pred2)
+# create plot
+plt.plot(fpr, tpr, label='ROC curve')
+plt.plot([0, 1], [0, 1], 'k--', label='Random guess')
+_ = plt.xlabel('False Positive Rate')
+_ = plt.ylabel('True Positive Rate')
+_ = plt.title('ROC Curve')
+_ = plt.xlim([-0.02, 1])
+_ = plt.ylim([0, 1.02])
+_ = plt.legend(loc="lower right")
+
+# Precision Recall curve 
+precision, recall, thresholds = precision_recall_curve(Bank_y, Bank_y_Pred2)
+# create plot
+plt.plot(precision, recall, label='Precision-recall curve')
+_ = plt.xlabel('Precision')
+_ = plt.ylabel('Recall')
+_ = plt.title('Precision-recall curve')
+_ = plt.legend(loc="lower left")
+
+# Decision Tree Viz - Works when Target Var is both Cat/Num
+# http://webgraphviz.com/
+# Use the code from the saved dot file in the above link - it gives viz
+data_feature_names = list(Bank_X_OneHotEncoded)
+target_names = pd.unique(Bank['Target'])
+# Convert data type
+target_names = target_names.astype('<U10') #Works when Target Var is both Cat/Num
+# Viz code to a file - paste code in http://webgraphviz.com/
+# DecisionTreeModel is one that is fitted on X,y
+dotfile = open("path/DecisionTreeModel_Tree.dot", 'w')
+tree.export_graphviz(DecisionTreeModel, out_file=dotfile, feature_names=data_feature_names,
+                     class_names=target_names,filled=True, rounded=True)
+dotfile.close()
+# Open file 
+
+
+	
+
+
+
+
+
+
+   
+
+
+
+
+
+
+# Multiple scores on multiple algorithms - for loop
+# https://stackoverflow.com/questions/35876508/evaluate-multiple-scores-on-sklearn-cross-val-score
+
+
