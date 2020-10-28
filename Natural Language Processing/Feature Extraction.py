@@ -57,7 +57,25 @@ np.fill_diagonal(TextDf_CoOccurence.values, 0) #Don't assign. Here automatically
 ### Sentiment of the Texts
 import textblob
 from textblob import TextBlob
-Df["Text_Var_SentimentValue"] = Df["Text_Var"].apply(lambda x: TextBlob(x).sentiment[0])
+Df["Text_Var_SentimentValue_Polarity"] = Df["Text_Var"].apply(lambda x: textblob.TextBlob(x).sentiment[0])
+Df["Text_Var_SentimentValue_Polarity"] = Df["Text_Var"].apply(lambda x: textblob.TextBlob(x).sentiment[1])
+# Below is a slow processing
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+Df["polarity"].apply(lambda x: SentimentIntensityAnalyzer().polarity_scores(x))
+Df["Negativity"].apply(lambda x: SentimentIntensityAnalyzer().polarity_scores(x)["neg"])
+Df["Neutrality"].apply(lambda x: SentimentIntensityAnalyzer().polarity_scores(x)["neu"])
+Df["Positivity"].apply(lambda x: SentimentIntensityAnalyzer().polarity_scores(x)["pos"])
+Df["OverallSentiment"].apply(lambda x: SentimentIntensityAnalyzer().polarity_scores(x)["compound"])
+
+### Readability scores
+# The Flesch readability ease is an indicator designed to quantify how difficult a passage is to understand. The Flesch readability ease is calculated mathematically using the formula below:
+# From the above formula, we can see that comments with shorter words and fewer words per sentence are more "readable".
+!pip install textstat
+TrainData["flesch_reading_ease"] = TrainData["comment_text"].progress_apply(textstat.flesch_reading_ease)
+TrainData["automated_readability"] = TrainData["comment_text"].progress_apply(textstat.automated_readability_index)
+TrainData["dale_chall_readability"] = TrainData["comment_text"].progress_apply(textstat.dale_chall_readability_score)
+
 
 ### Topic Modeling (Latent Dirichlet Allocation) as features
 Data link - https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/
