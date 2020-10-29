@@ -410,7 +410,7 @@ Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)   # Df["Text_Var2"] 
 # Removes stop words from the Text var2 i.e Tokenazied column
 Df["Text_Var3"] = Df["Text_Var2"].apply(lambda x: [item for item in x if item not in stop_words])
 
-# Remove stop words from the text with adding comas between words - Raw Text - Non Tokenized column
+# Remove stop words  - Raw Text - Non Tokenized column
 Df["Text_Var4"] = Df["Text_Var1"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
 
 # Removes punctuations,# as well as tokenize - Within RegexpTokenizer function any expression string can be used 
