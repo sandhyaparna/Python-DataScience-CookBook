@@ -545,6 +545,11 @@ Df["Text_Var"] = Df["Text_Var"].apply(expandContractions)
 !pip install contractions
 from contractions import contractions_dict
 import re
+# 
+import contractions
+contractions.fix('I didn\'t like this t-shirt')
+contractions.fix("I don't have to be there at 9 o'clock") #Result: 'I do not have to be there at 9 of the clock'
+# 
 def expand_contractions(text, contraction_mapping=contractions_dict):
     
     contractions_pattern = re.compile('({})'.format('|'.join(contraction_mapping.keys())), 
