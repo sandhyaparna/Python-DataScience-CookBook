@@ -549,6 +549,7 @@ import re
 import contractions
 contractions.fix('I didn\'t like this t-shirt')
 contractions.fix("I don't have to be there at 9 o'clock") #Result: 'I do not have to be there at 9 of the clock'
+Df["Text"].apply(lambda x: contractions.fix(x))
 # 
 def expand_contractions(text, contraction_mapping=contractions_dict):
     
