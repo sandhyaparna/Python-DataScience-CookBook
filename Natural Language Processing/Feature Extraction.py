@@ -1,6 +1,10 @@
 ### Bag of words - CountVectorizer on Text var and not Tokenized var
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
+## simple code
+X = vectorizer.fit_transform(TrainData.comment_text.values)
+pd.DataFrame(X.A, columns=vectorizer.get_feature_names())
+#
 X = vectorizer.fit(Df.Text_Var.values) # U can directly use X = vectorizer.fit_transform(Df.Text_Var.values)
 Y = vectorizer.transform(Df.Text_Var.values)
 vectorizer.get_feature_names()
@@ -11,6 +15,7 @@ print(vectorizer.vocabulary_)
 TextDf_CountVectors_Freq = pd.DataFrame({'Word':vectorizer.get_feature_names(), 'frequency':sum(Y).toarray()[0]}) 
 # Count Vector as columns of a dataframe - Join it to the earlier data frame or use it a train data frame (cbind)
 TextDf_CountVectors = pd.DataFrame(Y.A, columns=vectorizer.get_feature_names())
+
 
 ### N-Grams Vectorization
 # ngram_range : tuple (min_n, max_n) - The lower and upper boundary of the range of n-values for different n-grams to be extracted. 
