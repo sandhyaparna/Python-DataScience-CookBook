@@ -1,4 +1,4 @@
-### CountVectorizer on Text var and not Tokenized var
+### Bag of words - CountVectorizer on Text var and not Tokenized var
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
 X = vectorizer.fit(Df.Text_Var.values) # U can directly use X = vectorizer.fit_transform(Df.Text_Var.values)
