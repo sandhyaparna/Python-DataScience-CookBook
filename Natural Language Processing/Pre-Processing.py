@@ -689,7 +689,10 @@ for word in sen.noun_chunks:
 # Different types of Stemming algorithms
 from nltk.stem.porter import PorterStemmer
 porter_stemmer = PorterStemmer()
+# Needs Tokenized var
 Df["Text_Var"] = Df["Tokenized_Text_Var"].apply(lambda x: [porter_stemmer.stem(y) for y in x])
+# Raw non-Tokenized variable
+Df['comment_text'].apply(lambda x: [porter_stemmer.stem(y) for y in x.split()])
 
 # When variable in tokenized
 from nltk.stem.porter import PorterStemmer
