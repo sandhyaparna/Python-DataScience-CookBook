@@ -402,6 +402,7 @@ Df["Text_Var"] = Df["Text_Var"].apply(lambda x: x.translate(None, string.digits)
 def remove_special_characters(text):
     text = re.sub('[^a-zA-z0-9\s]', '', text)
     return text
+Df["comment_text"].str.replace(r'[^a-zA-Z]', " ") # replaces anything other than alphabet character, remove numbers any character
 
 # Word Tokenization - words are seperated by commas
 Df["Text_Var2"] = Df["Text_Var1"].apply(nltk.word_tokenize)   # Df["Text_Var2"] = Df["Text_Var"].str.lower().str.split() -- Same as Tokenization but . and , are attached to words as is in the text
