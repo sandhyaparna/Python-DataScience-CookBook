@@ -6,7 +6,9 @@ CustomerIDs_Test = set(CustomerIDs).difference(set(CustomerIDs_Train))
 CustomerRatings_Train = CustomerRatings[CustomerRatings.CustomerID.isin(CustomerIDs_Train)]
 CustomerRatings_Test = CustomerRatings[CustomerRatings.CustomerID.isin(CustomerIDs_Test)]
 
-
+# Split first 80% rows into Train and remaining 20% rows into Test
+Train = Df.iloc[:int(Df.shape[0]*0.80)] #Extracting first 80%
+Test = Df.iloc[int(Df.shape[0]*0.80):] # Exracting remaining
 
 
 
