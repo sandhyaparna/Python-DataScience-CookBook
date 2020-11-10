@@ -1,6 +1,7 @@
 ### Google Colab Notebooks
 # Notebooks https://github.com/lmoroney/dlaicourse
-
+https://colab.research.google.com/drive/1znO9kRsbYRV79W0qkd4AGzTRlJexYRod#scrollTo=ZyvecH2C_46Q
+ 
 # Week3 - CNN
 # Week4 - Image Generator
 
