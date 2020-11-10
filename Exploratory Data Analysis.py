@@ -917,7 +917,10 @@ Df['Var'] = (Df.EndDate-Df.StartDate).dt.seconds
 Df['Var'] = ((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60)
 # Difference In hours
 Df['Var'] = (((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60))/60
+# Difference between 2 dates in Years
+((((Df['Var1']) - (Df['Var2']))/(np.timedelta64(1,'Y'))).astype('str')).astype('float')                 
 
+                       
 # Get Year, month, date, day, week_day, day of week, day of year etc
 df.Var.dt.year
 # Examples and a lot more options are there
@@ -943,11 +946,18 @@ df['Var1'] = (df['Var']) + pd.Timedelta(hours=1)
 df['Var1'] = (df['Var']) + pd.Timedelta(minutes=60)
 # Add minutes
 df['Var1'] = (df['Var']) + pd.Timedelta(seconds=60)
-
+# Add months
+df['Var1'] = (df['Var']) + pd.DateOffset(months=3)                               
+                       
 # Add hours variable to DateTime variable - Create New DateTime var
 # HoursVar is a float or int
 Df['New_DateTimeVar'] = (Df['DateTimeVar']) + pd.to_timedelta(Df.HoursVar, unit='h')
-                                             
+# Add
+# Months Var is a float or int - Add months to date time column
+Df['New_DateTimeVar'] = (Df['DateTimeVar']) + Df['NumberofMonthsVar'].values.astype("timedelta64[M]")
+# Years Var is a float or int- Add years to date time column
+Df['New_DateTimeVar'] = (Df['DateTimeVar']) + Df['NumberofYearsVar'].values.astype("timedelta64[Y]")
+
 # Get Start and end date of a week based on a date variable
 # Week starts on Monday - https://stackoverflow.com/questions/27989120/get-week-start-date-monday-from-a-date-column-in-python-pandas
 # Start Date of the week
