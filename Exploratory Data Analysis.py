@@ -44,9 +44,9 @@ Connection = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
                       "Trusted_Connection=yes;")
 SQLCommand = ('select * from [DataWarehouse].[dbo].[DimDate]') # SQLQuery
 # For a multi-line sql query - \ is used at end of each line
-SQLCommand = ('select * \
+SQLCommand = (''' select * \
               from [DataWarehouse].[dbo].[DimDate] \
-              where y=a')
+              where y=a ''')
 Df = pd.read_sql_query(SQLCommand, Connection)   # Returns data frame   
 
 # From sql table - https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PandasPythonForDataScience.pdf
