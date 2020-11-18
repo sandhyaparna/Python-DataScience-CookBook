@@ -965,6 +965,13 @@ df['Start'] =  df['Date'] - df['Date'].dt.weekday.astype('timedelta64[D]') #This
 Df['Start'] = DF['Date'].dt.to_period('W').apply(lambda r: r.start_time) #Generates only Date
 # end date of the week
 df['End'] =  df['Start'] +  pd.Timedelta(days=6)                       
+ 
+# Get first day or Start day of the month
+# Case1: convert Jan 16 to 01/01/2016
+Df['Month_StartDate'] = Df['Month in Jan 16 format'].apply(lambda x: dt.datetime.strptime(x,'%b %y'))
+# case 2: convert date 06/01/2016 to 01/01/2016 (dd/mm/yyyy format)
+                       
+                       
                        
 # weekday start on Sunday - https://stackoverflow.com/questions/45458525/get-week-start-date-sunday-from-a-date-column-in-python
 # 1st solution
