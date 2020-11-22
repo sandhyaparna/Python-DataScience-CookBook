@@ -215,6 +215,16 @@ Df = pd.read_excel('file.xlsx', index_col=0, sheet_name='xyz',parse_dates=['Date
 xlsx = pd.ExcelFile('file.xls')
 Df = pd.read_excel(xlsx, 'Sheet1')
 
+### Extract data from txt file that has data in JSON format. Line-delimited data (CapitalOne DS data)
+with open('transactions.txt') as f:
+    lines = f.read().splitlines()
+import pandas as pd
+df_inter = pd.DataFrame(lines)
+df_inter.columns = ['json_element']
+import json
+df_inter['json_element'].apply(json.loads)
+df_final = pd.json_normalize(df_inter['json_element'].apply(json.loads))
+
 ### Extract data from json/website
 !wget --no-check-certificate \
     https://storage.googleapis.com/laurencemoroney-blog.appspot.com/sarcasm.json \
