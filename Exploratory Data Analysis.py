@@ -788,6 +788,8 @@ Df.replace(Char_Codes, inplace=True)
 Df['Var'] = Df['Var'].map({'Value1':New_Vaue1, 'Value2':New_Vaue2, 'Value3':New_Vaue3})
 # Replace 0 or False values in the entire dataset to missing
 Df = Df.replace([0,"False"],np.NAN)
+# Replace "missing" word with np.NAN in entire data set
+Df.replace({"missing":np.NAN},inplace=True)
 
 
 # 2. Label encoding - Using Categories (CANNOT be USED for MISSING Vars)
