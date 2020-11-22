@@ -57,11 +57,48 @@ def haversine_array(lat1, lng1, lat2, lng2):
     d = np.sin(lat * 0.5) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(lng * 0.5) ** 2
     h = 2 * AVG_EARTH_RADIUS * np.arcsin(np.sqrt(d))
     return h
+# 2nd way -  Haversine Distance
+from math import radians, cos, sin, asin, sqrt
+AVG_EARTH_RADIUS_KM = 6371.0088
+AVG_EARTH_RADIUS_MI = 3958.7613
+def haversine(start_coord, end_coord, miles=False):
+    # get earth radius in required units
+    if miles:
+        avg_earth_radius = AVG_EARTH_RADIUS_MI
+    else:
+        avg_earth_radius = AVG_EARTH_RADIUS_KM
+    # unpack latitude/longitude
+    lat1, lng1 = start_coord
+    lat2, lng2 = end_coord
+    # convert all latitudes/longitudes from decimal degrees to radians
+    lat1, lng1, lat2, lng2 = map(radians, (lat1, lng1, lat2, lng2))
+    # calculate haversine
+    lat = lat2 - lat1
+    lng = lng2 - lng1
+    d = sin(lat * 0.5) ** 2 + cos(lat1) * cos(lat2) * sin(lng * 0.5) ** 2
+    return 2 * avg_earth_radius * asin(sqrt(d))
+# Apply Haversine distance on Data frame columns
+X_train['haversine_dist'] = X_train.apply(lambda row: haversine(start_coord=(row['pickup_latitude'], 
+                                                                             row['pickup_longitude']),
+                                                                end_coord=(row['dropoff_latitude'], 
+                                                                           row['dropoff_longitude'])), axis=1)
+
 # Manhattan Distance Between the two Lat/Lons:
 def dummy_manhattan_distance(lat1, lng1, lat2, lng2):
     a = haversine_array(lat1, lng1, lat1, lng2)
     b = haversine_array(lat1, lng1, lat2, lng1)
     return a + b    
+# 2nd way - Manhattan Distance
+def manhattan(start_coord, end_coord):
+    pickup_lat, pickup_long = start_coord
+    dropoff_lat, dropoff_long = end_coord    
+    distance = np.abs(dropoff_lat - pickup_lat) + np.abs(dropoff_long - pickup_long)
+    return distance
+X_train['manhattan_dist'] = X_train.apply(lambda row: manhattan(start_coord=(row['pickup_latitude'], 
+                                                                             row['pickup_longitude']),
+                                                                end_coord=(row['dropoff_latitude'], 
+                                                                           row['dropoff_longitude'])), axis=1)
+
 # Bearing Between the two Lat/Lons:
 def bearing_array(lat1, lng1, lat2, lng2):
     AVG_EARTH_RADIUS = 6371  # in km
