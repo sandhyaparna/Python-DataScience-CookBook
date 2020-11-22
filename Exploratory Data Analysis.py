@@ -503,6 +503,9 @@ Df['Var'].values # Gives an array
 
 
 ################# Visualization #################
+# Descriptive stats 1 to 6 dimensions
+# https://github.com/dipanjanS/art_of_data_visualization/blob/master/ODSC18/Code/Effective%20Multi-dimensional%20Data%20Visualization%20-%20Python.ipynb
+
 ### Chartify Module
 # https://github.com/spotify/chartify
 # https://labs.spotify.com/2018/11/15/introducing-chartify-easier-chart-creation-in-python-for-data-scientists/
