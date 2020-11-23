@@ -113,10 +113,11 @@ train.loc[:, 'center_longitude'] = (train['pickup_longitude'].values + train['dr
 
 ############# Pre-processing ##############
 ### Standardization
+numeric_data = df.select_dtypes(include = np.number) 
 from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler().fit(X_train)
+scaler = StandardScaler().fit(X_train) #StandardScaler().fit(numeric_data)
 standardized_X = scaler.transform(X_train)
- standardized_X_test = scaler.transform(X_test)
+standardized_X_test = scaler.transform(X_test)
 
 ### Normalization
 from sklearn.preprocessing import Normalizer
