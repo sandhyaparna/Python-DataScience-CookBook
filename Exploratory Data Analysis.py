@@ -721,6 +721,9 @@ Df['Var1'] = Df['Var1'].astype('int')
 Df['Var1'] = Df['Var1'].astype('float')
 # DateTime
 Df['Var1'] =  pd.to_datetime(Df['Var1'], format='%Y-%m-%d %H:%M:%S')
+# DateTime variable is in "%Y-%m-%dT%H:%M:%S" (2016-03-24T22:57:15) format. convert it to datetime variable
+import datetime
+Df['DateTimeVar_asstring'].apply(lambda x: datetime.datetime.strptime(x,"%Y-%m-%dT%H:%M:%S"))
 
 ### Assign values to a column or change values of a particular variable
 # Assign a value
