@@ -150,8 +150,16 @@ ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
                                      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
                                      'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'], ordered=True)
 
-# 11. Hashing
+# 11. Feature Hashing
 # Default is 8 columns
+# If number of features=12, feature hashing helps in capturing that 8 vars info in less number of variables
+# 6 in the below example
+from sklearn.feature_extraction import FeatureHasher
+fh = FeatureHasher(n_features=6, input_type='string')
+hashed_features = fh.fit_transform(df['StringVar'])
+hashed_features = hashed_features.toarray()
+pd.DataFrame(hashed_features) # Hashed features 
+
 
 # 12. M-Estimate Encoder
 %%time
