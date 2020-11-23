@@ -14,9 +14,6 @@
 # Last phase: Host ML model from local to an external web server
 
 
-
-
-
 ### Save Model as pickle file
 import pickle
 pickle.dump(clf, open('models/final_prediction.pickle', 'wb'))
@@ -24,6 +21,19 @@ pickle.dump(clf, open('models/final_prediction.pickle', 'wb'))
 # You can then open this pickle file later and call the function predict to get a prediction for new input data. 
 # This is exactly what we will do in Flask.
 
+# Load model
+from sklearn.externals import joblib
+import os
+# save models to be deployed on your server
+if not os.path.exists('Model'):
+    os.mkdir('Model')
+if not os.path.exists('Scaler'):
+    os.mkdir('Scaler') 
+joblib.dump(model, r'Model/model.pickle') 
+joblib.dump(ss, r'Scaler/scaler.pickle')
+# load model and scaler objects
+model = joblib.load(r'Model/model.pickle')
+scaler = joblib.load(r'Scaler/scaler.pickle')
 
 
 ########## Jupyter - repl GUI ##########
