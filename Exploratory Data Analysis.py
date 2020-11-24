@@ -933,12 +933,14 @@ Df['Var'] = (Df.EndDate-Df.StartDate)
 # Overall Difference in Days, hours, seconds, mins
 Df['Var'] = (Df.EndDatee-Df.StartDate)
 # Difference In days
-Df['Var'] = (Df.EndDate-Df.StartDate).dt.days
-# Difference In Seconds
-Df['Var'] = (Df.EndDate-Df.StartDate).dt.seconds
+Df['Var'] = (Df.EndDate-Df.StartDate).astype('timedelta64[D]')
+# Difference In Seconds 
+Df['Var'] = (Df.EndDate-Df.StartDate).astype('timedelta64[s]')
 # Difference In Minutes
+Df['Var'] = (Df.EndDate-Df.StartDate).astype('timedelta64[m]')
 Df['Var'] = ((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60)
 # Difference In hours
+Df['Var'] = (Df.EndDate-Df.StartDate).astype('timedelta64[h]')
 Df['Var'] = (((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60))/60
 # Difference between 2 dates in Years
 ((((Df['Var1']) - (Df['Var2']))/(np.timedelta64(1,'Y'))).astype('str')).astype('float')                 
