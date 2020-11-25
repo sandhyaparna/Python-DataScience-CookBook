@@ -299,8 +299,9 @@ def SummaryTable(df):
     print(display(df.head(5)))
     print("\n","BOTTOM FEW OBSERVATIONS:")
     print(display(df.tail(5)))
-    print("\n","SUMMARY of Quantitative Data:")
-    print(display(df.describe()),"\n")
+    print("\n","Number of Quantitative & DateTime variables = ",df.select_dtypes(include = [np.number,np.datetime64]).shape[1])
+    print("\n","SUMMARY of Quantitative & DateTime Data:")
+    print(display(df.describe(datetime_is_numeric=True)),"\n")
     summary = pd.DataFrame(df.dtypes,columns=['DataType'])
     summary = summary.reset_index()
     summary['VariableName'] = summary['index']
@@ -317,12 +318,20 @@ def SummaryTable(df):
 #     for name in summary['VariableName'].value_counts().index:
 #         summary.loc[summary['VariableName'] == name, 'Entropy'] = round(stats.entropy(df[name].value_counts(normalize=True), base=2),2) 
     categorical_features = df.select_dtypes(include = np.object)
-    print("Frequency of Categorical Data:","\n")
+    print("\n","Number of Categorical variables = ",df.select_dtypes(include = np.object).shape[1])
+    print("\n","Frequency of Categorical Data:","\n")
     for i in categorical_features.columns:
         print(i + ":" + str(categorical_features[i].nunique()))
         print(categorical_features[i].value_counts())
         print('\n')
     
+    boolean_features = df.select_dtypes(include = np.bool)
+    print("\n","Number of Boolean variables = ",df.select_dtypes(include = np.bool).shape[1])
+    print("\n","Frequency of Boolean  Data:","\n")
+    for i in boolean_features.columns:
+        print(boolean_features[i].value_counts())
+        print('\n')
+  
     return summary
 #
   SummaryTable(X_train) 
