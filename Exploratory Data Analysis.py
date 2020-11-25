@@ -954,6 +954,21 @@ Df['Var'] = (((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60))/60
 # Difference between 2 dates in Years
 ((((Df['Var1']) - (Df['Var2']))/(np.timedelta64(1,'Y'))).astype('str')).astype('float')                 
 
+# Code  Meaning
+# Y year
+# M month
+# W week
+# D day
+# Time span (relative)
+# h hour
+# m minute
+# s second
+# ms millisecond
+# us microsecond
+# ns nanosecond
+# ps picosecond
+# fs femtosecond
+# as attosecond
                        
 # Get Year, month, date, day, week_day, day of week, day of year etc
 df.Var.dt.year
