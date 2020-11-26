@@ -108,6 +108,18 @@ CharFeatures = list(Df_X.select_dtypes(include=['object']))
 Df_X_BinaryEncoder = ce.BinaryEncoder(cols=CharFeatures).fit(Df_X, Df_y)
 Df_X_BinaryEncoder = Bank_X_BinaryEncoder.transform(Df_X)
 
+
+### Replace missing values based on the categoriacl variable values correlation with Target variable
+data[['auto_model','fraud_reported']].groupby(['auto_model'], 
+                as_index = False).mean().sort_values(by = 'fraud_reported', ascending = False)
+# let's perform target encoding for auto make
+data['auto_make'] = data['auto_make'].replace(('3 Series','RSX','Malibu','Wrangler','Pathfinder','Ultima','Camry',
+                'Corolla','CRV','Legacy','Neon','95','TL','93','MDX','Accord','Grand Cherokee','Escape','E4000',
+            'A3','Highlander','Passat','92x','Jetta','Fusion','Forrestor','Maxima','Impreza','X5','RAM','M5','A5',
+                'Civic','F150','Tahaoe','C300','ML350','Silverado','X6'),
+                (0.95,0.91, 0.90,0.88,0.87,0.86,0.855,0.85,0.85,0.84,0.83,0.81,0.80,0.80,0.78,0.77,0.76,0.75,0.74,
+                 0.73,0.72,0.72,0.71,0.71,0.71,0.71,0.70,0.70,0.69,0.67,0.66,0.65,0.64,0.63,0.62,0.61,0.60,0.59,0.56))
+
 # 5. Helmert Encoding -
 # %%time
 # this method didn't work because of RAM memory. 
