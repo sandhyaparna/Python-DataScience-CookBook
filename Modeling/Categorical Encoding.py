@@ -1,5 +1,5 @@
 # https://www.kdnuggets.com/2016/08/include-high-cardinality-attributes-predictive-model.html
-  
+# https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02
   
 # Binary Features
   # Map Values
