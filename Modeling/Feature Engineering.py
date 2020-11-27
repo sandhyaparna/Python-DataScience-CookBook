@@ -2,8 +2,8 @@
 ### Standard scaler
 numeric_data = df.select_dtypes(include = np.number) 
 from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler().fit(X_train) #StandardScaler().fit(numeric_data)
-standardized_X = scaler.transform(X_train)
+scaler = StandardScaler() 
+standardized_X = scaler.fit_transform(X_train) #StandardScaler().fit(numeric_data)
 standardized_X_test = scaler.transform(X_test)
 
 ### Min-Max Scaler
