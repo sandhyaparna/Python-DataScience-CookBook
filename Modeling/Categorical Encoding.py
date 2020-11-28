@@ -3,11 +3,12 @@
   
 # Binary Features
   # Map Values
-# Low & High(a lot of unique values) Cardinality Nominal Features
+  
+# Low & High(a lot of unique values) Cardinality NOMINAL Features
   # Nominal - Hashing, LeaveOneOut, Target encoding (For regression - Target & LeaveOneOut won't work well)
   # High Cardinal Data - Target (Mean of DV), LeaveOneOut, WeightOfEvidence, 
   
-# Low & High(a lot of unique values) Cardinality Ordinal Features
+# Low & High(a lot of unique values) Cardinality ORDINAL Features
   # Oridinal, Binary, OneHot, LeaveOneOut, Target encoding
 # Cyclical Features - Day, week, month, year 
   # sin-cos features
