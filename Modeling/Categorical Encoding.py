@@ -1,5 +1,5 @@
 # https://www.kdnuggets.com/2016/08/include-high-cardinality-attributes-predictive-model.html
-# https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02
+# Look for image at bottom of the article in https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02
   
 # Binary Features
   # Map Values
@@ -17,9 +17,6 @@
 # On-Hot encoding works well for Non-Tree based models
 # Interactions of Cat features ( COncatenating & on-hot encoding) can help linear models & KNN
 # Label encoding is better than one-hot in tree based model when Cat feature is ordinal,no of categories is huge,  When we can come up with label encoder, that assigns close labels to similar (in terms of target) categories
-
-![](https://miro.medium.com/max/1375/0*NBVi7M3sGyiUSyd5.png)
-</br>
 
 ### Character variables encoding ###
 Df_X is data frame with features
