@@ -18,7 +18,8 @@
 # Interactions of Cat features ( COncatenating & on-hot encoding) can help linear models & KNN
 # Label encoding is better than one-hot in tree based model when Cat feature is ordinal,no of categories is huge,  When we can come up with label encoder, that assigns close labels to similar (in terms of target) categories
 
-![](https://miro.medium.com/max/1375/0*NBVi7M3sGyiUSyd5.png) </br>
+![](https://miro.medium.com/max/1375/0*NBVi7M3sGyiUSyd5.png)
+</br>
 
 ### Character variables encoding ###
 Df_X is data frame with features
