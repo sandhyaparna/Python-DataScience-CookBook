@@ -163,6 +163,15 @@ ord_4 = CategoricalDtype(categories=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
                                      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
                                      'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'], ordered=True)
 
+
+# Hashing
+# Hashing encoder uses the md5 hashing algorithm. A feature with 5 categories can be represented using N new features similarly, a feature with 100 categories can also be transformed using N new features. 
+import category_encoders as ce
+import pandas as pd
+encoder=ce.HashingEncoder(cols='Var',n_components=6)
+encoder.fit_transform(Df)
+
+
 # 11. Feature Hashing
 # Default is 8 columns
 # If number of features=12, feature hashing helps in capturing that 8 vars info in less number of variables
