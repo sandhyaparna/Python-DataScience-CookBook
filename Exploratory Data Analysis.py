@@ -725,6 +725,7 @@ df.sort_index()
 df.sort_values(by='Country')
 
 ### Convert data type of a var
+# Diff Data Types in Python https://numpy.org/doc/stable/user/basics.types.html
 # String/Character/object
 Df['Var1'] = Df['Var1'].astype('str')
 # Numeric - When a numeric variable has missing data it cannot be stored as int and should be stored as float
