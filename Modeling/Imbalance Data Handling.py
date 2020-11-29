@@ -1,4 +1,7 @@
 # https://imbalanced-learn.readthedocs.io/en/stable/api.html#module-imblearn.over_sampling
+# Below consists of SMOTE, SMOTENC, Borderline-SMOTE, SVM SMOTE, ADASYN
+# https://towardsdatascience.com/5-smote-techniques-for-oversampling-your-imbalance-data-b8155bdbe2b5
+
 # SMOTE
 from imblearn.over_sampling import SMOTE,ADASYN
 
