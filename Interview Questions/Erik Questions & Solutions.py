@@ -18,6 +18,24 @@ Active_stores['Fraud_Identifier'] = np.where(Active_stores.status=="fraud",1,0)
 Active_stores_Fraud = pd.DataFrame(Active_stores.groupby('date').agg({'Fraud_Identifier':['sum','count']})).reset_index()
 Active_stores_Fraud['Fraud_Percent'] = Active_stores_Fraud.sum/Active_stores_Fraud.count
 
+### Question
+# Calculating a moving average using Python. sliding window average. Get min and max average of the sliding windows
+# You are given a list of numbers J and a single number p. Write a function to return the minimum and maximum averages of the sequences of p numbers in J
+### Answer
+import numpy as np
+J = [4, 4, 4, 9, 10, 11, 12]
+p = 3
+J = np.sort(J,axis=None)
+n = len(J)
+min_max_array = []
+for i in [0,n-p]:
+  min_max = np.mean(J[i:][0:p])
+  min_max_array.append(min_max)
+min_max_array
+
+
+
+
 
 
 
