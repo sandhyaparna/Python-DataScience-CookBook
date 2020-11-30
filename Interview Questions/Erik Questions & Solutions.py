@@ -33,6 +33,22 @@ for i in [0,n-p]:
 min_max_array
 
 
+### Question 4 - Active users on a messaging application
+# The table contains send/receive message data for the application's users, and has the following schema:
+# time_stamp(#timestamp, epoch seconds)	
+# sender_id(# id of the message sender)	
+# receiver_id(# id of the message receiver)
+# What fraction of active users communicated with at least 15 unique people on March 1, 2018?
+### Answer
+# Caller A might call Caller B multiple times. If caller D calls A but not otherwise even then it is considered that A has communicated with B
+Message['time_stamp_Date'] = Message.time_stamp.dt.date #convert datetime to date var
+sender_to_receiver = Message.rename(columns={"sender_id":"Communication1","receiver_id":"Communication2"})
+receiver_to_sender = Message.rename(columns={"receiver_id":"Communication1","sender_id":"Communication2"})
+# This is we are counting both ways. If actual in Message are A-B,D-A.
+# Communication will produce A-B, D-A, B-A(left to right of A-B is generated), A-D(left to right of D-A is generated)
+Communication = pd.concat([sender_to_receiver,receiver_to_sender],axis=1).drop_duplicates()
+calculate count distinct per user and extract who has more than 15 unique users
+
 
 
 
