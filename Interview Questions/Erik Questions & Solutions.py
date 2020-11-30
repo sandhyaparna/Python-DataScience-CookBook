@@ -16,7 +16,7 @@
 Active_stores =  store_account[store_account.revenue>0]
 Active_stores['Fraud_Identifier'] = np.where(Active_stores.status=="fraud",1,0)
 Active_stores_Fraud = pd.DataFrame(Active_stores.groupby('date').agg({'Fraud_Identifier':['sum','count']})).reset_index()
-Active_stores_Fraud['Fraud_Percent'] = Active_stores_Fraud.
+Active_stores_Fraud['Fraud_Percent'] = Active_stores_Fraud.sum/Active_stores_Fraud.count
 
 
 
