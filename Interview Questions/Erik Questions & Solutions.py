@@ -49,6 +49,21 @@ receiver_to_sender = Message.rename(columns={"receiver_id":"Communication1","sen
 Communication = pd.concat([sender_to_receiver,receiver_to_sender],axis=1).drop_duplicates()
 calculate count distinct per user and extract who has more than 15 unique users
 
+### Question 5 - Employee survey results
+# If a question per employee has multiple actions at different timestamps i.e a person will first view, then answer or view and skip
+# And a skipped quesion might again appear (does a unanswered question reappear from random sample?)
+# Response rate = Number of people who answered / Number of people who got the question
+select TOP 1 A.questionID, 
+from (select questionID, count(DISTINCT employee_id) as CountEmp
+from survey_logging
+group by questionID) as A LEFT JOIN
+(select questionID, isnull(count(DISTINCT employee_id),0) as CountEmpAnswered
+from survey_logging 
+group by questionID
+HAVING action='answer') as B
+ON A.questionID=B.questionID
+order by (CountEmpAnswered/CountEmp)
+
 
 
 
