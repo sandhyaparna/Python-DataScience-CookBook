@@ -87,7 +87,7 @@ for i in range(0,len(Q)):
   min_Diff_array = np.min(Diff_array)
   Nearest_to_j = [Q[j] for j in range(0,len(Diff_array)) if Diff_array[j]==min_Diff_array]
 
-
+### Question 13 - Cleaning and analyzing employee data
 
 
 
