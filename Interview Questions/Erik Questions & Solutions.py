@@ -76,7 +76,16 @@ group by date, grade_level
 HAVING date='2018-03-12') as P
 
 ### Question 12 - Finding the value closest to 0
-
+# You are given a list of Q 1D points, return the value in Q that is the closest to value j.
+# Q = [1, -1, -5, 2, 4, -2, 1] ; j = 3
+# We would return two values in this case: 2, 4
+import numpy as np
+Q = np.sort(Q,axis=None)
+Diff_array = []
+for i in range(0,len(Q)):
+  Diff_array.append(np.absolute(Q[i]-j))
+  min_Diff_array = np.min(Diff_array)
+  Nearest_to_j = [Q[j] for j in range(0,len(Diff_array)) if Diff_array[j]==min_Diff_array]
 
 
 
