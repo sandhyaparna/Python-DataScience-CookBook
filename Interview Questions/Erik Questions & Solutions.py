@@ -68,12 +68,24 @@ order by (CountEmpAnswered/CountEmp)
 # self join such that A.receiver_id=B.sender_id AND B.receiver_id=A.sender_id AND A.timestamp<=B.timestamp
 # Extract B.timestamp-A.timestamp to check if it is less than 5 mins
 
-
 ### Question 10 - Calculating student attendance using SQL
 select grade_level, sum(PresentStatus)/count(PresentStatus) as OverallAttendanceRate
 from (select date, grade_level, (case when attendance_status IN ('present', 'tardy') then 1 else 0 end) as PresentStatus
 from student_attendance_log as A LEFT JOIN student_demographic as B ON A.student_id=B.student_id
 group by date, grade_level
 HAVING date='2018-03-12') as P
+
+### Question 12 - Finding the value closest to 0
+
+
+
+
+
+
+
+
+
+
+
 
 
