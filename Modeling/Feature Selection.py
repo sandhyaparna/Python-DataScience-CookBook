@@ -3,6 +3,8 @@
 # https://github.com/Sundar0989/WOE-and-IV/blob/master/WOE_IV.ipynb
 # https://www.analyticsvidhya.com/blog/2018/08/dimensionality-reduction-techniques-python/
 
+# https://machinelearningmastery.com/feature-selection-with-categorical-data/
+
 ### Feature selection on Categorical vars:
 # chi-sq: Between Dependent and Independent vars
 fs = SelectKBest(score_func=chi2, k='all')
