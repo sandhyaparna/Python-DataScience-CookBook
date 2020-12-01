@@ -64,7 +64,9 @@ HAVING action='answer') as B
 ON A.questionID=B.questionID
 order by (CountEmpAnswered/CountEmp)
 
-
+### Question 9 - Time for a response on a messaging application
+# self join such that A.receiver_id=B.sender_id AND B.receiver_id=A.sender_id AND A.timestamp<=B.timestamp
+# Extract B.timestamp-A.timestamp to check if it is less than 5 mins
 
 
 
