@@ -223,6 +223,20 @@ data = encode(data, 'month', 12)
 data = encode(data, 'hr', 23)
 data = encode(data, 'year', 365)
 
+### If test data don't have all values available in Train data for categorical variable and we apply same encoding as done on the Train data, it might not produce all variables.
+# For eg: if Train data has values US, India, Mexico in Train data but only US and India in Test data applying one-hot encoding on Test data might not produce all variables produced in train data
+# In such scenarios create missing variables with values=0 for them
+# add missing categorical feature columns
+# current_categorical_engineered_features correspond to categorical variables produced after applying dummy encoding and removing Numeric vars
+current_categorical_engineered_features = set(prediction_features.columns) - set(numeric_feature_names)
+# missing_features correspond to dummy encoded vars that are in Train data but not in Test data
+missing_features = set(categorical_engineered_features) - current_categorical_engineered_features
+# Generating missing features with 0s as values
+for feature in missing_features:
+    # add zeros since feature is absent in these data samples
+    prediction_features[feature] = [0] * len(prediction_features) 
+
+    
 #### Apply different encoding techniques simultaneously -https://www.kaggle.com/subinium/11-categorical-encoders-and-benchmark#1.-Label-Encoder-(LE),-Ordinary-Encoder(OE)
 %%time
 import gc
