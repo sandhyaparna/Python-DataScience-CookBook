@@ -39,7 +39,8 @@ select results from (select Top 1 B.title as results,MONTH(created_at) as Month,
 -- To get floating number/value when applying aggregate functions
 cast(A.rating as float)
 
-
+-- Select top n rows
+select Top 1 * from Table
 
 
 
