@@ -27,7 +27,7 @@ import os
 # save models to be deployed on your server
 if not os.path.exists('Model'):
     os.mkdir('Model')
-if not os.path.exists('Scaler'):
+if not os.path.exists('Scaler'): # Saving scaler transformation to apply on Numeric features
     os.mkdir('Scaler') 
 joblib.dump(model, r'Model/model.pickle') 
 joblib.dump(ss, r'Scaler/scaler.pickle')
