@@ -15,15 +15,29 @@ where Var LIKE '[A-E]%' -- If first charcter is in range of A throug E
 where Var LIKE '[^A-E]%' -- Negation -  If first charcter is NOT in range of A throug E
 where Var LIKE '%30!%%'  ESCAPE '!' -- If row has 30%. ! is used as escape character to find % within a var
 
+-- Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
+string_agg(product,',') WITHIN GROUP (ORDER BY product) as products
 
+-- Creating new variable or CASE statement
+(case 
+    when operation='Buy' then -1*price -- 
+    else price
+END) as New_Var
 
+-- self looping employee-Manager
+-- keep doing left join based on the needed number of times
 
+-- when using order by with in sub query using sql server/T-sql
+-- Find the name of the user who has rated the greatest number of movies.
+-- In case of a tie, return lexicographically smaller user name.
+-- Find the movie name with the highest average rating in February 2020.
+-- In case of a tie, return lexicographically smaller movie name.
+select * from (select Top 1 B.name as results from Movie_Rating as A LEFT JOIN Users as B On A.user_id=B.user_id group by B.name order by count(DISTINCT movie_id) DESC, B.name) as X
+UNION ALL
+select results from (select Top 1 B.title as results,MONTH(created_at) as Month,YEAR(created_at) as Year from Movie_Rating as A LEFT JOIN Movies as B  On A.movie_id=B.movie_id  group by B.title,MONTH(created_at),YEAR(created_at) having MONTH(created_at)=2 AND YEAR(created_at)=2020 order by avg(cast(A.rating as float)) DESC, B.title) as Y
 
-
-
-
-
-
+-- To get floating number/value when applying aggregate functions
+cast(A.rating as float)
 
 
 
