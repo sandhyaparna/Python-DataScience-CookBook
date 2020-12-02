@@ -44,6 +44,7 @@ select Top 1 * from Table
 
 -- to check consecutive values within a variable as in For loop. Use LEAD for next value
 -- Use LAG for previous value
+-- If we have to check for 3 consecutive values, calculate next and Second next. so we can compare current num, next num and second next num
 LEAD(Num,1) OVER (ORDER BY ID) as NextNum -- LEAD of value in Num variable within ID variable by 1 row
 LEAD(Num,2) OVER (ORDER BY ID) as NextNum -- LEAD of value in Num variable within ID variable by 2 rows --second next value
 LAG(total_sale) OVER(ORDER BY year) AS previous_total_sale  -- LAG/previous value of total_sale within year variable
