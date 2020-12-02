@@ -64,6 +64,18 @@ HAVING action='answer') as B
 ON A.questionID=B.questionID
 order by (CountEmpAnswered/CountEmp)
 
+### Question 8 - Checking whether elements in array can be made equal through multiplication
+# Given an array arr[], write a function to feed in the array elements check whether they can all be made equal by only multiplying the numbers by 2 or 7. (you can multiply by these #s as many times as you like)
+# If all elements can be made equal, return False, otherwise return True.
+# Example:arr[ ] = [128, 4, 2]
+# 128, 4*2*2*2*2*2 = 128, 2*2*2*2*2*2*2 = 128
+# -- True
+# arr[ ] = [65, 4, 2]
+# -- False
+### Answer
+Find prime factoriztion of that number and check if the values are only 2 or 7 
+https://paulrohan.medium.com/prime-factorization-of-a-number-in-python-and-why-we-check-upto-the-square-root-of-the-number-111de56541f
+
 ### Question 9 - Time for a response on a messaging application
 # self join such that A.receiver_id=B.sender_id AND B.receiver_id=A.sender_id AND A.timestamp<=B.timestamp
 # Extract B.timestamp-A.timestamp to check if it is less than 5 mins
