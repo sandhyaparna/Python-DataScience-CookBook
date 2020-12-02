@@ -18,7 +18,7 @@ def powersofTwoBetwXY(x,y):
     x = pow(2,i) 
     powersofTwo.append(x)
   print(powersofTwo)
-# powersofTwoBetwXY(3,19)
+powersofTwoBetwXY(3,19)
 # Output: [4, 8, 16]
 
   
