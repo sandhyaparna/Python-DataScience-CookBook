@@ -11,8 +11,8 @@ for i in range(1,6):
 x = 3
 y = 19
 def powersofTwoBetwXY(x,y):
-  p=np.int(np.ceil(math.log2(x)))
-  q=np.int(np.ceil(math.log2(y)))
+  p=np.int(np.ceil(math.log2(x))) # nearest power of 2 for x. in this eg: nearest power of 2 for 3 is 4. exponent of 4 for 2 power is 2
+  q=np.int(np.ceil(math.log2(y))) 
   powersofTwo = []
   for i in range(p,q):
     x = pow(2,i) 
