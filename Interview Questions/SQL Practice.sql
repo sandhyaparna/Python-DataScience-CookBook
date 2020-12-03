@@ -116,6 +116,15 @@ minute, mi, n = Minute
 second, ss, s = Second
 millisecond, ms = Millisecond
  
- 
+-- Generating FirstMonth of date between any 2 given dates
+declare @pStartDate date = '01/01/2020'
+declare @pEndDate date   = '12/31/2020'
+;with FirstDayOfMonth as(
+    select @pStartDate as [firstDayOfMonth]
+    union all
+-- Generating first days of consecutive months
+    (select DATEADD(month, 1, [firstDayOfMonth]) from FirstDayOfMonth
+    where DATEADD(month, 1, [firstDayOfMonth]) < @pEndDate))
+select * from FirstDayOfMonth -- this statement is imp as runing only the code above it gives error
  
 
