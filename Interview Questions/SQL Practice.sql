@@ -163,6 +163,7 @@ select * from (select Top 2147483647 * from B order by Date) XY
 
 -- declare a variable and use it near Top. Declared variable should be in brackets
 -- cal total scores of all players
+DECLARE @Top int = (select count(*) as rows from Players);
 DECLARE @Top int = (select max(rows) from (select count(*) as rows from Players) as xy); -- Extracting number of rows in Players table
 select * from (select Top (@Top) * from A order by Date) AB
 
