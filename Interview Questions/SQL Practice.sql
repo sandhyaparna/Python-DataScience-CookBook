@@ -65,7 +65,7 @@ EXAMPLES
 datepart	Return value
 year, yyyy, yy	2007
 quarter, qq, q	4
-month, mm, m	October
+month, mm, m	10 --Gives month as Number
 dayofyear, dy, y	303
 day, dd, d	30
 week, wk, ww	44
@@ -79,10 +79,43 @@ nanosecond, ns	123456700
 TZoffset, tz	+05:10
 ISO_WEEK, ISOWK, ISOWW	44
                                               
+-- Generate numbers between 0 and N --sql server
+SELECT DISTINCT number
+FROM master..spt_values
+WHERE number BETWEEN 0 AND N
                                               
-                                              
-
-
-
-
+-- Generate numbers between 0 & max value obtained from a subquery
+SELECT DISTINCT number
+FROM master..spt_values
+WHERE number BETWEEN 0 AND (select Top 1 ISNULL(count(transaction_date),0)  
+-- Max of count(transaction_date)
+(select Top 1 ISNULL(count(transaction_date),0)  
+                            
+-- Declare variables
+DECLARE @variable_name datatype [ = initial_value ],
+@variable_name datatype [ = initial_value ],
+@variable_name datatype [ = initial_value ],
+;
+-- Declare string variable with initial value
+DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable';
+-- Declare date variable with initial value
+declare @pStartDate date = '01/01/2020'
+ 
+-- Add months, days to date variable  DATEADD(interval, number, date)
+DATEADD(year, 1, '2017/08/25') -- Adding 1 year to '2017/08/25'
+-- Negative number implies subtraction
+year, yyyy, yy = Year
+quarter, qq, q = Quarter
+month, mm, m = month
+dayofyear, dy, y = Day of the year
+day, dd, d = Day
+week, ww, wk = Week
+weekday, dw, w = Weekday
+hour, hh = hour
+minute, mi, n = Minute
+second, ss, s = Second
+millisecond, ms = Millisecond
+ 
+ 
+ 
 
