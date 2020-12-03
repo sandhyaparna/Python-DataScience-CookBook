@@ -108,7 +108,7 @@ DECLARE @variable_name datatype [ = initial_value ],
 @variable_name datatype [ = initial_value ],
 ;
 -- Declare string variable with initial value
-DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable';
+DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable'; --DECLARE @techonthenet VARCHAR(max) -- use max instead of mentioning a number
 -- Declare date variable with initial value
 declare @pStartDate date = '01/01/2020'
  
@@ -159,7 +159,10 @@ select * from (select Top 2147483647 * from A order by Date) AB
 UNION ALL 
 select * from (select Top 2147483647 * from B order by Date) XY
 
-
+-- declare a variable and use it near Top. Declared variable should be in brackets
+-- cal total scores of all players
+DECLARE @Top int = (select max(rows) from (select count(*) as rows from Players) as xy); -- Extracting number of rows in Players table
+select * from (select Top (@Top) * from A order by Date) AB
 
 
 
