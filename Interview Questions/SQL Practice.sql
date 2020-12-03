@@ -38,6 +38,17 @@ select results from (select Top 1 B.title as results,MONTH(created_at) as Month,
 
 -- To get floating number/value when applying aggregate functions
 cast(A.rating as float)
+cast(working_percentage as numeric(36,2)) -- Creating 2 decimal places for 0 also i.e produces 0.00
+FORMAT(number, decimal_places) # coverts to a number with specified number of decimal places
+
+-- The CAST() function converts a value (of any type) into a specified datatype.
+SELECT CAST(25.65 AS varchar);
+SELECT CAST('2017-08-25' AS datetime);
+
+-- Format https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql?view=sql-server-ver15
+-- Returns a value formatted with the specified format and optional culture
+FORMAT( value, format [, culture ] )  
+FORMAT(number, decimal_places) #Converts numbers to float with specified number of decimal places
 
 -- Select top n rows
 select Top 1 * from Table
@@ -122,9 +133,16 @@ declare @pEndDate date   = '12/31/2020'
 ;with FirstDayOfMonth as(
     select @pStartDate as [firstDayOfMonth]
     union all
--- Generating first days of consecutive months
+-- Generating first dates of consecutive months
     (select DATEADD(month, 1, [firstDayOfMonth]) from FirstDayOfMonth
     where DATEADD(month, 1, [firstDayOfMonth]) < @pEndDate))
 select * from FirstDayOfMonth -- this statement is imp as runing only the code above it gives error
  
+-- End of Month i.e last day of the month based on a date
+EOMONTH('2007-10-25') --Gives '2007-10-31'
+
+
+
+
+
 
