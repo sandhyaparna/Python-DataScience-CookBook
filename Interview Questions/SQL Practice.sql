@@ -154,6 +154,10 @@ sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 2 PRECEDING AND 
 -- In below code current and previous 3 rows are used
 sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) as Salary
 
+-- Use order by when using UNION ALL
+select * from (select Top 2147483647 * from A order by Date) AB
+UNION ALL 
+select * from (select Top 2147483647 * from B order by Date) XY
 
 
 
