@@ -141,6 +141,14 @@ select * from FirstDayOfMonth -- this statement is imp as runing only the code a
 -- End of Month i.e last day of the month based on a date
 EOMONTH('2007-10-25') --Gives '2007-10-31'
 
+-- Ranking methods
+ROW_NUMBER() OVER( ORDER BY Student_Score) --Generates 1,2,3,4 without duplicates or gaps even if Student_Score is same
+-- Student_Score is 770,770,770, 885, 900, 900, 1001 below code generates 1,1,1,4,5,5,7
+RANK ()  OVER( ORDER BY Student_Score) --Generates dupliactes but misses the next numbers based on the duplicates
+DENSE_RANK() OVER(ORDER BY Student_Score) -- Student_Score is 770,770,770, 885, 900, 900, 1001  geenrates 1,1,1,2,3,3,4
+
+![](http://codingsight.com/wp-content/uploads/2017/12/11.png)
+
 
 
 
