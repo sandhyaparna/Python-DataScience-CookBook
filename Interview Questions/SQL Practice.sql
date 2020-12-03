@@ -139,6 +139,7 @@ declare @pEndDate date   = '12/31/2020'
     (select DATEADD(month, 1, [firstDayOfMonth]) from FirstDayOfMonth
     where DATEADD(month, 1, [firstDayOfMonth]) < @pEndDate))
 select * from FirstDayOfMonth -- this statement is imp as runing only the code above it gives error
+option (maxrecursion 0)
  
 -- End of Month i.e last day of the month based on a date
 EOMONTH('2007-10-25') --Gives '2007-10-31'
