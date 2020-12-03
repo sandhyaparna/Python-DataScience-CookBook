@@ -45,13 +45,42 @@ select Top 1 * from Table
 -- to check consecutive values within a variable as in For loop. Use LEAD for next value
 -- Use LAG for previous value
 -- If we have to check for 3 consecutive values, calculate next and Second next. so we can compare current num, next num and second next num
-LEAD(Num,1) OVER (ORDER BY ID) as NextNum -- LEAD of value in Num variable within ID variable by 1 row
-LEAD(Num,2) OVER (ORDER BY ID) as NextNum -- LEAD of value in Num variable within ID variable by 2 rows --second next value
+LEAD(Num,1) OVER (PARTITION BY ID ORDER BY Num) as NextNum -- LEAD of value in Num variable within ID variable by 1 row
+LEAD(Num,2) OVER (PARTITION BY ID ORDER BY Num) as NextNum -- LEAD of value in Num variable within ID variable by 2 rows --second next value
 LAG(total_sale) OVER(ORDER BY year) AS previous_total_sale  -- LAG/previous value of total_sale within year variable
 
+-- IS NULL to 0
+COALESCE(spampostsremoved,0) -- COALESCE is used in MySQL
+ISNULL(spampostsremoved,0) -- ISNULL is used in SQL server/T-sql
 
+-- Creating weeknames manually for pivoting
+pivot (max(overall_quantity) for WEEKNAME IN (MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY)) pvt
 
-
+-- Date times DATENAME ( datepart , date )  
+DATENAME(dw, DateVar) -- Returns Weekname i.e Sunday, Monday etc
+--  Example. If datepart is year or yyyy or yy mentioned, year of the date is returned
+SELECT DATENAME(datepart,'2007-10-30 12:15:32.1234567 +05:10');
+Here is the result set.
+EXAMPLES
+datepart	Return value
+year, yyyy, yy	2007
+quarter, qq, q	4
+month, mm, m	October
+dayofyear, dy, y	303
+day, dd, d	30
+week, wk, ww	44
+weekday, dw	Tuesday
+hour, hh	12
+minute, n	15
+second, ss, s	32
+millisecond, ms	123
+microsecond, mcs	123456
+nanosecond, ns	123456700
+TZoffset, tz	+05:10
+ISO_WEEK, ISOWK, ISOWW	44
+                                              
+                                              
+                                              
 
 
 
