@@ -148,6 +148,11 @@ RANK ()  OVER( ORDER BY Student_Score) --Generates dupliactes but misses the nex
 DENSE_RANK() OVER(ORDER BY Student_Score) -- Student_Score is 770,770,770, 885, 900, 900, 1001  geenrates 1,1,1,2,3,3,4
 NTILE(n) Creates n number of groups
 
+-- Cumulative sum of last 3 rows
+-- Cumulative sum of salary with id var ordered by Month within id and last 3 rows (current & previous 2 rows) are used to calculate cumulative sum
+sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) as Salary
+-- In below code current and previous 3 rows are used
+sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) as Salary
 
 
 
