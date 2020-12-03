@@ -40,6 +40,8 @@ select results from (select Top 1 B.title as results,MONTH(created_at) as Month,
 cast(A.rating as float)
 cast(working_percentage as numeric(36,2)) -- Creating 2 decimal places for 0 also i.e produces 0.00
 FORMAT(number, decimal_places) # coverts to a number with specified number of decimal places
+-- cast should be applied on all numbers
+cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
 
 -- The CAST() function converts a value (of any type) into a specified datatype.
 SELECT CAST(25.65 AS varchar);
