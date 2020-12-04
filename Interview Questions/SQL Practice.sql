@@ -167,6 +167,8 @@ DECLARE @variable_name datatype [ = initial_value ],
 DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable'; --DECLARE @techonthenet VARCHAR(max) -- use max instead of mentioning a number
 -- Declare date variable with initial value
 declare @pStartDate date = '01/01/2020'
+DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042'; -- declare datetime var
+
  
 -- Add months, days to date variable  DATEADD(interval, number, date)
 DATEADD(year, 1, '2017/08/25') -- Adding 1 year to '2017/08/25'
@@ -239,5 +241,7 @@ select * from (select Top (@Top) * from A order by Date) AB
 
 -- Current date time
 NOW()
+GETDATE()
+SYSDATETIME()
 
 
