@@ -1,4 +1,4 @@
--- Missing in where statement
+e-- Missing in where statement
 where Var IS NULL
 
 -- IN in where
