@@ -224,5 +224,7 @@ select * from (select Top (@Top) * from A order by Date) AB
 
 -- To calculate duplicates in data. Use count(*) by the interested columns
 
+-- Current date time
+NOW()
 
 
