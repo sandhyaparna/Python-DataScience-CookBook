@@ -70,6 +70,9 @@ ISNULL(spampostsremoved,0) -- ISNULL is used in SQL server/T-sql
 -- This works even when any of the weekname is not in the data but when all weeknames are needed
 pivot (max(overall_quantity) for WEEKNAME IN (MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY)) pvt
 
+-- Case statement can also be used to pivot 
+https://avaldes.com/pivot_using_case/
+
 -- Date times DATENAME ( datepart , date )  
 DATENAME(dw, DateVar) -- Returns Weekname i.e Sunday, Monday etc
 --  Example. If datepart is year or yyyy or yy mentioned, year of the date is returned
