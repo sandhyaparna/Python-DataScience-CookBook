@@ -245,6 +245,7 @@ GETDATE()
 SYSDATETIME()
 
 -- Create temporary table # for temp, ## for global temp
+DROP TABLE #student (to make sure #student is not there)
 CREATE TABLE #student
 (   id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -263,5 +264,9 @@ VALUES (1, 'Jolly', 'Female', 20, 500),
 (9, 'Wise', 'Male', 21, 499), 
 (10, 'Elis', 'Female', 27, 400);
 select * from #student
+
+-- Difference between UNION and UNION ALL
+UNION selects only distinct values
+UNION ALL selects all the values
 
 
