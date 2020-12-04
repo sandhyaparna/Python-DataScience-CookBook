@@ -15,6 +15,21 @@ where Var LIKE '[A-E]%' -- If first charcter is in range of A throug E
 where Var LIKE '[^A-E]%' -- Negation -  If first charcter is NOT in range of A throug E
 where Var LIKE '%30!%%'  ESCAPE '!' -- If row has 30%. ! is used as escape character to find % within a var
 
+-- string cleaning functions
+LEFT(string, number of characters)
+RIGHT(string, number of characters)
+LENGTH(string)
+TRIM function is used to remove characters from the beginning and end of a string
+POSITION allows you to specify a substring, then returns a numerical value equal to the character number (counting from left) where that substring first appears in the target string. 
+POSITION('A' IN descript) -- First position in descript column where A appears
+STRPOS(descript, 'A') -- Similar to POSITION but not needed to use IN 
+UPPER 
+LOWER 
+SUBSTR(*string*, *starting character position*, *# of characters*)
+CONCAT -- combine strings from several columns together
+Instead of concat function use || to join strings -- eg: "I am" || "Sandy"
+
+
 -- Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
 string_agg(product,',') WITHIN GROUP (ORDER BY product) as products
 
@@ -73,7 +88,7 @@ pivot (max(overall_quantity) for WEEKNAME IN (MONDAY,TUESDAY,WEDNESDAY,THURSDAY,
 -- Case statement can also be used to pivot 
 https://avaldes.com/pivot_using_case/
 
--- Date times DATENAME ( datepart , date )  
+-- Date times DATENAME ( datepart , date )  -- returns result as CHARACTER string
 DATENAME(dw, DateVar) -- Returns Weekname i.e Sunday, Monday etc
 --  Example. If datepart is year or yyyy or yy mentioned, year of the date is returned
 SELECT DATENAME(datepart,'2007-10-30 12:15:32.1234567 +05:10');
@@ -95,7 +110,42 @@ microsecond, mcs	123456
 nanosecond, ns	123456700
 TZoffset, tz	+05:10
 ISO_WEEK, ISOWK, ISOWW	44
-                                              
+ 
+-- Select data related variables. DATEPART() function was built specifically for returning specified parts of a date. 
+-- Returns return as Integer
+DAY(@date) AS DAY
+MONTH(@date) AS MONTH
+YEAR(@date) AS YEAR
+DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
+DATEPART(day, @date) AS DAY, -- 2
+DATEPART(weekday, @date) AS WEEKDAY,-- 7
+DATEPART(month, @date) AS MONTH,-- 6
+DATEPART(year, @date) AS YEAR;-- 2018
+
+-- FORMAT() 
+DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
+SELECT 
+    FORMAT(@date, 'd ') AS d,   -- 2
+    FORMAT(@date, 'dd') AS dd, -- 02
+    FORMAT(@date, 'ddd') AS ddd, -- Sat
+    FORMAT(@date, 'dddd') AS dddd; -- Saturday
+    FORMAT(@date, 'M ') AS M, -- 6
+    FORMAT(@date, 'MM') AS MM, -- 06
+    FORMAT(@date, 'MMM') AS MMM, -- Jun
+    FORMAT(@date, 'MMMMM') AS MMMM; --  June
+    FORMAT(@date, 'y ') AS y, -- 18
+    FORMAT(@date, 'yy') AS yy, -- 18
+    FORMAT(@date, 'yyy') AS yyy, -- 2018
+    FORMAT(@date, 'yyyy') AS yyyy, -- 2018
+    FORMAT(@date, 'yyyyy') AS yyyyy;  --  02018
+    FORMAT(@date, 'd ') AS 'Space', --  2
+    FORMAT(@date, 'd') AS 'No Space', -- 6/2/2018
+    FORMAT(@date, 'M ') AS 'Space', -- 6
+    FORMAT(@date, 'M') AS 'No Space', -- June 2
+    FORMAT(@date, 'y ') AS 'Space', -- 8
+    FORMAT(@date, 'y') AS 'No Space';  -- June 2018
+    
+    
 -- Generate numbers between 0 and N --sql server
 SELECT DISTINCT number
 FROM master..spt_values
@@ -171,6 +221,8 @@ select * from (select Top 2147483647 * from B order by Date) XY
 DECLARE @Top int = (select count(*) as rows from Players);
 DECLARE @Top int = (select max(rows) from (select count(*) as rows from Players) as xy); -- Extracting number of rows in Players table
 select * from (select Top (@Top) * from A order by Date) AB
+
+-- To calculate duplicates in data. Use count(*) by the interested columns
 
 
 
