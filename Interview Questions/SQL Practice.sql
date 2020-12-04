@@ -67,6 +67,7 @@ COALESCE(spampostsremoved,0) -- COALESCE is used in MySQL
 ISNULL(spampostsremoved,0) -- ISNULL is used in SQL server/T-sql
 
 -- Creating weeknames manually for pivoting
+-- This works even when any of the weekname is not in the data but when all weeknames are needed
 pivot (max(overall_quantity) for WEEKNAME IN (MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY)) pvt
 
 -- Date times DATENAME ( datepart , date )  
