@@ -1226,6 +1226,7 @@ except:
                        
 # Shuffle rows       
 Df = Df.sample(frac=1)
+Df = Df.sample(frac=1).reset_index(drop=True) #We reset the indices since they change after shuffling the dataframe
                        
 # Remove a column from a dataframe and store it as a seperate series
 New_Series = Df.pop('Var')
