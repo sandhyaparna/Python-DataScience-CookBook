@@ -273,6 +273,8 @@ UNION ALL selects all the values
 
 -- Negation 2 conditions in where (year and month not equal to Feb 20202)
 WHERE NOT ( EXTRACT(YEAR from A.rental_ts)=2020 AND EXTRACT(MONTH from A.rental_ts)=2 )
+-- Instead use date less than or equal to 31st Jan and greater than or equal to March 1st
+where rental_ts<='2020-01-31' AND rental_ts>='2020-03-01' -- Less Time complexity is involved
 
 -- Join 3 or more tables 
 SELECT *
@@ -281,3 +283,5 @@ LEFT JOIN film as C On B.film_id=C.film_id
 
 -- less than for Date in where
 where DateVar<'2020-02-01' ## YYYY-MM-DD format
+
+
