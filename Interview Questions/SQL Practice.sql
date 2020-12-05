@@ -230,6 +230,16 @@ AS     (SELECT 1 AS n -- anchor member
         WHERE  n < 50 -- terminator)
 SELECT n FROM   cte;
 
+-- Recursive example to generate all weekday names: Monday, Tuesday, Wednesday etc
+WITH cte_numbers(n, weekday) 
+AS (
+    SELECT  0, DATENAME(DW, 0)
+    UNION ALL
+    SELECT n + 1, DATENAME(DW, n + 1) FROM cte_numbers
+    WHERE n < 6 )
+SELECT  weekday
+FROM cte_numbers;
+
 -- For runtime error use Top 100 in select statement etc
 
 -- End of Month i.e last day of the month based on a date
