@@ -221,6 +221,15 @@ declare @pEndDate date   = '12/31/2020'
 select * from DaysOfMonth -- this statement is imp as runing only the code above it gives error
 option (maxrecursion 0)
 
+-- Recursive function to generate numbers between 1 to 50 
+WITH   cte
+AS     (SELECT 1 AS n -- anchor member
+        UNION ALL
+        SELECT n + 1 -- recursive member
+        FROM   cte
+        WHERE  n < 50 -- terminator)
+SELECT n FROM   cte;
+
 -- For runtime error use Top 100 in select statement etc
 
 -- End of Month i.e last day of the month based on a date
