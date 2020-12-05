@@ -315,5 +315,12 @@ SELECT
         LIMIT 1 OFFSET 1),
     NULL) AS SecondHighestSalary
 
+-- Second Highest etc
+LIMIT 1 OFFSET 1 --MySQL
+-- SQL SERVER
+order by Var -- Order by is mandatory
+OFFSET 1 ROW FETCH NEXT 1 ROW ONLY -- OFFSET clause specifies the number of rows to skip before starting to return rows from the query 
+OFFSET 5 ROWS FETCH NEXT 1 ROW ONLY -- FETCH clause specifies the number of rows to return after the OFFSET clause has been processed
+
 
 
