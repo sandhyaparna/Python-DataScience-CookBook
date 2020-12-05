@@ -274,6 +274,9 @@ UNION ALL selects all the values
 -- Negation 2 conditions in where (year and month not equal to Feb 20202)
 WHERE NOT ( EXTRACT(YEAR from A.rental_ts)=2020 AND EXTRACT(MONTH from A.rental_ts)=2 )
 
-
+-- Join 3 or more tables 
+SELECT *
+from rental as A LEFT JOIN inventory as B ON A.inventory_id=B.inventory_id
+LEFT JOIN film as C On B.film_id=C.film_id
 
 
