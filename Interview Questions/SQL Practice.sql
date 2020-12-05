@@ -299,6 +299,10 @@ where DateVar<'2020-02-01' ## YYYY-MM-DD format
 
 -- WHERE clause can be used before GROUP BY clause to restrict number of rows of the table in FROM clause
 
+-- Create INDEX for time efficiency
+CREATE INDEX NewTableThatIsSorted ON OriginalTable(VarToBeSortedOn DESC);
+
+
 
 
 
