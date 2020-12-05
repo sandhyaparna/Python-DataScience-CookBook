@@ -302,6 +302,9 @@ where DateVar<'2020-02-01' ## YYYY-MM-DD format
 -- Create INDEX for time efficiency
 CREATE INDEX NewTableThatIsSorted ON OriginalTable(VarToBeSortedOn DESC);
 
+-- Check for cost and run time (Time complexity) in MySQL
+explain analyze select * from Sales -- Doesn't work in SQL server
+
 
 
 
