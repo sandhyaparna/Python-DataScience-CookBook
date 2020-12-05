@@ -269,4 +269,4 @@ select * from #student
 UNION selects only distinct values
 UNION ALL selects all the values
 
-
+-- Not equal <>
