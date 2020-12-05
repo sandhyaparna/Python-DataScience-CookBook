@@ -305,7 +305,15 @@ CREATE INDEX NewTableThatIsSorted ON OriginalTable(VarToBeSortedOn DESC);
 -- Check for cost and run time (Time complexity) in MySQL
 explain analyze select * from Sales -- Doesn't work in SQL server
 
-
+-- Second Highest value in MySQL
+-- To generate actual 'null' in output write a select statment for the subquery table
+SELECT
+    IFNULL(
+      (SELECT DISTINCT Salary
+       FROM Employee
+       ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1),
+    NULL) AS SecondHighestSalary
 
 
 
