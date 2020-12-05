@@ -270,3 +270,10 @@ UNION selects only distinct values
 UNION ALL selects all the values
 
 -- Not equal <>
+
+-- Negation 2 conditions in where (year and month not equal to Feb 20202)
+WHERE NOT ( EXTRACT(YEAR from A.rental_ts)=2020 AND EXTRACT(MONTH from A.rental_ts)=2 )
+
+
+
+
