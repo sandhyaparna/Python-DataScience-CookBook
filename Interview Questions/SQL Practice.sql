@@ -279,4 +279,5 @@ SELECT *
 from rental as A LEFT JOIN inventory as B ON A.inventory_id=B.inventory_id
 LEFT JOIN film as C On B.film_id=C.film_id
 
-
+-- less than for Date in where
+where DateVar<'2020-02-01' ## YYYY-MM-DD format
