@@ -198,7 +198,7 @@ SELECT DATEDIFF(second,      '2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00
 SELECT DATEDIFF(millisecond, '2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00.0000000');
 SELECT DATEDIFF(microsecond, '2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00.0000000');
  
--- Generating FirstMonth of date between any 2 given dates
+-- Generating Firstday of all months between any 2 given dates
 declare @pStartDate date = '01/01/2020'
 declare @pEndDate date   = '12/31/2020'
 ;with FirstDayOfMonth as(
@@ -210,6 +210,19 @@ declare @pEndDate date   = '12/31/2020'
 select * from FirstDayOfMonth -- this statement is imp as runing only the code above it gives error
 option (maxrecursion 0)
  
+-- Generating all dates between 2 given dates
+declare @pStartDate date = '01/01/2020'
+declare @pEndDate date   = '12/31/2020'
+;with DaysOfMonth as(
+    select @pStartDate as [Day] --Creating varibale called Day
+    union all
+    (select DATEADD(day, 1, [Day]) from DaysOfMonth
+    where DATEADD(day, 1, [Day]) < @pEndDate) )
+select * from DaysOfMonth -- this statement is imp as runing only the code above it gives error
+option (maxrecursion 0)
+
+-- For runtime error use Top 100 in select statement etc
+
 -- End of Month i.e last day of the month based on a date
 EOMONTH('2007-10-25') --Gives '2007-10-31'
 
