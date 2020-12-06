@@ -209,6 +209,9 @@ declare @pEndDate date   = '12/31/2020'
     where DATEADD(month, 1, [firstDayOfMonth]) < @pEndDate))
 select * from FirstDayOfMonth -- this statement is imp as runing only the code above it gives error
 option (maxrecursion 0)
+
+--Last date of the month 
+ select EOMONTH(firstDayOfMonth) as LastDayofMonth  from FirstDayOfMonth
  
 -- Generating all dates between 2 given dates
 declare @pStartDate date = '01/01/2020'
