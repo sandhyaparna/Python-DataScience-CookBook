@@ -261,6 +261,9 @@ sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 2 PRECEDING AND 
 -- In below code current and previous 3 rows are used
 sum(Salary) over (PARTITION BY A.Id order by Month ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) as Salary
 
+-- Cimulative sum of current and next 2 rows i.e 3 rows in total
+sum(Salary) OVER (order by month ROWS BETWEEN CURRENT ROW AND 2 FOLLOWING)
+
 -- Use order by when using UNION ALL
 select * from (select Top 2147483647 * from A order by Date) AB
 UNION ALL 
