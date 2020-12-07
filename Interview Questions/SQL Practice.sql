@@ -230,7 +230,7 @@ AS     (SELECT 1 AS n -- anchor member
         UNION ALL
         SELECT n + 1 -- recursive member
         FROM   cte
-        WHERE  n < 50 -- terminator)
+        WHERE  n < 50 )-- terminator
 SELECT n FROM   cte;
 
 -- Recursive example to generate all weekday names: Monday, Tuesday, Wednesday etc
