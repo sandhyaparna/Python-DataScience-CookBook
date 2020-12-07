@@ -149,7 +149,17 @@ SELECT
     FORMAT(@date, 'y ') AS 'Space', -- 8
     FORMAT(@date, 'y') AS 'No Space';  -- June 2018
     
-    
+SELECT FORMAT (getdate(), 'dd/MM/yyyy ') as date	21/03/2018
+SELECT FORMAT (getdate(), 'dd/MM/yyyy, hh:mm:ss ') as date	21/03/2018, 11:36:14
+SELECT FORMAT (getdate(), 'dddd, MMMM, yyyy') as date	Wednesday, March, 2018
+SELECT FORMAT (getdate(), 'MMM dd yyyy') as date	Mar 21 2018
+SELECT FORMAT (getdate(), 'MM.dd.yy') as date	03.21.18
+SELECT FORMAT (getdate(), 'MM-dd-yy') as date	03-21-18
+SELECT FORMAT (getdate(), 'hh:mm:ss tt') as date	11:36:14 AM
+SELECT FORMAT (getdate(), 'd','us') as date    
+FORMAT(p.pay_date,'yyyy-MM') as pay_month
+
+
 -- Generate numbers between 0 and N --sql server
 SELECT DISTINCT number
 FROM master..spt_values
