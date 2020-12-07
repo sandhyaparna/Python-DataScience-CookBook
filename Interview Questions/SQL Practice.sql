@@ -374,7 +374,9 @@ a)Select Top 50 percent of data within each group and select Max value
 b)Select Bottom 50 percent of data within each group and select Min value
 cal avg of a & b within each group
 
-
+-- For decimal places 
+Apply CAST(var as decimal(10,4)) at each var within sub queries
+Var1+Var2/2.00 gives decimal places in the result
 
 
 
