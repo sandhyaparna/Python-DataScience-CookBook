@@ -67,6 +67,10 @@ SELECT CAST('2017-08-25' AS datetime);
 FORMAT( value, format [, culture ] )  
 FORMAT(number, decimal_places) #Converts numbers to float with specified number of decimal places
 
+-- Extract differenet dates format
+FORMAT(p.pay_date,'yyyy-MM')
+
+
 -- Select top n rows
 select Top 1 * from Table
 
