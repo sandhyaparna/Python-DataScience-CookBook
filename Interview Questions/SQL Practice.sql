@@ -368,5 +368,21 @@ first use ROUND and use CAST(VAR as int)
 -- use single quotes: 'true' or 'false'
 -- use CAST(1 AS BIT) to get true  CAST(0 AS BIT) to get false
 
+-- Calculate Median within each group
+Order data within each group by increasing order of values
+a)Select Top 50 percent of data within each group and select Max value
+b)Select Bottom 50 percent of data within each group and select Min value
+cal avg of a & b within each group
+
+
+
+
+
+
+
+
+
+
+
 
 
