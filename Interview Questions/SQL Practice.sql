@@ -347,7 +347,9 @@ OFFSET 5 ROWS FETCH NEXT 1 ROW ONLY -- FETCH clause specifies the number of rows
 -- Multiplication in case statement might give upto 2 decimals but to get integer
 first use ROUND and use CAST(VAR as int)
 
-
+-- to get true or false in CASE statement
+-- use single quotes: 'true' or 'false'
+-- use CAST(1 AS BIT) to get true  CAST(0 AS BIT) to get false
 
 
 
