@@ -378,6 +378,18 @@ cal avg of a & b within each group
 Apply CAST(var as decimal(10,4)) at each var within sub queries
 Var1+Var2/2.00 gives decimal places in the result
 
+-- self join
+select *
+from rest as A LEFT JOIN rest as B
+ON A.x>B.x AND A.x<B.x
+-- self join using 2 variables
+select A.x,A.y, B.x,B.y
+from rest as A LEFT JOIN rest as B
+ON (A.x<=B.x OR A.x>=B.x) AND (A.y<=B.y OR A.y>=B.y) 
+where NOT(A.x=B.x AND A.y=B.y) -- Removing the same observation on either side
+
+
+
 
 
 
