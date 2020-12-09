@@ -393,7 +393,8 @@ sqrt
 SQUARE 
 id%2 for MOD(id,2)
 
-
+-- Where this nor that but other
+where condition=Other OR NOT (Condition=this OR condition=that)
 
 
 
