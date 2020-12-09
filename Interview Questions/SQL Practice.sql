@@ -388,7 +388,10 @@ from rest as A LEFT JOIN rest as B
 ON (A.x<=B.x OR A.x>=B.x) AND (A.y<=B.y OR A.y>=B.y) 
 where NOT(A.x=B.x AND A.y=B.y) -- Removing the same observation on either side
 
-
+-- Numeric function 
+sqrt
+SQUARE 
+id%2 for MOD(id,2)
 
 
 
