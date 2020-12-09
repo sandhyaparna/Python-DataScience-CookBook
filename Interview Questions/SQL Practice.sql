@@ -25,7 +25,7 @@ POSITION('A' IN descript) -- First position in descript column where A appears
 STRPOS(descript, 'A') -- Similar to POSITION but not needed to use IN 
 UPPER 
 LOWER 
-SUBSTR(*string*, *starting character position*, *# of characters*)
+SUBSTRING(*string*, *starting character position*, *# of characters*) -- SUBSTR in MySQL
 CONCAT -- combine strings from several columns together
 Instead of concat function use || to join strings -- eg: "I am" || "Sandy"
 
