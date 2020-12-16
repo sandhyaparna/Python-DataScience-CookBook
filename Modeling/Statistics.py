@@ -34,4 +34,28 @@ skew(Df['Var'])
 # Z Score - 3 or more standard deviation away from mean
 np.abs(stats.zscore(Df['Var']))
 
+### Measure of location or central tendency 
+mean = np.average(data) # You can use Pandas dataframe.mean()
+weighted_mean = np.average(data, weights=weights)
+truncated_mean = stats.trim_mean(data, proportiontocut=0.1)
+median = np.median(data) # You can use Pandas dataframe.median()
+weighted_median = robustats.weighted_median(x=data, weights=weights)
+mode = stats.mode(data)  # You can also use robustats.mode() on larger datasets
+
+### Measure of Variance
+import pandas as pd
+import numpy as np
+from scipy import stats
+variance = np.var(data)
+standard_deviation = np.std(data)  # df["Population"].std()
+mean_absolute_deviation = df["data"].mad()
+trimmed_standard_deviation = stats.tstd(data)
+median_absolute_deviation = stats.median_abs_deviation(data, scale="normal")  # stats.median_absolute_deviation() is deprecated
+# Percentile
+Q1 = np.quantile(data, q=0.25)  # Can also use dataframe.quantile(0.25)
+Q3 = np.quantile(data, q=0.75)  # Can also use dataframe.quantile(0.75)
+IQR = Q3 - Q1
+
+
+
 
