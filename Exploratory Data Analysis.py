@@ -529,6 +529,7 @@ Df['Var'].values # Gives an array
 # Descriptive stats 1 to 6 dimensions
 # https://github.com/dipanjanS/art_of_data_visualization/blob/master/ODSC18/Code/Effective%20Multi-dimensional%20Data%20Visualization%20-%20Python.ipynb
 # https://github.com/dipanjanS/practical-machine-learning-with-python/blob/master/notebooks/Ch03_Processing_Wrangling_and_Visualizing_Data/notebook_matplotlib_visualizations.ipynb
+# https://github.com/yasamanensafi/Loan_investment_prediction/blob/master/Loan_investment_prediction.ipynb
 
 # IPYNB 
 # https://github.com/sharmaroshan/Fraud-Detection-in-Insurace-Claims/blob/master/fraud-detection-in-insurance-claims.ipynb
