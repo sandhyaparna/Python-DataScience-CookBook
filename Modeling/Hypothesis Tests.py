@@ -15,7 +15,7 @@ stats.ttest_1samp((Df['Var_Before'] - Df['Var_After'], 0)
 stats.f_oneway(Group1, Group2, Group3, etc) 
 
                   
-### Normality Tests
+### Normality Tests - https://plotly.com/python/v3/normality-test/
 ##### Histogram
 In repository - Python-DataScience-CookBook/Exploratory Data Analysis.py
 import seaborn as sns
