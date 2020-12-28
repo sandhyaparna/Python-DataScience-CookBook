@@ -33,12 +33,14 @@ for fn in uploaded.keys():
 
 !pip install -r requirements.txt
 
-# Install pandas_profiling
-# run the command: pip install https://github.com/pandas-profiling/pandas-profiling/archive/master.zip 
+# Install pandas_profiling - https://medium.com/python-in-plain-english/how-to-use-pandas-profiling-on-google-colab-e34f34ff1c9f
+# run the command:
+pip install https://github.com/pandas-profiling/pandas-profiling/archive/master.zip 
 # then restart the kernal
-# run the command: from pandas_profiling import ProfileReport
-
-
-
+# run the command: 
+from pandas_profiling import ProfileReport
+profile = ProfileReport(df,title="Dataset",html={'style':{'full_width':True}})
+profile.to_notebook_iframe()
+profile.to_file(outputfile="xyz.html")
 
 
