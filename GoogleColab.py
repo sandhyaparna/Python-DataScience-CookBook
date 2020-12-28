@@ -33,7 +33,10 @@ for fn in uploaded.keys():
 
 !pip install -r requirements.txt
 
-
+# Install pandas_profiling
+# run the command: pip install https://github.com/pandas-profiling/pandas-profiling/archive/master.zip 
+# then restart the kernal
+# run the command: from pandas_profiling import ProfileReport
 
 
 
