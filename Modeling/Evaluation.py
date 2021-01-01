@@ -22,7 +22,8 @@ from sklearn.metrics import *
 #  
   
 # ROC Curve - Summarizes performance of a classifier over all possible thresholds. (TP rate vs FP rate) or (Sensitivity vs 1-Specificity)
-# AUC is area under ROC curve - Measure of seperability. Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a given observation. 70 auc implies 70% chance that model is capable of distinguishing between classes
+# AUC is area under ROC curve - Measure of seperability. Tells how much the model is capable of distinguishing between classes / Tells how good is the model for a 
+# given observation. 70 auc implies 70% chance that model is capable of distinguishing between classes
 # For multi-class, we can plot N AUC-ROC curves N classes using 1 vs All methodology. For eg if u have 3 classes named X,Y,Z 
 # 1st ROC is X against Y&Z, 2nd is Y against (X&Z), 3rd is Z against (X&Y)
 # AUC of 70% desirable
@@ -45,7 +46,8 @@ from sklearn.metrics import *
 # (X-axis - % of All cases) vs (Y-axis - % of True Cases ) - Line Graph is the cummulative % of true cases by each cumulative decile/group
 
 # Actual vs Predicted - Graph dec
-# (X-axis - % of All cases) vs (Y-axis - Count of True Cases) - Line graph with 2 lines-one for actual and one for predicted, lines are not cumulative true cases but they are count of true cases wrt to that decile population
+# (X-axis - % of All cases) vs (Y-axis - Count of True Cases) - Line graph with 2 lines-one for actual and one for predicted, lines are not cumulative true cases but 
+# they are count of true cases wrt to that decile population
 
 # Lift Chart - Graph dec
 # http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html
@@ -70,7 +72,9 @@ from sklearn.metrics import *
 #                            False_Negatives*(Cost if there is NO intervention)
 
 # Multi-class classification Problem
-# Quadratic Weighted Kappa - which measures the agreement between two ratings. This metric typically varies from 0 (random agreement between raters) to 1 (complete agreement between raters). In the event that there is less agreement between the raters than expected by chance, the metric may go below 0. The quadratic weighted kappa is calculated between the scores which are expected/known and the predicted scores. 
+# Quadratic Weighted Kappa - which measures the agreement between two ratings. This metric typically varies from 0 (random agreement between raters) to 
+# 1 (complete agreement between raters). In the event that there is less agreement between the raters than expected by chance, the metric may go below 0. 
+# The quadratic weighted kappa is calculated between the scores which are expected/known and the predicted scores. 
 # https://www.kaggle.com/c/data-science-bowl-2019/overview/evaluation
 # 5 step breakdown for Weighted Kappa Metric
   # First, create a multi class confusion matrix O between predicted and actual ratings.
