@@ -1,3 +1,6 @@
+# When doing oversampling or undersampling, validation and train data for cross validation needs to be prepared manually as oversampling should not be done on Validation sets
+# https://kiwidamien.github.io/how-to-do-cross-validation-when-upsampling-data.html
+  
 # Split data into Train and Test by CustomerID. Each CustomID may have multiple records
 CustomerIDs = pd.unique(CustomerRatings.CustomerID)
 CustomerIDs_Train = random.sample(list(CustomerIDs),np.ceil(len(CustomerIDs)*0.8).astype(int))
