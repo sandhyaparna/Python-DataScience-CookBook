@@ -49,9 +49,18 @@ END) as New_Var
 -- In case of a tie, return lexicographically smaller user name.
 -- Find the movie name with the highest average rating in February 2020.
 -- In case of a tie, return lexicographically smaller movie name.
-select * from (select Top 1 B.name as results from Movie_Rating as A LEFT JOIN Users as B On A.user_id=B.user_id group by B.name order by count(DISTINCT movie_id) DESC, B.name) as X
+select * from (select Top 1 B.name as results 
+                from Movie_Rating as A LEFT JOIN Users as B 
+                On A.user_id=B.user_id 
+                group by B.name 
+                order by count(DISTINCT movie_id) DESC, B.name) as X
 UNION ALL
-select results from (select Top 1 B.title as results,MONTH(created_at) as Month,YEAR(created_at) as Year from Movie_Rating as A LEFT JOIN Movies as B  On A.movie_id=B.movie_id  group by B.title,MONTH(created_at),YEAR(created_at) having MONTH(created_at)=2 AND YEAR(created_at)=2020 order by avg(cast(A.rating as float)) DESC, B.title) as Y
+select results from (select Top 1 B.title as results,MONTH(created_at) as Month,YEAR(created_at) as Year 
+                    from Movie_Rating as A LEFT JOIN Movies as B  
+                    On A.movie_id=B.movie_id 
+                    group by B.title,MONTH(created_at),YEAR(created_at) 
+                    having MONTH(created_at)=2 AND YEAR(created_at)=2020 
+                    order by avg(cast(A.rating as float)) DESC, B.title) as Y
 
 -- To get floating number/value when applying aggregate functions
 cast(A.rating as float)
