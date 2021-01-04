@@ -32,6 +32,7 @@ Instead of concat function use || to join strings -- eg: "I am" || "Sandy"
 
 
 -- Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
+-- https://www.sqlshack.com/string_agg-function-in-sql/
 string_agg(product,',') WITHIN GROUP (ORDER BY product) as products
 
 -- Creating new variable or CASE statement
