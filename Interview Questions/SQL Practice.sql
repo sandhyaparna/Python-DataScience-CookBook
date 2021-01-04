@@ -53,7 +53,7 @@ select * from (select Top 1 B.name as results
                 from Movie_Rating as A LEFT JOIN Users as B 
                 On A.user_id=B.user_id 
                 group by B.name 
-                order by count(DISTINCT movie_id) DESC, B.name) as X
+                order by count(DISTINCT movie_id) DESC, B.name) as X -- After ORDER BY u can use LIMIT 1
 UNION ALL
 select results from (select Top 1 B.title as results,MONTH(created_at) as Month,YEAR(created_at) as Year 
                     from Movie_Rating as A LEFT JOIN Movies as B  
