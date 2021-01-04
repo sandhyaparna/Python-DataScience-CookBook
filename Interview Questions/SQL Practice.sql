@@ -190,6 +190,7 @@ DECLARE @variable_name datatype [ = initial_value ],
 ;
 -- Declare string variable with initial value
 DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable'; --DECLARE @techonthenet VARCHAR(max) -- use max instead of mentioning a number
+DECLARE @numVar INT = 9
 -- Declare date variable with initial value
 declare @pStartDate date = '01/01/2020'
 DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042'; -- declare datetime var
