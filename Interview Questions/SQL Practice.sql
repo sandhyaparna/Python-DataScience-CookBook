@@ -393,7 +393,7 @@ Var1+Var2/2.00 gives decimal places in the result
 -- self join
 select *
 from rest as A LEFT JOIN rest as B
-ON A.x>B.x AND A.x<B.x
+ON A.x>B.x OR A.x<B.x (x of A is joined with all the other x)
 -- self join using 2 variables
 select A.x,A.y, B.x,B.y
 from rest as A LEFT JOIN rest as B
@@ -408,7 +408,7 @@ id%2 for MOD(id,2)
 -- Where this nor that but other
 where condition=Other OR NOT (Condition=this OR condition=that)
 
-
+-- select a random number : ceil( rand() * no of obs/max of id)
 
 
 
