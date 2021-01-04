@@ -20,12 +20,13 @@ LEFT(string, number of characters)
 RIGHT(string, number of characters)
 LENGTH(string)
 TRIM function is used to remove characters from the beginning and end of a string
-POSITION allows you to specify a substring, then returns a numerical value equal to the character number (counting from left) where that substring first appears in the target string. 
+POSITION allows you to specify a substring, then returns a numerical value equal to the character number (counting from left) where that substring first appears 
+in the target string. 
 POSITION('A' IN descript) -- First position in descript column where A appears
 STRPOS(descript, 'A') -- Similar to POSITION but not needed to use IN 
 UPPER 
 LOWER 
-SUBSTRING(*string*, *starting character position*, *# of characters*) -- SUBSTR in MySQL
+SUBSTRING(*string*, *starting character position*, *# of characters*) -- SUBSTR in MySQL -- SUBSTR("SQL Tutorial", 5, 3) - start osition at 5 and extract 3 characters
 CONCAT -- combine strings from several columns together
 Instead of concat function use || to join strings -- eg: "I am" || "Sandy"
 
