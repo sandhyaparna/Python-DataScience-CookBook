@@ -883,7 +883,8 @@ Df.select_dtypes(exclude=['object'])
 f = {'Field1':'sum',
          'Field2':['max','mean'],
          'Field3':['min','mean','count'],
-         'Field4':'count'}
+         'Field4':'count',
+         'Field4': pd.Series.nunique} # Distinct count
 grouped = df.groupby('mykey').agg(f)
 # as a data frame
 grouped = pd.DataFrame(df.groupby('mykey').agg(f)).reset_index()
