@@ -86,6 +86,10 @@ FORMAT(p.pay_date,'yyyy-MM')
 
 -- Select top n rows
 select Top 1 * from Table
+# Oracle
+SELECT *
+  FROM (SELECT * FROM MyTbl ORDER BY Fname )
+ WHERE ROWNUM = 1;
 
 -- to check consecutive values within a variable as in For loop. Use LEAD for next value
 -- Use LAG for previous value
