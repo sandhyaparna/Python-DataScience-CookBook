@@ -1,3 +1,5 @@
+# https://github.com/XD-DENG/SQL-exercise
+
 e-- Missing in where statement
 where Var IS NULL
 
