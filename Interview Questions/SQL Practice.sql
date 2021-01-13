@@ -253,7 +253,7 @@ select * from DaysOfMonth -- this statement is imp as runing only the code above
 option (maxrecursion 0)
 
 -- Recursive function to generate numbers between 1 to 50 
-WITH   cte
+WITH   cte # Common table expression (disposable views)
 AS     (SELECT 1 AS n -- anchor member
         UNION ALL
         SELECT n + 1 -- recursive member
