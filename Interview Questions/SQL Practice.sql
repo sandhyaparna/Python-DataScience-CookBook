@@ -403,8 +403,11 @@ ON A.x>B.x OR A.x<B.x (x of A is joined with all the other x)
 -- self join using 2 variables
 select A.x,A.y, B.x,B.y
 from rest as A LEFT JOIN rest as B
-ON (A.x<=B.x OR A.x>=B.x) AND (A.y<=B.y OR A.y>=B.y) 
+ON (A.x<=B.x OR A.x>=B.x) AND (A.y<=B.y OR A.y>=B.y) -- where statement should be used along with this
 where NOT(A.x=B.x AND A.y=B.y) -- Removing the same observation on either side
+
+-- Use this self join 
+ON p1.x != p2.x OR p1.y != p2.y
 
 -- Numeric function 
 sqrt
