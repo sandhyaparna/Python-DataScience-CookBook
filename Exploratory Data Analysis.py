@@ -960,6 +960,11 @@ Df['Var'] = (((Df['Var'].dt.days) * 24 * 60) + ((Df['Var'].dt.seconds) / 60))/60
 # Difference between 2 dates in Years
 ((((Df['Var1']) - (Df['Var2']))/(np.timedelta64(1,'Y'))).astype('str')).astype('float')                 
 
+# Extract till hours '%Y-%m-%d %H:00:00'
+Df['Var_Hour'] = Df['Var'].dt.floor('H')
+# Extract till minutes '%Y-%m-%d %H:%M:00'
+Df['Var_Min'] = Df['Var'].dt.floor('Min')
+                           
 # Code  Meaning
 # Y year
 # M month
