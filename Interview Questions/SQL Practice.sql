@@ -131,13 +131,17 @@ microsecond, mcs	123456
 nanosecond, ns	123456700
 TZoffset, tz	+05:10
 ISO_WEEK, ISOWK, ISOWW	44
- 
+
+-- DATEPART: It is a Datetime function which helps to extract information from date. This function always returns result as integer type.
+-- DATENAME: It is also another Datetime function which helps to extract information from date. This function always returns result as nvarchar(character string).
+
 -- Select data related variables. DATEPART() function was built specifically for returning specified parts of a date. 
 -- Returns return as Integer
 DAY(@date) AS DAY
 MONTH(@date) AS MONTH
 YEAR(@date) AS YEAR
 DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
+
 DATEPART(day, @date) AS DAY, -- 2
 DATEPART(weekday, @date) AS WEEKDAY,-- 7
 DATEPART(month, @date) AS MONTH,-- 6
