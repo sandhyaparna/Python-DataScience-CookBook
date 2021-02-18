@@ -8,7 +8,7 @@ Streamlit or Flask, but I found it much faster and easier to get a model deploye
 modular, and well-documented.""" 
 
 
-
+ https://link.medium.com/NjZdx2P8Xdb
 
 
 
