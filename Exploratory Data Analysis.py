@@ -892,6 +892,15 @@ grouped = pd.DataFrame(df.groupby('mykey').agg(f)).reset_index()
 grouped.columns = grouped.columns.map('_'.join)
 # 2 level of the column names are joined using '_'
 
+# Customize column names in groupby
+df[['Type','Distance']].groupby('Type').agg(avg_distance = ('Distance', 'mean'), median_distance = ('Distance', 'median'))
+# Use lambda function to apply a function on a column like mean, sum etc - calculate the average price for each type and convert it to millions with one lambda expression.
+df[['Type','Price']].groupby('Type').agg(avg_price_million = ('Price', lambda x: x.mean() / 1_000_000 ) ).round(2)
+# Remove grouby columns from index - Mean is applied on Distance
+df[['Type','Regionname', 'Distance']].groupby(['Type','Regionname'], as_index=False).mean().head() 
+# If there is 
+
+
 # To get quantiles in Df.groupby
 def q1(x):
     return x.quantile(0.25)
