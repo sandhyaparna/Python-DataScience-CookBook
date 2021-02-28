@@ -792,6 +792,9 @@ df['Var_cum_sum'] = df.val1.cumsum()
 Prediction_Hrs['VarForCUMSUM'] = 1
 Prediction_Hrs['VarForCUMSUM'] = Prediction_Hrs.groupby(['Group'])['VarForCUMSUM'].apply(lambda x: x.cumsum())
 
+# Rolling or moving average/mean
+
+
 # Cumulative % of a column in df
 df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 
