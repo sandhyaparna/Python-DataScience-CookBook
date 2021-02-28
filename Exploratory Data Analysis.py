@@ -792,11 +792,15 @@ df['Var_cum_sum'] = df.val1.cumsum()
 Prediction_Hrs['VarForCUMSUM'] = 1
 Prediction_Hrs['VarForCUMSUM'] = Prediction_Hrs.groupby(['Group'])['VarForCUMSUM'].apply(lambda x: x.cumsum())
 
+# Cumulative % of a column in df
+df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
+
+# Cumulative mean/Expanding mean
+data['Cum_mean'] = data['Count'].expanding(2).mean()
+
 # Rolling or moving average/mean
 Df['rolling_mean'] = data['Var'].rolling(window=7).mean()
 
-# Cumulative % of a column in df
-df['Var_cum_perc'] = 100*df.Var_cum_sum/df.val1.sum()
 
 ### Character variables encoding
 Df_X is data frame with features
