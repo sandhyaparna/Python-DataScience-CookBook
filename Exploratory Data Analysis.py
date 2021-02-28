@@ -898,7 +898,8 @@ df[['Type','Distance']].groupby('Type').agg(avg_distance = ('Distance', 'mean'),
 df[['Type','Price']].groupby('Type').agg(avg_price_million = ('Price', lambda x: x.mean() / 1_000_000 ) ).round(2)
 # Remove grouby columns from index - Mean is applied on Distance
 df[['Type','Regionname', 'Distance']].groupby(['Type','Regionname'], as_index=False).mean().head() 
-# If there is 
+# If there are missing values in the grouping columns and we want to look at aggregate statistics for Numerical var for missing group also
+df[['Type','Distance']].groupby('Type', dropna=False).mean() # Maean of distance metric on all the grouping of Type column, including missing category
 
 
 # To get quantiles in Df.groupby
