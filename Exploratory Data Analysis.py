@@ -12,6 +12,11 @@
 # https://chrisalbon.com/#Python
 # http://file.allitebooks.com/20150823/Learning%20Data%20Mining%20with%20Python.pdf
 
+### Datasets
+import plotly.express as px
+df = px.data.tips()
+
+
 ################# Miscellaneous #################
 # Display more data in Terminal/Console
 pd.options.display.max_rows = 1500
