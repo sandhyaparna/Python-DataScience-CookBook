@@ -417,6 +417,9 @@ Df.info(max_cols=500)
 
 # Summary of only Numeric variables/columns - Number of records in a column, quantiles, mean, std
 Df.describe()
+df_stats = Df.describe()
+df_stats.transpose()
+
 # Summary of only Character variables
 Df.describe(include=[np.object])
   Unique - Number of uniques values
