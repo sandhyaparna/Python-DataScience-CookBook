@@ -19,7 +19,43 @@ px.data.carshare()
 px.data.election()
 px.data.gapminder()
 px.data.wind()
-# HuggingFace datasets
+### PyDataset package
+from pydataset import data
+data() # Check out datasets
+df = data('iris')
+glimpse(df) # Top 5 and bottom 5 rows
+### Seaborn datasets - https://github.com/mwaskom/seaborn-data
+import seaborn as sns
+print(sns.get_dataset_names()) # Check out available datasets
+df = sns.load_dataset('iris')
+glimpse(df)
+### NLTK
+import nltk
+nltk.download('movie_reviews')
+import pandas as pd
+from nltk.corpus import movie_reviews
+# Convert to dataframe
+documents = []
+for fileid in movie_reviews.fileids():
+    tag, filename = fileid.split('/')
+    documents.append((tag, movie_reviews.raw(fileid)))
+df = pd.DataFrame(documents, columns=['target', 'document'])
+glimpse(df)
+### sklearn - https://scikit-learn.org/stable/datasets.html#datasets
+from sklearn.datasets import fetch_california_housing
+housing = fetch_california_housing(as_frame=True) # Load data (will download the data if it's the first time loading)
+df = housing['data'].join(housing['target']) # Create a dataframe
+glimpse(df)
+### HuggingFace datasets - https://huggingface.co/docs/datasets/
+!pip install datasets
+from datasets import list_datasets
+datasets_list = list_datasets()
+print(', '.join(dataset for dataset in datasets_list))
+squad_dataset = list_datasets(with_details=True)[datasets.index('squad')] # You can access various attributes of the datasets before downloading them
+from datasets import load_dataset
+dataset = load_dataset('squad', split='train')
+dataset = load_dataset('squad', split='validation[:10%]')
+
 
 ################# Miscellaneous #################
 # Display more data in Terminal/Console
