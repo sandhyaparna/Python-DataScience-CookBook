@@ -15,6 +15,10 @@
 ### Datasets
 import plotly.express as px
 df = px.data.tips()
+px.data.carshare()
+px.data.election()
+px.data.gapminder()
+px.data.wind()
 
 
 ################# Miscellaneous #################
