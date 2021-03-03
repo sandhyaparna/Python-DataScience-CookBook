@@ -12,7 +12,7 @@
 # https://chrisalbon.com/#Python
 # http://file.allitebooks.com/20150823/Learning%20Data%20Mining%20with%20Python.pdf
 
-### Datasets
+### Sample Datasets
 import plotly.express as px
 df = px.data.tips()
 px.data.carshare()
