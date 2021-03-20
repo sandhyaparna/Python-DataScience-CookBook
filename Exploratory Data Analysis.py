@@ -797,8 +797,10 @@ Df = DF.assign(NewVar=newSeries)
 # Assign IDs to each row - n rows
 Df = DF.assign(ID=pd.Series(range(1,n)))
 
-# Create a copy of a dataframe
-NewDf = Df.copy()
+# Create a copy of a dataframe 
+Df_shallowcopy = Df.copy()  # shallow copy also is not affected by changes to original copy and original copy is also not changed by changes to Df_shallowcopy
+Df_deepcopy = Df.copy(deep=True)
+
 
 ### Missing data representation - np.NAN, pd.NaT
 # Infinity inf is represented as np.inf
