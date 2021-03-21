@@ -493,6 +493,10 @@ Df.isnull().sum()/len(Df)*100
 Df.head()
 Df['Var1'].head()
 
+# To look at few ros of a csv file
+%%bash
+head file.csv
+
 # Last few rows - Glimpse of data
 Df.tail()
 Df['Var1'].tail()
