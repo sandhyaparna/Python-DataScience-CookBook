@@ -14,8 +14,8 @@ Different deep learning algos for NLP
 
 ### Text Vectorization
 * Pre-process text data: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
-* Text Vectorization layer: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
-</br>
+* Text Vectorization layer: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee </br>
+
 * Standardize: cleaning of text
   * Default is lower_and_strip_punctuation 
   * For more control over standardization, you can pass your own Callable
