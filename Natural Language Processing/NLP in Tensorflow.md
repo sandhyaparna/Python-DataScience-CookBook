@@ -14,16 +14,9 @@ Different deep learning algos for NLP
 
 ### Text Vectorization
 * Pre-process text data: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
-* Text Vectorization layer: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee </br>
-
-* Standardize: cleaning of text
-  * Default is lower_and_strip_punctuation 
-  * For more control over standardization, you can pass your own Callable
-    * Applying a custom standardization function example in Standardize section image of https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
-    * Any Callable can be passed to this Layer, but if you want to serialize this object you should only pass functions that are registered Keras serializables (see register keras serializable for more details).
-    * When using a custom callable for standardize , the data received by the callable will be exactly as passed to this layer. The Callable should return a Tensor of the same shape as the input.
-* Split: split into substring tokens	
-* 
+* Text Vectorization layer in detail for each argument: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee </br>
+* Official Tensorflow's team colab example: https://colab.research.google.com/drive/1RvCnR7h0_l4Ekn5vINWToI9TNJdpUZB3
+* Official parameters that can be sent into this Text Vectorization layer: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
 
 
 
