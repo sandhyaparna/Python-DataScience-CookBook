@@ -8,24 +8,36 @@ Different deep learning algos for NLP
 * RNN - Recurrent Neural Network
 * HAN - Hierarchical Attention Network
 
+* Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
+* Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
 
-	• Tfx - TensorFlow extended tutorial 
-		○ Tfx-processing-times
-	• Text:
-		○ Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
-		○ Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
-		○ Pre-process text data: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
-		○ Text Vectorization layer: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
-		
-	• GCP - coursera - Links
-	• Tensorflow tutorials: 
-		○ https://www.tensorflow.org/tutorials/keras/text_classification
-		○ Pre-processing layers : https://www.tensorflow.org/guide/keras/preprocessing_layers
-			§ Look at official Tensorflow git account
-			
-	• Jay Alammar
-	• Diff between various BERT models in hugging face
-Abhishek Thakur - BERT for sentiment analysis code using BERT base uncased![image](https://user-images.githubusercontent.com/7243652/112708600-db3b8080-8e80-11eb-9e37-8add16a598a5.png)
+
+### Text Vectorization
+* Pre-process text data: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
+* Text Vectorization layer: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
+</br>
+* Standardize: cleaning of text
+  * Default is lower_and_strip_punctuation 
+  * For more control over standardization, you can pass your own Callable
+    * Applying a custom standardization function example in Standardize section image of https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
+    * Any Callable can be passed to this Layer, but if you want to serialize this object you should only pass functions that are registered Keras serializables (see register keras serializable for more details).
+    * When using a custom callable for standardize , the data received by the callable will be exactly as passed to this layer. The Callable should return a Tensor of the same shape as the input.
+* Split: split into substring tokens	
+* 
+
+
+
+
+
+* GCP - coursera - Links
+* Tensorflow tutorials: 
+* https://www.tensorflow.org/tutorials/keras/text_classification
+* Pre-processing layers : https://www.tensorflow.org/guide/keras/preprocessing_layers
+ Look at official Tensorflow git account
+
+* Jay Alammar
+* Diff between various BERT models in hugging face
+Abhishek Thakur - BERT for sentiment analysis code using BERT base uncased
 
 
 
