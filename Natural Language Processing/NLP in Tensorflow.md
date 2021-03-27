@@ -21,7 +21,7 @@ Different deep learning algos for NLP
 
 
 
-
+* Tfrecord & Tfexample: https://www.tensorflow.org/tutorials/load_data/tfrecord
 * GCP - coursera - Links
 * Tensorflow tutorials: 
 * https://www.tensorflow.org/tutorials/keras/text_classification
