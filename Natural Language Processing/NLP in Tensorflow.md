@@ -15,7 +15,7 @@ Different deep learning algos for NLP:
 
 ### Text Vectorization
 * Pre-process text data: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
-* Text Vectorization layer in detail for each argument: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee </br>
+* Text Vectorization layer in detail for each argument: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
 * Official Tensorflow's team colab example: https://colab.research.google.com/drive/1RvCnR7h0_l4Ekn5vINWToI9TNJdpUZB3
 * Official parameters that can be sent into this Text Vectorization layer: https://www.tensorflow.org/api_docs/python/tf/keras/layers/experimental/preprocessing/TextVectorization
 
