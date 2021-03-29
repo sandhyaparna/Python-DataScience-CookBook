@@ -8,6 +8,7 @@
 * NLP Repo https://notebooks.quantumstat.com/
 * AML 4 GCP https://github.com/sandhyaparna/GCP-GoogleCloudPlatform/tree/master/Labs
 * Official NLP: https://github.com/tensorflow/models/tree/master/official/nlp Models: BERT, ALBERT, XLNet, Transformer, NHNet
+  * https://colab.research.google.com/github/tensorflow/models/blob/master/official/colab/nlp/nlp_modeling_library_intro.ipynb
 * Abhishek Thakur: Youtube videos; Data pre-processing for question & Answering; BERT for training sentiment model
   * https://github.com/abhishekkrthakur/bert-sentiment/
 * NLP https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing
@@ -22,6 +23,7 @@
 ### Tokenization
 * https://huggingface.co/transformers/preprocessing.html
 * BERTTOKENIZER, Byte pair, wordpiece and sentence piece are explained clearly https://huggingface.co/transformers/tokenizer_summary.html
+* https://medium.com/@makcedward/how-subword-helps-on-your-nlp-model-83dd1b836f46
 * Subword tokenization: Subword tokenization algorithms rely on the principle that frequently used words should not be split into smaller subwords, but rare words should be decomposed into meaningful subwords. 
 * For instance "annoyingly" might be considered a rare word and could be decomposed into "annoying" and "ly"
 * subword tokenization enables the model to process words it has never seen before, by decomposing them into known subwords
