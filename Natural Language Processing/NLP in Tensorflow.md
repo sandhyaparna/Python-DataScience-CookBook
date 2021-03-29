@@ -17,7 +17,7 @@
   * subword tokenization: Byte pair encoding https://www.youtube.com/watch?v=zjaRNfvNMTs 
   * Preprocessing https://huggingface.co/transformers/preprocessing.html#
   * 
-* 
+* **Text embedding models on TFHub** https://tfhub.dev/s?module-type=text-embedding
 
 
 ### Tokenization
