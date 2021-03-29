@@ -1,16 +1,54 @@
 ### Links
 * Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
 * Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
-* https://www.coursera.org/learn/natural-language-processing-tensorflow/home/welcome
-* https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
-* https://colab.research.google.com/drive/1znO9kRsbYRV79W0qkd4AGzTRlJexYRod
+* Coursera Course work
+  * https://www.coursera.org/learn/natural-language-processing-tensorflow/home/welcome
+  * https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
+  * https://colab.research.google.com/drive/1znO9kRsbYRV79W0qkd4AGzTRlJexYRod
 * NLP Repo https://notebooks.quantumstat.com/
 * AML 4 GCP https://github.com/sandhyaparna/GCP-GoogleCloudPlatform/tree/master/Labs
+* Official NLP: https://github.com/tensorflow/models/tree/master/official/nlp Models: BERT, ALBERT, XLNet, Transformer, NHNet
+* Abhishek Thakur: Youtube videos; Data pre-processing for question & Answering; BERT for training sentiment model
+  * https://github.com/abhishekkrthakur/bert-sentiment/
+* NLP https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing
+* Hugging face
+  * Tokenization https://www.youtube.com/watch?v=0-wOZ2SXDOw
+  * subword tokenization: Byte pair encoding https://www.youtube.com/watch?v=zjaRNfvNMTs 
+  * Preprocessing https://huggingface.co/transformers/preprocessing.html#
+  * 
+* 
+
+
+### Tokenization
+* https://huggingface.co/transformers/preprocessing.html
+* BERTTOKENIZER, Byte pair, wordpiece and sentence piece are explained clearly https://huggingface.co/transformers/tokenizer_summary.html
+* Subword tokenization: Subword tokenization algorithms rely on the principle that frequently used words should not be split into smaller subwords, but rare words should be decomposed into meaningful subwords. 
+* For instance "annoyingly" might be considered a rare word and could be decomposed into "annoying" and "ly"
+* subword tokenization enables the model to process words it has never seen before, by decomposing them into known subwords
+* BERT uses wword piece tokenizer
+* WordPiece is the subword tokenization algorithm used for BERT, DistilBERT, and Electra. 
+* XLNet uses sentence piece tokenizer
+* Byte Pair Encoding: BPE relies on a pre-tokenizer that splits the training data into words. 
+*   
+
+### Models
+* Summary of diff models https://huggingface.co/transformers/model_summary.html#autoencoding-models
+* BERT https://huggingface.co/transformers/model_doc/bert.html
+* ALBERT: https://huggingface.co/transformers/model_doc/albert.html
+* Tensorflow checkpoints: https://huggingface.co/transformers/converting_tensorflow_models.html
+
+
+
 
 Different deep learning algos for NLP:
 * CNN - Convolutional Neural Network
 * RNN - Recurrent Neural Network
 * HAN - Hierarchical Attention Network
+
+
+
+
+
 
 
 
