@@ -1,15 +1,16 @@
 ### Links
+* Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
+* Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
 * https://www.coursera.org/learn/natural-language-processing-tensorflow/home/welcome
 * https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
 * https://colab.research.google.com/drive/1znO9kRsbYRV79W0qkd4AGzTRlJexYRod
 
-Different deep learning algos for NLP
+
+Different deep learning algos for NLP:
 * CNN - Convolutional Neural Network
 * RNN - Recurrent Neural Network
 * HAN - Hierarchical Attention Network
 
-* Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
-* Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
 
 
 ### Text Vectorization
