@@ -5,6 +5,7 @@
 * https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
 * https://colab.research.google.com/drive/1znO9kRsbYRV79W0qkd4AGzTRlJexYRod
 * NLP Repo https://notebooks.quantumstat.com/
+* AML 4 GCP https://github.com/sandhyaparna/GCP-GoogleCloudPlatform/tree/master/Labs
 
 Different deep learning algos for NLP:
 * CNN - Convolutional Neural Network
