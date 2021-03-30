@@ -11,6 +11,8 @@
   * https://colab.research.google.com/github/tensorflow/models/blob/master/official/colab/nlp/nlp_modeling_library_intro.ipynb
 * Abhishek Thakur: Youtube videos; Data pre-processing for question & Answering; BERT for training sentiment model
   * https://github.com/abhishekkrthakur/bert-sentiment/
+* AIEngineering https://www.youtube.com/watch?v=1aBPXWLftFs&t=379s
+  * Code: https://github.com/srivatsan88/YouTubeLI
 * NLP https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing
 * Hugging face
   * Tokenization https://www.youtube.com/watch?v=0-wOZ2SXDOw
