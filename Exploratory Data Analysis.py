@@ -64,6 +64,12 @@ pd.options.display.max_rows = 1500
 pd.set_option('display.max_columns', None)  # or 1000
 pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', -1)  # or 199
+pd.set_option('display.max_colwidth', None)  # or 1000
+
+# Get runtime for each cell in jupyter notebook
+!pip install ipython-autotime # and then execute below command: 
+%load_ext autotime
+
 # speed up pandas
 pip install modin[ray]
 import modin.pandas as pd
