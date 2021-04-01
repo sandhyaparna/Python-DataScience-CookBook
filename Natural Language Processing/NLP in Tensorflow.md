@@ -34,7 +34,20 @@
 * WordPiece is the subword tokenization algorithm used for BERT, DistilBERT, and Electra. 
 * XLNet uses sentence piece tokenizer
 * Byte Pair Encoding: BPE relies on a pre-tokenizer that splits the training data into words. 
-*   
+
+### Tensorflow Notebooks
+* https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/text_classification.ipynb#scrollTo=51wNaPPApk1K
+  * Data is extracted from url into folders. Then data is passed through 'tf.keras.preprocessing.text_dataset_from_directory' function to prepare data into suitable format
+  * Function for a sneak peek into the data
+  for text_batch, label_batch in raw_train_ds.take(1): </br>
+  for i in range(3): </br>
+    print("Review", text_batch.numpy()[i]) </br>
+    print("Label", label_batch.numpy()[i])   </br>
+  * bn
+  * 
+
+
+
 
 ### Models
 * Summary of diff models https://huggingface.co/transformers/model_summary.html#autoencoding-models
