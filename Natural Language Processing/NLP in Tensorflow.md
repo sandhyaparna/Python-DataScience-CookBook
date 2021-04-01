@@ -15,9 +15,10 @@
   * Code: https://github.com/srivatsan88/YouTubeLI
 * NLP https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing
 * Hugging face
+  * Preprocessing https://huggingface.co/transformers/preprocessing.html#
+  * Tokenizers: https://huggingface.co/transformers/tokenizer_summary.html
   * Tokenization https://www.youtube.com/watch?v=0-wOZ2SXDOw
   * subword tokenization: Byte pair encoding https://www.youtube.com/watch?v=zjaRNfvNMTs 
-  * Preprocessing https://huggingface.co/transformers/preprocessing.html#
 * NLP Kaggle problems: https://twitter.com/abhi1thakur/status/1376483345790566402
 * **Text embedding models on TFHub** https://tfhub.dev/s?module-type=text-embedding
 
