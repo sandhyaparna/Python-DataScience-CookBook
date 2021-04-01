@@ -38,12 +38,12 @@
 ### Tensorflow Notebooks
 * https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/text_classification.ipynb#scrollTo=51wNaPPApk1K
   * Data is extracted from url into folders. Then data is passed through 'tf.keras.preprocessing.text_dataset_from_directory' function to prepare data into suitable format
-  * Function for a sneak peek into the data
+  * Function for a sneak peek into the data </br>
   for text_batch, label_batch in raw_train_ds.take(1): </br>
   for i in range(3): </br>
     print("Review", text_batch.numpy()[i]) </br>
     print("Label", label_batch.numpy()[i])   </br>
-  * bn
+  * <br /> correspond to line breaks
   * 
 
 
