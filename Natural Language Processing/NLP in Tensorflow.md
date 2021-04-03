@@ -20,6 +20,7 @@
   * Tokenization https://www.youtube.com/watch?v=0-wOZ2SXDOw
   * subword tokenization: Byte pair encoding https://www.youtube.com/watch?v=zjaRNfvNMTs 
 * NLP Kaggle problems: https://twitter.com/abhi1thakur/status/1376483345790566402
+* Save and load model: https://www.tensorflow.org/tutorials/keras/save_and_load
 * **Text embedding models on TFHub** https://tfhub.dev/s?module-type=text-embedding
 
 
