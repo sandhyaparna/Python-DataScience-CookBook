@@ -1,6 +1,10 @@
 ### Links
 * Load & preprocess text: https://www.tensorflow.org/tutorials/load_data/text
 * Whole text section: https://www.tensorflow.org/tutorials/text/word_embeddings
+* BERT Fine-tuning
+  * https://towardsdatascience.com/sentiment-analysis-in-10-minutes-with-bert-and-hugging-face-294e8a04b671
+  * https://medium.com/serendeepia/finetuning-bert-with-tensorflow-estimators-in-only-a-few-lines-of-code-f522dfa2295c
+  * 
 * Coursera Course work
   * https://www.coursera.org/learn/natural-language-processing-tensorflow/home/welcome
   * https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
@@ -8,6 +12,8 @@
 * NLP Repo https://notebooks.quantumstat.com/
 * AML 4 GCP https://github.com/sandhyaparna/GCP-GoogleCloudPlatform/tree/master/Labs
 * Official NLP: https://github.com/tensorflow/models/tree/master/official/nlp Models: BERT, ALBERT, XLNet, Transformer, NHNet
+  * https://github.com/tensorflow/models
+  * Tensorflow Model Garden
   * https://colab.research.google.com/github/tensorflow/models/blob/master/official/colab/nlp/nlp_modeling_library_intro.ipynb
 * Abhishek Thakur: Youtube videos; Data pre-processing for question & Answering; BERT for training sentiment model
   * https://github.com/abhishekkrthakur/bert-sentiment/
