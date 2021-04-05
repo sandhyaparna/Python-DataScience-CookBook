@@ -4,7 +4,8 @@
 * BERT Fine-tuning
   * https://towardsdatascience.com/sentiment-analysis-in-10-minutes-with-bert-and-hugging-face-294e8a04b671
   * https://medium.com/serendeepia/finetuning-bert-with-tensorflow-estimators-in-only-a-few-lines-of-code-f522dfa2295c
-  * 
+* Using custome standardization in Text Vectorization layer https://keras.io/examples/nlp/masked_language_modeling/
+  * Text Vectorization layer in detail for each argument: https://towardsdatascience.com/you-should-try-the-new-tensorflows-textvectorization-layer-a80b3c6b00ee
 * Coursera Course work
   * https://www.coursera.org/learn/natural-language-processing-tensorflow/home/welcome
   * https://github.com/lmoroney/dlaicourse/tree/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP
