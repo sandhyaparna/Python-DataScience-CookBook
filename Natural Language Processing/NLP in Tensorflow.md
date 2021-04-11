@@ -16,6 +16,7 @@
   * https://github.com/tensorflow/models
   * Tensorflow Model Garden
   * https://colab.research.google.com/github/tensorflow/models/blob/master/official/colab/nlp/nlp_modeling_library_intro.ipynb
+  * BERT https://github.com/google-research/bert#sentence-and-sentence-pair-classification-tasks
 * Abhishek Thakur: Youtube videos; Data pre-processing for question & Answering; BERT for training sentiment model
   * https://github.com/abhishekkrthakur/bert-sentiment/
 * AIEngineering https://www.youtube.com/watch?v=1aBPXWLftFs&t=379s
