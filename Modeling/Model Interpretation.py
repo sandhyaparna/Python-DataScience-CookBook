@@ -1,6 +1,8 @@
 # Python libraries for model interpretation
 https://www.kdnuggets.com/2019/09/python-libraries-interpretable-machine-learning.html
-
+Shapash: https://www.analyticsvidhya.com/blog/2021/04/shapash-python-library-to-make-machine-learning-interpretable/
+    
+    
 ### ELI5 ###
 https://github.com/TeamHG-Memex/eli5
 
@@ -63,14 +65,29 @@ shap.dependence_plot(("Var1", "Var1"),shap_interaction_values, X) #Var1 only
 shap.dependence_plot(("Var1", "Var2"),shap_interaction_values, X) #choose Var2 instead of automatic choosing
 
 
-
-
-
-
-
-
-
-
+### SHAPASH ###
+# https://www.analyticsvidhya.com/blog/2021/04/shapash-python-library-to-make-machine-learning-interpretable/
+# it allows you to quickly understand the machine learning model by using a simple webapp
+pip install shapash
+from shapash.explainer.smart_explainer import SmartExplainer   # Import shapash module
+# Initialize class. Here we initialize the class of shapash and then inside this class having inbuild function compile where we set a pair of parameters
+SE = SmartExplainer()
+SE.compile(
+x=xtest,  # test set
+model=regressor,  # black-box model
+)
+# to run an app 
+app = SE.run_app(title_story='Concrete_Data')  
+# to kill the app
+app_name.kill()
+# prediction
+prediction = SE.to_smartpredictor()
+prediction.save('./predictor.pkl')
+from shapash.utils.load_smartpredictor import load_smartpredictor
+predictor_load = load_smartpredictor('./predictor.pkl')
+load.add_input(x=x, ypred=y)
+detailed = load.detail_contributions()
+detailed_contributions.head()
 
 
 
