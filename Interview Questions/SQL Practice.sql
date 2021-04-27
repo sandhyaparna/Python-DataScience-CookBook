@@ -32,6 +32,9 @@ SUBSTRING(*string*, *starting character position*, *# of characters*) -- SUBSTR 
 CONCAT -- combine strings from several columns together
 Instead of concat function use || to join strings -- eg: "I am" || "Sandy"
 
+-- Ignore few variables when joining
+Select A.*, B.*EXCEPT(var2, var3)
+from A left join B on A.var2=B.var2
 
 -- Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
 -- https://www.sqlshack.com/string_agg-function-in-sql/
