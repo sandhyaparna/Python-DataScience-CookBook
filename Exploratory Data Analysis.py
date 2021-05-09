@@ -1351,6 +1351,11 @@ for(i in 2: nrow(Dataset))
 }
 #         
           
+# Index of specific columns of a dataframe
+# Index of the Categorical featues
+categorical_features = ['var1','var2','var3','var4','var5']
+categorical_features_index = [df.columns.get_loc(c) for c in categorical_features if c in df.columns]
+
 
           
   
