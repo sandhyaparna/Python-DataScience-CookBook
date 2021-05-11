@@ -11,6 +11,10 @@ model_ted = Word2Vec(sentences=sentences_ted, size=100, window=5, min_count=5, w
 # sg: whether to use skip-gram or CBOW
 model_ted.wv.most_similar(“man”) #Vector for Man
 
+
+
+
+
 ##### Pre-trained word2vec model is used to find distance between 2 sentences
 # https://towardsdatascience.com/finding-similar-quora-questions-with-word2vec-and-xgboost-1a19ad272c0d
 question1 = 'What would a Trump presidency mean for current international master’s students on an F1 visa?'
@@ -34,8 +38,6 @@ def norm_wmd(q1, q2):
     return norm_model.wmdistance(q1, q2)
 df['norm_wmd'] = df.apply(lambda x: norm_wmd(x['question1'], x['question2']), axis=1) # On a datset where question1, question2 are variables
 
-
-
 ##### FastText
 from gensim.models import FastText
 model_ted = FastText(sentences_ted, size=100, window=5, min_count=5, workers=4,sg=1)
@@ -49,6 +51,9 @@ model_ted.wv.most_similar("Gastroenteritis")
 # ELMo from Scratch - Training on Custom data - https://appliedmachinelearning.blog/2019/11/30/training-elmo-from-scratch-on-custom-data-set-for-generating-embeddings-tensorflow/
 # Using pre-trained ELMo - https://www.analyticsvidhya.com/blog/2019/03/learn-to-use-elmo-to-extract-features-from-text/
 
+##### Word2Vec 
+# Word2vec from Scratch - Training on Custom data - https://towardsdatascience.com/a-beginners-guide-to-word-embedding-with-gensim-word2vec-model-5970fa56cc92
+# https://www.kaggle.com/chewzy/tutorial-how-to-train-your-custom-word-embedding
 
 ##### Transformer 
 # Implementation in Colab https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb#scrollTo=s19ucTii_wYb
