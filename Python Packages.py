@@ -9,8 +9,8 @@ modular, and well-documented."""
 
 """ Shapash - Interpretability of ML models """
 
-
-https://link.medium.com/NjZdx2P8Xdb
+""" Dask """
+""" Vaex - Process a DataFrame with millions of rows in seconds """"
 
 """ CLIP: Contrastive Language-Image Pre-training https://www.kdnuggets.com/2021/03/beginners-guide-clip-model.html
 * You can input an image into the CLIP model, and it will return for you the likeliest caption or summary of that image
@@ -29,6 +29,7 @@ If cosine similarity between 2 encoders is high implies the model is good
   * https://colab.research.google.com/drive/1LXla2q9MCRRI_kTjpvag2Vz-7EGLnki5#scrollTo=lOF3Feb7jrnu
 """ 
 
+""" Jupyter notebook extensions https://link.medium.com/NjZdx2P8Xdb """
 
 
 
