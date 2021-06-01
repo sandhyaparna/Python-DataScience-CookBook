@@ -115,6 +115,7 @@ for i, topic_dist in enumerate(topic_word):
 topic_summaries
 
 ### Document Clustering with Similarity Features
+Diff Text Similarity metrics: https://medium.com/@adriensieg/text-similarities-da019229c894#:~:text=Alternatives%20like%20cosine%20or%20Euclidean,alternatives%20such%20as%20cosine%20similarity%E2%80%9D.
 https://towardsdatascience.com/understanding-feature-engineering-part-3-traditional-methods-for-text-data-f6f7d70acd41
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html
 # First apply count vectorization (or) Tf-idf
