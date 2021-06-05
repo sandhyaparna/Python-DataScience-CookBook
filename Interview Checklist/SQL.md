@@ -5,11 +5,12 @@
 4. GROUP BY, WHERE, HAVING, ORDER BY ASC | DESC
 5. UNION, UNION ALL, EXCEPT/MINUS, INTERSECT
 6. LIMIT some_value
-7. AND, OR, NOT, IN(val_1, ..., val_n), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
-8. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
-9. MYSQL: LIMIT 1 OFFSET 1
-10. 10. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
-11. COALESCE(col_1, ..., col_n), CONCAT(col_1, ..., col_n), ROUND(col, n), LOWER(col), UPPER(col), REPLACE(col, old, new), SUBSTR(col, start, length), LTRIM(col) / RTRIM(col) / TRIM(col), LTRIM(col), RTRIM(col), LENGTH(col), DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
+7. SELECT TOP 10 * FROM table
+8. AND, OR, NOT, IN(val_1, ..., val_n), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
+9. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
+10. MYSQL: LIMIT 1 OFFSET 1
+11. 10. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
+12. COALESCE(col_1, ..., col_n), CONCAT(col_1, ..., col_n), ROUND(col, n), LOWER(col), UPPER(col), REPLACE(col, old, new), SUBSTR(col, start, length), LTRIM(col) / RTRIM(col) / TRIM(col), LTRIM(col), RTRIM(col), LENGTH(col), DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
 14. STRING: LEFT, RIGHT, LENGTH, TRIM, POSITION, STRPOS, MID, CONCAT, LIKE '%val%', NOT LIKE, 
 15. RANK(), DENSE_RANK(), ROW_NUMBER(), CUME_DIST, PERCENT_RANK
 16. LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
