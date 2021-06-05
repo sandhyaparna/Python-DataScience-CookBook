@@ -1,23 +1,97 @@
 ### General Concepts
 1. SELECT A.*, B.* EXCEPT(Var_k, Var_k6) FROM Table1 AS A LEFT JOIN TABLE2 as B ON 
-2. SELECT DISTINCT, COUNT(DISTINCT Var)
+2. SELECT DISTINCT, COUNT(DISTINCT Var), 
+   * CASE </br>
+    WHEN condition1 THEN result1 </br>
+    WHEN condition2 THEN result2 </br>
+    WHEN conditionN THEN resultN </br>
+    ELSE result </br>
+    END AS VAR_NAME; </br>
 3. LEFT JOIN, INNER JOIN, RIGHT JOIN, FULL JOIN ON (t.key = ot.key)
 4. GROUP BY, WHERE, HAVING, ORDER BY ASC | DESC
 5. UNION, UNION ALL, EXCEPT/MINUS, INTERSECT
 6. LIMIT some_value
-7. SELECT TOP 10 * FROM table
+7. SELECT TOP 10 * FROM table; SELECT TOP 10 percent FROM table
 8. AND, OR, NOT, IN(val_1, ..., val_n), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
-9. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
-10. MYSQL: LIMIT 1 OFFSET 1
-11. 10. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
-12. COALESCE(col_1, ..., col_n), CONCAT(col_1, ..., col_n), ROUND(col, n), LOWER(col), UPPER(col), REPLACE(col, old, new), SUBSTR(col, start, length), LTRIM(col) / RTRIM(col) / TRIM(col), LTRIM(col), RTRIM(col), LENGTH(col), DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
-14. STRING: LEFT, RIGHT, LENGTH, TRIM, POSITION, STRPOS, MID, CONCAT, LIKE '%val%', NOT LIKE, 
-15. RANK(), DENSE_RANK(), ROW_NUMBER(), CUME_DIST, PERCENT_RANK
-16. LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
-17. Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
-18. SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
-19. CAST(Var as float) INT, decimal(10,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
-20. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
-21. INSERT INTO table_name VALUES (value1, value2, value3, ...);
-22. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
-23. INSERT INTO t(col_list) SELECT column_list FROM t2
+    * Price BETWEEN 10 AND 20
+    * OrderDate BETWEEN '1996-07-01' AND '1996-07-31'
+9. WHERE col ANY (SELECT ...); WHERE col ALL (SELECT ...)
+10. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
+11. MYSQL: LIMIT 1 OFFSET 1
+12. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
+13. STRING: LEFT, RIGHT, LENGTH, TRIM, POSITION, STRPOS, MID, CONCAT, LIKE '%val%', NOT LIKE
+    * LIKE 'a%'	Finds any values that start with "a"
+    * LIKE '%a'	Finds any values that end with "a"
+    * LIKE '%or%'	Finds any values that have "or" in any position
+    * LIKE '_r%'	Finds any values that have "r" in the second position
+    * LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
+    * LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+    * LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+15. Wild cards
+    * %	Represents zero or more characters	Example: bl% finds bl, black, blue, and blob
+    * _	Represents a single character	Example: h_t finds hot, hat, and hit
+    * []	Represents any single character within the brackets	Example: h[oa]t finds hot and hat, but not hit
+    * ^	Represents any character not in the brackets	Example: h[^oa]t finds hit, but not hot and hat
+    * -	Represents a range of characters	Example: c[a-b]t finds cat and cbt
+16. DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042'; Variable called @date
+    * DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable';
+    * DECLARE @numVar INT = 9
+    * DECLARE @pStartDate date = '01/01/2020'
+    * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
+17. RANK(), DENSE_RANK(), ROW_NUMBER(), CUME_DIST, PERCENT_RANK
+19. LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
+20. Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
+21. SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
+22. CAST(Var as float) INT, decimal(10,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
+23. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
+24. INSERT INTO table_name VALUES (value1, value2, value3, ...);
+25. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
+26. INSERT INTO t(col_list) SELECT column_list FROM t2
+27. Comments: -- ; Multi-line: /*  */
+28. SQL STRING FUNCTIONS 
+    * CONCAT(col_1, ..., col_n)  OR 'W3Schools' + '.com'
+    * CONCAT_WS('.', 'www', 'W3Schools', 'com')  Add strings together. Use '.' to separate the concatenated string values
+    * LEN(Var)
+    * SUBSTRING('SQL Tutorial', 1, 3)  Extract 3 characters from a string, starting in position 1
+    * CHARINDEX('t', 'Customer') Search for "t" in string "Customer", and return position
+    * PATINDEX('%schools%', 'W3Schools.com')
+    * LEFT('SQL Tutorial', 3) | RIGHT('SQL Tutorial', 3)
+    * LTRIM(col) / RTRIM(col) / TRIM(col)
+    * LOWER(col) / UPPER(col)
+    * REPLACE(string, old_string, new_string) REPLACE('SQL Tutorial', 'T', 'M') 
+    * REPLICATE(string, integer) repeats a string a specified number of times
+    * REVERSE('SQL Tutorial')
+    * STR(185) Return a number as a string
+    * FORMAT(value, format, culture)
+      * FORMAT(number, decimal_places) # coverts to a number with specified number of decimal places
+      * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
+      * FORMAT(@date, 'd ') AS d,   -- 2
+      * FORMAT(@date, 'dd') AS dd, -- 02
+      * FORMAT(@date, 'ddd') AS ddd, -- Sat
+      * FORMAT(@date, 'dddd') AS dddd; -- Saturday
+      * FORMAT(@date, 'M ') AS M, -- 6
+      * FORMAT(@date, 'MM') AS MM, -- 06
+      * FORMAT(@date, 'MMM') AS MMM, -- Jun
+      * FORMAT(@date, 'MMMMM') AS MMMM; --  June
+      * FORMAT(@date, 'y ') AS y, -- 18
+      * FORMAT(@date, 'yy') AS yy, -- 18
+      * FORMAT(@date, 'yyy') AS yyy, -- 2018
+      * FORMAT(@date, 'yyyy') AS yyyy, -- 2018
+      * FORMAT(@date, 'yyyyy') AS yyyyy;  --  02018
+      * FORMAT(@date, 'd ') AS 'Space', --  2
+      * FORMAT(@date, 'd') AS 'No Space', -- 6/2/2018
+      * FORMAT(@date, 'M ') AS 'Space', -- 6
+      * FORMAT(@date, 'M') AS 'No Space', -- June 2
+      * FORMAT(@date, 'y ') AS 'Space', -- 8
+      * FORMAT(@date, 'y') AS 'No Space';  -- June 2018
+      * FORMAT (getdate(), 'dd/MM/yyyy ') as date	21/03/2018
+      * FORMAT (getdate(), 'dd/MM/yyyy, hh:mm:ss ') as date	21/03/2018, 11:36:14
+      * FORMAT (getdate(), 'dddd, MMMM, yyyy') as date	Wednesday, March, 2018
+      * FORMAT (getdate(), 'MMM dd yyyy') as date	Mar 21 2018
+      * FORMAT (getdate(), 'MM.dd.yy') as date	03.21.18
+      * FORMAT (getdate(), 'MM-dd-yy') as date	03-21-18
+      * FORMAT (getdate(), 'hh:mm:ss tt') as date	11:36:14 AM
+      * FORMAT (getdate(), 'd','us') as date    
+      * FORMAT(p.pay_date,'yyyy-MM') as pay_month
+    * 
+    * COALESCE(col_1, val_if_null), ISNULL((col_1, val_if_null), IFNULL((col_1, val_if_null),  ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
