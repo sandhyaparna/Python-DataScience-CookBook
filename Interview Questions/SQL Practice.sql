@@ -1,16 +1,5 @@
 # https://github.com/XD-DENG/SQL-exercise
 
-
--- Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
--- https://www.sqlshack.com/string_agg-function-in-sql/
-string_agg(product,',') WITHIN GROUP (ORDER BY product) as products
-
--- Creating new variable or CASE statement
-(case 
-    when operation='Buy' then -1*price -- 
-    else price
-END) as New_Var
-
 -- self looping employee-Manager
 -- keep doing left join based on the needed number of times
 
