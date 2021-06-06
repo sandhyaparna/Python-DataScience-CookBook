@@ -93,5 +93,24 @@
       * FORMAT (getdate(), 'hh:mm:ss tt') as date	11:36:14 AM
       * FORMAT (getdate(), 'd','us') as date    
       * FORMAT(p.pay_date,'yyyy-MM') as pay_month
+29. SQL Math
+    * Abs(-243.5)
+    * FLOOR(25.75)
+    * RAND(6): a random decimal number (with seed value of 6)
+    * ROUND(235.415, 2)
+30. SQL DateTime
+    * DATEADD(year, 1, '2017/08/25')
+      * year, yyyy, yy = Year
+      * quarter, qq, q = Quarter
+      * month, mm, m = month
+      * dayofyear, dy, y = Day of the year
+      * day, dd, d = Day
+      * week, ww, wk = Week
+      * weekday, dw, w = Weekday
+      * hour, hh = hour
+      * minute, mi, n = Minute
+      * second, ss, s = Second
+      * millisecond, ms = Millisecond
     * 
+
     * COALESCE(col_1, val_if_null), ISNULL((col_1, val_if_null), IFNULL((col_1, val_if_null),  ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
