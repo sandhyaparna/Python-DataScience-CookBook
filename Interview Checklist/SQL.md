@@ -1,5 +1,5 @@
 ### General Concepts
-1. SELECT A.*, B.* EXCEPT(Var_k, Var_k6) FROM Table1 AS A LEFT JOIN TABLE2 as B ON 
+1. SELECT A.*, B.* EXCEPT(Var_k, Var_k6) FROM Table1 AS A LEFT JOIN TABLE2 as B ON A.var2=B.var2
 2. SELECT DISTINCT, COUNT(DISTINCT Var), 
    * CASE </br>
     WHEN condition1 THEN result1 </br>
@@ -54,7 +54,7 @@
 26. INSERT INTO t(col_list) SELECT column_list FROM t2
 27. Comments: -- ; Multi-line: /*  */
 28. SQL STRING FUNCTIONS 
-    * CONCAT(col_1, ..., col_n)  OR 'W3Schools' + '.com'
+    * CONCAT(col_1, ..., col_n)  OR 'W3Schools' + '.com' OR  "I am" || "Sandy"
     * CONCAT_WS('.', 'www', 'W3Schools', 'com')  Add strings together. Use '.' to separate the concatenated string values
     * LEN(Var)
     * SUBSTRING('SQL Tutorial', 1, 3)  Extract 3 characters from a string, starting in position 1
