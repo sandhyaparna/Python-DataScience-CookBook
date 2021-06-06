@@ -12,7 +12,7 @@
 5. UNION, UNION ALL, EXCEPT/MINUS, INTERSECT
 6. LIMIT some_value
 7. SELECT TOP 10 * FROM table; SELECT TOP 10 percent FROM table
-8. AND, OR, NOT, IN(val_1, ..., val_n), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
+8. AND, OR, NOT, IN(val_1, ..., val_n), where Var IN ('X','Y'), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
     * Price BETWEEN 10 AND 20
     * OrderDate BETWEEN '1996-07-01' AND '1996-07-31'
 9. WHERE col ANY (SELECT ...); WHERE col ALL (SELECT ...)
@@ -20,6 +20,7 @@
 11. MYSQL: LIMIT 1 OFFSET 1
 12. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
 13. STRING: LEFT, RIGHT, LENGTH, TRIM, POSITION, STRPOS, MID, CONCAT, LIKE '%val%', NOT LIKE
+14. STRING matching https://www.sqlservertutorial.net/sql-server-basics/sql-server-like/
     * LIKE 'a%'	Finds any values that start with "a"
     * LIKE '%a'	Finds any values that end with "a"
     * LIKE '%or%'	Finds any values that have "or" in any position
@@ -27,6 +28,10 @@
     * LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
     * LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
     * LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+    * LIKE '[YZ]%' -- If first charcter is Y or Z. The square brackets with a list of characters e.g., [ABC] represents a single character that must be one of the characters specified in the list
+    * LIKE '[A-E]%' -- If first charcter is in range of A throug E
+    * LIKE '[^A-E]%' -- Negation -  If first charcter is NOT in range of A throug E
+    * LIKE '%30!%%'  ESCAPE '!' -- If row has 30%. ! is used as escape character to find % within a var
 15. Wild cards
     * %	Represents zero or more characters	Example: bl% finds bl, black, blue, and blob
     * _	Represents a single character	Example: h_t finds hot, hat, and hit
@@ -55,6 +60,8 @@
     * SUBSTRING('SQL Tutorial', 1, 3)  Extract 3 characters from a string, starting in position 1
     * CHARINDEX('t', 'Customer') Search for "t" in string "Customer", and return position
     * PATINDEX('%schools%', 'W3Schools.com')
+    * POSITION('A' IN descript) -- First position in descript column where A appears
+    * STRPOS(descript, 'A') -- Similar to POSITION but not needed to use IN 
     * LEFT('SQL Tutorial', 3) | RIGHT('SQL Tutorial', 3)
     * LTRIM(col) / RTRIM(col) / TRIM(col)
     * LOWER(col) / UPPER(col)
