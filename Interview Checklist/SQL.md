@@ -15,10 +15,13 @@
 8. AND, OR, NOT, IN(val_1, ..., val_n), where Var IN ('X','Y'), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
     * Price BETWEEN 10 AND 20
     * OrderDate BETWEEN '1996-07-01' AND '1996-07-31'
+    * COALESCE(col_1, val_if_null), ISNULL((col_1, val_if_null), IFNULL((col_1, val_if_null),
 9. WHERE col ANY (SELECT ...); WHERE col ALL (SELECT ...)
 10. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
 11. MYSQL: LIMIT 1 OFFSET 1
 12. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
+    * STRING_AGG(FirstName,'-') All observation within FirstName column are concatenated using - symbol; https://www.sqlshack.com/string_agg-function-in-sql/
+    * STRING_AGG(product,',') WITHIN GROUP (ORDER BY product) as products: Join string values using comma or a seperator within a group mentioned in Group by clause in the order of product name
 13. STRING: LEFT, RIGHT, LENGTH, TRIM, POSITION, STRPOS, MID, CONCAT, LIKE '%val%', NOT LIKE
 14. STRING matching https://www.sqlservertutorial.net/sql-server-basics/sql-server-like/
     * LIKE 'a%'	Finds any values that start with "a"
@@ -43,11 +46,12 @@
     * DECLARE @numVar INT = 9
     * DECLARE @pStartDate date = '01/01/2020'
     * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
-17. RANK(), DENSE_RANK(), ROW_NUMBER(), CUME_DIST, PERCENT_RANK
-19. LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
-20. Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
-21. SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
-22. CAST(Var as float) INT, decimal(10,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
+17. RANK(), DENSE_RANK(), ROW_NUMBER(), NTILE(), CUME_DIST, PERCENT_RANK
+    * LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
+    * Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
+    * SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
+18. CAST(Var as float) INT, decimal(10,2), numeric(36,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
+    * cast should be applied on all numbers: cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
 23. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
 24. INSERT INTO table_name VALUES (value1, value2, value3, ...);
 25. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
@@ -69,7 +73,7 @@
     * REPLICATE(string, integer) repeats a string a specified number of times
     * REVERSE('SQL Tutorial')
     * STR(185) Return a number as a string
-    * FORMAT(value, format, culture)
+    * FORMAT(value, format, culture)  https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql?view=sql-server-ver15
       * FORMAT(number, decimal_places) # coverts to a number with specified number of decimal places
       * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
       * FORMAT(@date, 'd ') AS d,   -- 2
@@ -106,18 +110,22 @@
     * RAND(6): a random decimal number (with seed value of 6)
     * ROUND(235.415, 2)
 30. SQL DateTime
+    * DAY(@date) AS DAY
+    * MONTH(@date) AS MONTH
+    * YEAR(@date) AS YEAR
     * DATEADD(year, 1, '2017/08/25')
+    * DATENAME(year, DateVar)
       * year, yyyy, yy = Year
       * quarter, qq, q = Quarter
       * month, mm, m = month
       * dayofyear, dy, y = Day of the year
       * day, dd, d = Day
       * week, ww, wk = Week
-      * weekday, dw, w = Weekday
+      * weekday, dw, w =Weekname Returns Weekname i.e Sunday, Monday etc
       * hour, hh = hour
       * minute, mi, n = Minute
       * second, ss, s = Second
       * millisecond, ms = Millisecond
     * 
 
-    * COALESCE(col_1, val_if_null), ISNULL((col_1, val_if_null), IFNULL((col_1, val_if_null),  ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
+    *   ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
