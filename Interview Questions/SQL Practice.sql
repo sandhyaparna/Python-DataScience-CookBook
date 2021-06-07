@@ -21,43 +21,12 @@ select results from (select Top 1 B.title as results,MONTH(created_at) as Month,
                     having MONTH(created_at)=2 AND YEAR(created_at)=2020 
                     order by avg(cast(A.rating as float)) DESC, B.title) as Y
 
--- To get floating number/value when applying aggregate functions
-cast(A.rating as float)
-cast(working_percentage as numeric(36,2)) -- Creating 2 decimal places for 0 also i.e produces 0.00
-FORMAT(number, decimal_places) # coverts to a number with specified number of decimal places
--- cast should be applied on all numbers
-cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
-
--- The CAST() function converts a value (of any type) into a specified datatype.
-SELECT CAST(25.65 AS varchar);
-SELECT CAST('2017-08-25' AS datetime);
-
--- Format https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql?view=sql-server-ver15
--- Returns a value formatted with the specified format and optional culture
-FORMAT( value, format [, culture ] )  
-FORMAT(number, decimal_places) #Converts numbers to float with specified number of decimal places
-
--- Extract differenet dates format
-FORMAT(p.pay_date,'yyyy-MM')
-
-
--- Select top n rows
-select Top 1 * from Table
-# Oracle
-SELECT *
-  FROM (SELECT * FROM MyTbl ORDER BY Fname )
- WHERE ROWNUM = 1;
-
 -- to check consecutive values within a variable as in For loop. Use LEAD for next value
 -- Use LAG for previous value
 -- If we have to check for 3 consecutive values, calculate next and Second next. so we can compare current num, next num and second next num
 LEAD(Num,1) OVER (PARTITION BY ID ORDER BY Num) as NextNum -- LEAD of value in Num variable within ID variable by 1 row
 LEAD(Num,2) OVER (PARTITION BY ID ORDER BY Num) as NextNum -- LEAD of value in Num variable within ID variable by 2 rows --second next value
 LAG(total_sale) OVER(ORDER BY year) AS previous_total_sale  -- LAG/previous value of total_sale within year variable
-
--- IS NULL to 0
-COALESCE(spampostsremoved,0) -- COALESCE is used in MySQL
-ISNULL(spampostsremoved,0) -- ISNULL is used in SQL server/T-sql
 
 -- Creating weeknames manually for pivoting
 -- This works even when any of the weekname is not in the data but when all weeknames are needed
