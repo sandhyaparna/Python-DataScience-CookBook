@@ -1,5 +1,6 @@
 ### General Concepts
 1. SELECT A.*, B.* EXCEPT(Var_k, Var_k6) FROM Table1 AS A LEFT JOIN TABLE2 as B ON A.var2=B.var2
+   * SELECT * from rental as A LEFT JOIN inventory as B ON A.inventory_id=B.inventory_id LEFT JOIN film as C On B.film_id=C.film_id
 2. SELECT DISTINCT, COUNT(DISTINCT Var), 
    * CASE </br>
     WHEN condition1 THEN result1 </br>
@@ -9,15 +10,16 @@
     END AS VAR_NAME; </br>
 3. LEFT JOIN, INNER JOIN, RIGHT JOIN, FULL JOIN ON (t.key = ot.key)
 4. GROUP BY, WHERE, HAVING, ORDER BY ASC | DESC
-5. UNION, UNION ALL, EXCEPT/MINUS, INTERSECT
+5. UNION - selects only distinct values, UNION ALL - selects all the values, EXCEPT/MINUS, INTERSECT
 6. LIMIT some_value
 7. SELECT TOP 10 * FROM table; SELECT TOP 10 percent FROM table
 8. AND, OR, NOT, IN(val_1, ..., val_n), where Var IN ('X','Y'), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
     * Price BETWEEN 10 AND 20
     * OrderDate BETWEEN '1996-07-01' AND '1996-07-31'
     * COALESCE(col_1, val_if_null), ISNULL((col_1, val_if_null), IFNULL((col_1, val_if_null),
+    * DateVar<'2020-02-01' ## YYYY-MM-DD
 9. WHERE col ANY (SELECT ...); WHERE col ALL (SELECT ...)
-10. ORDER BY column_list [ASC |DESC] OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY  (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
+10. ORDER BY column_list [ASC |DESC] </br> OFFSET offset_row_count {ROW | ROWS} FETCH NEXT fetch_row_count {ROW | ROWS} ONLY (OFFSET is to specify number of rows to skip before stating to return number of rows mentioned in FETCH clause) 
 11. MYSQL: LIMIT 1 OFFSET 1
 12. AGG: AVG(col), SUM(col), COUNT(col), COUNT(DISTINCT col), MAX(col), MIN(col), VAR(col), STDEV(col), PERCENTILE_APPROX(col, p), collect_list(col)
     * STRING_AGG(FirstName,'-') All observation within FirstName column are concatenated using - symbol; https://www.sqlshack.com/string_agg-function-in-sql/
@@ -41,23 +43,25 @@
     * []	Represents any single character within the brackets	Example: h[oa]t finds hot and hat, but not hit
     * ^	Represents any character not in the brackets	Example: h[^oa]t finds hit, but not hot and hat
     * -	Represents a range of characters	Example: c[a-b]t finds cat and cbt
-16. DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042'; Variable called @date
+16. DECLARE @variable_name datatype [ = initial_value ], @variable_name datatype [ = initial_value ], @variable_name datatype [ = initial_value ],
+    * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042'; Variable called @date
     * DECLARE @techonthenet VARCHAR(50) = 'Example showing how to declare variable';
     * DECLARE @numVar INT = 9
     * DECLARE @pStartDate date = '01/01/2020'
     * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
-17. RANK(), DENSE_RANK(), ROW_NUMBER(), NTILE(), CUME_DIST, PERCENT_RANK
+17. RANK() - Generates dupliactes but misses the next numbers based on the duplicates, DENSE_RANK(), ROW_NUMBER(), NTILE(n): Creates n number of groups, CUME_DIST, PERCENT_RANK
     * LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
     * Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
     * SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
 18. CAST(Var as float) INT, decimal(10,2), numeric(36,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
     * cast should be applied on all numbers: cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
 23. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
-24. INSERT INTO table_name VALUES (value1, value2, value3, ...);
-25. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
-26. INSERT INTO t(col_list) SELECT column_list FROM t2
-27. Comments: -- ; Multi-line: /*  */
-28. SQL STRING FUNCTIONS 
+24. 
+25. INSERT INTO table_name VALUES (value1, value2, value3, ...);
+26. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
+27. INSERT INTO t(col_list) SELECT column_list FROM t2
+28. Comments: -- ; Multi-line: /*  */
+29. SQL STRING FUNCTIONS 
     * CONCAT(col_1, ..., col_n)  OR 'W3Schools' + '.com' OR  "I am" || "Sandy"
     * CONCAT_WS('.', 'www', 'W3Schools', 'com')  Add strings together. Use '.' to separate the concatenated string values
     * LEN(Var)
@@ -104,17 +108,21 @@
       * FORMAT (getdate(), 'hh:mm:ss tt') as date	11:36:14 AM
       * FORMAT (getdate(), 'd','us') as date    
       * FORMAT(p.pay_date,'yyyy-MM') as pay_month
-29. SQL Math
+30. SQL Math
     * Abs(-243.5)
     * FLOOR(25.75)
     * RAND(6): a random decimal number (with seed value of 6)
     * ROUND(235.415, 2)
-30. SQL DateTime
+31. SQL DateTime
     * DAY(@date) AS DAY
     * MONTH(@date) AS MONTH
     * YEAR(@date) AS YEAR
-    * DATEADD(year, 1, '2017/08/25')
-    * DATENAME(year, DateVar)
+    * DATEADD(year, 1, '2017/08/25')  Adding 1 year; Negative number implies subtraction  DATEADD(interval, number, date)
+    * DATEDIFF(interval, startdate, enddate )
+    * DATENAME(interval, DateVar)  returns result i.e year/month, etc as CHARACTER string. DATENAME(dw, DateVar) -- Returns Weekname i.e Sunday, Monday etc
+    * DATEPART: DATEPART (interval, dateVar)  It is a Datetime function which helps to extract information from date. This function always returns result as integer type
+    * EOMONTH(DateVar) as LastDayofMonth. EOMONTH('2007-10-25') --Gives '2007-10-31'
+    * Intervals:
       * year, yyyy, yy = Year
       * quarter, qq, q = Quarter
       * month, mm, m = month
@@ -126,6 +134,10 @@
       * minute, mi, n = Minute
       * second, ss, s = Second
       * millisecond, ms = Millisecond
+      * microsecond, mcs
+      * nanosecond, ns
+      * TZoffset, tz	+05:10
+      * ISO_WEEK, ISOWK, ISOWW	44
     * 
 
     *   ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
