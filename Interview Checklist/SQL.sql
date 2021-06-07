@@ -59,6 +59,9 @@ where NOT(A.x=B.x AND A.y=B.y) -- Removing the same observation on either side
 -- Use this self join 
 ON p1.x != p2.x OR p1.y != p2.y
 
+-- Join on x & y and remove the below observation
+WHERE NOT (A.x=B.x and A.y=B.y)
+
 -- Where this nor that but other
 where condition=Other OR NOT (Condition=this OR condition=that)
 
