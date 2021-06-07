@@ -57,8 +57,15 @@
     * DENSE_RANK() OVER(ORDER BY Student_Score) -- Student_Score is 770,770,770, 885, 900, 900, 1001  geenrates 1,1,1,2,3,3,4
     * NTILE(n): Creates n number of groups
     * LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
+    * FIRST_VALUE(col) OVER(ORDER BY TaxRate ASC)  to determine the first value in an ordered result set
+    * LAST_VALUE(col) OVER(ORDER BY TerritoryID)  to return the last value for each rowset in the ordered values
     * Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
     * SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND  FOLLOWING)
+    * PERCENT_RANK function calculates the ranking of a row relative to the row set. The percentage is based on the number of rows in the group that have a lower value than the current row
+    * CUME_DIST function calculates the relative position of a specified value in a group of values, by determining the percentage of values less than or equal to that value
+    * PERCENTILE_DISC function lists the value of the first entry where the cumulative distribution is higher than the percentile that you provide using the numeric_literal parameter
+    * PERCENTILE_CONT function is similar to the PERCENTILE_DISC function, but returns the average of
+the sum of the first matching entry and the next entry
 18. CAST(Var as float) INT, decimal(10,2), numeric(36,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
     * cast should be applied on all numbers: cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
 19. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
