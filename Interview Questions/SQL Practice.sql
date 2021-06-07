@@ -1,4 +1,5 @@
 # https://github.com/XD-DENG/SQL-exercise
+# https://www.linkedin.com/posts/rakesh-thottathil-a67b6480_sql-cheat-sheet-activity-6807530589978181632-rv7w
 
 ### CTE
 -- Recursive function to generate numbers between 1 to 50 
