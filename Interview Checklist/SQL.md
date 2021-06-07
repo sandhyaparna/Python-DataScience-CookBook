@@ -12,7 +12,7 @@
 4. GROUP BY, WHERE, HAVING, ORDER BY ASC | DESC
 5. UNION - selects only distinct values, UNION ALL - selects all the values, EXCEPT/MINUS, INTERSECT
 6. LIMIT some_value
-7. SELECT TOP 10 * FROM table; SELECT TOP 10 percent FROM table
+7. SELECT TOP 10 * FROM table; SELECT TOP 10 percent FROM table; TOP 50PERCENT
 8. AND, OR, NOT, IN(val_1, ..., val_n), where Var IN ('X','Y'), NOT IN, IS NULL, IS NOT NULL, BETWEEN val_1 AND val_2, =, !=/<>, >=, >, <, <=
     * Price BETWEEN 10 AND 20
     * OrderDate BETWEEN '1996-07-01' AND '1996-07-31'
@@ -55,7 +55,7 @@
     * ROW_NUMBER() OVER( ORDER BY Student_Score) --Generates 1,2,3,4 without duplicates or gaps even if Student_Score is same
     * RANK ()  OVER( ORDER BY Student_Score) --Generates dupliactes but misses the next numbers based on the duplicates
     * DENSE_RANK() OVER(ORDER BY Student_Score) -- Student_Score is 770,770,770, 885, 900, 900, 1001  geenrates 1,1,1,2,3,3,4
-    * NTILE(n): Creates n number of groups
+    * NTILE(n): Creates n number of groups; NTILE(2) implies 2 slices 50-50
     * LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
     * FIRST_VALUE(col) OVER(ORDER BY TaxRate ASC)  to determine the first value in an ordered result set
     * LAST_VALUE(col) OVER(ORDER BY TerritoryID)  to return the last value for each rowset in the ordered values
