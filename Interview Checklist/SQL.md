@@ -49,23 +49,29 @@
     * DECLARE @numVar INT = 9
     * DECLARE @pStartDate date = '01/01/2020'
     * DECLARE @date datetime2 = '2018-06-02 08:24:14.3112042';
-17. RANK() - Generates dupliactes but misses the next numbers based on the duplicates, DENSE_RANK(), ROW_NUMBER(), NTILE(n): Creates n number of groups, CUME_DIST, PERCENT_RANK
+    * DECLARE @Top int = (select count(*) as rows from Players)
+    * DECLARE @Top int = (select max(rows) from (select count(*) as rows from Players) as xy)
+17. ROW_NUMBER(), RANK(), DENSE_RANK(), CUME_DIST, PERCENT_RANK
+    * ROW_NUMBER() OVER( ORDER BY Student_Score) --Generates 1,2,3,4 without duplicates or gaps even if Student_Score is same
+    * RANK ()  OVER( ORDER BY Student_Score) --Generates dupliactes but misses the next numbers based on the duplicates
+    * DENSE_RANK() OVER(ORDER BY Student_Score) -- Student_Score is 770,770,770, 885, 900, 900, 1001  geenrates 1,1,1,2,3,3,4
+    * NTILE(n): Creates n number of groups
     * LEAD(col, n), LAG(col, n) OVER (PARTITION BY Var1 ORDER BY Var2, Var2)
     * Cumulative sum of 3 rows: sum(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN 2 PRECEEDING AND CURRENT ROW)
-    * SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)
+    * SUM(Var) OVER (PARTITION BY Var1 ORDER BY Var2, Var2 ROWS BETWEEN CURRENT ROW AND  FOLLOWING)
 18. CAST(Var as float) INT, decimal(10,2), numeric(36,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
     * cast should be applied on all numbers: cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
-23. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
-24. 
-25. INSERT INTO table_name VALUES (value1, value2, value3, ...);
-26. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
-27. INSERT INTO t(col_list) SELECT column_list FROM t2
-28. Comments: -- ; Multi-line: /*  */
-29. SQL STRING FUNCTIONS 
+19. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
+20. INSERT INTO table_name VALUES (value1, value2, value3, ...);
+21. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
+22. INSERT INTO t(col_list) SELECT column_list FROM t2
+23. Comments: -- ; Multi-line: /*  */
+24. SQL STRING FUNCTIONS 
     * CONCAT(col_1, ..., col_n)  OR 'W3Schools' + '.com' OR  "I am" || "Sandy"
     * CONCAT_WS('.', 'www', 'W3Schools', 'com')  Add strings together. Use '.' to separate the concatenated string values
     * LEN(Var)
     * SUBSTRING('SQL Tutorial', 1, 3)  Extract 3 characters from a string, starting in position 1
+    * SUBSTR(col, start, length)
     * CHARINDEX('t', 'Customer') Search for "t" in string "Customer", and return position
     * PATINDEX('%schools%', 'W3Schools.com')
     * POSITION('A' IN descript) -- First position in descript column where A appears
@@ -108,12 +114,12 @@
       * FORMAT (getdate(), 'hh:mm:ss tt') as date	11:36:14 AM
       * FORMAT (getdate(), 'd','us') as date    
       * FORMAT(p.pay_date,'yyyy-MM') as pay_month
-30. SQL Math
+25. SQL Math
     * Abs(-243.5)
     * FLOOR(25.75)
     * RAND(6): a random decimal number (with seed value of 6)
     * ROUND(235.415, 2)
-31. SQL DateTime
+26. SQL DateTime
     * DAY(@date) AS DAY
     * MONTH(@date) AS MONTH
     * YEAR(@date) AS YEAR
@@ -122,6 +128,7 @@
     * DATENAME(interval, DateVar)  returns result i.e year/month, etc as CHARACTER string. DATENAME(dw, DateVar) -- Returns Weekname i.e Sunday, Monday etc
     * DATEPART: DATEPART (interval, dateVar)  It is a Datetime function which helps to extract information from date. This function always returns result as integer type
     * EOMONTH(DateVar) as LastDayofMonth. EOMONTH('2007-10-25') --Gives '2007-10-31'
+    * Current date time: NOW(), GETDATE(), SYSDATETIME()
     * Intervals:
       * year, yyyy, yy = Year
       * quarter, qq, q = Quarter
@@ -138,6 +145,3 @@
       * nanosecond, ns
       * TZoffset, tz	+05:10
       * ISO_WEEK, ISOWK, ISOWW	44
-    * 
-
-    *   ROUND(col, n), REPLACE(col, old, new), SUBSTR(col, start, length),  DATE_TRUNC(time_dimension, col_date), DATE_ADD(col_date, number_of_days)
