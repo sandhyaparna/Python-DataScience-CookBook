@@ -68,7 +68,7 @@
 the sum of the first matching entry and the next entry
 18. CAST(Var as float) INT, decimal(10,2), numeric(36,2), numeric(36,4), string, real, char, varchar, text, datetime CAST('2017-08-25' AS datetime)
     * cast should be applied on all numbers: cast(cast(count(DISTINCT q.player_id) as float)/cast(count(DISTINCT p.player_id) as float) as numeric(36,2)) as Day1_retention
-19. WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
+19. Common Table Expression: WITH cte_1 AS ( SELECT ...) SELECT ... FROM ...
 20. INSERT INTO table_name VALUES (value1, value2, value3, ...);
 21. INSERT INTO t(col_list) VALUES (value_list1), (value_list2)
 22. INSERT INTO t(col_list) SELECT column_list FROM t2
