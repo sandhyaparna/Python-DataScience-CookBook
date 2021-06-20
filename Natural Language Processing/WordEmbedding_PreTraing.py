@@ -52,6 +52,7 @@ model_ted.wv.most_similar("Gastroenteritis")
 # Using pre-trained ELMo - https://www.analyticsvidhya.com/blog/2019/03/learn-to-use-elmo-to-extract-features-from-text/
 
 ##### Word2Vec 
+# word2vec from scratch and embeddings extraction from trained model using tensorflow - https://www.tensorflow.org/tutorials/text/word2vec
 # Word2vec from Scratch - Training on Custom data - https://towardsdatascience.com/a-beginners-guide-to-word-embedding-with-gensim-word2vec-model-5970fa56cc92
 # https://www.kaggle.com/chewzy/tutorial-how-to-train-your-custom-word-embedding
 
