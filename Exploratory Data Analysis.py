@@ -624,6 +624,10 @@ fig.data[0].textfont.color = "black"
 fig.data[0].textposition = "outside"
 fig.show()
 
+# figure size
+plt.figure(figsize=(10, 5))
+plt.show()
+
 # Histogram & Kde(Kernel density estimate)
 import seaborn as sns
 sns.set()
