@@ -1,5 +1,7 @@
 ### Loading data ###
 
+# Diff ways of importing data into colab
+
 # Uploading large files
 https://www.freecodecamp.org/news/how-to-transfer-large-files-to-google-colab-and-remote-jupyter-notebooks-26ca252892fa/
 
