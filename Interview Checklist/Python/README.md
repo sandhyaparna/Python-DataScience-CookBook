@@ -6,6 +6,7 @@ CheatSheets:
 
 Code snippets/questions:
 * https://towardsdatascience.com/41-questions-to-test-your-knowledge-of-python-strings-9eb473aa8fe8
+* https://github.com/luceCoding/Programming-Interview-Questions-in-Python
 * https://medium.com/javarevisited/top-21-string-programming-interview-questions-for-beginners-and-experienced-developers-56037048de45
 * https://medium.com/javarevisited/5-coding-interview-books-to-prepare-for-programming-job-interviews-d8f63348afaf
 * https://levelup.gitconnected.com/22-code-snippets-that-every-python-programmer-must-learn-b7f7ec35e9df
